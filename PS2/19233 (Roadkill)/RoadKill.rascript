@@ -998,8 +998,9 @@ rich_presence_display("Playing RoadKill")
 
 achievement(
     title="Welcome to Lava Falls!",
-    description="Complete mission 'Welcome to Lava Falls'.",
+    description="Complete 'Welcome to Lava Falls'.",
     points=1,
+    id=523073,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1011,9 +1012,10 @@ achievement(
 )
 
 achievement(
-    title="Heard Ya Need Some Help",
-    description="Complete mission 'Looking for Work'.",
+    title="Heard Ya Need Some Help?",
+    description="Complete 'Looking for Work'.",
     points=1,
+    id=523074,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1026,8 +1028,9 @@ achievement(
 
 achievement(
     title="Can't Stand a Dirtbag!",
-    description="Complete mission 'Wade's Shop'.",
+    description="Complete 'Wade's Shop'.",
     points=2,
+    id=523075,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1040,8 +1043,9 @@ achievement(
 
 achievement(
     title="Everything Is Ready Baby",
-    description="Complete mission 'Cabe's Wheels'.",
+    description="Complete 'Cabe's Wheels'.",
     points=3,
+    id=523076,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1053,9 +1057,10 @@ achievement(
 )
 
 achievement(
-    title="He Fucks with Us, We Fuck with Them!?!",
-    description="Complete mission 'Backdoor Shootout'.",
+    title="He Fucks with Us, We Fuck with Them!",
+    description="Complete 'Backdoor Shootout'.",
     points=4,
+    id=523077,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1067,9 +1072,10 @@ achievement(
 )
 
 achievement(
-    title="Don’t Think That Keeping Your Mouth Shut Is Gonna Save Your Ass",
-    description="Complete mission 'Uncle Woody's Cargo'.",
+    title="Don't Think That Keeping Your Mouth Shut Is Gonna Save Your Ass!",
+    description="Complete 'Uncle Woody's Cargo'.",
     points=4,
+    id=523078,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1081,9 +1087,10 @@ achievement(
 )
 
 achievement(
-    title="Have a Seat Chino",
-    description="Complete mission 'Rendevouz at Biocide'.",
+    title="Have a Seat, Chino",
+    description="Complete 'Rendevouz at Biocide'.",
     points=5,
+    id=523079,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1096,8 +1103,9 @@ achievement(
 
 achievement(
     title="Gauchos Got Their Filthy Hands on Some Blueprints",
-    description="Complete mission 'Swanky New Car'.",
+    description="Complete 'Swanky New Car'.",
     points=5,
+    id=523080,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1110,8 +1118,9 @@ achievement(
 
 achievement(
     title="So What's Up?",
-    description="Complete mission 'The Briefcase'.",
+    description="Complete 'The Briefcase'.",
     points=5,
+    id=523081,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1124,8 +1133,9 @@ achievement(
 
 achievement(
     title="Woody's Gone Soft",
-    description="Complete mission 'Uncle Woody'.",
+    description="Complete 'Uncle Woody'.",
     points=10,
+    id=523082,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1137,9 +1147,10 @@ achievement(
 )
 
 achievement(
-    title="Sir, Yes SIR!?",
-    description="Complete mission 'Talon Recon'.",
+    title="Sir, Yes Sir!",
+    description="Complete 'Talon Recon'.",
     points=10,
+    id=523083,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1152,8 +1163,9 @@ achievement(
 
 achievement(
     title="Eenie Meenie Miney Ho",
-    description="Complete mission 'Duck Hunt'.",
+    description="Complete 'Duck Hunt'.",
     points=5,
+    id=523084,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1166,8 +1178,9 @@ achievement(
 
 achievement(
     title="I'm Ready Sir!",
-    description="Complete mission 'The Getaway'.",
+    description="Complete 'The Getaway'.",
     points=5,
+    id=523085,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1180,8 +1193,9 @@ achievement(
 
 achievement(
     title="Protect Our Flank!",
-    description="Complete mission 'The Gauntlet'.",
+    description="Complete 'The Gauntlet'.",
     points=5,
+    id=523086,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1194,8 +1208,9 @@ achievement(
 
 achievement(
     title="Get Your Sweet Little Ass over to HQ",
-    description="Complete mission 'Breakout'.",
+    description="Complete 'Breakout'.",
     points=5,
+    id=523087,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1208,8 +1223,9 @@ achievement(
 
 achievement(
     title="Have an Assignment for Ya",
-    description="Complete mission 'Mine Over Matter'.",
+    description="Complete 'Mine Over Matter'.",
     points=5,
+    id=523088,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1221,9 +1237,10 @@ achievement(
 )
 
 achievement(
-    title="Tell Me the Name!!?",
-    description="Complete mission 'Drake's Last Stand'.",
+    title="Tell Me the Name!",
+    description="Complete 'Drake's Last Stand'.",
     points=5,
+    id=523089,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1236,8 +1253,9 @@ achievement(
 
 achievement(
     title="Recover the Weapon!",
-    description="Complete mission 'Package Pickup'.",
+    description="Complete 'Package Pickup'.",
     points=5,
+    id=523090,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1250,8 +1268,9 @@ achievement(
 
 achievement(
     title="I Know Who He Is",
-    description="Complete mission 'Road to Lava Falls'.",
+    description="Complete 'Road to Lava Falls'.",
     points=5,
+    id=523091,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1264,8 +1283,9 @@ achievement(
 
 achievement(
     title="Grim's Looking Real Grim",
-    description="Complete mission 'Grim'.",
+    description="Complete 'Grim'.",
     points=10,
+    id=523092,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1277,9 +1297,10 @@ achievement(
 )
 
 achievement(
-    title="It's Not You Football Boy",
-    description="Complete mission 'Beer Run'.",
+    title="It's Not You, Football Boy",
+    description="Complete 'Beer Run'.",
     points=5,
+    id=523093,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1292,8 +1313,9 @@ achievement(
 
 achievement(
     title="I Prefer Looking at Your Mom",
-    description="Complete mission 'Rocketman'.",
+    description="Complete 'Rocketman'.",
     points=5,
+    id=523094,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1306,8 +1328,9 @@ achievement(
 
 achievement(
     title="Becoming Quite the Hero",
-    description="Complete mission 'Warehouse Gunfight'.",
+    description="Complete 'Warehouse Gunfight'.",
     points=5,
+    id=523095,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1320,8 +1343,9 @@ achievement(
 
 achievement(
     title="Bring Knox Back",
-    description="Complete mission 'Behind Bars'.",
+    description="Complete 'Behind Bars'.",
     points=5,
+    id=523096,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1333,9 +1357,10 @@ achievement(
 )
 
 achievement(
-    title="You Boys Wanna Cuff Me",
-    description="Complete mission 'Deathwish'.",
+    title="You Boys Wanna Cuff Me?",
+    description="Complete 'Deathwish'.",
     points=5,
+    id=523097,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1348,8 +1373,9 @@ achievement(
 
 achievement(
     title="Get Your Ass over Here!",
-    description="Complete mission 'Dregs of Society'.",
+    description="Complete 'Dregs of Society'.",
     points=5,
+    id=523098,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1361,9 +1387,10 @@ achievement(
 )
 
 achievement(
-    title="A Race? Winner Fucks the Prom Queen",
-    description="Complete mission 'Mano a Mano'.",
+    title="A Race? Winner Fucks the Prom Queen!",
+    description="Complete 'Mano a Mano'.",
     points=5,
+    id=523099,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1375,9 +1402,10 @@ achievement(
 )
 
 achievement(
-    title="Time for The Playoffs Mason",
-    description="Complete mission 'Bombs Away'.",
+    title="Time for The Playoffs, Mason",
+    description="Complete 'Bombs Away'.",
     points=5,
+    id=523100,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1389,9 +1417,10 @@ achievement(
 )
 
 achievement(
-    title="Runs His Mouth like a 3 Year Old in Candy Store",
-    description="Complete mission 'Attack of the Drones'.",
+    title="Runs His Mouth like a 3 Year Old in a Candy Store",
+    description="Complete 'Attack of the Drones'.",
     points=5,
+    id=523101,
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1402,9 +1431,10 @@ achievement(
     )
 )
 achievement(
-    title="Axl",
-    description="Complete mission 'Axl'.",
+    title="Ya Car Has a Broken Axl",
+    description="Complete 'Axl'.",
     points=25,
+    id=523102,
     type="win_condition",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
@@ -1416,8 +1446,9 @@ achievement(
 )
 achievement(
     title="From Blueprint to Boomstick",
-    description="Collect all parts and blueprint in one session to unlock the 'Scattergun'.",
+    description="In one session, collect every part and the blueprint to unlock the Scattergun.",
     points=10,
+    id=523103,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1429,9 +1460,10 @@ achievement(
     )
 )
 achievement(
-    title="Freaking Lazers!!",
-    description="Collect all parts and blueprint in one session to unlock the 'Laser Trip Mine'.",
+    title="Freaking Lasers!!",
+    description="In one session, collect every part and the blueprint to unlock the Laser Trip Mine.",
     points=10,
+    id=523104,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1444,8 +1476,9 @@ achievement(
 )
 achievement(
     title="Prime Speed",
-    description="Collect all parts and blueprint to unlock the 'Primer'.",
+    description="Collect every part and the blueprint to unlock the Primer.",
     points=10,
+    id=523105,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1456,8 +1489,9 @@ achievement(
 )
 achievement(
     title="Sorta Tactical Vehicle",
-    description="Collect all parts and blueprint to unlock the 'S.T.V.'.",
+    description="Collect every part and the blueprint to unlock the S.T.V.",
     points=10,
+    id=523106,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1468,8 +1502,9 @@ achievement(
 )
 achievement(
     title="Clown Blender",
-    description="Collect all parts and blueprint to unlock the 'Grinder'.",
+    description="Collect every part and the blueprint to unlock the Grinder.",
     points=10,
+    id=523107,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1480,8 +1515,9 @@ achievement(
 )
 achievement(
     title="UPS Delivery Driver",
-    description="Deliver 6 packages in Lava Falls and unlock the 'Shag'.",
+    description="Deliver 6 packages in Lava Falls and unlock the Shag.",
     points=5,
+    id=523108,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1493,8 +1529,9 @@ achievement(
 )
 achievement(
     title="Let's Start a RIOT!!",
-    description="Survive 5 minutes of RIOT in Lava Falls and unlock the 'Lawdog'.",
+    description="Survive 5 minutes of RIOT in Lava Falls and unlock the Lawdog.",
     points=5,
+    id=523109,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1506,8 +1543,9 @@ achievement(
 )
 achievement(
     title="Pierce With Extreme Prejudice",
-    description="Complete the Killing Spree challenge in Lava Falls.",
+    description="Complete the 'Impale' Killing Spree challenge in Lava Falls.",
     points=5,
+    id=523110,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1520,9 +1558,10 @@ achievement(
     )
 )
 achievement(
-    title="Lava Falls Racing I",
-    description="Finish in first in Lava Falls and unlock the 'Bean'.",
+    title="Grip It and Rip It, Woody-style!",
+    description="Finish 1st in Lava Falls Race 1 and unlock the Bean.",
     points=5,
+    id=523111,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1532,9 +1571,10 @@ achievement(
     )
 )
 achievement(
-    title="Lava Falls Racing II",
-    description="Finish in first in Lava Falls and unlock the 'Mullet'.",
+    title="Lava Roars, Engines Scream!",
+    description="Finish 1st in Lava Falls Race 2 and unlock the Mullet.",
     points=5,
+    id=523112,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1544,9 +1584,10 @@ achievement(
     )
 )
 achievement(
-    title="Lava Falls Racing III",
-    description="Finish in first in Lava Falls and unlock the 'Señor'.",
+    title="Fastest Baggage Claim in the City!",
+    description="Finish 1st in Lava Falls Race 3 and unlock the Señor.",
     points=5,
+    id=523113,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1557,8 +1598,9 @@ achievement(
 )
 achievement(
     title="Lava Falls Stunting",
-    description="Finish stunting in Lava Falls and unlock the 'Goblin'.",
+    description="Complete the Stunt Run in Lava Falls and unlock the Goblin.",
     points=10,
+    id=523114,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1569,8 +1611,9 @@ achievement(
 )
 achievement(
     title="Lava Falls Suicide",
-    description="Complete every wave in Suicide in Lava Falls and unlock the 'Tub'.",
+    description="Survive every round of Suicide in Lava Falls and unlock the Tub.",
     points=10,
+    id=523115,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1581,8 +1624,9 @@ achievement(
 )
 achievement(
     title="Why Aim When the Rocket Does It for You?",
-    description="Collect all parts and blueprint in one session to unlock the 'Homing Rocket'.",
+    description="In one session, collect every part and the blueprint to unlock the Homing Rocket.",
     points=10,
+    id=523116,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1595,8 +1639,9 @@ achievement(
 )
 achievement(
     title="Fanged Beast",
-    description="Collect all parts and blueprint to unlock the 'Fang'.",
+    description="Collect every part and the blueprint to unlock the Fang.",
     points=10,
+    id=523117,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1606,9 +1651,10 @@ achievement(
     )
 )
 achievement(
-    title="α and the Ω",
-    description="Collect all parts and blueprint to unlock the 'Omega'.",
+    title="Alpha and the Omega",
+    description="Collect every part and the blueprint to unlock the Omega.",
     points=10,
+    id=523118,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1619,8 +1665,9 @@ achievement(
 )
 achievement(
     title="Big Mutha Trucker",
-    description="Collect all parts and blueprint to unlock the 'Rigg'.",
+    description="Collect every part and the blueprint to unlock the Rigg.",
     points=10,
+    id=523119,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1631,8 +1678,9 @@ achievement(
 )
 achievement(
     title="FedEx Delivery Driver",
-    description="Deliver 10 packages in Blister Canyon and unlock the 'Ese'.",
+    description="Deliver 10 packages in Blister Canyon and unlock the Ese.",
     points=5,
+    id=523120,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1644,8 +1692,9 @@ achievement(
 )
 achievement(
     title="Bring It On!",
-    description="Survive 10 minutes of RIOT in Blister Canyon and unlock the 'Bruiser'.",
+    description="Survive 10 minutes of RIOT in Blister Canyon and unlock the Bruiser.",
     points=10,
+    id=523121,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1657,8 +1706,9 @@ achievement(
 )
 achievement(
     title="Hobo With a Shotgun",
-    description="Complete the Killing Spree challenge in Blister Canyon.",
+    description="Complete the 'Scattergun' Killing Spree challenge in Blister Canyon.",
     points=5,
+    id=523122,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1671,9 +1721,10 @@ achievement(
     )
 )
 achievement(
-    title="Blister Canyon Racing I",
-    description="Finish in first in Blister Canyon and unlock the 'Thunder'.",
+    title="No Brakes In The Annex, No Fear.",
+    description="Finish 1st in Blister Canyon Race 1 and unlock the Thunder.",
     points=5,
+    id=523123,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1683,9 +1734,10 @@ achievement(
     )
 )
 achievement(
-    title="Blister Canyon Racing II",
-    description="Finish in first in Blister Canyon and unlock the 'Pumpkin'.",
+    title="Where Ships Sleep and Tires Scream!",
+    description="Finish 1st in Blister Canyon Race 2 and unlock the Pumpkin.",
     points=5,
+    id=523124,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1695,9 +1747,10 @@ achievement(
     )
 )
 achievement(
-    title="Blister Canyon Racing III",
-    description="Finish in first in Blister Canyon and unlock the 'Burner'.",
+    title="Grip The Wheel or Kiss The Pier",
+    description="Finish 1st in Blister Canyon Race 3 and unlock the Burner..",
     points=5,
+    id=523125,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1708,8 +1761,9 @@ achievement(
 )
 achievement(
     title="Blister Canyon Stunting",
-    description="Finish stunting in Blister Canyon and unlock the 'Drifter'.",
+    description="Complete the Stunt Run in Blister Canyon and unlock the Drifter.",
     points=10,
+    id=523126,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1720,8 +1774,9 @@ achievement(
 )
 achievement(
     title="Blister Canyon Suicide",
-    description="Complete every wave in Suicide in Blister Canyon and unlock the 'Sanford'.",
+    description="Survive every round of Suicide in Blister Canyon and unlock the Sanford.",
     points=5,
+    id=523127,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1732,8 +1787,9 @@ achievement(
 )
 achievement(
     title="1.21 Jiggawatts!?!",
-    description="Collect all parts and blueprint in one session to unlock the 'Bolt Gun'.",
+    description="In one session, collect every part and the blueprint to unlock the Bolt Gun.",
     points=10,
+    id=523128,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1746,8 +1802,9 @@ achievement(
 )
 achievement(
     title="One Pulse, and You’re Back to the Stone Age",
-    description="Collect all parts and blueprint in one session to unlock the 'EMP'.",
+    description="In one session, collect every part and the blueprint to unlock the EMP.",
     points=10,
+    id=523129,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1760,8 +1817,9 @@ achievement(
 )
 achievement(
     title="Monster Garage",
-    description="Collect all parts and blueprint to unlock the 'Monster'.",
+    description="Collect every part and the blueprint to unlock the Monster.",
     points=10,
+    id=523130,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1772,8 +1830,9 @@ achievement(
 )
 achievement(
     title="Ray of Sunshine",
-    description="Collect all parts and blueprint to unlock the 'Ray'.",
+    description="Collect every part and the blueprint to unlock the Ray.",
     points=10,
+    id=523131,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1784,8 +1843,9 @@ achievement(
 )
 achievement(
     title="Razor Sharp Speed",
-    description="Collect all parts and blueprint to unlock the 'Razor'.",
+    description="Collect every part and the blueprint to unlock the Razor.",
     points=10,
+    id=523132,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1796,8 +1856,9 @@ achievement(
 )
 achievement(
     title="Amazon Delivery Driver",
-    description="Deliver 14 packages in Paradise City and unlock the 'Offroad'.",
+    description="Deliver 14 packages in Paradise City and unlock the Offroad.",
     points=10,
+    id=523133,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1809,8 +1870,9 @@ achievement(
 )
 achievement(
     title="Fuck Tha Police!",
-    description="Survive 20 minutes of RIOT in Paradise City and unlock the 'Stalker'.",
+    description="Survive 20 minutes of RIOT in Paradise City and unlock the Stalker.",
     points=10,
+    id=523134,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1822,8 +1884,9 @@ achievement(
 )
 achievement(
     title="AC-130 From Above",
-    description="Complete the Air Strike Killing Spree challenge in Paradise City.",
+    description="Complete the 'Air Strike' Killing Spree challenge in Paradise City.",
     points=5,
+    id=523135,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1838,8 +1901,9 @@ achievement(
 )
 achievement(
     title="Time to Create Some Roadkill",
-    description="Complete the Impale Killing Spree challenge in Paradise City.",
+    description="Complete the 'Impale' Killing Spree challenge in Paradise City.",
     points=5,
+    id=523136,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1854,8 +1918,9 @@ achievement(
 )
 achievement(
     title="Solving the Problem with Fire",
-    description="Complete the Flamethower Killing Spree challenge in Paradise City.",
+    description="Complete the 'Flamethrower' Killing Spree challenge in Paradise City.",
     points=5,
+    id=523137,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1868,9 +1933,10 @@ achievement(
     )
 )
 achievement(
-    title="Paradise City Racing I",
-    description="Finish in first in Paradise City and unlock the 'Fireball'.",
+    title="Burn Rubber on Boardwalk, Baby!",
+    description="Finish 1st in Paradise City Race 1 and unlock the Fireball.",
     points=5,
+    id=523138,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1880,9 +1946,10 @@ achievement(
     )
 )
 achievement(
-    title="Paradise City Racing II",
-    description="Finish in first in Paradise City and unlock the 'Rattail'.",
+    title="Downtown Corners, Paradise Thrills!",
+    description="Finish 1st in Paradise City Race 2 and unlock the Rattail.",
     points=5,
+    id=523139,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1892,9 +1959,10 @@ achievement(
     )
 )
 achievement(
-    title="Paradise City Racing III",
-    description="Finish in first in Paradise City and unlock the 'Tornado'.",
+    title="Take Me Down to Paradise City",
+    description="Finish 1st in Paradise City Race 3 and unlock the Tornado.",
     points=5,
+    id=523140,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1905,8 +1973,9 @@ achievement(
 )
 achievement(
     title="Paradise City Stunting",
-    description="Finish stunting in Paradise City and unlock the 'Piñata'.",
+    description="Complete the Stunt Run in Paradise City and unlock the Piñata.",
     points=10,
+    id=523141,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1917,8 +1986,9 @@ achievement(
 )
 achievement(
     title="Blister Canyon Suicide",
-    description="Complete every wave in Suicide in Paradise City and unlock the 'Juice'.",
+    description="Survive every round of Suicide in Paradise City and unlock the Juice.",
     points=5,
+    id=523142,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1928,9 +1998,10 @@ achievement(
     )
 )
 achievement(
-    title="Be the Missle",
-    description="Get more than 25 kills in the BGM side mission and unlock the 'Lizard'.",
+    title="Be the Missile",
+    description="Earn more than 25 kills in the BGM side mission and unlock the Lizard.",
     points=10,
+    id=523143,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1941,8 +2012,9 @@ achievement(
 )
 achievement(
     title="Sniper Ghost Warrior",
-    description="Get 20 or more kills in the Sniper side mission.",
+    description="Earn 20 or more kills in the Sniper side mission.",
     points=10,
+    id=523144,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1954,8 +2026,9 @@ achievement(
 )
 achievement(
     title="Freaky Fast Delivery",
-    description="Make 15 or more Deliveries in any City.",
+    description="Make 15 or more deliveries in any City.",
     points=10,
+    id=523145,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1966,8 +2039,9 @@ achievement(
 )
 achievement(
     title="Maximum Upgrade",
-    description="Purchase every single vehicle upgrade from the each city's Shop.",
+    description="Purchase every single vehicle upgrade from each shop.",
     points=25,
+    id=523146,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1983,6 +2057,7 @@ achievement(
     title="Goon to a Goblin",
     description="Attain the rank of 'Goon'.",
     points=3,
+    id=523147,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -1994,6 +2069,7 @@ achievement(
     title="Killer Instincts",
     description="Attain the rank of 'Killer'.",
     points=5,
+    id=523148,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2005,6 +2081,7 @@ achievement(
     title="Street Assassin",
     description="Attain the rank of 'Assassin'.",
     points=10,
+    id=523149,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2016,6 +2093,7 @@ achievement(
     title="Lord of the Road",
     description="Attain the rank of 'Road Lord'.",
     points=25,
+    id=523150,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2025,8 +2103,9 @@ achievement(
 )
 achievement(
     title="Whoopsie Daisy",
-    description="Kill 50 'Followers'.",
+    description="Kill 50 Followers.",
     points=10,
+    id=523151,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2040,8 +2119,9 @@ achievement(
 )
 achievement(
     title="Missed Me Homes!!",
-    description="Kill 50 'Gauchos'.",
+    description="Kill 50 Gauchos.",
     points=10,
+    id=523152,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2055,8 +2135,9 @@ achievement(
 )
 achievement(
     title="Rock the Jocks",
-    description="Kill 50 'South Leagues'.",
+    description="Kill 50 South Leagues.",
     points=10,
+    id=523153,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2070,8 +2151,9 @@ achievement(
 )
 achievement(
     title="Clownin Around",
-    description="Kill 50 'Daredevils'.",
+    description="Kill 50 Daredevils.",
     points=10,
+    id=523154,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2085,8 +2167,9 @@ achievement(
 )
 achievement(
     title="Kill the Crazies!",
-    description="Kill 50 'Bedlamites'.",
+    description="Kill 50 Bedlamites.",
     points=10,
+    id=523155,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2100,8 +2183,9 @@ achievement(
 )
 achievement(
     title="Get Rid of Section 8!",
-    description="Kill 50 'Section 8s'.",
+    description="Kill 50 Section 8s.",
     points=10,
+    id=523156,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2115,8 +2199,9 @@ achievement(
 )
 achievement(
     title="Drag the Dregs",
-    description="Kill 50 'Dreg Lords'.",
+    description="Kill 50 Dreg Lords.",
     points=10,
+    id=523157,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2130,8 +2215,9 @@ achievement(
 )
 achievement(
     title="Talons Get Declawed",
-    description="Kill 50 'Talon'.",
+    description="Kill 50 Talon.",
     points=10,
+    id=523158,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2145,8 +2231,9 @@ achievement(
 )
 achievement(
     title="Fuck You Coppa!",
-    description="Kill 50 'Sentinels'.",
+    description="Kill 50 Sentinels.",
     points=10,
+    id=523159,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2160,8 +2247,9 @@ achievement(
 )
 achievement(
     title="Scavenger Cleanup",
-    description="Kill 50 'Scavengers'.",
+    description="Kill 50 Scavengers.",
     points=10,
+    id=523160,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2175,8 +2263,9 @@ achievement(
 )
 achievement(
     title="Cleaning up the Streets",
-    description="Kill 50 'Prostitutes'.",
+    description="Kill 50 Prostitutes.",
     points=10,
+    id=523161,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2190,8 +2279,9 @@ achievement(
 )
 achievement(
     title="Remove the Vendors",
-    description="Kill 50 'Shopkeepers'.",
+    description="Kill 50 Shopkeepers.",
     points=10,
+    id=523162,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2205,8 +2295,9 @@ achievement(
 )
 achievement(
     title="Quit Being a Bum!",
-    description="Kill 50 'Bums'.",
+    description="Kill 50 Bums.",
     points=10,
+    id=523163,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2220,8 +2311,9 @@ achievement(
 )
 achievement(
     title="They Weren't Living Much Longer Anyway..",
-    description="Kill 50 'Old People'.",
+    description="Kill 50 Old People.",
     points=10,
+    id=523164,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2237,6 +2329,7 @@ achievement(
     title="Mess With the Bull, Get the Horns",
     description="Impale 25 people.",
     points=5,
+    id=523165,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2252,6 +2345,7 @@ achievement(
     title="Why So Spicy?",
     description="Burn 25 people.",
     points=5,
+    id=523166,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2265,8 +2359,9 @@ achievement(
 )
 achievement(
     title="Must Have Been Roadkill..",
-    description="Spaltter 25 people.",
+    description="Splatter 25 people.",
     points=5,
+    id=523167,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2282,6 +2377,7 @@ achievement(
     title="So Anyway, I Started Blastin'",
     description="Shoot 25 people.",
     points=5,
+    id=523168,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
@@ -2297,6 +2393,7 @@ achievement(
     title="KA-BOOM!!",
     description="Explode 25 people.",
     points=5,
+    id=523169,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
