@@ -1446,31 +1446,31 @@ achievement(
 )
 achievement(
     title="From Blueprint to Boomstick",
-    description="In one session, collect every part and the blueprint to unlock the Scattergun.",
+    description="Collect every part and the blueprint to unlock the Scattergun.",
     points=10,
     id=523103,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
         City[region] == 0x1 &&
-        prior(ScatterGunBP[region] == 0x1) &&
+        __ornext(prior(ScatterGunBP[region] == 0x1) ||
+        prior(ScatterGunParts[region] == 0x3)) &&
         ScatterGunBP[region] == 0x0 &&
-        prior(ScatterGunParts[region] == 0x3) &&
         ScatterGunParts[region] == 0x4
     )
 )
 achievement(
     title="Freaking Lasers!!",
-    description="In one session, collect every part and the blueprint to unlock the Laser Trip Mine.",
+    description="Collect every part and the blueprint to unlock the Laser Trip Mine.",
     points=10,
     id=523104,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
         City[region] == 0x1 &&
-        prior(LaserTripMineBP[region] == 0x1) &&
+        __ornext(prior(LaserTripMineBP[region] == 0x1) ||
+        prior(LaserTripMineParts[region] == 0x3)) &&
         LaserTripMineBP[region] == 0x0 &&
-        prior(LaserTripMineParts[region] == 0x3) &&
         LaserTripMineParts[region] == 0x4
     )
 )
@@ -1624,16 +1624,16 @@ achievement(
 )
 achievement(
     title="Why Aim When the Rocket Does It for You?",
-    description="In one session, collect every part and the blueprint to unlock the Homing Rocket.",
+    description="Collect every part and the blueprint to unlock the Homing Rocket.",
     points=10,
     id=523116,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
         City[region] == 0x2 &&
-        prior(HomingRocketBP[region] == 0x1) &&
+        __ornext(prior(HomingRocketBP[region] == 0x1) ||
+        prior(HomingRocketParts[region] == 0x3)) &&
         HomingRocketBP[region] == 0x0 &&
-        prior(HomingRocketParts[region] == 0x3) &&
         HomingRocketParts[region] == 0x4
     )
 )
@@ -1787,31 +1787,31 @@ achievement(
 )
 achievement(
     title="1.21 Jiggawatts!?!",
-    description="In one session, collect every part and the blueprint to unlock the Bolt Gun.",
+    description="Collect every part and the blueprint to unlock the Bolt Gun.",
     points=10,
     id=523128,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
         City[region] == 0x3 &&
-        prev(BoltGunBP[region] == 0x1) &&
+        __ornext(prev(BoltGunBP[region] == 0x1) ||
+        prev(BoltGunParts[region] == 0x3)) &&
         BoltGunBP[region] == 0x0 &&
-        prev(BoltGunParts[region] == 0x3) &&
         BoltGunParts[region] == 0x4
     )
 )
 achievement(
     title="One Pulse, and You’re Back to the Stone Age",
-    description="In one session, collect every part and the blueprint to unlock the EMP.",
+    description="Collect every part and the blueprint to unlock the EMP.",
     points=10,
     id=523129,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
         City[region] == 0x3 &&
-        prev(EMPBP[region] == 0x1) &&
+        __ornext(prev(EMPBP[region] == 0x1) ||
+        prev(EMPParts[region] == 0x3)) &&
         EMPBP[region] == 0x0 &&
-        prev(EMPParts[region] == 0x3) &&
         EMPParts[region] == 0x4
     )
 )
