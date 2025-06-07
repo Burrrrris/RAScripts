@@ -20,6 +20,10 @@ function IsInGame(region)
 {
     return InGame[region] == 0
 }
+function Paused(region)
+{
+    return PauseInBuilding[region] == 1
+}
 function IsInDemo(region)
 {
     return InDemo[region] == 1
@@ -76,15 +80,27 @@ SuicideMissions = [0x2d, 0x2e, 0x2f]
 BGMMission = [0x2b]
 CurrentVehicle = {
     US: dword(0x4715ac),
-    EU: dword(0x47112c),
+    EU: dword(0x470EBc),
 }
 CurrentPrimaryWeapon = {
     US: dword(0x4717f0),
     EU: dword(0x471370),
 }
-CurrentSecondaryWeapon = {
-    US: dword(0x4717f4),
-    EU: dword(0x471374),
+PrimaryWeapon1 = {
+    US: dword(0x47132c),
+    EU: dword(0x470eac),
+}
+PrimaryWeapon2 = {
+    US: dword(0x471330),
+    EU: dword(0x470EB0),
+}
+PrimaryWeapon3 = {
+    US: dword(0x471334),
+    EU: dword(0x470EB4),
+}
+SecondaryWeapon = {
+    US: dword(0x471338),
+    EU: dword(0x470eb8),
 }
 PlayerHealth = {
     US: float(0x442370),
@@ -259,6 +275,10 @@ TOATED = {
 DROWNED = {
     US: float(0x47153c),
     EU: float(0x4710bc),
+}
+SALVAGE = {
+    US: dword(0x4714bc),
+    EU: dword(0x47103c),
 }
 SALVEARNED = {
     US: float(0x471540),
@@ -659,6 +679,74 @@ BPRINT = {
     US: float(0x471470),
     EU: float(0x470ff0),
 }
+MiniGunAMMO = {
+    US: dword(0x471340),
+    EU: dword(0x470ec0),
+}
+ScatterGunAMMO = {
+    US: dword(0x471344),
+    EU: dword(0x470ec4),
+}
+EMPAMMO = {
+    US: dword(0x471348),
+    EU: dword(0x470ec8),
+}
+BoltGunAMMO = {
+    US: dword(0x47134c),
+    EU: dword(0x470ecc),
+}
+TwisterRocketAMMO = {
+    US: dword(0x471350),
+    EU: dword(0x470ed0),
+}
+ClusterRocketAMMO = {
+    US: dword(0x471354),
+    EU: dword(0x470ed4),
+}
+HomingRocketAMMO = {
+    US: dword(0x471358),
+    EU: dword(0x470ed8),
+}
+BGMAMMO = {
+    US: dword(0x47135c),
+    EU: dword(0x470edc),
+}
+ClusterAMMO = {
+    US: dword(0x471360),
+    EU: dword(0x470ee0),
+}
+LaserTripMineAMMO = {
+    US: dword(0x471364),
+    EU: dword(0x470ee4),
+}
+ProximityMinesAMMO = {
+    US: dword(0x47136c),
+    EU: dword(0x470eec),
+}
+FlashbangAMMO = {
+    US: dword(0x471370),
+    EU: dword(0x470ef0),
+}
+DynamiteAMMO = {
+    US: dword(0x471374),
+    EU: dword(0x470ef4),
+}
+SniperAMMO = {
+    US: dword(0x471378),
+    EU: dword(0x470ef8),
+}
+AirstrikeAMMO = {
+    US: dword(0x47137c),
+    EU: dword(0x470efc),
+}
+
+function CheatProtection(region)
+{
+    return 
+        FlashbangAMMO[region] != 0xffffffff  //using 1 of the weapons to check if it gets infinite ammo as they all do when cheat is input
+}
+
+
 
 /////////////////////RP FOLLOWS/////////////////////
 
@@ -1005,6 +1093,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x0) &&
         prev(CompletedMission[region] == 0x1) &&
         trigger_when(CompletedMission[region] == 0x2)
@@ -1020,6 +1110,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1) &&
         prev(CompletedMission[region] == 0x2) &&
         trigger_when(CompletedMission[region] == 0x3)
@@ -1035,6 +1127,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2) &&
         prev(CompletedMission[region] == 0x3) &&
         trigger_when(CompletedMission[region] == 0x4)
@@ -1050,6 +1144,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x3) &&
         prev(CompletedMission[region] == 0x4) &&
         trigger_when(CompletedMission[region] == 0x5)
@@ -1065,6 +1161,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x4) &&
         prev(CompletedMission[region] == 0x5) &&
         trigger_when(CompletedMission[region] == 0x6)
@@ -1080,6 +1178,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x5) &&
         prev(CompletedMission[region] == 0x6) &&
         trigger_when(CompletedMission[region] == 0x7)
@@ -1095,6 +1195,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x6) &&
         prev(CompletedMission[region] == 0x7) &&
         trigger_when(CompletedMission[region] == 0x8)
@@ -1110,6 +1212,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x7) &&
         prev(CompletedMission[region] == 0x8) &&
         trigger_when(CompletedMission[region] == 0x9)
@@ -1125,6 +1229,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x8) &&
         prev(CompletedMission[region] == 0x9) &&
         trigger_when(CompletedMission[region] == 0xa)
@@ -1140,6 +1246,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x9) &&
         prev(CompletedMission[region] == 0xa) &&
         trigger_when(CompletedMission[region] == 0xb)
@@ -1155,6 +1263,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xa) &&
         prev(CompletedMission[region] == 0xb) &&
         trigger_when(CompletedMission[region] == 0xc)
@@ -1170,6 +1280,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xb) &&
         prev(CompletedMission[region] == 0xc) &&
         trigger_when(CompletedMission[region] == 0xd)
@@ -1185,6 +1297,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xc) &&
         prev(CompletedMission[region] == 0xd) &&
         trigger_when(CompletedMission[region] == 0xe)
@@ -1200,6 +1314,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xd) &&
         prev(CompletedMission[region] == 0xe) &&
         trigger_when(CompletedMission[region] == 0xf)
@@ -1215,6 +1331,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xe) &&
         prev(CompletedMission[region] == 0xf) &&
         trigger_when(CompletedMission[region] == 0x10)
@@ -1230,6 +1348,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0xf) &&
         prev(CompletedMission[region] == 0x10) &&
         trigger_when(CompletedMission[region] == 0x11)
@@ -1245,6 +1365,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x10) &&
         prev(CompletedMission[region] == 0x11) &&
         trigger_when(CompletedMission[region] == 0x12)
@@ -1260,6 +1382,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x11) &&
         prev(CompletedMission[region] == 0x12) &&
         trigger_when(CompletedMission[region] == 0x13)
@@ -1275,6 +1399,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x12) &&
         prev(CompletedMission[region] == 0x13) &&
         trigger_when(CompletedMission[region] == 0x14)
@@ -1290,6 +1416,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x13) &&
         prev(CompletedMission[region] == 0x14) &&
         trigger_when(CompletedMission[region] == 0x15)
@@ -1305,6 +1433,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x14) &&
         prev(CompletedMission[region] == 0x15) &&
         trigger_when(CompletedMission[region] == 0x16)
@@ -1320,6 +1450,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x15) &&
         prev(CompletedMission[region] == 0x16) &&
         trigger_when(CompletedMission[region] == 0x17)
@@ -1335,6 +1467,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x16) &&
         prev(CompletedMission[region] == 0x17) &&
         trigger_when(CompletedMission[region] == 0x18)
@@ -1350,6 +1484,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x17) &&
         prev(CompletedMission[region] == 0x18) &&
         trigger_when(CompletedMission[region] == 0x19)
@@ -1365,6 +1501,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x18) &&
         prev(CompletedMission[region] == 0x19) &&
         trigger_when(CompletedMission[region] == 0x1a)
@@ -1380,6 +1518,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x19) &&
         prev(CompletedMission[region] == 0x1a) &&
         trigger_when(CompletedMission[region] == 0x1b)
@@ -1395,6 +1535,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1a) &&
         prev(CompletedMission[region] == 0x1b) &&
         trigger_when(CompletedMission[region] == 0x1c)
@@ -1410,6 +1552,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1b) &&
         prev(CompletedMission[region] == 0x1c) &&
         trigger_when(CompletedMission[region] == 0x1d)
@@ -1425,6 +1569,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1c) &&
         prev(CompletedMission[region] == 0x1d) &&
         trigger_when(CompletedMission[region] == 0x1e)
@@ -1439,6 +1585,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1d) &&
         prev(CompletedMission[region] == 0x1e) &&
         trigger_when(CompletedMission[region] == 0x1f)
@@ -1446,32 +1594,40 @@ achievement(
 )
 achievement(
     title="From Blueprint to Boomstick",
-    description="Collect every part and the blueprint to unlock the Scattergun.",
+    description="Collect every part and the blueprint to unlock the Scattergun then equip it.",
     points=10,
     id=523103,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         __ornext(prior(ScatterGunBP[region] == 0x1) ||
         prior(ScatterGunParts[region] == 0x3)) &&
         ScatterGunBP[region] == 0x0 &&
-        ScatterGunParts[region] == 0x4
+        ScatterGunParts[region] == 0x4 &&
+        __ornext(PrimaryWeapon1[region] == 0x2 ||
+        PrimaryWeapon2[region] == 0x2 ||
+        PrimaryWeapon3[region] == 0x2)
     )
 )
 achievement(
     title="Freaking Lasers!!",
-    description="Collect every part and the blueprint to unlock the Laser Trip Mine.",
+    description="Collect every part and the blueprint to unlock the Laser Trip Mine then equip it.",
     points=10,
     id=523104,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         __ornext(prior(LaserTripMineBP[region] == 0x1) ||
         prior(LaserTripMineParts[region] == 0x3)) &&
         LaserTripMineBP[region] == 0x0 &&
-        LaserTripMineParts[region] == 0x4
+        LaserTripMineParts[region] == 0x4 &&
+        SecondaryWeapon[region] == 0xa
     )
 )
 achievement(
@@ -1482,6 +1638,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(Primer[region] == 0x0) &&
         Primer[region] == 0x1
@@ -1495,6 +1653,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(STV[region] == 0x0) &&
         STV[region] == 0x1
@@ -1508,6 +1668,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(Grinder[region] == 0x0) &&
         Grinder[region] == 0x1
@@ -1521,6 +1683,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InDelivery(region)) &&
         prev(Shag[region] == 0x0) &&
@@ -1535,6 +1699,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InRIOT(region)) &&
         prev(Lawdog[region] == 0x0) &&
@@ -1549,6 +1715,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
@@ -1565,35 +1733,44 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1e) &&
         prev(Bean[region] == 0x0) &&
-        trigger_when(Bean[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Bean[region] == 0x1))
     )
 )
 achievement(
     title="Lava Roars, Engines Scream!",
-    description="Finish 1st in Lava Falls Race 2 and unlock the Mullet.",
+    description="Finish 1st in Lava Falls Race 2 and unlock the Señor.",
     points=5,
     id=523112,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1f) &&
-        prev(Mullet[region] == 0x0) &&
-        trigger_when(Mullet[region] == 0x1)
+        prev(Senor[region] == 0x0) &&
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Senor[region] == 0x1))
     )
 )
 achievement(
     title="Fastest Baggage Claim in the City!",
-    description="Finish 1st in Lava Falls Race 3 and unlock the Señor.",
+    description="Finish 1st in Lava Falls Race 3 and unlock the Mullet.",
     points=5,
     id=523113,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x20) &&
-        prev(Senor[region] == 0x0) &&
-        trigger_when(Senor[region] == 0x1)
+        prev(Mullet[region] == 0x0) &&
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Mullet[region] == 0x1))
     )
 )
 achievement(
@@ -1604,9 +1781,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        prev(CurrentMission[region] == 0x2d) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(CurrentMission[region] == 0x21) &&
         prev(Goblin[region] == 0x0) &&
-        trigger_when(Goblin[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Goblin[region] == 0x1))
     )
 )
 achievement(
@@ -1617,73 +1797,89 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        prev(CurrentMission[region] == 0x22) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(CurrentMission[region] == 0x2d) &&
         prev(Tub[region] == 0x0) &&
-        trigger_when(Tub[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Tub[region] == 0x1))
     )
 )
 achievement(
     title="Why Aim When the Rocket Does It for You?",
-    description="Collect every part and the blueprint to unlock the Homing Rocket.",
+    description="Collect every part and the blueprint to unlock the Homing Rocket then equip it.",
     points=10,
     id=523116,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
         __ornext(prior(HomingRocketBP[region] == 0x1) ||
         prior(HomingRocketParts[region] == 0x3)) &&
         HomingRocketBP[region] == 0x0 &&
-        HomingRocketParts[region] == 0x4
+        HomingRocketParts[region] == 0x4 &&
+        __ornext(PrimaryWeapon1[region] == 0x7 ||
+        PrimaryWeapon2[region] == 0x7 ||
+        PrimaryWeapon3[region] == 0x7)
     )
 )
 achievement(
-    title="Fanged Beast",
-    description="Collect every part and the blueprint to unlock the Fang.",
+    title="Monster Garage",
+    description="Collect every part and the blueprint to unlock the Monster.",
     points=10,
-    id=523117,
+    id=523130,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Fang[region] == 0x0) &&
-        Fang[region] == 0x1
+        prev(Monster[region] == 0x0) &&
+        Monster[region] == 0x1
     )
 )
 achievement(
-    title="Alpha and the Omega",
-    description="Collect every part and the blueprint to unlock the Omega.",
+    title="Ray of Sunshine",
+    description="Collect every part and the blueprint to unlock the Ray.",
     points=10,
-    id=523118,
+    id=523131,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Omega[region] == 0x0) &&
-        Omega[region] == 0x1
+        prev(Ray[region] == 0x0) &&
+        Ray[region] == 0x1
     )
 )
 achievement(
-    title="Big Mutha Trucker",
-    description="Collect every part and the blueprint to unlock the Rigg.",
+    title="Razor Sharp Speed",
+    description="Collect every part and the blueprint to unlock the Razor.",
     points=10,
-    id=523119,
+    id=523132,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Rigg[region] == 0x0) &&
-        Rigg[region] == 0x1
+        prev(Razor[region] == 0x0) &&
+        Razor[region] == 0x1
     )
 )
 achievement(
     title="FedEx Delivery Driver",
     description="Deliver 10 packages in Blister Canyon and unlock the Ese.",
-    points=5,
+    points=10,
     id=523120,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
         prev(InDelivery(region)) &&
         prev(Ese[region] == 0x0) &&
@@ -1698,6 +1894,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x2 &&
         prev(InRIOT(region)) &&
         prev(Bruiser[region] == 0x0) &&
@@ -1712,7 +1910,10 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        City[region] == 0x1 &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        City[region] == 0x2 &&
+        CurrentPrimaryWeapon[region] == 0x2 &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
@@ -1728,9 +1929,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        prev(CurrentMission[region] == 0x23) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(CurrentMission[region] == 0x22) &&
         prev(Thunder[region] == 0x0) &&
-        trigger_when(Thunder[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Thunder[region] == 0x1))
     )
 )
 achievement(
@@ -1741,22 +1945,28 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        prev(CurrentMission[region] == 0x24) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(CurrentMission[region] == 0x23) &&
         prev(Pumpkin[region] == 0x0) &&
-        trigger_when(Pumpkin[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Pumpkin[region] == 0x1))
     )
 )
 achievement(
     title="Grip The Wheel or Kiss The Pier",
-    description="Finish 1st in Blister Canyon Race 3 and unlock the Burner..",
+    description="Finish 1st in Blister Canyon Race 3 and unlock the Burner.",
     points=5,
     id=523125,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        prev(CurrentMission[region] == 0x23) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(CurrentMission[region] == 0x24) &&
         prev(Burner[region] == 0x0) &&
-        trigger_when(Burner[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Burner[region] == 0x1))
     )
 )
 achievement(
@@ -1767,9 +1977,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x26) &&
         prev(Drifter[region] == 0x0) &&
-        trigger_when(Drifter[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Drifter[region] == 0x1))
     )
 )
 achievement(
@@ -1780,78 +1993,95 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2e) &&
         prev(Sanford[region] == 0x0) &&
-        trigger_when(Sanford[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Sanford[region] == 0x1))
     )
 )
 achievement(
     title="1.21 Jiggawatts!?!",
-    description="Collect every part and the blueprint to unlock the Bolt Gun.",
+    description="Collect every part and the blueprint to unlock the Bolt Gun then equip it.",
     points=10,
     id=523128,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
         __ornext(prev(BoltGunBP[region] == 0x1) ||
         prev(BoltGunParts[region] == 0x3)) &&
         BoltGunBP[region] == 0x0 &&
-        BoltGunParts[region] == 0x4
+        BoltGunParts[region] == 0x4 &&
+        __ornext(PrimaryWeapon1[region] == 0x4 ||
+        PrimaryWeapon2[region] == 0x4 ||
+        PrimaryWeapon3[region] == 0x4)
     )
 )
 achievement(
     title="One Pulse, and You’re Back to the Stone Age",
-    description="Collect every part and the blueprint to unlock the EMP.",
+    description="Collect every part and the blueprint to unlock the EMP then equip it.",
     points=10,
     id=523129,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
         __ornext(prev(EMPBP[region] == 0x1) ||
         prev(EMPParts[region] == 0x3)) &&
         EMPBP[region] == 0x0 &&
-        EMPParts[region] == 0x4
+        EMPParts[region] == 0x4 &&
+        SecondaryWeapon[region] == 0x3
     )
 )
 achievement(
-    title="Monster Garage",
-    description="Collect every part and the blueprint to unlock the Monster.",
+    title="Fanged Beast",
+    description="Collect every part and the blueprint to unlock the Fang.",
     points=10,
-    id=523130,
+    id=523117,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Monster[region] == 0x0) &&
-        Monster[region] == 0x1
+        prev(Fang[region] == 0x0) &&
+        Fang[region] == 0x1
     )
 )
 achievement(
-    title="Ray of Sunshine",
-    description="Collect every part and the blueprint to unlock the Ray.",
+    title="Alpha and the Omega",
+    description="Collect every part and the blueprint to unlock the Omega.",
     points=10,
-    id=523131,
+    id=523118,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Ray[region] == 0x0) &&
-        Ray[region] == 0x1
+        prev(Omega[region] == 0x0) &&
+        Omega[region] == 0x1
     )
 )
 achievement(
-    title="Razor Sharp Speed",
-    description="Collect every part and the blueprint to unlock the Razor.",
+    title="Big Mutha Trucker",
+    description="Collect every part and the blueprint to unlock the Rigg.",
     points=10,
-    id=523132,
+    id=523119,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Razor[region] == 0x0) &&
-        Razor[region] == 0x1
+        prev(Rigg[region] == 0x0) &&
+        Rigg[region] == 0x1
     )
 )
 achievement(
@@ -1862,6 +2092,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
         prev(InDelivery(region)) &&
         prev(Offroad[region] == 0x0) &&
@@ -1876,6 +2108,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         City[region] == 0x3 &&
         prev(InRIOT(region)) &&
         prev(Stalker[region] == 0x0) &&
@@ -1890,10 +2124,13 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        City[region] == 0x1 &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        City[region] == 0x3 &&
         CurrentPrimaryWeapon[region] == 0x10 &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
+        prior(KillingSpreeKills[region] == 0xf) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
         trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
@@ -1907,10 +2144,13 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        City[region] == 0x1 &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        City[region] == 0x3 &&
         CurrentPrimaryWeapon[region] == 0xfffffedd &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
+        prior(KillingSpreeKills[region] == 0xa) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
         trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
@@ -1924,9 +2164,13 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        City[region] == 0x1 &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        City[region] == 0x3 &&
+        prev(CurrentPrimaryWeapon[region] == 0x11) &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
+        prior(KillingSpreeKills[region] == 0x1e) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
         trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
@@ -1940,9 +2184,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x27) &&
         prev(Fireball[region] == 0x0) &&
-        trigger_when(Fireball[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Fireball[region] == 0x1))
     )
 )
 achievement(
@@ -1953,9 +2200,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x28) &&
         prev(Rattail[region] == 0x0) &&
-        trigger_when(Rattail[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Rattail[region] == 0x1))
     )
 )
 achievement(
@@ -1966,9 +2216,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x29) &&
         prev(Tornado[region] == 0x0) &&
-        trigger_when(Tornado[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Tornado[region] == 0x1))
     )
 )
 achievement(
@@ -1979,9 +2232,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2c) &&
         prev(Pinata[region] == 0x0) &&
-        trigger_when(Pinata[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Pinata[region] == 0x1))
     )
 )
 achievement(
@@ -1992,9 +2248,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2f) &&
         prev(Juice[region] == 0x0) &&
-        trigger_when(Juice[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Juice[region] == 0x1))
     )
 )
 achievement(
@@ -2005,9 +2264,12 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2b) &&
         prev(Lizard[region] == 0x0) &&
-        trigger_when(Lizard[region] == 0x1)
+        trigger_when(once(CurrentMission[region] == -1 &&
+        Lizard[region] == 0x1))
     )
 )
 achievement(
@@ -2018,6 +2280,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         (CurrentMission[region] == 0x25 ||
         CurrentMission[region] == 0x2a) &&
         prev(SniperKillCount[region] == 0x13) &&
@@ -2025,13 +2289,15 @@ achievement(
     )
 )
 achievement(
-    title="Freaky Fast Delivery",
+    title="[VOID]Freaky Fast Delivery",
     description="Make 15 or more deliveries in any City.",
     points=10,
     id=523145,
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         InDelivery(region) &&
         prev(CurrentDeliveries[region] == 0xe) &&
         trigger_when(CurrentDeliveries[region] == 0xf)
@@ -2045,12 +2311,14 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(sum_of([NITROUS1[region], NITROUS2[region], NITROUS3[region], RECHARGE1[region], RECHARGE2[region], DURATION1[region], DURATION2[region], MAGNET[region],
                      SBRAKES[region], ARMOR1[region], ARMOR2[region], ARMOR3[region], FIRERATE[region], TANK[region], POWER1[region], POWER2[region], ABRAKE[region], SPEED1[region], SPEED2[region],
                      SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 26) &&
-        sum_of([NITROUS1[region], NITROUS2[region], NITROUS3[region], RECHARGE1[region], RECHARGE2[region], DURATION1[region], DURATION2[region], MAGNET[region],
+        measured(sum_of([NITROUS1[region], NITROUS2[region], NITROUS3[region], RECHARGE1[region], RECHARGE2[region], DURATION1[region], DURATION2[region], MAGNET[region],
                      SBRAKES[region], ARMOR1[region], ARMOR2[region], ARMOR3[region], FIRERATE[region], TANK[region], POWER1[region], POWER2[region], ABRAKE[region], SPEED1[region], SPEED2[region],
-                     SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 27
+                     SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 27)
     )
 )
 achievement(
@@ -2061,6 +2329,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(TITLE[region] == 0x8) &&
         TITLE[region] == 0x9
     )
@@ -2073,6 +2343,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(TITLE[region] == 0x12) &&
         TITLE[region] == 0x13
     )
@@ -2085,6 +2357,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(TITLE[region] == 0x1c) &&
         TITLE[region] == 0x1d
     )
@@ -2097,6 +2371,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         prev(TITLE[region] == 0x26) &&
         TITLE[region] == 0x27
     )
@@ -2109,6 +2385,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(FOLLOWER[region] == 0x2d) ||
         prev(FOLLOWER[region] == 0x2e) ||
         prev(FOLLOWER[region] == 0x2f) ||
@@ -2125,6 +2403,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(GAUCHO[region] == 0x2d) ||
         prev(GAUCHO[region] == 0x2e) ||
         prev(GAUCHO[region] == 0x2f) ||
@@ -2141,6 +2421,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SOUTHLEAGUE[region] == 0x2d) ||
         prev(SOUTHLEAGUE[region] == 0x2e) ||
         prev(SOUTHLEAGUE[region] == 0x2f) ||
@@ -2157,6 +2439,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(DAREDEVIL[region] == 0x2d) ||
         prev(DAREDEVIL[region] == 0x2e) ||
         prev(DAREDEVIL[region] == 0x2f) ||
@@ -2173,6 +2457,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(BEDLAMITE[region] == 0x2d) ||
         prev(BEDLAMITE[region] == 0x2e) ||
         prev(BEDLAMITE[region] == 0x2f) ||
@@ -2189,6 +2475,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SECTION8[region] == 0x2d) ||
         prev(SECTION8[region] == 0x2e) ||
         prev(SECTION8[region] == 0x2f) ||
@@ -2205,6 +2493,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(DREGLORD[region] == 0x2d) ||
         prev(DREGLORD[region] == 0x2e) ||
         prev(DREGLORD[region] == 0x2f) ||
@@ -2221,6 +2511,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(TALON[region] == 0x2d) ||
         prev(TALON[region] == 0x2e) ||
         prev(TALON[region] == 0x2f) ||
@@ -2237,6 +2529,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SENTINELS[region] == 0x2d) ||
         prev(SENTINELS[region] == 0x2e) ||
         prev(SENTINELS[region] == 0x2f) ||
@@ -2253,6 +2547,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SCAV[region] == 0x2d) ||
         prev(SCAV[region] == 0x2e) ||
         prev(SCAV[region] == 0x2f) ||
@@ -2269,6 +2565,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(PROSTITUTE[region] == 0x2d) ||
         prev(PROSTITUTE[region] == 0x2e) ||
         prev(PROSTITUTE[region] == 0x2f) ||
@@ -2285,6 +2583,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SHOPKEEP[region] == 0x2d) ||
         prev(SHOPKEEP[region] == 0x2e) ||
         prev(SHOPKEEP[region] == 0x2f) ||
@@ -2301,6 +2601,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(BUM[region] == 0x2d) ||
         prev(BUM[region] == 0x2e) ||
         prev(BUM[region] == 0x2f) ||
@@ -2317,6 +2619,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(OLD[region] == 0x2d) ||
         prev(OLD[region] == 0x2e) ||
         prev(OLD[region] == 0x2f) ||
@@ -2333,11 +2637,9 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
-        __ornext(prev(IMPALED[region] == 0x14) ||
-        prev(IMPALED[region] == 0x15) ||
-        prev(IMPALED[region] == 0x16) ||
-        prev(IMPALED[region] == 0x17) ||
-        prev(IMPALED[region] == 0x18)) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
+        prev(IMPALED[region] == 0x18) &&
         IMPALED[region] == 0x19
     )
 )
@@ -2349,6 +2651,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(BURNED[region] == 0x14) ||
         prev(BURNED[region] == 0x15) ||
         prev(BURNED[region] == 0x16) ||
@@ -2365,6 +2669,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SPLATTERED[region] == 0x14) ||
         prev(SPLATTERED[region] == 0x15) ||
         prev(SPLATTERED[region] == 0x16) ||
@@ -2381,6 +2687,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(SHOT[region] == 0x14) ||
         prev(SHOT[region] == 0x15) ||
         prev(SHOT[region] == 0x16) ||
@@ -2397,6 +2705,8 @@ achievement(
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
         IsInGame(region) &&
+        !Paused(region) &&
+        CheatProtection(region) &&
         __ornext(prev(EXPLODED[region] == 0x14) ||
         prev(EXPLODED[region] == 0x15) ||
         prev(EXPLODED[region] == 0x16) ||
