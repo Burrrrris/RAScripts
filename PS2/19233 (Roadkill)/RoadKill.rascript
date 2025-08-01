@@ -45,6 +45,86 @@ function InKillingSpree(region)
     return KillingSpree[region] == 1
 }
 
+function In2PlayerMultiplayer(region)
+{
+    return Player1Multi[region] == 1 &&
+           Player2Multi[region] == 1 &&
+           Player3Multi[region] == 0 &&
+           Player4Multi[region] == 0
+}
+function In3PlayerMultiplayer(region)
+{
+    return Player1Multi[region] == 1 &&
+           Player2Multi[region] == 1 &&
+           Player3Multi[region] == 1 &&
+           Player4Multi[region] == 0
+}
+function In4PlayerMultiplayer(region)
+{
+    return Player1Multi[region] == 1 &&
+           Player2Multi[region] == 1 &&
+           Player3Multi[region] == 1 &&
+           Player4Multi[region] == 1
+}
+
+Player1Multi = {
+    US: dword(0x0048c8b8),
+    EU: dword(0x0048c438),
+}
+Player2Multi = {
+    US: dword(0x0048c8d4),
+    EU: dword(0x0048c454),
+}
+Player3Multi = {
+    US: dword(0x0048c8f0),
+    EU: dword(0x0048c470),
+}
+Player4Multi = {
+    US: dword(0x0048c90c),
+    EU: dword(0x0048c48c),
+
+}
+Player1Car = {
+    US: dword(0x0048c8a4),
+    EU: dword(0x0048c424),
+}
+Player2Car = {
+    US: dword(0x0048c8c0),
+    EU: dword(0x0048c440),
+}
+Player3Car = {
+    US: dword(0x0048c8dc),
+    EU: dword(0x0048c45c),
+}
+Player4Car = {
+    US: dword(0x0048c8f8),
+    EU: dword(0x0048c478), 
+}
+Player1Kills = {
+    US: float(0x00471310),
+    EU: float(0x00470e90),
+}
+Player2Kills = {
+    US: float(0x00472ca4),
+    EU: float(0x00472824),
+}
+Player3Kills = {
+    US: float(0x00474638),
+    EU: float(0x004741b8),
+}
+Player4Kills = {
+    US: float(0x00475fcc),
+    EU: float(0x00475b4c), 
+}
+MultiplayerMap = {
+    US: dword(0x0048c8a0),
+    EU: dword(0x0048c420),
+}
+
+Loading = {
+    US: dword(0x004cbca0),
+    EU: dword(0x004cb7a0),
+}
 InDemo = {
     US: dword(0x48bd08),
     EU: dword(0x48b888),
@@ -56,10 +136,6 @@ InGame = {
 PauseInBuilding = {
     US: dword(0x5b9f94),
     EU: dword(0x5b9994),
-}
-LoadingSave = {
-    US: dword(0x47da5c),
-    EU: dword(0x47d5dc),
 }
 City = {
     US: dword(0x501a68),
@@ -80,7 +156,7 @@ SuicideMissions = [0x2d, 0x2e, 0x2f]
 BGMMission = [0x2b]
 CurrentVehicle = {
     US: dword(0x4715ac),
-    EU: dword(0x470EBc),
+    EU: dword(0x47112c),
 }
 CurrentPrimaryWeapon = {
     US: dword(0x4717f0),
@@ -106,9 +182,13 @@ PlayerHealth = {
     US: float(0x442370),
     EU: float(0x441ef0),
 }
+TimerPointer = {
+    US: float(0x3b9ab4),
+    EU: float(0x3b9634),
+}
 Timer = {
-    US: float(0x3b9ab4 + 0x0),
-    EU: float(0x3b9634 + 0x0),
+    US: byte(TimerPointer[US] + 0x0),
+    EU: byte(TimerPointer[EU] + 0x0)
 }
 InGarage = {
     US: dword(0x3a49dc),
@@ -936,7 +1016,19 @@ CurrentTitleLookup = {
 	0x26: "Reaper of Death",
 	0x27: "Road Lord",
 }
-
+CurrentMultiplayerMapLookup = {
+    0x1: "Hotel",
+    0x2: "Aircraft Carrier",
+    0x3: "Arena",
+    0x4: "Drive In",
+    0x5: "Airport",
+    0x6: "Volcano",
+    0x7: "Prison",
+    0x8: "Rooftop",
+    0x9: "Military Base",
+    0xa: "Stadium",
+    0xb: "Hell",
+}
 
 
 for region in Regions
@@ -946,10 +1038,48 @@ for region in Regions
         IsRegion(region) && !IsInGame(region) && !IsInDemo(region),
         "In the Main Menu"
     )
+        //In 2 Player Multiplayer
+    rich_presence_conditional_display(
+        IsRegion(region) && IsInGame(region) && !IsInDemo(region) && In2PlayerMultiplayer(region),
+        "Playing Multiplayer on {0} • Player 1 driving {1} - Kills:{2} • Player 2 driving {3} - Kills:{4}",
+        rich_presence_lookup("CurrentMutliMap", MultiplayerMap[region], CurrentMultiplayerMapLookup),
+        rich_presence_lookup("CurrentVehicle", Player1Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player1Kills", Player1Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentVehicle", Player2Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player2Kills", Player2Kills[region], format="VALUE")
+    )
+    //In 3 Player Multiplayer
+    rich_presence_conditional_display(
+        IsRegion(region) && IsInGame(region) && !IsInDemo(region) && In3PlayerMultiplayer(region),
+        "Playing Multiplayer on {0} • Player 1 driving {1} - Kills:{2} • Player 2 driving {3} - Kills:{4} • Player 3 driving {5} - Kills:{6}",
+        rich_presence_lookup("CurrentMutliMap", MultiplayerMap[region], CurrentMultiplayerMapLookup),
+        rich_presence_lookup("CurrentVehicle", Player1Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player1Kills", Player1Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentVehicle", Player2Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player2Kills", Player2Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentMutliMap", MultiplayerMap[region], CurrentMultiplayerMapLookup),
+        rich_presence_lookup("CurrentVehicle", Player3Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player3Kills", Player3Kills[region], format="VALUE")
+    )
+    //In 4 Player Multiplayer
+    rich_presence_conditional_display(
+        IsRegion(region) && IsInGame(region) && !IsInDemo(region) && In4PlayerMultiplayer(region),
+        "Playing Multiplayer on {0} • Player 1 driving {1} - Kills:{2} • Player 2 driving {3} - Kills:{4} • Player 3 driving {5} - Kills:{6} • Player 4 driving {7} - Kills:{8}",
+        rich_presence_lookup("CurrentMutliMap", MultiplayerMap[region], CurrentMultiplayerMapLookup),
+        rich_presence_lookup("CurrentVehicle", Player1Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player1Kills", Player1Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentVehicle", Player2Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player2Kills", Player2Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentMutliMap", MultiplayerMap[region], CurrentMultiplayerMapLookup),
+        rich_presence_lookup("CurrentVehicle", Player3Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player3Kills", Player3Kills[region], format="VALUE"),
+        rich_presence_lookup("CurrentVehicle", Player3Car[region], CurrentVehicleLookup),
+        rich_presence_value("Player4Kills", Player4Kills[region], format="VALUE")
+    )
     //In Delivery
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InDelivery(region),
-        "Mason the {0}, is out on a Delivery run in {1} | Current Deliveries: {2}📦 | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is out on a Delivery run in {1} • Current Deliveries: {2}📦 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("CurrentDeliveries", CurrentDeliveries[region], format="VALUE"),
@@ -960,7 +1090,7 @@ for region in Regions
     //In Killing Spree
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InKillingSpree(region),
-        "Mason the {0}, is out on a Killing Spree in {1} | Kills Left: {2}🎯 | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is out on a Killing Spree in {1} • Kills Left: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("KillingSpreeKills", KillingSpreeKills[region], format="VALUE"),
@@ -971,7 +1101,7 @@ for region in Regions
     //In RIOT
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InRIOT(region),
-        "Mason the {0}, is on a RIOT🔥 and wreaking havoc in {1} | Driving {2}🏎 | RIOT Duration:{3} | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is on a RIOT🔥 and wreaking havoc in {1} • Driving {2}🏎 • RIOT Duration:{3} • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -982,7 +1112,7 @@ for region in Regions
     //In BGM Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(BGMMission, m => m == CurrentMission[region]),
-        "Mason the {0}, is the BGM in {1} | Current Kill Count: {2}🎯 | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is the BGM in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("BGMKillCount", BGMKillCount[region], format="VALUE"),
@@ -993,7 +1123,7 @@ for region in Regions
     //In Race Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(RaceMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is racing around {1} | Current Position: {2} | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is racing around {1} • Current Position: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("Postion", Position[region], format="VALUE"),
@@ -1004,7 +1134,7 @@ for region in Regions
     //In Sniper Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(SniperMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is Sniping in {1} | Current Kill Count: {2}🎯 | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is Sniping in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("SniperKillCount", SniperKillCount[region], format="VALUE"),
@@ -1015,7 +1145,7 @@ for region in Regions
     //In Stunt Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(StuntMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is Stunting around {1} | Stunts Left: {2} | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is Stunting around {1} • Stunts Left: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("StuntsLeft", StuntsLeft[region], format="VALUE"),
@@ -1026,7 +1156,7 @@ for region in Regions
     //In Suicide Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(SuicideMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is taking care of Suicide Bombers in {1} | Current Stage: {2}🎯 | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, is taking care of Suicide Bombers in {1} • Current Stage: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("SuicideCurrentStage", SuicideCurrentStage[region], format="VALUE"),
@@ -1037,7 +1167,7 @@ for region in Regions
     //In Story Mission
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && !NotInMission(region),
-        "Mason the {0}, {1} in {2} | Driving {3}🏎 | Time Played:{4} | {5}% Complete",
+        "Mason the {0}, {1} in {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentMission", CurrentMission[region], CurrentMissionLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
@@ -1048,7 +1178,7 @@ for region in Regions
     //Exploring LF
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x1,
-        "Mason the {0}, is exploring Lava Falls - {1} | Driving {2}🏎 | Time Played:{3} | {4}% Complete",
+        "Mason the {0}, is exploring Lava Falls - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("LFCurrentZone", Zone[region], LFZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1058,7 +1188,7 @@ for region in Regions
     //Exploring BC
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x2,
-        "Mason the {0}, exploring Blister Canyon - {1} | Driving {2}🏎 | Time Played:{3} | {4}% Complete",
+        "Mason the {0}, exploring Blister Canyon - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("BCCurrentZone", Zone[region], BCZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1068,7 +1198,7 @@ for region in Regions
     //Exploring PC
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x3,
-        "Mason the {0}, is exploring Paradise City - {1} | Driving {2}🏎 | Time Played:{3} | {4}% Complete",
+        "Mason the {0}, is exploring Paradise City - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("PCCurrentZone", Zone[region], PCZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1092,7 +1222,8 @@ achievement(
     type="progression",
     trigger=any_of(Regions, region => 
         IsRegion(region) &&
-        IsInGame(region) &&
+        prior(InGame[region] == 1) &&
+        InGame[region] == 0 &&
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x0) &&
@@ -1594,7 +1725,7 @@ achievement(
 )
 achievement(
     title="From Blueprint to Boomstick",
-    description="Collect every part and the blueprint to unlock the Scattergun then equip it.",
+    description="Collect every part and the blueprint to unlock the Scattergun.",
     points=10,
     id=523103,
     trigger=any_of(Regions, region => 
@@ -1602,19 +1733,16 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        City[region] == 0x1 &&
-        __ornext(prior(ScatterGunBP[region] == 0x1) ||
-        prior(ScatterGunParts[region] == 0x3)) &&
-        ScatterGunBP[region] == 0x0 &&
-        ScatterGunParts[region] == 0x4 &&
-        __ornext(PrimaryWeapon1[region] == 0x2 ||
-        PrimaryWeapon2[region] == 0x2 ||
-        PrimaryWeapon3[region] == 0x2)
+        City[region] == 1 &&
+        Loading[region] == 1 &&
+        __ornext(prev(ScatterGunParts[region] ^ ScatterGunBP[region] == 0x3) ||
+        prev(ScatterGunParts[region] ^ ScatterGunBP[region] == 0x5)) &&
+        ScatterGunParts[region] ^ ScatterGunBP[region] == 0x4
     )
 )
 achievement(
     title="Freaking Lasers!!",
-    description="Collect every part and the blueprint to unlock the Laser Trip Mine then equip it.",
+    description="Collect every part and the blueprint to unlock the Laser Trip Mine.",
     points=10,
     id=523104,
     trigger=any_of(Regions, region => 
@@ -1622,12 +1750,11 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        City[region] == 0x1 &&
-        __ornext(prior(LaserTripMineBP[region] == 0x1) ||
-        prior(LaserTripMineParts[region] == 0x3)) &&
-        LaserTripMineBP[region] == 0x0 &&
-        LaserTripMineParts[region] == 0x4 &&
-        SecondaryWeapon[region] == 0xa
+        City[region] == 1 &&
+        Loading[region] == 1 &&
+        __ornext(prev(LaserTripMineParts[region] ^ LaserTripMineBP[region] == 0x3) ||
+        prev(LaserTripMineParts[region] ^ LaserTripMineBP[region] == 0x5)) &&
+        LaserTripMineParts[region] ^ LaserTripMineBP[region] == 0x4
     )
 )
 achievement(
@@ -1641,8 +1768,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x1 &&
-        prev(Primer[region] == 0x0) &&
-        Primer[region] == 0x1
+        Primer[region] > prev(Primer[region])
     )
 )
 achievement(
@@ -1656,8 +1782,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x1 &&
-        prev(STV[region] == 0x0) &&
-        STV[region] == 0x1
+        STV[region] > prev(STV[region])
     )
 )
 achievement(
@@ -1671,8 +1796,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x1 &&
-        prev(Grinder[region] == 0x0) &&
-        Grinder[region] == 0x1
+        Grinder[region] > prev(Grinder[region])
     )
 )
 achievement(
@@ -1687,8 +1811,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InDelivery(region)) &&
-        prev(Shag[region] == 0x0) &&
-        trigger_when(Shag[region] == 0x1)
+        trigger_when(Shag[region] > prev(Shag[region]))
     )
 )
 achievement(
@@ -1703,8 +1826,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InRIOT(region)) &&
-        prev(Lawdog[region] == 0x0) &&
-        trigger_when(Lawdog[region] == 0x1)
+        trigger_when(Lawdog[region] > prev(Lawdog[region]))
     )
 )
 achievement(
@@ -1736,9 +1858,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1e) &&
-        prev(Bean[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Bean[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Bean[region] > prev(Bean[region]))
     )
 )
 achievement(
@@ -1752,9 +1873,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1f) &&
-        prev(Senor[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Senor[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Senor[region] > prev(Senor[region]))
     )
 )
 achievement(
@@ -1768,9 +1888,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x20) &&
-        prev(Mullet[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Mullet[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Mullet[region] > prev(Mullet[region]))
     )
 )
 achievement(
@@ -1784,9 +1903,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x21) &&
-        prev(Goblin[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Goblin[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Goblin[region] > prev(Goblin[region]))
     )
 )
 achievement(
@@ -1800,14 +1918,13 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2d) &&
-        prev(Tub[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Tub[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Tub[region] > prev(Tub[region]))
     )
 )
 achievement(
     title="Why Aim When the Rocket Does It for You?",
-    description="Collect every part and the blueprint to unlock the Homing Rocket then equip it.",
+    description="Collect every part and the blueprint to unlock the Homing Rocket.",
     points=10,
     id=523116,
     trigger=any_of(Regions, region => 
@@ -1815,14 +1932,11 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        City[region] == 0x2 &&
-        __ornext(prior(HomingRocketBP[region] == 0x1) ||
-        prior(HomingRocketParts[region] == 0x3)) &&
-        HomingRocketBP[region] == 0x0 &&
-        HomingRocketParts[region] == 0x4 &&
-        __ornext(PrimaryWeapon1[region] == 0x7 ||
-        PrimaryWeapon2[region] == 0x7 ||
-        PrimaryWeapon3[region] == 0x7)
+        City[region] == 2 &&
+        Loading[region] == 1 &&
+        __ornext(prev(HomingRocketParts[region] ^ HomingRocketBP[region] == 0x3) ||
+        prev(HomingRocketParts[region] ^ HomingRocketBP[region] == 0x5)) &&
+        HomingRocketParts[region] ^ HomingRocketBP[region] == 0x4
     )
 )
 achievement(
@@ -1836,8 +1950,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Monster[region] == 0x0) &&
-        Monster[region] == 0x1
+        Monster[region] > prev(Monster[region])
     )
 )
 achievement(
@@ -1851,8 +1964,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Ray[region] == 0x0) &&
-        Ray[region] == 0x1
+        Ray[region] > prev(Ray[region])
     )
 )
 achievement(
@@ -1866,8 +1978,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x2 &&
-        prev(Razor[region] == 0x0) &&
-        Razor[region] == 0x1
+        Razor[region] > prev(Razor[region])
     )
 )
 achievement(
@@ -1882,8 +1993,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x2 &&
         prev(InDelivery(region)) &&
-        prev(Ese[region] == 0x0) &&
-        trigger_when(Ese[region] == 0x1)
+        trigger_when(Ese[region] > prev(Ese[region]))
     )
 )
 achievement(
@@ -1898,8 +2008,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x2 &&
         prev(InRIOT(region)) &&
-        prev(Bruiser[region] == 0x0) &&
-        trigger_when(Bruiser[region] == 0x1)
+        trigger_when(Bruiser[region] > prev(Bruiser[region]))
     )
 )
 achievement(
@@ -1932,9 +2041,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x22) &&
-        prev(Thunder[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Thunder[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Thunder[region] > prev(Thunder[region]))
     )
 )
 achievement(
@@ -1948,9 +2056,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x23) &&
-        prev(Pumpkin[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Pumpkin[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Pumpkin[region] > prev(Pumpkin[region]))
     )
 )
 achievement(
@@ -1964,9 +2071,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x24) &&
-        prev(Burner[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Burner[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Burner[region] > prev(Burner[region]))
     )
 )
 achievement(
@@ -1980,9 +2086,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x26) &&
-        prev(Drifter[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Drifter[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Drifter[region] > prev(Drifter[region]))
     )
 )
 achievement(
@@ -1996,14 +2101,13 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2e) &&
-        prev(Sanford[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Sanford[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Sanford[region] > prev(Sanford[region]))
     )
 )
 achievement(
     title="1.21 Jiggawatts!?!",
-    description="Collect every part and the blueprint to unlock the Bolt Gun then equip it.",
+    description="Collect every part and the blueprint to unlock the Bolt Gun.",
     points=10,
     id=523128,
     trigger=any_of(Regions, region => 
@@ -2011,19 +2115,16 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        City[region] == 0x3 &&
-        __ornext(prev(BoltGunBP[region] == 0x1) ||
-        prev(BoltGunParts[region] == 0x3)) &&
-        BoltGunBP[region] == 0x0 &&
-        BoltGunParts[region] == 0x4 &&
-        __ornext(PrimaryWeapon1[region] == 0x4 ||
-        PrimaryWeapon2[region] == 0x4 ||
-        PrimaryWeapon3[region] == 0x4)
+        City[region] == 3 &&
+        Loading[region] == 1 &&
+        __ornext(prev(BoltGunParts[region] ^ BoltGunBP[region] == 0x3) ||
+        prev(BoltGunParts[region] ^ BoltGunBP[region] == 0x5)) &&
+        BoltGunParts[region] ^ BoltGunBP[region] == 0x4
     )
 )
 achievement(
     title="One Pulse, and You’re Back to the Stone Age",
-    description="Collect every part and the blueprint to unlock the EMP then equip it.",
+    description="Collect every part and the blueprint to unlock the EMP.",
     points=10,
     id=523129,
     trigger=any_of(Regions, region => 
@@ -2031,12 +2132,11 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        City[region] == 0x3 &&
-        __ornext(prev(EMPBP[region] == 0x1) ||
-        prev(EMPParts[region] == 0x3)) &&
-        EMPBP[region] == 0x0 &&
-        EMPParts[region] == 0x4 &&
-        SecondaryWeapon[region] == 0x3
+        City[region] == 3 &&
+        Loading[region] == 1 &&
+        __ornext(prev(EMPParts[region] ^ EMPBP[region] == 0x3) ||
+        prev(EMPParts[region] ^ EMPBP[region] == 0x5)) &&
+        EMPParts[region] ^ EMPBP[region] == 0x4
     )
 )
 achievement(
@@ -2050,8 +2150,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Fang[region] == 0x0) &&
-        Fang[region] == 0x1
+        Fang[region] > prev(Fang[region])
+        
     )
 )
 achievement(
@@ -2065,8 +2165,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Omega[region] == 0x0) &&
-        Omega[region] == 0x1
+        Omega[region] > prev(Omega[region])
     )
 )
 achievement(
@@ -2080,8 +2179,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         City[region] == 0x3 &&
-        prev(Rigg[region] == 0x0) &&
-        Rigg[region] == 0x1
+        Rigg[region] > prev(Rigg[region])
     )
 )
 achievement(
@@ -2096,8 +2194,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x3 &&
         prev(InDelivery(region)) &&
-        prev(Offroad[region] == 0x0) &&
-        trigger_when(Offroad[region] == 0x1)
+        trigger_when(Offroad[region] > prev(Offroad[region]))
     )
 )
 achievement(
@@ -2112,8 +2209,7 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x3 &&
         prev(InRIOT(region)) &&
-        prev(Stalker[region] == 0x0) &&
-        trigger_when(Stalker[region] == 0x1)
+        trigger_when(Stalker[region] > prev(Stalker[region]))
     )
 )
 achievement(
@@ -2187,9 +2283,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x27) &&
-        prev(Fireball[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Fireball[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Fireball[region] > prev(Fireball[region]))
     )
 )
 achievement(
@@ -2203,9 +2298,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x28) &&
-        prev(Rattail[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Rattail[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Rattail[region] > prev(Rattail[region]))
     )
 )
 achievement(
@@ -2219,9 +2313,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x29) &&
-        prev(Tornado[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Tornado[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Tornado[region] > prev(Tornado[region]))
     )
 )
 achievement(
@@ -2235,13 +2328,12 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2c) &&
-        prev(Pinata[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Pinata[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Pinata[region] > prev(Pinata[region]))
     )
 )
 achievement(
-    title="Blister Canyon Suicide",
+    title="Paradise City Suicide",
     description="Survive every round of Suicide in Paradise City and unlock the Juice.",
     points=5,
     id=523142,
@@ -2251,9 +2343,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2f) &&
-        prev(Juice[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Juice[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Juice[region] > prev(Juice[region]))
     )
 )
 achievement(
@@ -2267,9 +2358,8 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2b) &&
-        prev(Lizard[region] == 0x0) &&
-        trigger_when(once(CurrentMission[region] == -1 &&
-        Lizard[region] == 0x1))
+        trigger_when(CurrentMission[region] == -1 &&
+        Lizard[region] > prev(Lizard[region]))
     )
 )
 achievement(
@@ -2288,21 +2378,21 @@ achievement(
         trigger_when(SniperKillCount[region] == 0x14)
     )
 )
-achievement(
-    title="[VOID]Freaky Fast Delivery",
-    description="Make 15 or more deliveries in any City.",
-    points=10,
-    id=523145,
-    trigger=any_of(Regions, region => 
-        IsRegion(region) &&
-        IsInGame(region) &&
-        !Paused(region) &&
-        CheatProtection(region) &&
-        InDelivery(region) &&
-        prev(CurrentDeliveries[region] == 0xe) &&
-        trigger_when(CurrentDeliveries[region] == 0xf)
-    )
-)
+//achievement(
+//    title="[VOID]Freaky Fast Delivery",
+//   description="Make 15 or more deliveries in any City.",
+//    points=10,
+//    id=523145,
+//    trigger=any_of(Regions, region => 
+//        IsRegion(region) &&
+//        IsInGame(region) &&
+//        !Paused(region) &&
+//        CheatProtection(region) &&
+//        InDelivery(region) &&
+//        prev(CurrentDeliveries[region] == 0xe) &&
+//        trigger_when(CurrentDeliveries[region] == 0xf)
+//    )
+//)
 achievement(
     title="Maximum Upgrade",
     description="Purchase every single vehicle upgrade from each shop.",
@@ -2715,3 +2805,469 @@ achievement(
         EXPLODED[region] == 0x19
     )
 )
+
+///////////////////// Leaderboards Follow /////////////////////
+/*
+leaderboard(
+    id = 119812, title = "Story Mode Complete",
+    description = "Fastest Time to Complete Story Mode",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && prev(dword(0x59D3E8)) == 29 &&
+               prev(dword(0x5A7138)) == 30 && dword(0x5A7138) == 31) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && prev(dword(0x59CDE8)) == 29 &&
+               prev(dword(0x5A6B38)) == 30 && dword(0x5A6B38) == 31)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1)),
+    value  = max_of(
+                 measured(tally(0, float(0x471558) * 3600.0), when=byte(0x12B041) == 0),
+                 measured(tally(0, float(0x4710D8) * 3600.0), when=byte(0x12B041) == 1)
+             ),
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 119830, title = "100% Complete",
+    description = "Fastest Time to 100% Completion",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && prev(float(0x471554)) != 100.0 &&
+               float(0x471554) == 100.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && prev(float(0x4710D4)) != 100.0 &&
+               float(0x4710D4) == 100.0)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1)),
+    value  = max_of(
+                 measured(tally(0, float(0x471558) * 3600.0), when=byte(0x12B041) == 0),
+                 measured(tally(0, float(0x4710D8) * 3600.0), when=byte(0x12B041) == 1)
+             ),
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 119819, title = "Longest Riot",
+    description = "Longest life while in RIOT",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x4714A0)) <= 3 && dword(0x4714A0) == 4) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x471020)) <= 3 && dword(0x471020) == 4)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 4294967295 &&
+               dword(0x4714A0) != 4) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 4294967295 &&
+               dword(0x471020) != 4)),
+    value  = max_of(
+                 measured(prev(float(dword(0x3B9AB4))), when=byte(0x12B041) == 0),
+                 measured(prev(float(dword(0x3B9634))), when=byte(0x12B041) == 1)
+             ),
+    format = "SECS"
+)
+
+leaderboard(
+    id = 119829, title = "Best Amazon Delivery Driver",
+    description = "Most Deliveries",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x59F630)) == 0 && dword(0x59F630) >= 1) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x59F030)) == 0 && dword(0x59F030) >= 1)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59F630)) >= 1 && dword(0x59F630) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59F030)) >= 1 && dword(0x59F030) == 0)),
+    value  = max_of(
+                 measured(prev(dword(0x59F64C)), when=byte(0x12B041) == 0),
+                 measured(prev(dword(0x59F04C)), when=byte(0x12B041) == 1)
+             ),
+    format = "VALUE"
+)
+
+leaderboard(
+    id = 120426, title = "Lava Falls - El Turismo - Easy",
+    description = "Fastest Time to Complete Race 1 in Lava Falls",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 30 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 30 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 30 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 30 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 30 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 22 || prev(dword(0x597560)) == 23) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 30 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 22 || prev(dword(0x596F60)) == 23) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120427, title = "Lava Falls - El Turismo - Medium",
+    description = "Fastest Time to Complete Race 2 in Lava Falls",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 31 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 31 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 31 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 31 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 31 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 13 || prev(dword(0x597560)) == 14) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 31 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 13 || prev(dword(0x596F60)) == 14) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120428, title = "Lava Falls - El Turismo - Hard",
+    description = "Fastest Time to Complete Race 3 in Lava Falls",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 32 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 32 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 32 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 32 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 32 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 27 || prev(dword(0x597560)) == 28) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 32 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 27 || prev(dword(0x596F60)) == 28) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120429, title = "Blister Canyon - El Turismo - Easy",
+    description = "Fastest Time to Complete Race 1 in Blister Canyon",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 34 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 34 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 34 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 34 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 34 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 && prev(dword(0x597560)) == 17 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 34 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 && prev(dword(0x596F60)) == 17 && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120430, title = "Blister Canyon - El Turismo - Medium",
+    description = "Fastest Time to Complete Race 2 in Blister Canyon",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 35 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 35 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 35 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 35 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 35 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 30 || prev(dword(0x597560)) == 31) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 35 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 30 || prev(dword(0x596F60)) == 31) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120431, title = "Blister Canyon - El Turismo - Hard",
+    description = "Fastest Time to Complete Race 3 in Blister Canyon",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 36 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 36 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 36 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 36 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 36 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 31 || prev(dword(0x597560)) == 32) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 36 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 31 || prev(dword(0x596F60)) == 32) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120432, title = "Paradise City - El Turismo - Easy",
+    description = "Fastest Time to Complete Race 1 in Paradise City",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 39 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 39 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 39 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 39 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 39 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 18 || prev(dword(0x597560)) == 19) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 39 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 18 || prev(dword(0x596F60)) == 19) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120433, title = "Paradise City - El Turismo - Medium",
+    description = "Fastest Time to Complete Race 2 in Paradise City",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 40 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 40 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 40 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 40 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 40 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 20 || prev(dword(0x597560)) == 21) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 40 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 20 || prev(dword(0x596F60)) == 21) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120434, title = "Paradise City - El Turismo - Hard",
+    description = "Fastest Time to Complete Race 3 in Paradise City",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 && dword(0x59D3E8) == 41 &&
+               prev(dword(0x597560)) == 4294967295 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 && dword(0x59CDE8) == 41 &&
+               prev(dword(0x596F60)) == 4294967295 && dword(0x596F60) == 0)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 41 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) >= 2 && dword(0x597664) == 0) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 41 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) >= 2 && dword(0x597064) == 0) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 41 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597664)) == 1 && dword(0x597664) == 0 &&
+               (prev(dword(0x597560)) == 36 || prev(dword(0x597560)) == 37) && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 41 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x597064)) == 1 && dword(0x597064) == 0 &&
+               (prev(dword(0x596F60)) == 36 || prev(dword(0x596F60)) == 37) && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120435, title = "Evel Knievel - Lava Falls",
+    description = "Fastest Time to Complete the Stunt Run in Lava Falls",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 33) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 33)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 33 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) > 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 33 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) > 1 && dword(0x596F60) == 0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 33 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) == 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 33 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) == 1 && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120436, title = "Evel Knievel - Blister Canyon",
+    description = "Fastest Time to Complete the Stunt Run in Blister Canyon",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 38) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 38)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 38 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) > 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 38 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) > 1 && dword(0x596F60) == 0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 38 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) == 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 38 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) == 1 && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 120437, title = "Evel Knievel - Paradise City",
+    description = "Fastest Time to Complete the Stunt Run in Paradise City",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 44) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 44)),
+    cancel = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 1) ||
+              (byte(0x12B041) == 0 && prev(float(0x442370)) >= 0.1 && float(0x442370) == 0.0) ||
+              (byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 44 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) > 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 1) ||
+              (byte(0x12B041) == 1 && prev(float(0x441EF0)) >= 0.1 && float(0x441EF0) == 0.0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 44 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) > 1 && dword(0x596F60) == 0)),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 44 && dword(0x59D3E8) == 4294967295 &&
+               prev(dword(0x597560)) == 1 && dword(0x597560) == 0) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 44 && dword(0x59CDE8) == 4294967295 &&
+               prev(dword(0x596F60)) == 1 && dword(0x596F60) == 0)),
+    value  = ,
+    format = "SECS", lower_is_better = true
+)
+
+leaderboard(
+    id = 119814, title = "Sniper Ghost Warrior - Blister Canyon",
+    description = "Most Sniper Kills in Blister Canyon Sniper Side Mission",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x501A68) == 2 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 37) ||
+              (byte(0x12B041) == 1 && dword(0x501468) == 2 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 37)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 37 && dword(0x59D3E8) == 4294967295) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 37 && dword(0x59CDE8) == 4294967295)),
+    value  = max_of(
+                 measured(prev(dword(0x5975FC)), when=byte(0x12B041) == 0),
+                 measured(prev(dword(0x596FFC)), when=byte(0x12B041) == 1)
+             ),
+    format = "VALUE"
+)
+
+leaderboard(
+    id = 119813, title = "Sniper Ghost Warrior - Paradise City",
+    description = "Most Sniper Kills in Paradise City Sniper Side Mission",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x501A68) == 3 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 42) ||
+              (byte(0x12B041) == 1 && dword(0x501468) == 3 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 42)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 42 && dword(0x59D3E8) == 4294967295) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 42 && dword(0x59CDE8) == 4294967295)),
+    value  = max_of(
+                 measured(prev(dword(0x5975FC)), when=byte(0x12B041) == 0),
+                 measured(prev(dword(0x596FFC)), when=byte(0x12B041) == 1)
+             ),
+    format = "VALUE"
+)
+
+leaderboard(
+    id = 119815, title = "Rocketman",
+    description = "Most BGM Kills in BGM Side Mission",
+    start  = always_true() &&
+             ((byte(0x12B041) == 0 && dword(0x48BD04) == 0 && dword(0x48BD08) != 1 &&
+               prev(dword(0x59D3E8)) == 4294967295 && dword(0x59D3E8) == 43) ||
+              (byte(0x12B041) == 1 && dword(0x48B884) == 0 && dword(0x48B888) != 1 &&
+               prev(dword(0x59CDE8)) == 4294967295 && dword(0x59CDE8) == 43)),
+    cancel = always_false(),
+    submit = always_true() &&
+             ((byte(0x12B041) == 0 && prev(dword(0x59D3E8)) == 43 && dword(0x59D3E8) == 4294967295) ||
+              (byte(0x12B041) == 1 && prev(dword(0x59CDE8)) == 43 && dword(0x59CDE8) == 4294967295)),
+    value  = max_of(
+                 measured(prev(dword(0x597560)), when=byte(0x12B041) == 0),
+                 measured(prev(dword(0x596F60)), when=byte(0x12B041) == 1)
+             ),
+    format = "VALUE"
+)
+*/
