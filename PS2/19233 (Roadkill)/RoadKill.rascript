@@ -1079,7 +1079,7 @@ for region in Regions
     //In Delivery
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InDelivery(region),
-        "Mason the {0}, is out on a Delivery run in {1} • Current Deliveries: {2}📦 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is out on a Delivery run in {1} • Current Deliveries: {2}📦 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("CurrentDeliveries", CurrentDeliveries[region], format="VALUE"),
@@ -1090,7 +1090,7 @@ for region in Regions
     //In Killing Spree
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InKillingSpree(region),
-        "Mason the {0}, is out on a Killing Spree in {1} • Kills Left: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is out on a Killing Spree in {1} • Kills Left: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("KillingSpreeKills", KillingSpreeKills[region], format="VALUE"),
@@ -1101,7 +1101,7 @@ for region in Regions
     //In RIOT
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && NotInMission(region) && InRIOT(region),
-        "Mason the {0}, is on a RIOT🔥 and wreaking havoc in {1} • Driving {2}🏎 • RIOT Duration:{3} • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is on a RIOT🔥 and wreaking havoc in {1} • Driving {2}🏎 • RIOT Duration:{3} • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1112,7 +1112,7 @@ for region in Regions
     //In BGM Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(BGMMission, m => m == CurrentMission[region]),
-        "Mason the {0}, is the BGM in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is the BGM in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("BGMKillCount", BGMKillCount[region], format="VALUE"),
@@ -1123,7 +1123,7 @@ for region in Regions
     //In Race Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(RaceMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is racing around {1} • Current Position: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is racing around {1} • Current Position: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("Postion", Position[region], format="VALUE"),
@@ -1134,7 +1134,7 @@ for region in Regions
     //In Sniper Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(SniperMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is Sniping in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is Sniping in {1} • Current Kill Count: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("SniperKillCount", SniperKillCount[region], format="VALUE"),
@@ -1145,7 +1145,7 @@ for region in Regions
     //In Stunt Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(StuntMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is Stunting around {1} • Stunts Left: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is Stunting around {1} • Stunts Left: {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("StuntsLeft", StuntsLeft[region], format="VALUE"),
@@ -1156,7 +1156,7 @@ for region in Regions
     //In Suicide Side Missions
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && any_of(SuicideMissions, m => m == CurrentMission[region]),
-        "Mason the {0}, is taking care of Suicide Bombers in {1} • Current Stage: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} is taking care of Suicide Bombers in {1} • Current Stage: {2}🎯 • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
         rich_presence_value("SuicideCurrentStage", SuicideCurrentStage[region], format="VALUE"),
@@ -1167,7 +1167,7 @@ for region in Regions
     //In Story Mission
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && !NotInMission(region),
-        "Mason the {0}, {1} in {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
+        "Mason the {0} {1} in {2} • Driving {3}🏎 • Time Played:{4} • {5}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("CurrentMission", CurrentMission[region], CurrentMissionLookup),
         rich_presence_lookup("CurrentCity", City[region], CurrentCityLookup),
@@ -1178,7 +1178,7 @@ for region in Regions
     //Exploring LF
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x1,
-        "Mason the {0}, is exploring Lava Falls - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
+        "Mason the {0} is exploring Lava Falls - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("LFCurrentZone", Zone[region], LFZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1188,7 +1188,7 @@ for region in Regions
     //Exploring BC
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x2,
-        "Mason the {0}, exploring Blister Canyon - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
+        "Mason the {0} is exploring Blister Canyon - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("BCCurrentZone", Zone[region], BCZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -1198,7 +1198,7 @@ for region in Regions
     //Exploring PC
     rich_presence_conditional_display(
         IsRegion(region) && IsInGame(region) && !IsInDemo(region) && City[region] == 0x3,
-        "Mason the {0}, is exploring Paradise City - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
+        "Mason the {0} is exploring Paradise City - {1} • Driving {2}🏎 • Time Played:{3} • {4}% Complete",
         rich_presence_lookup("CurrentTitle", TITLE[region], CurrentTitleLookup),
         rich_presence_lookup("PCCurrentZone", Zone[region], PCZoneLookup),
         rich_presence_lookup("CurrentVehicle", CurrentVehicle[region], CurrentVehicleLookup),
@@ -2226,10 +2226,13 @@ achievement(
         CurrentPrimaryWeapon[region] == 0x10 &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
-        prior(KillingSpreeKills[region] == 0xf) &&
+        once((prev(KillingSpreeKills[region] == 0x0) &&
+        KillingSpreeKills[region] == 0xf)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
+        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        never(!InKillingSpree(region) &&
+        SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
 )
 achievement(
@@ -2246,10 +2249,13 @@ achievement(
         CurrentPrimaryWeapon[region] == 0xfffffedd &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
-        prior(KillingSpreeKills[region] == 0xa) &&
+        once((prev(KillingSpreeKills[region] == 0x0) &&
+        KillingSpreeKills[region] == 0xa)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
+        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        never(!InKillingSpree(region) &&
+        SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
 )
 achievement(
@@ -2266,10 +2272,13 @@ achievement(
         prev(CurrentPrimaryWeapon[region] == 0x11) &&
         prev(InKillingSpree(region)) &&
         !InKillingSpree(region) &&
-        prior(KillingSpreeKills[region] == 0x1e) &&
+        once((prev(KillingSpreeKills[region] == 0x0) &&
+        KillingSpreeKills[region] == 0x1e)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
         KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
+        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        never(!InKillingSpree(region) &&
+        SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
 )
 achievement(
@@ -2399,7 +2408,7 @@ achievement(
     points=25,
     id=523146,
     trigger=any_of(Regions, region => 
-        IsRegion(region) &&
+        (IsRegion(region) &&
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
@@ -2408,7 +2417,7 @@ achievement(
                      SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 26) &&
         measured(sum_of([NITROUS1[region], NITROUS2[region], NITROUS3[region], RECHARGE1[region], RECHARGE2[region], DURATION1[region], DURATION2[region], MAGNET[region],
                      SBRAKES[region], ARMOR1[region], ARMOR2[region], ARMOR3[region], FIRERATE[region], TANK[region], POWER1[region], POWER2[region], ABRAKE[region], SPEED1[region], SPEED2[region],
-                     SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 27)
+                     SPEED3[region], ACCEL1[region], ACCEL2[region], ACCEL3[region], AMMO1[region], AMMO2[region], AMMO3[region], FCONTROL[region]], v => v / v) == 27, when=IsRegion(region)))
     )
 )
 achievement(
@@ -2422,7 +2431,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(TITLE[region] == 0x8) &&
-        TITLE[region] == 0x9
+        measured(TITLE[region] == 0x9)
     )
 )
 achievement(
@@ -2436,7 +2445,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(TITLE[region] == 0x12) &&
-        TITLE[region] == 0x13
+        measured(TITLE[region] == 0x13)
     )
 )
 achievement(
@@ -2450,7 +2459,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(TITLE[region] == 0x1c) &&
-        TITLE[region] == 0x1d
+        measured(TITLE[region] == 0x1d)
     )
 )
 achievement(
@@ -2464,7 +2473,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(TITLE[region] == 0x26) &&
-        TITLE[region] == 0x27
+        measured(TITLE[region] == 0x27)
     )
 )
 achievement(
