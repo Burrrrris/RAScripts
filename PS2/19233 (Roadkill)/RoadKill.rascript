@@ -1284,7 +1284,7 @@ achievement(
 )
 
 achievement(
-    title="He Fucks with Us, We Fuck with Them!",
+    title="Backdoor Brawl",
     description="Complete 'Backdoor Shootout'.",
     points=4,
     id=523077,
@@ -1658,7 +1658,7 @@ achievement(
 )
 
 achievement(
-    title="A Race? Winner Fucks the Prom Queen!",
+    title="Grudge on Wheels",
     description="Complete 'Mano a Mano'.",
     points=5,
     id=523099,
@@ -2198,7 +2198,7 @@ achievement(
     )
 )
 achievement(
-    title="Fuck Tha Police!",
+    title="Twenty Minutes to Life",
     description="Survive 20 minutes of RIOT in Paradise City and unlock the Stalker.",
     points=10,
     id=523134,
@@ -2491,7 +2491,7 @@ achievement(
         prev(FOLLOWER[region] == 0x2f) ||
         prev(FOLLOWER[region] == 0x30) ||
         prev(FOLLOWER[region] == 0x31)) &&
-        FOLLOWER[region] == 0x32
+        FOLLOWER[region] >= 0x32
     )
 )
 achievement(
@@ -2509,7 +2509,7 @@ achievement(
         prev(GAUCHO[region] == 0x2f) ||
         prev(GAUCHO[region] == 0x30) ||
         prev(GAUCHO[region] == 0x31)) &&
-        GAUCHO[region] == 0x32
+        GAUCHO[region] >= 0x32
     )
 )
 achievement(
@@ -2527,7 +2527,7 @@ achievement(
         prev(SOUTHLEAGUE[region] == 0x2f) ||
         prev(SOUTHLEAGUE[region] == 0x30) ||
         prev(SOUTHLEAGUE[region] == 0x31)) &&
-        SOUTHLEAGUE[region] == 0x32
+        SOUTHLEAGUE[region] >= 0x32
     )
 )
 achievement(
@@ -2545,7 +2545,7 @@ achievement(
         prev(DAREDEVIL[region] == 0x2f) ||
         prev(DAREDEVIL[region] == 0x30) ||
         prev(DAREDEVIL[region] == 0x31)) &&
-        DAREDEVIL[region] == 0x32
+        DAREDEVIL[region] >= 0x32
     )
 )
 achievement(
@@ -2563,7 +2563,7 @@ achievement(
         prev(BEDLAMITE[region] == 0x2f) ||
         prev(BEDLAMITE[region] == 0x30) ||
         prev(BEDLAMITE[region] == 0x31)) &&
-        BEDLAMITE[region] == 0x32
+        BEDLAMITE[region] >= 0x32
     )
 )
 achievement(
@@ -2581,7 +2581,7 @@ achievement(
         prev(SECTION8[region] == 0x2f) ||
         prev(SECTION8[region] == 0x30) ||
         prev(SECTION8[region] == 0x31)) &&
-        SECTION8[region] == 0x32
+        SECTION8[region] >= 0x32
     )
 )
 achievement(
@@ -2599,7 +2599,7 @@ achievement(
         prev(DREGLORD[region] == 0x2f) ||
         prev(DREGLORD[region] == 0x30) ||
         prev(DREGLORD[region] == 0x31)) &&
-        DREGLORD[region] == 0x32
+        DREGLORD[region] >= 0x32
     )
 )
 achievement(
@@ -2617,11 +2617,11 @@ achievement(
         prev(TALON[region] == 0x2f) ||
         prev(TALON[region] == 0x30) ||
         prev(TALON[region] == 0x31)) &&
-        TALON[region] == 0x32
+        TALON[region] >= 0x32
     )
 )
 achievement(
-    title="Fuck You Coppa!",
+    title="Sentinel Slaughter",
     description="Kill 50 Sentinels.",
     points=10,
     id=523159,
@@ -2635,7 +2635,7 @@ achievement(
         prev(SENTINELS[region] == 0x2f) ||
         prev(SENTINELS[region] == 0x30) ||
         prev(SENTINELS[region] == 0x31)) &&
-        SENTINELS[region] == 0x32
+        SENTINELS[region] >= 0x32
     )
 )
 achievement(
@@ -2653,7 +2653,7 @@ achievement(
         prev(SCAV[region] == 0x2f) ||
         prev(SCAV[region] == 0x30) ||
         prev(SCAV[region] == 0x31)) &&
-        SCAV[region] == 0x32
+        SCAV[region] >= 0x32
     )
 )
 achievement(
@@ -2671,7 +2671,7 @@ achievement(
         prev(PROSTITUTE[region] == 0x2f) ||
         prev(PROSTITUTE[region] == 0x30) ||
         prev(PROSTITUTE[region] == 0x31)) &&
-        PROSTITUTE[region] == 0x32
+        PROSTITUTE[region] >= 0x32
     )
 )
 achievement(
@@ -2689,7 +2689,7 @@ achievement(
         prev(SHOPKEEP[region] == 0x2f) ||
         prev(SHOPKEEP[region] == 0x30) ||
         prev(SHOPKEEP[region] == 0x31)) &&
-        SHOPKEEP[region] == 0x32
+        SHOPKEEP[region] >= 0x32
     )
 )
 achievement(
@@ -2707,7 +2707,7 @@ achievement(
         prev(BUM[region] == 0x2f) ||
         prev(BUM[region] == 0x30) ||
         prev(BUM[region] == 0x31)) &&
-        BUM[region] == 0x32
+        BUM[region] >= 0x32
     )
 )
 achievement(
@@ -2725,7 +2725,7 @@ achievement(
         prev(OLD[region] == 0x2f) ||
         prev(OLD[region] == 0x30) ||
         prev(OLD[region] == 0x31)) &&
-        OLD[region] == 0x32
+        OLD[region] >= 0x32
     )
 )
 achievement(
@@ -2739,7 +2739,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(IMPALED[region] == 0x18) &&
-        IMPALED[region] == 0x19
+        IMPALED[region] >= 0x19
     )
 )
 achievement(
@@ -2757,7 +2757,7 @@ achievement(
         prev(BURNED[region] == 0x16) ||
         prev(BURNED[region] == 0x17) ||
         prev(BURNED[region] == 0x18)) &&
-        BURNED[region] == 0x19
+        BURNED[region] >= 0x19
     )
 )
 achievement(
@@ -2775,7 +2775,7 @@ achievement(
         prev(SPLATTERED[region] == 0x16) ||
         prev(SPLATTERED[region] == 0x17) ||
         prev(SPLATTERED[region] == 0x18)) &&
-        SPLATTERED[region] == 0x19
+        SPLATTERED[region] >= 0x19
     )
 )
 achievement(
@@ -2793,7 +2793,7 @@ achievement(
         prev(SHOT[region] == 0x16) ||
         prev(SHOT[region] == 0x17) ||
         prev(SHOT[region] == 0x18)) &&
-        SHOT[region] == 0x19
+        SHOT[region] >= 0x19
     )
 )
 achievement(
@@ -2811,7 +2811,7 @@ achievement(
         prev(EXPLODED[region] == 0x16) ||
         prev(EXPLODED[region] == 0x17) ||
         prev(EXPLODED[region] == 0x18)) &&
-        EXPLODED[region] == 0x19
+        EXPLODED[region] >= 0x19
     )
 )
 
