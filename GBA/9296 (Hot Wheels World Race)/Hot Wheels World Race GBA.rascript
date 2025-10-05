@@ -651,7 +651,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x0 &&
-    LeagueVehicleCharacterSelection() == 0x0 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x0 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -668,7 +668,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x1 &&
-    LeagueVehicleCharacterSelection() == 0x1 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x1 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -685,7 +685,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x2 &&
-    LeagueVehicleCharacterSelection() == 0x2 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x2 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -702,7 +702,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x3 &&
-    LeagueVehicleCharacterSelection() == 0x3 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x3 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -719,7 +719,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x4 &&
-    LeagueVehicleCharacterSelection() == 0x4 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x4 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -736,7 +736,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x5 &&
-    LeagueVehicleCharacterSelection() == 0x5 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x5 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -753,7 +753,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x6 &&
-    LeagueVehicleCharacterSelection() == 0x6 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x6 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -770,7 +770,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x7 &&
-    LeagueVehicleCharacterSelection() == 0x7 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x7 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -787,7 +787,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x8 &&
-    LeagueVehicleCharacterSelection() == 0x8 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x8 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -804,7 +804,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0x9 &&
-    LeagueVehicleCharacterSelection() == 0x9 &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0x9 &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -821,7 +821,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0xA &&
-    LeagueVehicleCharacterSelection() == 0xA &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0xA &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -838,7 +838,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0xB &&
-    LeagueVehicleCharacterSelection() == 0xB &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0xB &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -855,7 +855,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0xC &&
-    LeagueVehicleCharacterSelection() == 0xC &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0xC &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -872,7 +872,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0xD &&
-    LeagueVehicleCharacterSelection() == 0xD &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0xD &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
@@ -889,7 +889,7 @@ achievement(
     trigger=
     once(MenuCurrentGamemode() == 0x4 &&
     SelectedTrack() == 0xE &&
-    LeagueVehicleCharacterSelection() == 0xE &&
+    QuickraceTimeTrialVehicleCharacterSelection() == 0xE &&
     InGame() &&
     TimeTrialStart != 0) &&
     trigger_when(prev(CurrentLap == 0x2) && CurrentLap == 0x3) &&
