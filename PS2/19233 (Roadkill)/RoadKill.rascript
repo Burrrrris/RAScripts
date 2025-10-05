@@ -1841,10 +1841,8 @@ achievement(
         CheatProtection(region) &&
         City[region] == 0x1 &&
         prev(InKillingSpree(region)) &&
-        !InKillingSpree(region) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
-        KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
+        trigger_when(KillingSpreeKills[region] == 0x0 && SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
     )
 )
 achievement(
@@ -2024,10 +2022,8 @@ achievement(
         City[region] == 0x2 &&
         CurrentPrimaryWeapon[region] == 0x2 &&
         prev(InKillingSpree(region)) &&
-        !InKillingSpree(region) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
-        KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
+        trigger_when(KillingSpreeKills[region] == 0x0 && SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000)
     )
 )
 achievement(
@@ -2225,12 +2221,10 @@ achievement(
         City[region] == 0x3 &&
         CurrentPrimaryWeapon[region] == 0x10 &&
         prev(InKillingSpree(region)) &&
-        !InKillingSpree(region) &&
-        once((prev(KillingSpreeKills[region] == 0x0) &&
+        once((prev(KillingSpreeKills[region] != 0xf) &&
         KillingSpreeKills[region] == 0xf)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
-        KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        trigger_when(KillingSpreeKills[region] == 0x0 && SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
         never(!InKillingSpree(region) &&
         SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
@@ -2248,12 +2242,10 @@ achievement(
         City[region] == 0x3 &&
         CurrentPrimaryWeapon[region] == 0xfffffedd &&
         prev(InKillingSpree(region)) &&
-        !InKillingSpree(region) &&
-        once((prev(KillingSpreeKills[region] == 0x0) &&
+        once((prev(KillingSpreeKills[region] != 0xa) &&
         KillingSpreeKills[region] == 0xa)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
-        KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        trigger_when(KillingSpreeKills[region] == 0x0 && SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
         never(!InKillingSpree(region) &&
         SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
@@ -2271,12 +2263,10 @@ achievement(
         City[region] == 0x3 &&
         prev(CurrentPrimaryWeapon[region] == 0x11) &&
         prev(InKillingSpree(region)) &&
-        !InKillingSpree(region) &&
-        once((prev(KillingSpreeKills[region] == 0x0) &&
+        once((prev(KillingSpreeKills[region] != 0x1e) &&
         KillingSpreeKills[region] == 0x1e)) &&
         prev(KillingSpreeKills[region] >= 0x01)  &&
-        KillingSpreeKills[region] == 0x0 &&
-        trigger_when(SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
+        trigger_when(KillingSpreeKills[region] == 0x0 && SALVEARNED[region] - prev(SALVEARNED[region]) >= 1000) &&
         never(!InKillingSpree(region) &&
         SALVEARNED[region] - prev(SALVEARNED[region]) < 1000)
     )
@@ -2358,7 +2348,7 @@ achievement(
 )
 achievement(
     title="Be the Missile",
-    description="Earn more than 25 kills in the BGM side mission and unlock the Lizard.",
+    description="Earn 26 kills in the BGM side mission and unlock the Lizard.",
     points=10,
     id=523143,
     trigger=any_of(Regions, region => 
@@ -2366,9 +2356,9 @@ achievement(
         IsInGame(region) &&
         !Paused(region) &&
         CheatProtection(region) &&
-        prev(CurrentMission[region] == 0x2b) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Lizard[region] > prev(Lizard[region]))
+        CurrentMission[region] == 0x2b &&
+        prev(BGMKillCount[region] == 25) && 
+        trigger_when(BGMKillCount[region] == 26)
     )
 )
 achievement(
@@ -2410,7 +2400,6 @@ achievement(
     trigger=any_of(Regions, region => 
         (IsRegion(region) &&
         IsInGame(region) &&
-        !Paused(region) &&
         CheatProtection(region) &&
         prev(sum_of([NITROUS1[region], NITROUS2[region], NITROUS3[region], RECHARGE1[region], RECHARGE2[region], DURATION1[region], DURATION2[region], MAGNET[region],
                      SBRAKES[region], ARMOR1[region], ARMOR2[region], ARMOR3[region], FIRERATE[region], TANK[region], POWER1[region], POWER2[region], ABRAKE[region], SPEED1[region], SPEED2[region],
