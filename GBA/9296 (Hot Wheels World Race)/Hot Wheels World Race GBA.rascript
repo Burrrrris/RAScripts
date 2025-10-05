@@ -77,7 +77,7 @@ function LeagueRetries() => byte(0x0081A1)
 //        0xc - Switchback/Alec Wood
 //        0xd - Deora II/Vert Wheeler
 //        0xe - Backdraft/Finn Serpa
-function LeagueVehicleCharacterSelection() => byte(0x0081B9)
+function LeagueVehicleCharacterSelection() => byte(0x0081B8)
 
 // $8464: [8-Bit] Options - Music Volume
 function OptionsMusicVolume() => byte(0x008464)
