@@ -1856,8 +1856,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1e) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Bean[region] > prev(Bean[region]))
+        trigger_when(Bean[region] > prev(Bean[region]))
     )
 )
 achievement(
@@ -1871,8 +1870,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x1f) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Senor[region] > prev(Senor[region]))
+        trigger_when(Senor[region] > prev(Senor[region]))
     )
 )
 achievement(
@@ -1886,8 +1884,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x20) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Mullet[region] > prev(Mullet[region]))
+        trigger_when(Mullet[region] > prev(Mullet[region]))
     )
 )
 achievement(
@@ -1901,8 +1898,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x21) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Goblin[region] > prev(Goblin[region]))
+        trigger_when(Goblin[region] > prev(Goblin[region]))
     )
 )
 achievement(
@@ -1916,8 +1912,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2d) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Tub[region] > prev(Tub[region]))
+        trigger_when(Tub[region] > prev(Tub[region]))
     )
 )
 achievement(
@@ -2037,8 +2032,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x22) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Thunder[region] > prev(Thunder[region]))
+        trigger_when(Thunder[region] > prev(Thunder[region]))
     )
 )
 achievement(
@@ -2052,8 +2046,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x23) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Pumpkin[region] > prev(Pumpkin[region]))
+        trigger_when(Pumpkin[region] > prev(Pumpkin[region]))
     )
 )
 achievement(
@@ -2067,8 +2060,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x24) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Burner[region] > prev(Burner[region]))
+        trigger_when(Burner[region] > prev(Burner[region]))
     )
 )
 achievement(
@@ -2082,8 +2074,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x26) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Drifter[region] > prev(Drifter[region]))
+        trigger_when(Drifter[region] > prev(Drifter[region]))
     )
 )
 achievement(
@@ -2097,8 +2088,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2e) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Sanford[region] > prev(Sanford[region]))
+        trigger_when(Sanford[region] > prev(Sanford[region]))
     )
 )
 achievement(
@@ -2282,8 +2272,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x27) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Fireball[region] > prev(Fireball[region]))
+        trigger_when(Fireball[region] > prev(Fireball[region]))
     )
 )
 achievement(
@@ -2297,8 +2286,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x28) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Rattail[region] > prev(Rattail[region]))
+        trigger_when(Rattail[region] > prev(Rattail[region]))
     )
 )
 achievement(
@@ -2312,8 +2300,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x29) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Tornado[region] > prev(Tornado[region]))
+        trigger_when(Tornado[region] > prev(Tornado[region]))
     )
 )
 achievement(
@@ -2327,8 +2314,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2c) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Pinata[region] > prev(Pinata[region]))
+        trigger_when(Pinata[region] > prev(Pinata[region]))
     )
 )
 achievement(
@@ -2342,8 +2328,7 @@ achievement(
         !Paused(region) &&
         CheatProtection(region) &&
         prev(CurrentMission[region] == 0x2f) &&
-        trigger_when(CurrentMission[region] == -1 &&
-        Juice[region] > prev(Juice[region]))
+        trigger_when(Juice[region] > prev(Juice[region]))
     )
 )
 achievement(

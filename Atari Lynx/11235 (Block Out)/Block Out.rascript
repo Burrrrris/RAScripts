@@ -125,7 +125,7 @@ leaderboard(
 leaderboard(
     id = 142219,
     title = "3-D Mania - Highscore",
-    description = "Highscore for the Flat Fun Setup",
+    description = "Highscore for the 3-D Mania Setup",
     start  = 
         DemoPauseCheck() != 0x1 &&
         PredefinedSetup() == 0x1b &&
@@ -257,8 +257,8 @@ achievement(
     trigger=
     once(DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    PredefinedSetup() == 0x15 &&
-    Blockset() == 0x15 &&
+    PredefinedSetup() == 0x21 &&
+    Blockset() == 0x21 &&
     CurrentSelectedLevel() == 0x0) &&
     prev(CurrentSelectedLevel() == 0x4) &&
     trigger_when(CurrentSelectedLevel() == 0x5) &&
@@ -273,7 +273,7 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentDepthOfPlayField()) < CurrentDepthOfPlayField()
+    CurrentDepthOfPlayField() - prev(CurrentDepthOfPlayField()) == 1
 )
 achievement(
     title="Double Drop",
@@ -284,7 +284,7 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentDepthOfPlayField()) - CurrentDepthOfPlayField() > 2
+    CurrentDepthOfPlayField() - prev(CurrentDepthOfPlayField()) == 2
 )
 achievement(
     title="Triple Threat",
@@ -295,7 +295,7 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentDepthOfPlayField()) - CurrentDepthOfPlayField() > 3
+    CurrentDepthOfPlayField() - prev(CurrentDepthOfPlayField()) == 3
 )
 achievement(
     title="Box Clever",
@@ -306,8 +306,8 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentScore() >= 20000 &&
-    CurrentScore() < 25000) &&
+    (prev(CurrentScore() >= 20000) &&
+    prev(CurrentScore() < 25000)) &&
     CurrentScore() >= 25000
 )
 achievement(
@@ -319,8 +319,8 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentScore() >= 45000 &&
-    CurrentScore() < 50000) &&
+    (prev(CurrentScore() >= 45000) &&
+    prev(CurrentScore() < 50000)) &&
     CurrentScore() >= 50000
 )
 achievement(
@@ -332,7 +332,7 @@ achievement(
     trigger=
     DemoPauseCheck() != 0x1 &&
     InGameCheck() == 0x0 &&
-    prev(CurrentScore() >= 95000 &&
-    CurrentScore() < 100000) &&
+    (prev(CurrentScore() >= 95000) &&
+    prev(CurrentScore() < 100000)) &&
     CurrentScore() >= 100000
 )
