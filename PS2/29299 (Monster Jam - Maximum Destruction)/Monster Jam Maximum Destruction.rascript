@@ -28,7 +28,7 @@ function SeasonCurrentWorld() => dword(0x1EED00)
 //          0x7  - Blacksmith Champ
 //          0x8  - Bulldozer
 //          0x9  - Bulldozer Champ
-//          0xa  - Bustin' Loose
+//          0xa  - Bustin' Loosea
 //          0xb  - Bustin' Loose Champ
 //          0xc  - Destroyer
 //          0xd  - Destroyer Champ
@@ -521,13 +521,13 @@ function MinigameTruckSelection() => dword(0x1F62D8)
 // $1F6CF4: [8-Bit] Exhibition - Gamestyle Select
 //          0x0 - Death Match
 //          0x1 - Cash Grab
-//          0x2 - Pints
+//          0x2 - Points
 function ExhibitionGamestyleSelect() => byte(0x1F6CF4)
 
 // $1F6E94: [8-Bit] Season - Gamestyle Select
 //          0x0 - Death Match
 //          0x1 - Cash Grab
-//          0x2 - Pints
+//          0x2 - Points
 function SeasonGamestyleSelect() => byte(0x1F6E94)
 
 // $1F6F28: [8-Bit] Main Menu - Gamemode Seclection
@@ -602,7 +602,993 @@ function SeasonChampScreen() => dword(0x223208)
 // $35718C: [32-Bit] Season - Current Money
 function SeasonCurrentMoney() => dword(0x35718C)
 
+// $357160: [32-Bit] Current Season
+//          0x0 - Season 1
+//          0x1 - Season 2
+//          0x2 - Season 3
+function CurrentSeason() => dword(0x357160)
+
 // $35BB77: [8-Bit] Pause Indicator
 //          0x0 - Paused
 //          0x1 - Not Paused
 function PauseIndicator() => byte(0x35BB77)
+
+
+////////////////////////////RP////////////////////////////////////////////
+
+// ---------- Core Accessors ----------
+function MainMode() => byte(0x1F6F28)             // 0 Exhibition, 1 Season, 2 Mini-game
+function Difficulty() => byte(0x1F6F54)          // 0 Easy, 1 Normal, 2 Hard, 3 Extreme
+function InGame() => dword(0x217248)             // 0 Not In Game, 1 In Game
+
+function SeasonGamestyle() => byte(0x1F6E94)     // 0 Death Match, 1 Cash Grab, 2 Points
+function ExhibitionGamestyle() => byte(0x1F6CF4) // 0 Death Match, 1 Cash Grab, 2 Points
+function MinigameGamestyle() => dword(0x1F5EBC)  // 0-5
+
+function SeasonWorld() => dword(0x1EED00)
+function ExhibitionWorld() => dword(0x1F5CC8)
+
+function PlayerTruck() => dword(0x1EED28)
+function SeasonTruckSelection() => dword(0x1F5EF8)
+function ExhibitionTruckSelection() => dword(0x1F6058)
+function MinigameTruckSelection() => dword(0x1F62D8)
+
+function Pointer() => dword(0x216BFC)
+
+// ---------- Pointer Helpers ----------
+function TruckDestroysLeft() => byte(Pointer() + 0x2C)
+
+function PlayerObjectPtr() => dword(Pointer() + 0x34)
+function PlayerStatsPtr() => dword(PlayerObjectPtr() + 0x08)
+
+function CurrentPointsOrCash() => float(PlayerStatsPtr() + 0x3B0)
+function CurrentCashPowerups() => byte(PlayerStatsPtr() + 0x83C)
+
+function RaceStatePtr() => dword(Pointer() + 0x75C)
+function RaceCurrentPosition() => dword(RaceStatePtr() + 0x1ED0)
+// ---------- Lookups ----------
+CurrentTruckLookup = {
+    0x00000000: "Airbourne Ranger",
+    0x00000001: "Airbourne Ranger Champ",
+    0x00000002: "American Guardian",
+    0x00000003: "American Guardian Champ",
+    0x00000004: "Avenger",
+    0x00000005: "Avenger Champ",
+    0x00000006: "Blacksmith",
+    0x00000007: "Blacksmith Champ",
+    0x00000008: "Bulldozer",
+    0x00000009: "Bulldozer Champ",
+    0x0000000A: "Bustin' Loose",
+    0x0000000B: "Bustin' Loose Champ",
+    0x0000000C: "Destroyer",
+    0x0000000D: "Destroyer Champ",
+    0x0000000E: "El Toro Loco",
+    0x0000000F: "El Toro Loco Champ",
+    0x00000010: "Eradicator",
+    0x00000011: "Eradicator Champ",
+    0x00000012: "Goldberg",
+    0x00000013: "Goldberg Champ",
+    0x00000014: "Grave Digger",
+    0x00000015: "Grave Digger Champ",
+    0x00000016: "Gun Slinger",
+    0x00000017: "Gun Slinger Champ",
+    0x00000018: "King Krunch",
+    0x00000019: "King Krunch Champ",
+    0x0000001A: "Madusa",
+    0x0000001B: "Madusa Champ",
+    0x0000001C: "Mountaineer",
+    0x0000001D: "Mountaineer Champ",
+    0x0000001E: "Predator",
+    0x0000001F: "Predator Champ",
+    0x00000020: "Prowler",
+    0x00000021: "Prowler Champ",
+    0x00000022: "Reptoid",
+    0x00000023: "Reptoid Champ",
+    0x00000024: "Spider-Man",
+    0x00000025: "Spider-Man Champ",
+    0x00000026: "Blue Thunder",
+    0x00000027: "Blue Thunder Champ",
+    0x00000028: "Sting",
+    0x00000029: "Sting Champ",
+    0x0000002A: "Sudden Impact",
+    0x0000002B: "Sudden Impact Champ",
+    0x0000002C: "Survivor",
+    0x0000002D: "Survivor Champ",
+    0x0000002E: "Thrasher",
+    0x0000002F: "Thrasher Champ",
+    0x00000030: "Wild Thing",
+    0x00000031: "Wild Thing Champ",
+    0x00000032: "Wolverine",
+    0x00000033: "Wolverine Champ",
+    0x00000034: "1980 Grave Digger",
+    0x00000035: "Grave Digger 20th Anniversary",
+    0x00000036: "The Incredible Hulk",
+    0x00000037: "iP Inland",
+    0x00000038: "Big Yellow",
+    0x00000039: "Hooch Wagon",
+    0x0000003A: "Dog Pound",
+    0x0000003B: "Bull Dog",
+    0x0000003C: "Armed Force",
+    0x0000003D: "Paddy Wagon",
+    0x0000003E: "Rayman"
+}
+
+CurrentWorldLookup = {
+    0x00000000: "Jungle Temple",
+    0x00000001: "Rome",
+    0x00000002: "Hollywood",
+    0x00000003: "The Junkyard",
+    0x00000004: "Big Apple",
+    0x00000005: "Snow Village",
+    0x00000006: "Military Base",
+    0x00000007: "Vegas Strip"
+}
+
+SeasonRoundLookup = {
+    0x00000000: "Round 1",
+    0x00000001: "Round 2",
+    0x00000002: "Round 3",
+    0x00000003: "Round 4",
+    0x00000004: "Round 5",
+    0x00000005: "Round 6",
+    0x00000006: "Round 7",
+    0x00000007: "Round 8"
+}
+
+SeasonGamestyleLookup = {
+    0x00: "Death Match",
+    0x01: "Cash Grab",
+    0x02: "Points"
+}
+
+ExhibitionGamestyleLookup = {
+    0x00: "Death Match",
+    0x01: "Cash Grab",
+    0x02: "Points"
+}
+
+MinigameGamestyleLookup = {
+    0x00000000: "Stadium Freestyle",
+    0x00000001: "Stadium Race",
+    0x00000002: "Lava Island",
+    0x00000003: "Canyon Race",
+    0x00000004: "Stadium Challenge",
+    0x00000005: "Arena Challenge"
+}
+
+SeasonNumberLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+DifficultyLookup = {
+    0x00: "Easy",
+    0x01: "Normal",
+    0x02: "Hard",
+    0x03: "Extreme"
+}
+
+// ---------- Season Number Lookup ----------
+SeasonNumberLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+// ---------- Season RP ----------
+SeasonNumberLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+SeasonRoundLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+SeasonNumberLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+SeasonRoundLookup = {
+    0x00000000: "1",
+    0x00000001: "2",
+    0x00000002: "3",
+    0x00000003: "4",
+    0x00000004: "5",
+    0x00000005: "6",
+    0x00000006: "7",
+    0x00000007: "8"
+}
+
+
+function ExhibitionRichPresenceForDifficulty(difficulty)
+{
+    // Death Match
+    rich_presence_conditional_display(
+        InGame() == 1 &&
+        MainMode() == 0x0 &&
+        ExhibitionGamestyle() == 0x0 &&
+        Difficulty() == difficulty,
+        "Exhibition | Death Match | {0} | {1} | {2} | Trucks Left:{3}",
+        rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+        rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+        rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+        rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+    )
+
+    // Cash Grab
+    if difficulty == 0x0
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Exhibition | Cash Grab | {0} | {1} | {2} | Cash Grabs:{3}/14",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x1
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Exhibition | Cash Grab | {0} | {1} | {2} | Cash Grabs:{3}/16",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x2
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Exhibition | Cash Grab | {0} | {1} | {2} | Cash Grabs:{3}/18",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x3
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Exhibition | Cash Grab | {0} | {1} | {2} | Cash Grabs:{3}/19",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    // Points
+    if difficulty == 0x0
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Exhibition | Points | {0} | {1} | {2} | Points:{3}/5000",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x1
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Exhibition | Points | {0} | {1} | {2} | Points:{3}/10000",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x2
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Exhibition | Points | {0} | {1} | {2} | Points:{3}/15000",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x3
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Exhibition | Points | {0} | {1} | {2} | Points:{3}/20000",
+            rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+}
+
+
+function SeasonRichPresenceForDifficulty(difficulty)
+{
+// Death Match
+if difficulty == 0x0
+{
+    rich_presence_conditional_display(
+        InGame() == 1 &&
+        MainMode() == 0x1 &&
+        SeasonGamestyle() == 0x0 &&
+        Difficulty() == difficulty,
+        "Season {0} - {1} | Death Match | {2} | {3} | Trucks Left:{4}",
+        rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+        rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+        rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+        rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+    )
+}
+
+if difficulty == 0x1
+{
+    rich_presence_conditional_display(
+        InGame() == 1 &&
+        MainMode() == 0x1 &&
+        SeasonGamestyle() == 0x0 &&
+        Difficulty() == difficulty,
+        "Season {0} - {1} | Death Match | {2} | {3} | Trucks Left:{4}",
+        rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+        rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+        rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+        rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+    )
+}
+
+if difficulty == 0x2
+{
+    rich_presence_conditional_display(
+        InGame() == 1 &&
+        MainMode() == 0x1 &&
+        SeasonGamestyle() == 0x0 &&
+        Difficulty() == difficulty,
+        "Season {0} - {1} | Death Match | {2} | {3} | Trucks Left:{4}",
+        rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+        rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+        rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+        rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+    )
+}
+
+if difficulty == 0x3
+{
+    rich_presence_conditional_display(
+        InGame() == 1 &&
+        MainMode() == 0x1 &&
+        SeasonGamestyle() == 0x0 &&
+        Difficulty() == difficulty,
+        "Season {0} - {1} | Death Match | {2} | {3} | Trucks Left:{4}",
+        rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+        rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+        rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+        rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+    )
+}
+
+    // Cash Grab
+    if difficulty == 0x0
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Cash Grab | {2} | {3} | Cash:{4} | Cash Grabs:{5}/14",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
+            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x1
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Cash Grab | {2} | {3} | Cash:{4} | Cash Grabs:{5}/16",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
+            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x2
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Cash Grab | {2} | {3} | Cash:{4} | Cash Grabs:{5}/18",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
+            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x3
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x1 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Cash Grab | {2} | {3} | Cash:{4} | Cash Grabs:{5}/19",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
+            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+        )
+    }
+
+    // Points
+    if difficulty == 0x0
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Points | {2} | {3} | Points:{4}/5000",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x1
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Points | {2} | {3} | Points:{4}/10000",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x2
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Points | {2} | {3} | Points:{4}/15000",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+
+    if difficulty == 0x3
+    {
+        rich_presence_conditional_display(
+            InGame() == 1 &&
+            MainMode() == 0x1 &&
+            SeasonGamestyle() == 0x2 &&
+            Difficulty() == difficulty,
+            "Season {0} - {1} | Points | {2} | {3} | Points:{4}/20000",
+            rich_presence_lookup("Season", CurrentSeason(), SeasonNumberLookup),
+            rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
+            rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+            rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
+            rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+        )
+    }
+}
+
+// Stadium Freestyle (Points)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x0,
+    "Stadium Freestyle | {0} | {1} | Points:{2}",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Points", CurrentPointsOrCash(), format="VALUE")
+)
+
+// Stadium Race (Position)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x1,
+    "Stadium Race | {0} | {1} | Position:{2}/4",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Position", RaceCurrentPosition(), format="VALUE")
+)
+
+// Lava Island (Trucks Left)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x2,
+    "Lava Island | {0} | {1} | Trucks Left:{2}",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+)
+
+// Canyon Race (Position)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x3,
+    "Canyon Race | {0} | {1} | Position:{2}/4",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Position", RaceCurrentPosition(), format="VALUE")
+)
+
+// Stadium Challenge (Trucks Left)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x4,
+    "Stadium Challenge | {0} | {1} | Trucks Left:{2}",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+)
+
+// Arena Challenge (Trucks Left)
+rich_presence_conditional_display(
+    InGame() == 1 &&
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x5,
+    "Arena Challenge | {0} | {1} | Trucks Left:{2}",
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
+    rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
+    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+)
+
+for difficulty in range(0x0, 0x3)
+{
+    ExhibitionRichPresenceForDifficulty(difficulty)
+    SeasonRichPresenceForDifficulty(difficulty)
+}
+rich_presence_display("Monster Jam: Maximum Destruction")
+
+
+
+///////////////////////////////Achievements to Follow//////////////////////////////////////////////
+
+function SeasonCurrentWorld() => dword(0x1EED00)
+function IngameWinIndicator() => dword(0x217E88)
+
+function EmitSeasonRoundProgression(title, description, round)
+{
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = 10,
+        type = "progression",
+        trigger =
+            Difficulty() >= 0x01 &&
+            prev(IngameWinIndicator() == 0x00) &&
+            IngameWinIndicator() == 0x01 &&
+            SeasonCurrentWorld() == round
+    )
+}
+
+function EmitSeasonFinalWin(title, description, difficulty)
+{
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = 25,
+        type = "win_condition",
+        trigger =
+            Difficulty() >= difficulty &&
+            SeasonCurrentWorld() == 0x07 &&
+            prev(IngameWinIndicator() == 0x00) &&
+            IngameWinIndicator() == 0x01
+    )
+}
+
+// --- Rounds 1–7 ---
+EmitSeasonRoundProgression(
+    "Rolling Start",
+    "Win Round 1 of a Season on Normal difficulty or higher.",
+    0x00
+)
+
+EmitSeasonRoundProgression(
+    "First Crush",
+    "Win Round 2 of a Season on Normal difficulty or higher.",
+    0x01
+)
+
+EmitSeasonRoundProgression(
+    "Building Momentum",
+    "Win Round 3 of a Season on Normal difficulty or higher.",
+    0x02
+)
+
+EmitSeasonRoundProgression(
+    "Halfway Havoc",
+    "Win Round 4 of a Season on Normal difficulty or higher.",
+    0x03
+)
+
+EmitSeasonRoundProgression(
+    "Crushing the Competition",
+    "Win Round 5 of a Season on Normal difficulty or higher.",
+    0x04
+)
+
+EmitSeasonRoundProgression(
+    "No Turning Back",
+    "Win Round 6 of a Season on Normal difficulty or higher.",
+    0x05
+)
+
+EmitSeasonRoundProgression(
+    "One Step from Glory",
+    "Win Round 7 of a Season on Normal difficulty or higher.",
+    0x06
+)
+
+// --- Final Round ---
+EmitSeasonFinalWin(
+    "Season Champion",
+    "Win the final round of a Season on Normal difficulty or higher.",
+    0x1
+)
+EmitSeasonFinalWin(
+    "Hard Season, Harder Hits",
+    "Complete a Season on Hard difficulty or higher.",
+    0x02
+)
+EmitSeasonFinalWin(
+    "Extreme Measures",
+    "Complete a Season on Extreme difficulty.",
+    0x03
+)
+
+function EmitCrownedChampionAchievement(title, description, champUnlockFlag)
+{
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = 5,
+        trigger =
+            prev(SeasonChampScreen() == 0x0A) &&
+            SeasonChampScreen() == 0x0B &&
+            prev(champUnlockFlag != 0x02) &&
+            champUnlockFlag == 0x02
+    )
+}
+
+// Emit all Champ trucks
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Airbourne Ranger",
+    "Unlock the Champion version of Airbourne Ranger.",
+    MonsterTruckAirbourneRangerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: American Guardian",
+    "Unlock the Champion version of American Guardian.",
+    MonsterTruckAmericanGuardianChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Avenger",
+    "Unlock the Champion version of Avenger.",
+    MonsterTruckAvengerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Blacksmith",
+    "Unlock the Champion version of Blacksmith.",
+    MonsterTruckBlacksmithChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Bulldozer",
+    "Unlock the Champion version of Bulldozer.",
+    MonsterTruckBulldozerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Bustin' Loose",
+    "Unlock the Champion version of Bustin' Loose.",
+    MonsterTruckBustinLooseChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Destroyer",
+    "Unlock the Champion version of Destroyer.",
+    MonsterTruckDestroyerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: El Toro Loco",
+    "Unlock the Champion version of El Toro Loco.",
+    MonsterTruckElToroLocoChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Eradicator",
+    "Unlock the Champion version of Eradicator.",
+    MonsterTruckEradicatorChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Goldberg",
+    "Unlock the Champion version of Goldberg.",
+    MonsterTruckGoldbergChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Grave Digger",
+    "Unlock the Champion version of Grave Digger.",
+    MonsterTruckGraveDiggerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Gun Slinger",
+    "Unlock the Champion version of Gun Slinger.",
+    MonsterTruckGunSlingerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: King Krunch",
+    "Unlock the Champion version of King Krunch.",
+    MonsterTruckKingKrunchChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Madusa",
+    "Unlock the Champion version of Madusa.",
+    MonsterTruckMadusaChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Mountaineer",
+    "Unlock the Champion version of Mountaineer.",
+    MonsterTruckMountaineerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Predator",
+    "Unlock the Champion version of Predator.",
+    MonsterTruckPredatorChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Prowler",
+    "Unlock the Champion version of Prowler.",
+    MonsterTruckProwlerChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Reptoid",
+    "Unlock the Champion version of Reptoid.",
+    MonsterTruckReptoidChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Spider-Man",
+    "Unlock the Champion version of Spider-Man.",
+    MonsterTruckSpidermanChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Blue Thunder",
+    "Unlock the Champion version of Blue Thunder.",
+    MonsterTruckBlueThunderChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Sting",
+    "Unlock the Champion version of Sting.",
+    MonsterTruckStingChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Sudden Impact",
+    "Unlock the Champion version of Sudden Impact.",
+    MonsterTruckSuddenImpactChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Survivor",
+    "Unlock the Champion version of Survivor.",
+    MonsterTruckSurvivorChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Thrasher",
+    "Unlock the Champion version of Thrasher.",
+    MonsterTruckThrasherChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Wild Thang",
+    "Unlock the Champion version of Wild Thang.",
+    MonsterTruckWildThangChampTruck()
+)
+
+EmitCrownedChampionAchievement(
+    "Crowned Champion: Wolverine",
+    "Unlock the Champion version of Wolverine.",
+    MonsterTruckWolverineChampTruck()
+)
+
+function EmitTruckUnlockAchievement(title, description, points, unlockFlag, unlockValue)
+{
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = points,
+        trigger =
+            SeasonCurrentWorld() == 0x07 &&
+            prev(IngameWinIndicator() == 0x00) &&
+            IngameWinIndicator() == 0x01 &&
+            prev(unlockFlag != unlockValue) &&
+            unlockFlag == unlockValue
+    )
+}
+
+// --- Season 1 Unlocks ---
+EmitTruckUnlockAchievement(
+    "Grave Beginnings",
+    "Unlock the 1983 Grave Digger truck by completing Season 1 of Cash Grab on Normal difficulty.",
+    2,
+    MonsterTruck1983GraveDiggerTruck(),
+    0x01
+)
+
+EmitTruckUnlockAchievement(
+    "Heavy Hauler",
+    "Unlock the iP/Inland truck completing Season 1 on Hard difficulty with any Champ Truck.",
+    10,
+    MonsterTruckIpInland(),
+    0x02
+)
+
+EmitTruckUnlockAchievement(
+    "Let the Dogs Out",
+    "Unlock The Dog Pound truck by completing Season 1 of any event type on Extreme difficulty.",
+    10,
+    MonsterTruckFogPoundTruck(),
+    0x01
+)
+
+// --- Season 2 Unlocks ---
+EmitTruckUnlockAchievement(
+    "Anniversary Edition",
+    "Unlock the 20th Anniversary Grave Digger truck by completing Season 2 of Cash Grab on Normal difficulty.",
+    2,
+    MonsterTruck20thAnniversaryGraveDiggerTruck(),
+    0x02
+)
+
+EmitTruckUnlockAchievement(
+    "Back in the Big Yellow",
+    "Unlock the Big Yellow truck by completing any Season 2 event type on Hard difficulty.",
+    10,
+    MonsterTruckBigYellowTruck(),
+    0x01
+)
+
+// --- Season 3 Unlocks ---
+EmitTruckUnlockAchievement(
+    "Jeep Thrills",
+    "Unlock the Hooch Wagon truck by completing any Season 3 event type on Hard difficulty.",
+    10,
+    MonsterTruckHoochWagonTruck(),
+    0x02
+)
+
+EmitTruckUnlockAchievement(
+    "Gamma Grab",
+    "Unlock The Incredible Hulk truck by completing Season 3 of Cash Grab on Normal difficulty.",
+    2,
+    MonsterTruckTheIncredibleHulkTruck(),
+    0x01
+)

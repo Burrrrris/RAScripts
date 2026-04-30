@@ -3048,7 +3048,7 @@ function ComboBookCliffordAdoptane_12SpaceBar() => bit4(0x276670)
 //          Bit3 - Super Freek
 //          Bit4 - Super Shocker
 //          Bit7 - Super Triplets
-function ComboBookCliffordAdoptane_13Bit0() => bit0(0x276671)
+function ComboBookCliffordAdoptane_13StuntDouble() => bit0(0x276671)
 function ComboBookCliffordAdoptane_13SuperDuper() => bit2(0x276671)
 function ComboBookCliffordAdoptane_13SuperFreek() => bit3(0x276671)
 function ComboBookCliffordAdoptane_13SuperShocker() => bit4(0x276671)
@@ -5638,7 +5638,7 @@ function CliffordAdoptaneComboBook()
         ComboBookCliffordAdoptane_12SixPack(),
         ComboBookCliffordAdoptane_12SmoothCriminal(),
         ComboBookCliffordAdoptane_12SpaceBar(),
-        ComboBookCliffordAdoptane_13Bit0(),
+        ComboBookCliffordAdoptane_13StuntDouble(),
         ComboBookCliffordAdoptane_13SuperDuper(),
         ComboBookCliffordAdoptane_13SuperFreek(),
         ComboBookCliffordAdoptane_13SuperShocker(),
@@ -6257,6 +6257,12 @@ CircuitStageLookup = {
     0xd: "Stage 14",
 }
 
+CircuitMotoLookup = {
+    0x0: "Moto 1",
+    0x1: "Moto 2",
+    0x2: "Main Event",
+}
+
 rich_presence_conditional_display(
     Demo() == 0x1,
     "Watching the Demo"
@@ -6332,10 +6338,10 @@ function CircuitRichPresenceForCharacter(characterId, stageAccessor)
             CurrentSelectedCharacter() == characterId &&
             stageAccessor <= 0x5 &&
             CircuitMoto() == moto,
-            "{0} • Circuit • {1} • Moto {2} • {3} • Position:{4}/6",
+            "{0} • Circuit • {1} • {2} • {3} • Position:{4}/6",
             rich_presence_lookup("Character", CurrentSelectedCharacter(), CurrentCharacterLookup),
             rich_presence_lookup("Stage", stageAccessor, CircuitStageLookup),
-            rich_presence_value("Moto", CircuitMoto() + 1, format="VALUE"),
+            rich_presence_lookup("Moto", CircuitMoto(), CircuitMotoLookup),
             rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
             rich_presence_value("Position", InGamePlayerCurrentPosition(), format="VALUE")
         )
@@ -6352,7 +6358,7 @@ function CircuitRichPresenceForCharacter(characterId, stageAccessor)
         rich_presence_lookup("Character", CurrentSelectedCharacter(), CurrentCharacterLookup),
         rich_presence_lookup("Stage", stageAccessor, CircuitStageLookup),
         rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
-        rich_presence_value("Score", InGameScore_1(), format="VALUE")
+        rich_presence_value("Score", InGameScore_1(), format="SCORE")
     )
 
 // Stages 8-13: Freekstyle
@@ -6371,7 +6377,7 @@ for racerNumber in range(0x0, 0x5)
         rich_presence_lookup("Stage", stageAccessor, CircuitStageLookup),
         rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
         rich_presence_value("Position", InGamePlayerCurrentPosition(), format="VALUE"),
-        rich_presence_value("Score", ScoreForRacer(racerNumber), format="VALUE")
+        rich_presence_value("Score", ScoreForRacer(racerNumber), format="SCORE")
     )
 }
 }
@@ -6448,7 +6454,7 @@ function RaceRichPresenceForCharacter(characterId)
             rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
             rich_presence_lookup("Difficulty", SingleRaceRaceFreekstyleDifficulty(), DifficultyLookup),
             rich_presence_value("Position", InGamePlayerCurrentPosition(), format="VALUE"),
-            rich_presence_value("Score", ScoreForRacer(racerNumber), format="VALUE")
+            rich_presence_value("Score", ScoreForRacer(racerNumber), format="SCORE")
         )
     }
 }
@@ -6463,7 +6469,7 @@ function FreestyleRichPresenceForCharacter(characterId)
         "{0} • Freestyle • {1} • Score:{2}",
         rich_presence_lookup("Character", CurrentSelectedCharacter(), CurrentCharacterLookup),
         rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
-        rich_presence_value("Score", InGameScore_1(), format="VALUE")
+        rich_presence_value("Score", InGameScore_1(), format="SCORE")
     )
 }
 
@@ -6496,7 +6502,7 @@ function FreekstyleRichPresenceForCharacter(characterId)
             rich_presence_lookup("Track", CurrentTrack(), CurrentTrackLookup),
             rich_presence_lookup("Difficulty", SingleRaceRaceFreekstyleDifficulty(), DifficultyLookup),
             rich_presence_value("Position", InGamePlayerCurrentPosition(), format="VALUE"),
-            rich_presence_value("Score", ScoreForRacer(racerNumber), format="VALUE")
+            rich_presence_value("Score", ScoreForRacer(racerNumber), format="SCORE")
         )
     }
 }
@@ -6954,7 +6960,7 @@ EmitUnlockAllBikesAchievement(
 
 EmitUnlockAllTricksSkinAchievement(
     601114,
-    "Airborne madness",
+    "Airborne Madness",
     "Land every single trick for Mike Metzger to unlock his 'Ecko MX' skin.",
     MikeMetzgerTricksUnlockedCount(),
     50
@@ -7108,7 +7114,7 @@ EmitUnlockAllCombosAchievement(
 
 EmitBeatRivalMainEventAchievement(
     601134,
-    "Mulisha Style!",
+    "What You Lookin' At?",
     "Beat Mike Jones after he gets in your face in the Main Event of a Circuit race.",
     MikeJones()
 )
@@ -7281,7 +7287,7 @@ EmitBonusZoneAchievement(
 
 EmitBonusZoneAchievement(
     601190,
-    "Crust Crusher",
+    "Crust Zone",
     "Hit all 7 Bonus Zones on Crust Belt in any Gamemode.",
     0x1,
     7
