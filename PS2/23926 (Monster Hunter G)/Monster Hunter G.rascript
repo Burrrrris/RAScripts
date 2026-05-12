@@ -1,12 +1,143 @@
 // Monster Hunter G
 // #ID = 23926
 
-AchievementSetOnline = achievement_set("Online", type="BONUS", id=38354)
+AchievementSetOnline = achievement_set("Minegarde", type="BONUS", id=38354)
+
+// $2F7D19: [8-Bit] New Game Indicator
+//          0x3 - New Game
+//          0xa - Save Imported
+function NewGameIndicator() => byte(0x2F7D19)
+
+// $2ff2ac: [8-Bit] Current Quest Player Count
+//0x0 - Solo
+//0x1 - 2 Player
+//0x2 - 3 Player
+//0x3 - 4 Player
+function OnQuestPlayerCount() => byte(0x2ff2ac)
 
 // $3065C4: [16-Bit] Area 1 Loaded Indicator
 //          0x1 In Area 1
 function Area1LoadedIndicator() => word(0x3065C4)
 
+// $3069CA: [16-Bit] Area 4 (G-Rank) Loaded Indicator
+//          0x1 In Area 4
+function Area4GrankLoadedIndicator() => word(0x3069CA)
+
+// $308913: [8-Bit] Online - In Quest - Host Player Data - Equipped Legs
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedLegs() => byte(0x308913)
+
+// $308915: [8-Bit] Online - In Quest - Host Player Data - Equipped Head
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedHead() => byte(0x308915)
+
+// $308916: [8-Bit] Online - In Quest - Host Player Data - Equipped Body
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedBody() => byte(0x308916)
+
+// $308917: [8-Bit] Online - In Quest - Host Player Data - Equipped Hand
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedHand() => byte(0x308917)
+
+// $308918: [8-Bit] Online - In Quest - Host Player Data - Equipped Waist
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedWaist() => byte(0x308918)
+
+// $30891B: [8-Bit] Online - In Quest - Host Player Data - Class Type
+//          0x6 - Blademaster
+//          0x7 - Gunner
+function OnlineInQuestHostPlayerDataClassType() => byte(0x30891B)
+
+// $30891C: [16-Bit] Online - In Quest - Host Player Data - Equipped Weapon
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestHostPlayerDataEquippedWeapon() => word(0x30891C)
+
+// $308953: [8-Bit] Online - In Quest - Player 2 Data - Equipped Legs
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedLegs() => byte(0x308953)
+
+// $308955: [8-Bit] Online - In Quest - Player 2 Data - Equipped Head
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedHead() => byte(0x308955)
+
+// $308956: [8-Bit] Online - In Quest - Player 2 Data - Equipped Body
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedBody() => byte(0x308956)
+
+// $308957: [8-Bit] Online - In Quest - Player 2 Data - Equipped Hand
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedHand() => byte(0x308957)
+
+// $308958: [8-Bit] Online - In Quest - Player 2 Data - Equipped Waist
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedWaist() => byte(0x308958)
+
+// $30895B: [8-Bit] Online - In Quest - Player 2 Data - Class Type
+//          0x6 - Blademaster
+//          0x7 - Gunner
+function OnlineInQuestPlayer2DataClassType() => byte(0x30895B)
+
+// $30895C: [16-Bit] Online - In Quest - Player 2 Data - Equipped Weapon
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer2DataEquippedWeapon() => word(0x30895C)
+
+// $308993: [8-Bit] Online - In Quest - Player 3 Data - Equipped Legs
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedLegs() => byte(0x308993)
+
+// $308995: [8-Bit] Online - In Quest - Player 3 Data - Equipped Head
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedHead() => byte(0x308995)
+
+// $308996: [8-Bit] Online - In Quest - Player 3 Data - Equipped Body
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedBody() => byte(0x308996)
+
+// $308997: [8-Bit] Online - In Quest - Player 3 Data - Equipped Hand
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedHand() => byte(0x308997)
+
+// $308998: [8-Bit] Online - In Quest - Player 3 Data - Equipped Waist
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedWaist() => byte(0x308998)
+
+// $30899B: [8-Bit] Online - In Quest - Player 3 Data - Class Type
+//          0x6 - Blademaster
+//          0x7 - Gunner
+function OnlineInQuestPlayer3DataClassType() => byte(0x30899B)
+
+// $30899C: [16-bit] Online - In Quest - Player 3 Data - Equipped Weapon
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer3DataEquippedWeapon() => word(0x30899C)
+
+// $3089D3: [8-Bit] Online - In Quest - Player 4 Data - Equipped Legs
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedLegs() => byte(0x3089D3)
+
+// $3089D5: [8-Bit] Online - In Quest - Player 4 Data - Equipped Head
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedHead() => byte(0x3089D5)
+
+// $3089D6: [8-Bit] Online - In Quest - Player 4 Data - Equipped Body
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedBody() => byte(0x3089D6)
+
+// $3089D7: [8-Bit] Online - In Quest - Player 4 Data - Equipped Hand
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedHand() => byte(0x3089D7)
+
+// $3089D8: [8-Bit] Online - In Quest - Player 4 Data - Equipped Waist
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedWaist() => byte(0x3089D8)
+
+// $3089DB: [8-Bit] Online - In Quest - Player 4 Data - Class Type
+//          0x6 - Blademaster
+//          0x7 - Gunner
+function OnlineInQuestPlayer4DataClassType() => byte(0x3089DB)
+
+// $3089DC: [16-Bit] Online - In Quest - Player 4 Data - Equipped Weapon
+//          **See 0x0032c254 for list of equipment
+function OnlineInQuestPlayer4DataEquippedWeapon() => word(0x3089DC)
 // $3069CA: [16-Bit] Area 4 (G-Rank) Loaded Indicator
 //          0x1 In Area 4
 function Area4GrankLoadedIndicator() => word(0x3069CA)
@@ -108,6 +239,7 @@ function FlagLaoShunIntroUnlock() => bit0(0x32C237)
 function FlagKhezuMetInCave() => bit2(0x32C237)
 function FlagCastleSchradeFatalisIntro() => bit3(0x32C237)
 function FlagBefrienedPoogie() => bit5(0x32C237)
+function FlagImportedPoogieSkin() => bit6(0x32C237)
 function FlagTheLegendaryBlackDragon1Intro() => bit7(0x32C237)
 
 // $32C238: [Bitset]
@@ -2474,7 +2606,7 @@ function CompletedTown2StarGetMeSootstoneOre() => bit7(0x32CE0E)
 //          bit3 - [Town 3-Star] Slay the Rathian!
 //          bit4 - [Town 2-Star] Re-supply the Dragonator
 //          bit5 - [Town 2-Star] Basarios: Unseen Peril!
-//          bit6 - [Town 3-Star] Slay the Rathian!
+//          bit6 - [Town 3-Star] Volcanic Valor
 //          bit7 - [Town 3-Star] Ioprey Hunting
 function CompletedTown2StarSlayTheGendrome() => bit0(0x32CE0F)
 function CompletedTown3StarTheShadowInTheCave() => bit1(0x32CE0F)
@@ -2482,16 +2614,19 @@ function CompletedTown3StarTheFearsomeGravios() => bit2(0x32CE0F)
 function CompletedTown3StarSlayTheRathian() => bit3(0x32CE0F)
 function CompletedTown2StarReSupplyTheDragonator() => bit4(0x32CE0F)
 function CompletedTown2StarBasariosUnseenPeril() => bit5(0x32CE0F)
-function CompletedTown3StarSlayTheRathian_2() => bit6(0x32CE0F)
+function CompletedTown3StarVolcanicValor() => bit6(0x32CE0F)
 function CompletedTown3StarIopreyHunting() => bit7(0x32CE0F)
 
 // $32CE10: [Bitflags] Quest Completion
+//          bit0 - [Town 3-Star] Leaders of the Ioprey
 //          bit1 - [Town 3-Star] Bring us Powderstone!
+//          bit2 - [Town 3-Star]
 //          bit3 - [Town 1-Star] Attack of the Giant Bugs
 //          bit4 - [Town 1-Star] Jungle Menace
 //          bit5 - [Town 1-Star] The Mushroom Hunt!
 //          bit6 - [Town 1-Star] Show me your Cooking Skills!
 //          bit7 - [Town 2-Star] Slay the Gypceros!
+function CompletedTown3StarLeadersOfTheIoprey() => bit0(0x32CE10)
 function CompletedTown3StarBringUsPowderstone() => bit1(0x32CE10)
 function CompletedTown1StarAttackOfTheGiantBugs() => bit3(0x32CE10)
 function CompletedTown1StarJungleMenace() => bit4(0x32CE10)
@@ -2505,12 +2640,16 @@ function CompletedTown2StarSlayTheGypceros() => bit7(0x32CE10)
 //          bit2 - [Town 3-Star] Slay the Iodrome
 //          bit3 - [Town 3-Star] Water Wyvern in the Jungle
 //          bit4 - [Town 3-Star] Wyvern Egg Hunt
+//          bit5 - [Town 3-Star] Queen of the Jungle!
+//          bit6 - [Town 3-Star] Catch a Rathalos
 //          bit7 - [Town 2-Star] Catch a Yian Kut-Ku
 function CompletedTown2StarMoreCoalPlease() => bit0(0x32CE11)
 function CompletedTown3StarWyvernInTheDarkness() => bit1(0x32CE11)
 function CompletedTown3StarSlayTheIodrome() => bit2(0x32CE11)
 function CompletedTown3StarWaterWyvernInTheJungle() => bit3(0x32CE11)
 function CompletedTown3StarWyvernEggHunt() => bit4(0x32CE11)
+function CompletedTown3StarQueenOfTheJungle() => bit5(0x32CE11)
+function CompletedTown3StarCatchARathalos() => bit6(0x32CE11)
 function CompletedTown2StarCatchAYianKutKu() => bit7(0x32CE11)
 
 // $32CE12: [Bitflags] Quest Completion
@@ -2804,19 +2943,19 @@ function CompletedVillage5StarLadyGourmetsDream() => bit7(0x32CE21)
 // $32CE22: [Bitflags] Quest Completion
 //          bit0 - [Village 5-Star] The Plague of Yian Kut-Ku
 //          bit1 - [Village 5-Star] Fang of the Iodrome
-//          bit2 - [Village 5-Star] Lady Gourmet's Dream
+//          bit2 - [Village 5-Star] Attack of the Rathalos
 //          bit3 - [Village 5-Star] Attack of the Rathalos (Azure)
-//          bit4 - [Village 5-Star] Catch a Ratholos
+//          bit4 - [Village 5-Star] Catch a Rathalos
 //          bit5 - [Village 5-Star] Water Wyvern in the Desert
-//          bit6 - [Village 5-Star] Basarioes: Unseen Peril
+//          bit6 - [Village 5-Star] Basarios: Unseen Peril
 //          bit7 - [Village 5-Star] Queen of the Desert
 function CompletedVillage5StarThePlagueOfYianKutKu() => bit0(0x32CE22)
 function CompletedVillage5StarFangOfTheIodrome() => bit1(0x32CE22)
-function CompletedVillage5StarLadyGourmetsDream_2() => bit2(0x32CE22)
+function CompletedVillage5StarAttackOfTheRathalos() => bit2(0x32CE22)
 function CompletedVillage5StarAttackOfTheRathalosAzure() => bit3(0x32CE22)
-function CompletedVillage5StarCatchARatholos() => bit4(0x32CE22)
+function CompletedVillage5StarCatchARathalos() => bit4(0x32CE22)
 function CompletedVillage5StarWaterWyvernInTheDesert() => bit5(0x32CE22)
-function CompletedVillage5StarBasarioesUnseenPeril() => bit6(0x32CE22)
+function CompletedVillage5StarBasariosUnseenPeril() => bit6(0x32CE22)
 function CompletedVillage5StarQueenOfTheDesert() => bit7(0x32CE22)
 
 // $32CE23: [Bitflags] Quest Completion
@@ -2839,7 +2978,7 @@ function CompletedVillage6StarTheRunawayDiablos() => bit7(0x32CE23)
 
 
 // $32CE24: [Bitflags] Quest Completion
-//          bit0 - [Village 6-Star] Handle With Care!
+//          bit0 - [Village 6-Star] The Shadow in the Cave
 //          bit1 - [Village 6-Star] A Troublesome Pair
 //          bit2 - [Village 6-Star] A Giant Dragon Invades!
 //          bit3 - [Training Quests] Kut-Ku Greatsword
@@ -2847,7 +2986,7 @@ function CompletedVillage6StarTheRunawayDiablos() => bit7(0x32CE23)
 //          bit5 - [Training Quests] Kut-Ku Lance
 //          bit6 - [Training Quests] Kut-Ku Sword and Shield
 //          bit7 - [Training Quests] Kut-Ku Bowgun
-function CompletedVillage6StarHandleWithCare_2() => bit0(0x32CE24)
+function CompletedVillage6StarTheShadowInTheCave() => bit0(0x32CE24)
 function CompletedVillage6StarATroublesomePair() => bit1(0x32CE24)
 function CompletedVillage6StarAGiantDragonInvades() => bit2(0x32CE24)
 function CompletedTrainingQuestsKutKuGreatsword() => bit3(0x32CE24)
@@ -3021,14 +3160,14 @@ function EquippedArms() => byte(0x32CE8D)
 function EquippedWaist() => byte(0x32CE8E)
 
 // $32CE90: [8bit] Item Combine Flags
-//          bit0 - No. 79 Recov S Lv2
-//          bit1 - No. 2 Mega Potion
-//          bit2 - No. 4 Mega Nutrients
-//          bit3 - No. 7 Max Potion
-//          bit4 - No. 15 Power Pill
-//          bit5 - No. 18 Armor Pill
-//          bit6 - No. 8 Ancient Potion
-//          bit7 - No. 14 Mega Demondrug
+// bit0 - No. 79 Recov S Lv2
+// bit1 - No. 2 Mega Potion
+// bit2 - No. 4 Mega Nutrients
+// bit3 - No. 7 Max Potion
+// bit4 - No. 15 Power Pill
+// bit5 - No. 18 Armor Pill
+// bit6 - No. 8 Ancient Potion
+// bit7 - No. 14 Mega Demondrug
 function HasRecovSLv2Combine() => bit0(0x32CE90)
 function HasMegaPotionCombine() => bit1(0x32CE90)
 function HasMegaNutrientsCombine() => bit2(0x32CE90)
@@ -3038,32 +3177,33 @@ function HasArmorPillCombine() => bit5(0x32CE90)
 function HasAncientPotionCombine() => bit6(0x32CE90)
 function HasMegaDemondrugCombine() => bit7(0x32CE90)
 
-
 // $32CE91: [Bitflags] Item Combine Flags
-//          bit0 - No. 53 Demon Flute
-//          bit1 - No. 17 Mega Armorskin
-//          bit2 - No. 54 Armor Flute
-//          bit4 - No. 33 Sm Barrel-Bomb+
-//          bit5 - No. 35 Lg Barrel-Bomb+
-//          bit6 - No. 11 Power Juice
-//          bit7 - No. 10 Immunizer
+// bit0 - No. 53 Demon Flute
+// bit1 - No. 17 Mega Armorskin
+// bit2 - No. 54 Armor Flute
+// bit3 - No. 108 [Alchemy] Monster Broth
+// bit4 - No. 33 Sm Barrel-Bomb+
+// bit5 - No. 35 Lg Barrel-Bomb+
+// bit6 - No. 11 Power Juice
+// bit7 - No. 10 Immunizer
 function HasDemonFluteCombine() => bit0(0x32CE91)
 function HasMegaArmorskinCombine() => bit1(0x32CE91)
 function HasArmorFluteCombine() => bit2(0x32CE91)
+function HasAlchemyMonsterBrothCombine() => bit3(0x32CE91)
 function HasSmBarrelBombPlusCombine() => bit4(0x32CE91)
 function HasLgBarrelBombPlusCombine() => bit5(0x32CE91)
 function HasPowerJuiceCombine() => bit6(0x32CE91)
 function HasImmunizerCombine() => bit7(0x32CE91)
 
 // $32CE92: [Bitflags] Item Combine Flags
-//          bit0 - No. 13 Demondrug
-//          bit1 - No. 16 Armorskin
-//          bit2 - No.34 Lg Barrel-Bomb
-//          bit3 - No.36 Sonic Bomb
-//          bit4 - No. 50 Lifepowder
-//          bit5 - No. 51 Health Flute
-//          bit6 - No. 58 Powertalon
-//          bit7 - No. 59 Powertalon
+// bit0 - No. 13 Demondrug
+// bit1 - No. 16 Armorskin
+// bit2 - No.34 Lg Barrel-Bomb
+// bit3 - No.36 Sonic Bomb
+// bit4 - No. 50 Lifepowder
+// bit5 - No. 51 Health Flute
+// bit6 - No. 58 Powertalon
+// bit7 - No. 59 Powertalon
 function HasDemondrugCombine() => bit0(0x32CE92)
 function HasArmorskinCombine() => bit1(0x32CE92)
 function HasLgBarrelBombCombine() => bit2(0x32CE92)
@@ -3074,30 +3214,32 @@ function HasPowertalonCombine() => bit6(0x32CE92)
 function HasArmortalonCombine() => bit7(0x32CE92)
 
 // $32CE93: [Bitflags] Item Combine Flags
-//          bit0 - No. 24 Drugged Meat
-//          bit1 - No. 23 Tainted Meat
-//          bit2 - No. 22 Poisoned Meat
-//          bit3 - No. 12 Mega Juice
-//          bit5 - No. 56 Sleeping Thr Knf
-//          bit6 - No. 57 Paralyze Thr Knf
-//          bit7 - No. 55 Poison Thr Knf
+// bit0 - No. 24 Drugged Meat
+// bit1 - No. 23 Tainted Meat
+// bit2 - No. 22 Poisoned Meat
+// bit3 - No. 12 Mega Juice
+// bit4 - No. 93 [Alchemy] Raw Meat
+// bit5 - No. 56 Sleeping Thr Knf
+// bit6 - No. 57 Paralyze Thr Knf
+// bit7 - No. 55 Poison Thr Knf
 function HasDruggedMeatCombine() => bit0(0x32CE93)
 function HasTaintedMeatCombine() => bit1(0x32CE93)
 function HasPoisonedMeatCombine() => bit2(0x32CE93)
 function HasMegaJuiceCombine() => bit3(0x32CE93)
+function HasAlchemyRawMeatCombine() => bit4(0x32CE93)
 function HasSleepingThrowingKnifeCombine() => bit5(0x32CE93)
 function HasParalyzeThrowingKnifeCombine() => bit6(0x32CE93)
 function HasPoisonThrowingKnifeCombine() => bit7(0x32CE93)
 
 // $32CE94: [Bitflags] Item Combine Flags
-//          bit0 - No. 29 Dung Bomb
-//          bit1 - No. 26 Smoke Bomb
-//          bit2 - No. 27 Poison Smoke Bmb
-//          bit3 - No. 28 Flash Bomb
-//          bit4 - No. 37 Net
-//          bit5 - No. 38 Pitfall Trap
-//          bit6 - No. 46 Bugnet
-//          bit7 - No. 47 Mega Bugnet
+// bit0 - No. 29 Dung Bomb
+// bit1 - No. 26 Smoke Bomb
+// bit2 - No. 27 Poison Smoke Bmb
+// bit3 - No. 28 Flash Bomb
+// bit4 - No. 37 Net
+// bit5 - No. 38 Pitfall Trap
+// bit6 - No. 46 Bugnet
+// bit7 - No. 47 Mega Bugnet
 function HasDungBombCombine() => bit0(0x32CE94)
 function HasSmokeBombCombine() => bit1(0x32CE94)
 function HasPoisonSmokeBombCombine() => bit2(0x32CE94)
@@ -3108,14 +3250,14 @@ function HasBugnetCombine() => bit6(0x32CE94)
 function HasMegaBugnetCombine() => bit7(0x32CE94)
 
 // $32CE95: [Bitflags] Item Combine Flags
-//          bit0 - No. 45 Old Bugnet
-//          bit1 - No. 32 Sm Barrel-Bomb
-//          bit2 - No. 78 Recov S Lv1
-//          bit3 - No. 74 Flaming S
-//          bit4 - No. 84 Sleep S Lv1
-//          bit5 - No. 82 Stun S Lv1
-//          bit6 - No. 80 Poison S Lv1
-//          bit7 - No. 86 Paint S
+// bit0 - No. 45 Old Bugnet
+// bit1 - No. 32 Sm Barrel-Bomb
+// bit2 - No. 78 Recov S Lv1
+// bit3 - No. 74 Flaming S
+// bit4 - No. 84 Sleep S Lv1
+// bit5 - No. 82 Stun S Lv1
+// bit6 - No. 80 Poison S Lv1
+// bit7 - No. 86 Paint S
 function HasOldBugnetCombine() => bit0(0x32CE95)
 function HasSmBarrelBombCombine() => bit1(0x32CE95)
 function HasRecovSLv1Combine() => bit2(0x32CE95)
@@ -3126,30 +3268,32 @@ function HasPoisonSLv1Combine() => bit6(0x32CE95)
 function HasPaintSCombine() => bit7(0x32CE95)
 
 // $32CE96: [Bitflags] Item Combine Flags
-//          bit0 - No. 87 Deomn S
-//          bit1 - No. 88 Armor S
-//          bit2 - No. 65 Pellet S Lv1
-//          bit3 - No. 60 Normal S Lv2
-//          bit4 - No. 71 Clust S Lv1
-//          bit5 - No. 75 Ice S
-//          bit7 - No. 63 Pierce S Lv2
+// bit0 - No. 87 Demon S
+// bit1 - No. 88 Armor S
+// bit2 - No. 65 Pellet S Lv1
+// bit3 - No. 60 Normal S Lv2
+// bit4 - No. 71 Clust S Lv1
+// bit5 - No. 97 [Alchemy] Huskberry
+// bit6 - No. 75 Ice S
+// bit7 - No. 63 Pierce S Lv2
 function HasDemonSCombine() => bit0(0x32CE96)
 function HasArmorSCombine() => bit1(0x32CE96)
 function HasPelletSLv1Combine() => bit2(0x32CE96)
 function HasNormalSLv2Combine() => bit3(0x32CE96)
 function HasClustSLv1Combine() => bit4(0x32CE96)
-function HasIceSCombine() => bit5(0x32CE96)
+function HasAlchemyHuskberryCombine() => bit5(0x32CE96)
+function HasIceSCombine() => bit6(0x32CE96)
 function HasPierceSLv2Combine() => bit7(0x32CE96)
 
 // $32CE97: [Bitflags] Item Combine Flags
-//          bit0 - No. 61 Normal S Lv3
-//          bit1 - No. 68 Crag S Lv1
-//          bit2 - No. 76 Thuner S
-//          bit3 - No. 66 Pellet S Lv2
-//          bit4 - No. 62 Pierce S Lv1
-//          bit5 - No. 85 Sleep S Lv2
-//          bit6 - No. 64 Pierce S Lv3
-//          bit7 - No. 69 Crag S Lv2
+// bit0 - No. 61 Normal S Lv3
+// bit1 - No. 68 Crag S Lv1
+// bit2 - No. 76 Thunder S
+// bit3 - No. 66 Pellet S Lv2
+// bit4 - No. 62 Pierce S Lv1
+// bit5 - No. 85 Sleep S Lv2
+// bit6 - No. 64 Pierce S Lv3
+// bit7 - No. 69 Crag S Lv2
 function HasNormalSLv3Combine() => bit0(0x32CE97)
 function HasCragSLv1Combine() => bit1(0x32CE97)
 function HasThunderSCombine() => bit2(0x32CE97)
@@ -3160,14 +3304,14 @@ function HasPierceSLv3Combine() => bit6(0x32CE97)
 function HasCragSLv2Combine() => bit7(0x32CE97)
 
 // $32CE98: [Bitflags] Item Combine Flags
-//          bit0 - No. 67 Pellet S Lv3
-//          bit1 - No. 72 Clust S Lv 2
-//          bit2 - No. 83 Stun S Lv2
-//          bit3 - No. 81 Poison S Lv2
-//          bit4 - No.77 Dragon S
-//          bit5 - No. 73 Clust S Lv3
-//          bit6 - No. 70 Crag S Lv3
-//          bit7 - No. 40 Arrowana Bait
+// bit0 - No. 67 Pellet S Lv3
+// bit1 - No. 72 Clust S Lv 2
+// bit2 - No. 83 Stun S Lv2
+// bit3 - No. 81 Poison S Lv2
+// bit4 - No.77 Dragon S
+// bit5 - No. 73 Clust S Lv3
+// bit6 - No. 70 Crag S Lv3
+// bit7 - No. 40 Arrowana Bait
 function HasPelletSLv3Combine() => bit0(0x32CE98)
 function HasClustSLv2Combine() => bit1(0x32CE98)
 function HasStunSLv2Combine() => bit2(0x32CE98)
@@ -3178,52 +3322,87 @@ function HasCragSLv3Combine() => bit6(0x32CE98)
 function HasArrowanaBaitCombine() => bit7(0x32CE98)
 
 // $32CE99: [Bitflags] Item Combine Flags
-//          bit0 - No. 39 Tuna Bait
-//          bit2 - No. 41 Goldenfish Bait
-//          bit5 - No. 52 Antidote Flute
-//          bit6 - No. 9 Catalyst
-//          bit7 - No. 1 Potion
+// bit0 - No. 39 Tuna Bait
+// bit1 - No. 89 [Alchemy] Honey
+// bit2 - No. 41 Goldenfish Bait
+// bit3 - No. 101 [Alchemy] Screamer
+// bit4 - No. 91 [Alchemy] Fire Herb
+// bit5 - No. 52 Antidote Flute
+// bit6 - No. 9 Catalyst
+// bit7 - No. 1 Potion
 function HasTunaBaitCombine() => bit0(0x32CE99)
+function HasAlchemyHoneyCombine() => bit1(0x32CE99)
 function HasGoldenfishBaitCombine() => bit2(0x32CE99)
+function HasAlchemyScreamerCombine() => bit3(0x32CE99)
+function HasAlchemyFireHerbCombine() => bit4(0x32CE99)
 function HasAntidoteFluteCombine() => bit5(0x32CE99)
 function HasCatalystCombine() => bit6(0x32CE99)
 function HasPotionCombine() => bit7(0x32CE99)
 
 // $32CE9A: [Bitflags] Item Combine Flags
-//          bit0 - No. 5 Antidote
-//          bit3 - No. 31 Gunpowder
-//          bit5 - No. 30 Paitnball
-//          bit6 - No. 25 Bomb Material
+// bit0 - No. 5 Antidote
+// bit1 - No. 92 [Alchemy] Blue Mushroom
+// bit2 - No, 99 [Alchemy] Sushifish
+// bit3 - No. 31 Gunpowder
+// bit4 - No. 94 [Alchemy] Large Barrel
+// bit5 - No. 30 Paintball
+// bit6 - No. 25 Bomb Material
+// bit7 - No. 90 [Alchemy] Herb
 function HasAntidoteCombine() => bit0(0x32CE9A)
+function HasAlchemyBlueMushroomCombine() => bit1(0x32CE9A)
+function HasAlchemySushifishCombine() => bit2(0x32CE9A)
 function HasGunpowderCombine() => bit3(0x32CE9A)
+function HasAlchemyLargeBarrelCombine() => bit4(0x32CE9A)
 function HasPaintballCombine() => bit5(0x32CE9A)
 function HasBombMaterialCombine() => bit6(0x32CE9A)
+function HasAlchemyHerbCombine() => bit7(0x32CE9A)
 
 // $32CE9B: [Bitflags] Item Combine Flags
-//          bit1 - No. 6 Herbal Medicine
-//          bit3 - No. 21 Spicy Mushroom
-//          bit5 - No.19 Hot Drink
-//          bit6 - No. 3 Nutrients
+// bit0 - No. 95 [Alchemy] Small Barrel
+// bit1 - No. 6 Herbal Medicine
+// bit2 - No. 103 [Alchemy] Psychoserum
+// bit3 - No. 21 Spicy Mushroom
+// bit4 - No. 107 [Alchemy] Rumblefish
+// bit5 - No.19 Hot Drink
+// bit6 - No. 3 Nutrients
+// bit7 - No. 104 [Alchemy] Power Extract
+function HasAlchemySmallBarrelCombine() => bit0(0x32CE9B)
 function HasHerbalMedicineCombine() => bit1(0x32CE9B)
+function HasAlchemyPsychoserumCombine() => bit2(0x32CE9B)
 function HasSpicyMushroomCombine() => bit3(0x32CE9B)
+function HasAlchemyRumblefishCombine() => bit4(0x32CE9B)
 function HasHotDrinkCombine() => bit5(0x32CE9B)
 function HasNutrientsCombine() => bit6(0x32CE9B)
+function HasAlchemyPowerExtractCombine() => bit7(0x32CE9B)
 
 // $32CE9C: [Bitflags] Item Combine Flags
-//          bit3 - No. 42 Old Pickaxe
-//          bit5 - No. 43 Iron Pickaxe
-//          bit6 - No. 48 Antiseptic Stone
-//          bit7 - No. 44 Mega Pickaxe
+// bit0 - No. 98 [Alchemy] Needleberry
+// bit1 - No. 106 [Alchemy] Armor Seed
+// bit2 - No. 105 [Alchemy] Power Seed
+// bit3 - No. 42 Old Pickaxe
+// bit4 - No.96 [Alchemy] Whetstone
+// bit5 - No. 43 Iron Pickaxe
+// bit6 - No. 48 Antiseptic Stone
+// bit7 - No. 44 Mega Pickaxe
+function HasAlchemyNeedleberryCombine() => bit0(0x32CE9C)
+function HasAlchemyArmorSeedCombine() => bit1(0x32CE9C)
+function HasAlchemyPowerSeedCombine() => bit2(0x32CE9C)
 function HasOldPickaxeCombine() => bit3(0x32CE9C)
+function HasAlchemyWhetstoneCombine() => bit4(0x32CE9C)
 function HasIronPickaxeCombine() => bit5(0x32CE9C)
 function HasAntisepticStoneCombine() => bit6(0x32CE9C)
 function HasMegaPickaxeCombine() => bit7(0x32CE9C)
 
 // $32CE9D: [Bitflags] Item Combine Flags
-//          bit0 - No. 20 Cool Drink
-//          bit2 - No. 49 Lifecrystals
+// bit0 - No. 20 Cool Drink
+// bit1 - No. 102 [Alchemy] Monster Fluid
+// bit2 - No. 49 Lifecrystals
+// bit3 - No. 100 [Alchemy] Rare Steak
 function HasCoolDrinkCombine() => bit0(0x32CE9D)
+function HasAlchemyMonsterFluidCombine() => bit1(0x32CE9D)
 function HasLifecrystalsCombine() => bit2(0x32CE9D)
+function HasAlchemyRareSteakCombine() => bit3(0x32CE9D)
+
 
 // $32CEA0: [8-Bit] Online - Pawn Guest House - Times Entered
 //          0x1 - Use for achievement
@@ -3320,112 +3499,138 @@ function BoughtLaoShanLungInfo() => bit4(0x32CEAB)
 function BoughtFatalisInfo() => bit5(0x32CEAB)
 
 // $32CF22: [16-Bit] Largest Rathian Length Hunted
+//          0x79 - Silver
 //          0x81 - Gold
 function LargestRathianLengthHunted() => word(0x32CF22)
 
 // $32CF2C: [16-Bit] Largest Yian Kut-Ku Length Hunted
+//          0x72 - Silver
 //          0x7a - Gold
-function LargestYianKutkuLengthHunted() => word(0x32CF2C)
+function LargestYianKutKuLengthHunted() => word(0x32CF2C)
 
 // $32CF30: [16-Bit] Largest Cephadrome Length Hunted
+//          0x76 - Silver
 //          0x7a - Gold
 function LargestCephadromeLengthHunted() => word(0x32CF30)
 
 // $32CF36: [16-Bit] Largest Rathalos Length Hunted
+//          0x72 - Silver
 //          0x7f - Gold
 function LargestRathalosLengthHunted() => word(0x32CF36)
 
 // $32CF3C: [16-Bit] Largest Diablos Length Hunted
+//          0x7b - Silver
 //          0x8b - Gold
 function LargestDiablosLengthHunted() => word(0x32CF3C)
 
 // $32CF3E: [16-Bit] Largest Khezu Length Hunted
+//          0x76 - Silver
 //          0x87 - Gold
 function LargestKhezuLengthHunted() => word(0x32CF3E)
 
 // $32CF42: [16-Bit] Largest Gravios Length Hunted
+//          0x7b - Silver
 //          0x87 - Gold
 function LargestGraviosLengthHunted() => word(0x32CF42)
 
 // $32CF48: [16-Bit] Largest Gypceros Length Hunted
+//          0x76 - SIlver
 //          0x7d - Gold
 function LargestGypcerosLengthHunted() => word(0x32CF48)
 
 // $32CF4A: [16-Bit] Largest Plesioth Length Hunted
+//          0x7b - Silver
 //          0x86 - Gold
 function LargestPlesiothLengthHunted() => word(0x32CF4A)
 
 // $32CF4C: [16-Bit] Largest Basarios Length Hunted
+//          0x76 - Silver
 //          0x81 - Gold
 function LargestBasariosLengthHunted() => word(0x32CF4C)
 
 // $32CF54: [16-Bit] Largest Monoblos Length Hunted
+//          0x74 - Silver
 //          0x7f - Gold
 function LargestMonoblosLengthHunted() => word(0x32CF54)
 
 // $32CF56: [16-Bit] Largest Velocidrome Length Hunted
+//          0x77 - Silver
 //          0x7b - Gold
 function LargestVelocidromeLengthHunted() => word(0x32CF56)
 
 // $32CF58: [16-Bit] Largest Gendrome Length Hunted
+//          0x77 - Silver
 //          0x7b - Gold
 function LargestGendromeLengthHunted() => word(0x32CF58)
 
 // $32CF5E: [16-Bit] Largest Iodrome Length Hunted
+//          0x7c - Silver
 //          0x88 - Gold
 function LargestIodromeLengthHunted() => word(0x32CF5E)
 
 // $32CF62: [16-Bit] Largest Kirin Length Hunted
-//          0xbit1 - Gold
+//          0x82 - Silver
+//          0xb1 - Gold
 function LargestKirinLengthHunted() => word(0x32CF62)
 
 // $32CF6A: [16-Bit] Largest Pink Rathian Length Hunted
+//          0x79 - Silver
 //          0x81 - Gold
 function LargestPinkRathianLengthHunted() => word(0x32CF6A)
 
-// $32CF6C: [16-Bit] Largest Yian Kut-Ku Length Hunted
+// $32CF6C: [16-Bit] Largest Blue Yian Kut-Ku Length Hunted
+//          0x72 - Silver
 //          0x7a - Gold
-function LargestYianKutkuLengthHunted_2() => word(0x32CF6C)
+function LargestBlueYianKutKuLengthHunted() => word(0x32CF6C)
 
-// $32CF6E: [16-Bit] Largest Gypceros Length Hunted
+// $32CF6E: [16-Bit] Largest Purple Gypceros Length Hunted
+//          0x76 - SIlver
 //          0x7d - Gold
-function LargestGypcerosLengthHunted_2() => word(0x32CF6E)
+function LargestPurpleGypcerosLengthHunted() => word(0x32CF6E)
 
-// $32CF72: [16-Bit] Largest Rathalos Length Hunted
+// $32CF72: [16-Bit] Largest Silver Rathalos Length Hunted
+//          0x72 - Silver
 //          0x7f - Gold
-function LargestRathalosLengthHunted_2() => word(0x32CF72)
+function LargestSilverRathalosLengthHunted() => word(0x32CF72)
 
-// $32CF74: [16-Bit] Largest Rathian Length Hunted
+// $32CF74: [16-Bit] Largest Gold Rathian Length Hunted
+//          0x79 - Silver
 //          0x81 - Gold
-function LargestRathianLengthHunted_2() => word(0x32CF74)
+function LargestGoldRathianLengthHunted() => word(0x32CF74)
 
-// $32CF76: [16-Bit] Largest Diablos Length Hunted
+// $32CF76: [16-Bit] Largest Black Diablos Length Hunted
+//          0x7b - Silver
 //          0x8b - Gold
-function LargestDiablosLengthHunted_2() => word(0x32CF76)
+function LargestBlackDiablosLengthHunted() => word(0x32CF76)
 
-// $32CF78: [16-Bit] Largest Monoblos Length Hunted
+// $32CF78: [16-Bit] Largest White Monoblos Length Hunted
+//          0x74 - Silver
 //          0x7f - Gold
-function LargestMonoblosLengthHunted_2() => word(0x32CF78)
+function LargestWhiteMonoblosLengthHunted() => word(0x32CF78)
 
-// $32CF7A: [16-Bit] Largest Khezu Length Hunted
+// $32CF7A: [16-Bit] Largest Red Khezu Length Hunted
+//          0x76 - Silver
 //          0x87 - Gold
-function LargestKhezuLengthHunted_2() => word(0x32CF7A)
+function LargestRedKhezuLengthHunted() => word(0x32CF7A)
 
-// $32CF7C: [16-Bit] -  Largest Plesioth Length Hunted
+// $32CF7C: [16-Bit] Largest Green Plesioth Length Hunted
+//          0x7b - Silver
 //          0x86 - Gold
-function LargestPlesiothLengthHunted_2() => word(0x32CF7C)
+function LargestGreenPlesiothLengthHunted() => word(0x32CF7C)
 
-// $32CF7E: [16-Bit] -  Largest Gravios Length Hunted
-//          0x87=Gold
-function LargestGraviosLengthHunted_2() => word(0x32CF7E)
+// $32CF7E: [16-Bit] Largest Black Gravios Length Hunted
+//          0x87 - Gold
+function LargestBlackGraviosLengthHunted() => word(0x32CF7E)
 
 // $32CF80: [16-Bit] Largest Basarios Length Hunted
+//          0x76 - Silver
 //          0x81 - Gold
 function LargestBasariosLengthHunted_2() => word(0x32CF80)
 
-// $32CF82: [16-Bit] Largest Blue Rathalos Length Hunted
+// $32CF82: [16-Bit] Largest Azure Rathalos Length Hunted
+//          0x72 - Silver
 //          0x7f - Gold
-function LargestBlueRathalosLengthHunted() => word(0x32CF82)
+function LargestAzureRathalosLengthHunted() => word(0x32CF82)
 
 // $32CF88: [16-Bit] Total Rathian Hunted
 function TotalRathianHunted() => word(0x32CF88)
@@ -3443,7 +3648,7 @@ function TotalMosswineHunted() => word(0x32CF8E)
 function TotalBullfangoHunted() => word(0x32CF90)
 
 // $32CF92: [16-Bit] Total Yian Kut-Ku Hunted
-function TotalYianKutkuHunted() => word(0x32CF92)
+function TotalYianKutKuHunted() => word(0x32CF92)
 
 // $32CF94: [16-Bit] Total Lao-Shun Repeled
 function TotalLaoshunRepeled() => word(0x32CF94)
@@ -3481,11 +3686,14 @@ function TotalVespoidHunted() => word(0x32CFAC)
 // $32CFAE: [16-Bit] Total Gypceros Hunted
 function TotalGypcerosHunted() => word(0x32CFAE)
 
-// $32CFB0: [16-Bit] Plesioth Hunted
-function PlesiothHunted() => word(0x32CFB0)
+// $32CFB0: [16-Bit] Total Plesioth Hunted
+function TotalPlesiothHunted() => word(0x32CFB0)
 
-// $32CFB2: [16-Bit] Basarios Hunted
-function BasariosHunted() => word(0x32CFB2)
+// $32CFB2: [16-Bit] Total Basarios Hunted
+function TotalBasariosHunted() => word(0x32CFB2)
+
+// $32CFB4: [16-Bit] Total Melynx Hunted
+function TotalMelynxHunted() => word(0x32CFB4)
 
 // $32CFB8: [16-Bit] Total Apceros Hunted
 function TotalApcerosHunted() => word(0x32CFB8)
@@ -3514,6 +3722,9 @@ function TotalKirinHunted() => word(0x32CFC8)
 // $32CFCA: [16-Bit] Total Cephalos Hunted
 function TotalCephalosHunted() => word(0x32CFCA)
 
+// $32CFCC: [16-Bit] Total White Velociprey Hunted
+function TotalWhiteVelocipreyHunted() => word(0x32CFCC)
+
 // $32CFCE: [16-Bit] Total Crimson Fatalis Hunted
 function TotalCrimsonFatalisHunted() => word(0x32CFCE)
 
@@ -3521,7 +3732,7 @@ function TotalCrimsonFatalisHunted() => word(0x32CFCE)
 function TotalPinkRathianHunted() => word(0x32CFD0)
 
 // $32CFD2: [16-Bit] Total Blue Yian Kut-Ku Hunted
-function TotalBlueYianKutkuHunted() => word(0x32CFD2)
+function TotalBlueYianKutKuHunted() => word(0x32CFD2)
 
 // $32CFD4: [16-Bit] Total Purple Gypceros Hunted
 function TotalPurpleGypcerosHunted() => word(0x32CFD4)
@@ -4549,3 +4760,4739 @@ function SelectedArea() => word(0x6DEC00)
 //          0x1 - 1
 //          0xe - 14
 function CurrentSelectedTown() => word(0x6DEC04)
+
+
+
+
+////////////////////////////////// Rich Presence/////////////////////////////////////////////
+//Monster Hunter G Rich Presence
+
+function IsInGame() => IngameIndicator() == 1
+function HasMap() => MapId() != 0
+function IsOnQuest() => IsInGame() && QuestActive() != 0
+function IsNotOnQuest() => IsInGame() && QuestStatus() == 0
+function IsOnlineTown() => CurrentSelectedTown() != 0
+function IsVillageOffline() => CurrentSelectedTown() == 0
+function IsBattlegroundCampQuest() => QuestActive() == 0xea6a || QuestActive() == 0xea7d || QuestActive() == 0xea66
+
+function TownQuests()
+{
+return[
+CompletedTown1StarMushroomPicking(),
+CompletedTown1StarTheSculptorsErrand(),
+CompletedTown1StarItsPartyTime(),
+CompletedTown1StarAttackOfTheYianKutKu(),
+CompletedTown2StarGypcerosVenomousTerror(),
+CompletedTown1StarVelocipreyHunt(),
+CompletedTown1StarTheVelocipreyLords(),
+CompletedTown2StarRaidTheWyvernsNest(),
+CompletedTown3StarSlayTheRathalos(),
+CompletedTown2StarAttackOfTheRathian(),
+CompletedTown1StarIllusoryDelicacy(),
+CompletedTown2StarQueenOfTheDesert(),
+CompletedTown2StarTheLandShark(),
+CompletedTown2StarSlayTheGenprey(),
+CompletedTown2StarLeadersOfTheGenprey(),
+CompletedTown2StarApcerosEggHunt(),
+CompletedTown3StarTheRunawayDiablos(),
+CompletedTown2StarTroubleInTheSwampBullfango(),
+CompletedTown1StarCrystalHunting(),
+CompletedTown1StarPanningForGoldenfish(),
+CompletedTown2StarTroubleInTheSwampGypceros(),
+CompletedTown2StarGetMeSootstoneOre(),
+CompletedTown2StarSlayTheGendrome(),
+CompletedTown3StarTheShadowInTheCave(),
+CompletedTown3StarTheFearsomeGravios(),
+CompletedTown3StarSlayTheRathian(),
+CompletedTown2StarReSupplyTheDragonator(),
+CompletedTown2StarBasariosUnseenPeril(),
+CompletedTown3StarVolcanicValor(),
+CompletedTown3StarIopreyHunting(),
+CompletedTown3StarLeadersOfTheIoprey(),
+CompletedTown3StarBringUsPowderstone(),
+CompletedTown1StarAttackOfTheGiantBugs(),
+CompletedTown1StarJungleMenace(),
+CompletedTown1StarTheMushroomHunt(),
+CompletedTown1StarShowMeYourCookingSkills(),
+CompletedTown2StarSlayTheGypceros(),
+CompletedTown2StarMoreCoalPlease(),
+CompletedTown3StarWyvernInTheDarkness(),
+CompletedTown3StarSlayTheIodrome(),
+CompletedTown3StarWaterWyvernInTheJungle(),
+CompletedTown3StarWyvernEggHunt(),
+CompletedTown3StarQueenOfTheJungle(),
+CompletedTown3StarCatchARathalos(),
+CompletedTown2StarCatchAYianKutKu(),
+CompletedTown3StarCatchAGypceros(),
+CompletedTown3StarGetMeALiveKhezu(),
+CompletedTown3StarBringMeAPlesioth(),
+CompletedTown4StarAttackOfTheYianKutKu(),
+CompletedTown4StarWyvernEggHunt(),
+CompletedTown4StarTheVelocipreyLords(),
+CompletedTown4StarRaidTheWyvernsNest(),
+CompletedTown4StarAttackOfTheRathian(),
+CompletedTown4StarTheLadyGourmet(),
+CompletedTown4StarQueenOfTheDesert(),
+CompletedTown4StarSwimmingInTheDesert(),
+CompletedTown4StarApcerosEggHunt(),
+CompletedTown4StarPanningForGoldenfish(),
+CompletedTown4StarTroubleInTheSwamp(),
+CompletedTown4StarQuartzOreRequest(),
+CompletedTown4StarSlayTheGendrome(),
+CompletedTown4StarSlayTheRathian(),
+CompletedTown4StarAttackOfTheGiantBugs(),
+CompletedTown4StarJungleMenace(),
+CompletedTown4StarSlayTheGypceros(),
+CompletedTown4StarCatchAYianKutKu(),
+CompletedTown4StarBringMeAPlesioth(),
+CompletedTown5StarSlayTheRathalos(),
+CompletedTown5StarSlayTheRathalosAzure(),
+CompletedTown5StarTheRunawayDiablos(),
+CompletedTown5StarCrystalHunting(),
+CompletedTown5StarTheFearsomeGravios(),
+CompletedTown5StarBasariosUnseenPeril(),
+CompletedTown5StarVolcanicValor(),
+CompletedTown5StarLeadersOfIoprey(),
+CompletedTown5StarBringUsPowderstone(),
+CompletedTown5StarWyvernInTheDarkness(),
+CompletedTown5StarWaterWyvernInTheJungle(),
+CompletedTown5StarGetMeSomePowderstone(),
+CompletedTown5StarQueenOfTheJungle(),
+CompletedTown5StarQueenOfTheJunglePink(),
+CompletedTown5StarATroublesomePair(),
+CompletedTown5StarFourHorns(),
+CompletedTown5StarTwoRockWyverns(),
+CompletedTown5StarWyvernsOfLandAndSky(),
+CompletedTown5StarCatchARathalos(),
+CompletedTown5StarGetMeALiveKhezu(),
+CompletedTown6StarGRankAttackOfTheYianKutKu(),
+CompletedTown6StarGRankAttackOfTheYianKutKuBlue(),
+CompletedTown6StarGRankJungleMenace(),
+CompletedTown6StarGRankJungleMenaceBlue(),
+CompletedTown6StarGRankGypcerosVenomousTerror(),
+CompletedTown6StarGRankGypcerosVenomousTerrorPurple(),
+CompletedTown6StarGRankTroubleInTheSwamp(),
+CompletedTown6StarGRankTroubleInTheSwampPurple(),
+CompletedTown6StarGRankSlayTheGypceros(),
+CompletedTown6StarGRankSlayTheGypcerosPurple(),
+CompletedTown6StarGRankThePlagueOfYianKutKu(),
+CompletedTown6StarGRankTheBurrowingMonster(),
+CompletedTown6StarGRankTrappedByYianKutKu(),
+CompletedTown6StarGRankDeadlyPoisonousSiege(),
+CompletedTown6StarGRankTheTwoSandShadows(),
+CompletedTown7StarGRankAttackOfTheRathian(),
+CompletedTown7StarGRankAttackOfTheRathianPink(),
+CompletedTown7StarGRankQueenOfTheDesert(),
+CompletedTown7StarGRankQueenOfTheDesertPink(),
+CompletedTown7StarGRankSlayTheRathian(),
+CompletedTown7StarGRankSlayTheRathianPink(),
+CompletedTown7StarGRankTheShadowInTheCave(),
+CompletedTown7StarGRankTheShadowInTheCaveRed(),
+CompletedTown7StarGRankWyvernInTheDarkness(),
+CompletedTown7StarGRankWyvernInTheDarknessRed(),
+CompletedTown7StarGRankBasariosInvisibleTerror(),
+CompletedTown7StarGRankTwoRockWyverns(),
+CompletedTown7StarGRankTheThunderousDuo(),
+CompletedTown7StarGRankTheThunderousDuoRed(),
+CompletedTown7StarGRankWyvernsOfLandAndSky(),
+CompletedTown8StarGRankQueenOfTheJungle(),
+CompletedTown8StarGRankQueenOfTheJunglePink(),
+CompletedTown8StarGRankQueenOfTheJungleGold(),
+CompletedTown8StarGRankSlayTheRathalos(),
+CompletedTown8StarGRankSlayTheRathalosAzure(),
+CompletedTown8StarGRankSlayTheRathalosSilver(),
+CompletedTown8StarGRankTheSmokeCladKing(),
+CompletedTown8StarGRankTheSmokeCladKingAzure(),
+CompletedTown8StarGRankWaterWyvernInTheJungle(),
+CompletedTown8StarGRankWaterWyvernInTheJungleGreen(),
+CompletedTown8StarGRankTheRunawayDiablos(),
+CompletedTown8StarGRankTheRunawayDiablosBlack(),
+CompletedTown8StarGRankVolcanicValor(),
+CompletedTown8StarGRankVolcanicValorBlack(),
+CompletedTown8StarGRankFourHorns(),
+CompletedTown8StarGRankBlazingJewels(),
+CompletedTown8StarGRankDualPlesioth(),
+CompletedTown8StarGRankWyvernsOfLandAndSky(),
+CompletedTown8StarGRankWyvernsOfLandAndSkyGoldSilver(),
+CompletedTown8StarGRankPinkAndAzure(),
+CompletedTown3StarAGiantDragonInvades(),
+CompletedTown4StarAGiantDragonInvades(),
+CompletedTown8StarAGiantDragonInvades(),
+CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon1(),
+CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon2(),
+CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon3(),
+CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon4()
+]
+}
+
+
+function VillageQuests()
+{
+return[
+CompletedVillageBasicsFindingRawMeat(),
+CompletedVillageBasicsPreparingMeat(),
+CompletedVillageBasicsSearchingForItems(),
+CompletedVillageBasicsCombiningItems(),
+CompletedVillageBasicsFishing(),
+CompletedVillage2StarYourFirstMonsterHunt(),
+CompletedVillage2StarMushroomPicking(),
+CompletedVillage2StarPresentForTheArmorer(),
+CompletedVillage2StarHelpForTheFestival(),
+CompletedVillage2StarRaidTheWyvernsNest(),
+CompletedVillage3StarSlayTheYianKutKu(),
+CompletedVillage3StarSlayTheVelociprey(),
+CompletedVillage3StarLiverOfLegend(),
+CompletedVillage3StarTheFormidableVelocidrome(),
+CompletedVillage3StarJungleMenace(),
+CompletedVillage3StarTheMushroomHunt(),
+CompletedVillage3StarFindTheWyvernEggs(),
+CompletedVillage3StarTroubleInTheForest(),
+CompletedVillage4StarCatchAYianKutKu(),
+CompletedVillage4StarSlayTheVelocipreyPack(),
+CompletedVillage4StarVelocidromeRedux(),
+CompletedVillage4StarTheLandShark(),
+CompletedVillage4StarBringMeEggs(),
+CompletedVillage4StarAttackOfTheGiantBugs(),
+CompletedVillage4StarSlayTheGenprey(),
+CompletedVillage4StarSlayTheGendrome(),
+CompletedVillage4StarIopreyHunting(),
+CompletedVillage4StarSlayTheGypceros(),
+CompletedVillage5StarLadyGourmetsDream(),
+CompletedVillage5StarThePlagueOfYianKutKu(),
+CompletedVillage5StarFangOfTheIodrome(),
+CompletedVillage5StarAttackOfTheRathalos(),
+CompletedVillage5StarAttackOfTheRathalosAzure(),
+CompletedVillage5StarCatchARathalos(),
+CompletedVillage5StarWaterWyvernInTheDesert(),
+CompletedVillage5StarBasariosUnseenPeril(),
+CompletedVillage5StarQueenOfTheDesert(),
+CompletedVillage5StarQueenOfTheDesertPink(),
+CompletedVillage5StarSlayTheRathian(),
+CompletedVillage5StarSlayTheRathianPink(),
+CompletedVillage6StarHornOfTheMonoblos(),
+CompletedVillage6StarHornOfTheMonoblosWhite(),
+CompletedVillage6StarTerrorOfTheGravios(),
+CompletedVillage6StarHandleWithCare(),
+CompletedVillage6StarTheRunawayDiablos(),
+CompletedVillage6StarTheShadowInTheCave(),
+CompletedVillage6StarATroublesomePair(),
+CompletedVillage6StarAGiantDragonInvades()
+]
+}
+
+function TrainingQuests()
+{
+return[
+CompletedTrainingQuestsKutKuGreatsword(),
+CompletedTrainingQuestsKutKuHammer(),
+CompletedTrainingQuestsKutKuLance(),
+CompletedTrainingQuestsKutKuSwordAndShield(),
+CompletedTrainingQuestsKutKuBowgun(),
+CompletedTrainingQuestsRathalosGreatsword(),
+CompletedTrainingQuestsRathalosHammer(),
+CompletedTrainingQuestsRathalosLance(),
+CompletedTrainingQuestsRathalosSwordAndShield(),
+CompletedTrainingQuestsRathalosBowgun(),
+CompletedTrainingQuestsGypcerosGreatsword(),
+CompletedTrainingQuestsGypcerosHammer(),
+CompletedTrainingQuestsGypcerosLance(),
+CompletedTrainingQuestsGypcerosSwordAndShield(),
+CompletedTrainingQuestsGypcerosBowgun(),
+CompletedTrainingQuestsPlesiothGreatsword(),
+CompletedTrainingQuestsPlesiothHammer(),
+CompletedTrainingQuestsPlesiothLance(),
+CompletedTrainingQuestsPlesiothSwordAndShield(),
+CompletedTrainingQuestsPlesiothBowgun(),
+CompletedTrainingQuestsKhezuGreatsword(),
+CompletedTrainingQuestsKhezuHammer(),
+CompletedTrainingQuestsKhezuLance(),
+CompletedTrainingQuestsKhezuSwordAndShield(),
+CompletedTrainingQuestsKhezuBowgun(),
+CompletedTrainingQuestsRathianGreatsword(),
+CompletedTrainingQuestsRathianHammer(),
+CompletedTrainingQuestsRathianLance(),
+CompletedTrainingQuestsRathianDualBlades(),
+CompletedTrainingQuestsRathianBowgun(),
+CompletedTrainingQuestsCephadromeGreatsword(),
+CompletedTrainingQuestsCephadromeHammer(),
+CompletedTrainingQuestsCephadromeLance(),
+CompletedTrainingQuestsCephadromeSwordAndShield(),
+CompletedTrainingQuestsCephadromeBowgun(),
+CompletedTrainingQuestsMonoblosGreatsword(),
+CompletedTrainingQuestsMonoblosHammer(),
+CompletedTrainingQuestsMonoblosLance(),
+CompletedTrainingQuestsMonoblosSwordAndShield(),
+CompletedTrainingQuestsMonoblosBowgun(),
+CompletedTrainingQuestsBasariosGreatsword(),
+CompletedTrainingQuestsBasariosHammer(),
+CompletedTrainingQuestsBasariosLance(),
+CompletedTrainingQuestsBasariosDualBlades(),
+CompletedTrainingQuestsBasariosBowgun(),
+CompletedTrainingQuestsGraviosGreatsword(),
+CompletedTrainingQuestsGraviosHammer(),
+CompletedTrainingQuestsGraviosLance(),
+CompletedTrainingQuestsGraviosSwordAndShield(),
+CompletedTrainingQuestsGraviosBowgun()
+]
+}
+
+function TownQuestTotal(){
+return sum_of(TownQuests(),v=>v)
+}
+function VillageQuestTotal(){
+return sum_of(VillageQuests(),v=>v)
+}
+function TrainingQuestTotal(){
+return sum_of(TrainingQuests(),v=>v)
+}
+
+SelectedAreaLookup = {
+    0x1: "Hunters Free Zone",
+    0x4: "Masters Sanctuary",
+}
+
+HunterRankLookup = {
+    0: "Unranked",
+    1: "Vagrant",
+    2: "Stranger",
+    3: "Ranger",
+    4: "Rookie Hunter",
+    5: "Lumberjack",
+    6: "Warden",
+    7: "Egg Thief",
+    8: "Beast Slayer",
+    9: "Bone Duster",
+    10: "Warrior",
+    11: "Bullfighter",
+    12: "Berserker",
+    13: "Mercenary",
+    14: "Bounty Hunter",
+    15: "Veteran Slayer",
+    16: "Iron Breaker",
+    17: "Samurai",
+    18: "Pathwalker",
+    19: "Strider",
+    20: "Explorer",
+    21: "Weapons Master",
+    22: "Battle Master",
+    23: "Dragon Buster",
+    24: "Forest Guardian",
+    25: "Hunting Lord",
+    26: "Glorious Battler",
+    27: "Champion",
+    28: "Hero",
+    29: "Monster Hunter",
+    30: "Monster Hunter G",
+}
+
+CurrentMapLookup = {
+    0x1: "Jungle - Area 3",
+    0x2: "Jungle - Area 1",
+    0x3: "Jungle - Area 7",
+    0x4: "Jungle - Camp Site",
+    0x5: "Jungle - Area 5",
+    0x6: "Jungle - Area 3",
+    0x7: "Desert - Secret Area",
+    0x8: "Volcano - Secret Area",
+    0x9: "Swamp - Area 5",
+    0xa: "Fort - Camp Site",
+    0xb: "Fort - Area 4",
+    0xc: "Fort - Area 5",
+    0xe: "Fort - Area 1",
+    0x10: "Swamp - Area 1",
+    0x12: "Jungle - Area 4",
+    0x13: "Jungle - Area 6",
+    0x14: "Castle Schrade - Camp Site",
+    0x15: "Forest and Hills - Camp Site",
+    0x16: "Jungle - Area 9",
+    0x17: "Jungle - Area 10",
+    0x19: "Castle Schrade - Area 2",
+    0x1a: "Jungle - Area 8",
+    0x1c: "Fort - Area 3",
+    0x1e: "Fort - Area 2",
+    0x1f: "Fort - Area 6",
+    0x20: "Forest and Hills - Area 6",
+    0x21: "Forest and Hills - Area 3",
+    0x22: "Forest and Hills - Area 10",
+    0x23: "Forest and Hills - Area 8",
+    0x24: "Forest and Hills - Area 9",
+    0x25: "Forest and Hills - Area 4",
+    0x26: "Forest and Hills - Area 2",
+    0x27: "Forest and Hills - Area 1",
+    0x28: "Forest and Hills - Area 5",
+    0x29: "Forest and Hills - Area 7",
+    0x2a: "Forest and Hills - Area 11",
+    0x2b: "Forest and Hills - Area 12",
+    0x2c: "Swamp - Area 4",
+    0x2d: "Desert - Area 2",
+    0x2e: "Jungle - Area 2",
+    0x2f: "Desert - Area 6",
+    0x30: "Desert - Area 9",
+    0x31: "Desert - Area 8",
+    0x32: "Desert - Camp Site",
+    0x33: "Desert - Area 1",
+    0x34: "Desert - Area 4",
+    0x35: "Desert - Area 10",
+    0x36: "Desert - Area 5",
+    0x37: "Desert - Area 11",
+    0x38: "Desert - Area 7",
+    0x39: "Desert - Area 3",
+    0x3a: "Volcano - Area 2",
+    0x3b: "Volcano - Area 4",
+    0x3c: "Volcano - Area 5",
+    0x3d: "Volcano - Camp Site",
+    0x3e: "Volcano - Area 8",
+    0x3f: "Volcano - Area 1",
+    0x40: "Volcano - Area 3",
+    0x41: "Volcano - Area 6",
+    0x42: "Volcano - Area 7",
+    0x43: "Swamp - Camp Site",
+    0x44: "Swamp - Area 2",
+    0x45: "Swamp - Area 9",
+    0x46: "Swamp - Area 8",
+    0x47: "Swamp - Area 10",
+    0x48: "Swamp - Area 6",
+    0x49: "Swamp - Area 11",
+    0x4a: "Swamp - Secret Area",
+    0x4b: "Swamp - Area 7",
+    0x4c: "Square",
+    0x4d: "Tavern",
+    0x4e: "Market",
+    0x4f: "Armory",
+    0x50: "Guest House",
+    0x51: "Guest House - Pawn",
+    0x52: "Guest House - Rook",
+    0x53: "Guest House - Bishop",
+    0x54: "Guest House - Queen",
+    0x55: "Guest House - King",
+    0x56: "Village - House",
+    0x57: "Village",
+    0x58: "Battleground - Area 1",
+    0x59: "Arena - Camp Site",
+    0x5a: "Grand Arena",
+    0x5b: "Small Arena",
+}
+
+CurrentQuestLookup = {
+0x0:"",
+0x1:"1★ Town Quest: Mushroom Picking",
+0x2:"1★ Town Quest: The Sculptor's Errand",
+0x3:"1★ Town Quest: It's Party Time!",
+0x4:"1★ Town Quest: Attack of the Yian Kut-Ku",
+0x5:"2★ Town Quest: Gypceros: Venomous Terror",
+0x6:"1★ Town Quest: Velociprey Hunt",
+0x7:"1★ Town Quest: The Velociprey Lords",
+0x8:"2★ Town Quest: Raid the Wyvern's Nest",
+0x9:"Urgent Town Quest: Slay the Rathalos!",
+0xa:"2★ Town Quest: Attack of the Rathian!",
+0xb:"1★ Town Quest: Illusory Delicacy!",
+0xc:"2★ Town Quest: Queen of the Desert",
+0xd:"2★ Town Quest: The Land Shark",
+0xe:"2★ Town Quest: Slay the Genprey",
+0xf:"2★ Town Quest: Leaders of the Genprey",
+0x10:"2★ Town Quest: Apceros Egg Hunt",
+0x11:"3★ Town Quest: The Runaway Diablos",
+0x13:"2★ Town Quest: Trouble in the Swamp",
+0x14:"1★ Town Quest: Crystal Hunting!",
+0x15:"1★ Town Quest: Panning for Goldenfish",
+0x16:"2★ Town Quest: Trouble in the Swamp",
+0x17:"2★ Town Quest: Get me Sootstone Ore!",
+0x18:"2★ Town Quest: Slay the Gendrome!",
+0x19:"3★ Town Quest: The Shadow in the Cave",
+0x1a:"3★ Town Quest: The Fearsome Gravios",
+0x1b:"3★ Town Quest: Slay the Rathian!",
+0x1c:"2★ Town Quest: Re-Supply the Dragonator",
+0x1d:"2★ Town Quest: Basarios: Unseen Peril!",
+0x1e:"3★ Town Quest: Volcanic Valor",
+0x1f:"3★ Town Quest: Ioprey Hunting",
+0x20:"3★ Town Quest: Leaders of the Ioprey",
+0x21:"3★ Town Quest: Bring us Powderstone!",
+0x23:"1★ Town Quest: Attack of the Giant Bugs",
+0x24:"1★ Town Quest: Jungle Menace",
+0x25:"1★ Town Quest: The Mushroom Hunt!",
+0x26:"1★ Town Quest: Show me your Cooking Skills!",
+0x27:"Urgent Town Quest: Slay the Gypceros!",
+0x28:"2★ Town Quest: More Coal Please",
+0x29:"2★ Town Quest: Wyvern in the Darkness",
+0x2a:"3★ Town Quest: Slay the Iodrome!",
+0x2b:"3★ Town Quest: Water Wyvern in the Jungle",
+0x2c:"3★ Town Quest: Wyvern Egg Hunt",
+0x2d:"3★ Town Quest: Queen of the Jungle",
+0x2e:"3★ Town Quest: Catch a Rathalos",
+0x2f:"2★ Town Quest: Catch a Yian Kut-Ku",
+0x30:"3★ Town Quest: Catch a Gypceros",
+0x31:"3★ Town Quest: Get me a Live Khezu!",
+0x32:"3★ Town Quest: Bring me a Plesioth!",
+0x3e9:"4★ Town Quest: Attack of the Yian Kut-Ku",
+0x3ea:"4★ Town Quest: Wyvern Egg Hunt",
+0x3eb:"4★ Town Quest: The Velociprey Lords",
+0x3ec:"4★ Town Quest: Raid the Wyvern's Nest",
+0x3ed:"4★ Town Quest: Attack of the Rathian",
+0x3ee:"4★ Town Quest: The Lady Gourmet",
+0x3ef:"4★ Town Quest: Queen of the Desert",
+0x3f0:"4★ Town Quest: Swimming in the Desert",
+0x3f1:"4★ Town Quest: Apceros Egg Hunt",
+0x3f2:"4★ Town Quest: Panning for Goldenfish",
+0x3f3:"4★ Town Quest: Trouble in the Swamp",
+0x3f4:"4★ Town Quest: Quartz Ore Request",
+0x3f5:"4★ Town Quest: Slay the Gendrome!",
+0x3f6:"4★ Town Quest: Slay the Rathian!",
+0x3f7:"4★ Town Quest: Attack of the Giant Bugs!",
+0x3f8:"4★ Town Quest: Jungle Menace",
+0x3f9:"4★ Town Quest: Slay the Gypceros!",
+0x3fa:"4★ Town Quest: Catch a Yian Kut-Ku",
+0x3fb:"4★ Town Quest: Bring me a Plesioth!",
+0x3fc:"5★ Town Quest: Slay the Rathalos!",
+0x3fd:"5★ Town Quest: Slay the Rathalos!",
+0x3fe:"5★ Town Quest: The Runaway Diablos",
+0x3ff:"5★ Town Quest: Crystal Hunting!",
+0x400:"5★ Town Quest: The Fearsome Gravios",
+0x401:"5★ Town Quest: Basarios: Unseen Peril",
+0x402:"5★ Town Quest: Volcanic Valor",
+0x403:"5★ Town Quest: Leaders of the Ioprey",
+0x404:"5★ Town Quest: Bring us some Powderstone!",
+0x405:"5★ Town Quest: Wyvern in the Darkness",
+0x406:"5★ Town Quest: Water Wyvern in the Jungle",
+0x407:"5★ Town Quest: Get me some Powderstone!",
+0x408:"5★ Town Quest: Queen of the Jungle",
+0x409:"5★ Town Quest: Queen of the Jungle",
+0x40a:"5★ Town Quest: A Troublesome Pair",
+0x40b:"Urgent Town Quest: Four Horns",
+0x40c:"5★ Town Quest: Two Rock Wyverns",
+0x40d:"5★ Town Quest: Wyverns of Land and Sky",
+0x40e:"5★ Town Quest: Catch a Rathalos",
+0x40f:"5★ Town Quest: Get me a Live Khezu!",
+0x7d1:"6★ Town Quest: Attack of the Yian Kut-Ku",
+0x7d2:"6★ Town Quest: Attack of the Yian Kut-Ku",
+0x7d3:"6★ Town Quest: Jungle Menace",
+0x7d4:"6★ Town Quest: Jungle Menace",
+0x7d5:"6★ Town Quest: Gypceros: Venomous Terror",
+0x7d6:"6★ Town Quest: Gypceros: Venomous Terror",
+0x7d7:"6★ Town Quest: Trouble in the Swamp",
+0x7d8:"6★ Town Quest: Trouble in the Swamp",
+0x7d9:"6★ Town Quest: Slay the Gypceros!",
+0x7da:"6★ Town Quest: Slay the Gypceros!",
+0x7db:"6★ Town Quest: The Plague of Yian Kut-Ku",
+0x7dc:"6★ Town Quest: The Burrowing Monster",
+0x7dd:"6★ Town Quest: Trapped by Yian Kut-Ku",
+0x7de:"6★ Town Quest: Deadly Poisonous Siege",
+0x7df:"6★ Town Quest: The Two Sand Shadows",
+0x7e0:"7★ Town Quest: Attack of the Rathian",
+0x7e1:"7★ Town Quest: Attack of the Rathian",
+0x7e2:"7★ Town Quest: Queen of the Desert",
+0x7e3:"7★ Town Quest: Queen of the Desert",
+0x7e4:"7★ Town Quest: Slay the Rathian!",
+0x7e5:"7★ Town Quest: Slay the Rathian!",
+0x7e6:"7★ Town Quest: The Shadow in the Cave",
+0x7e7:"7★ Town Quest: The Shadow in the Cave",
+0x7e8:"7★ Town Quest: Wyvern in the Darkness",
+0x7e9:"7★ Town Quest: Wyvern in the Darkness",
+0x7ea:"7★ Town Quest: Basarios: Invisible Terror",
+0x7eb:"7★ Town Quest: Two Rock Wyverns",
+0x7ec:"7★ Town Quest: The Thunderous Duo",
+0x7ed:"7★ Town Quest: The Thunderous Duo",
+0x7ee:"7★ Town Quest: Wyverns of Land and Sky",
+0x7ef:"8★ Town Quest: Queen of the Jungle",
+0x7f0:"8★ Town Quest: Queen of the Jungle",
+0x7f1:"8★ Town Quest: Queen of the Jungle",
+0x7f2:"8★ Town Quest: Slay the Rathalos!",
+0x7f3:"8★ Town Quest: Slay the Rathalos!",
+0x7f4:"8★ Town Quest: Slay the Rathalos!",
+0x7f5:"8★ Town Quest: The Smoke Clad King",
+0x7f6:"8★ Town Quest: The Smoke Clad King",
+0x7f7:"8★ Town Quest: Water Wyvern in the Jungle",
+0x7f8:"8★ Town Quest: Water Wyvern in the Jungle",
+0x7f9:"8★ Town Quest: The Runaway Diablos",
+0x7fa:"8★ Town Quest: The Runaway Diablos",
+0x7fb:"8★ Town Quest: Volcanic Valor",
+0x7fc:"8★ Town Quest: Volcanic Valor",
+0x7fd:"8★ Town Quest: Four Horns",
+0x7fe:"8★ Town Quest: Blazing Jewels",
+0x7ff:"8★ Town Quest: Dual Plesioth",
+0x800:"8★ Town Quest: Wyverns of Land and Sky",
+0x801:"8★ Town Quest: Wyverns of Land and Sky",
+0x802:"Urgent Town Quest: Pink and Azure",
+0xbb9:"Urgent Town Quest: A Giant Dragon Invades!",
+0xbba:"Urgent Town Quest: A Giant Dragon Invades!",
+0xbbb:"Urgent Town Quest: A Giant Dragon Invades!",
+0xbbc:"Urgent Town Quest: The Legendary Black Dragon (1)",
+0xbbd:"Urgent Town Quest: The Legendary Black Dragon (2)",
+0xbbe:"Urgent Town Quest: The Legendary Black Dragon (3)",
+0xbbf:"Urgent Town Quest: The Legendary Black Dragon (4)",
+0x2711:"1★ Village Quest: Basics: Finding Raw Meat",
+0x2712:"1★ Village Quest: Basics: Preparing Meat",
+0x2713:"1★ Village Quest: Basics: Searching for Items",
+0x2714:"1★ Village Quest: Basics: Combining Items",
+0x2715:"1★ Village Quest: Basics: Fishing",
+0x2716:"2★ Village Quest: Your First Monster Hunt!",
+0x2717:"2★ Village Quest: Mushroom Picking",
+0x2718:"2★ Village Quest: Present for the Armorer",
+0x2719:"2★ Village Quest: Help for the Festival",
+0x271a:"2★ Village Quest: Raid the Wyvern's Nest",
+0x271b:"3★ Village Quest: Slay the Yian Kut-Ku!",
+0x271c:"3★ Village Quest: Slay the Velociprey!",
+0x271d:"3★ Village Quest: Liver of Legend!",
+0x271e:"3★ Village Quest: The Formidable Velocidrome!",
+0x271f:"3★ Village Quest: Jungle Menace",
+0x2720:"3★ Village Quest: The Musroom Hunt!",
+0x2721:"3★ Village Quest: Find the Wyvern Eggs!",
+0x2722:"3★ Village Quest: Trouble in the Forest",
+0x2723:"4★ Village Quest: Catch a Yian Kut-Ku",
+0x2724:"4★ Village Quest: Slay the Velociprey Pack!",
+0x2725:"4★ Village Quest: Velocidrome Redux",
+0x2726:"4★ Village Quest: The Land Shark",
+0x2727:"4★ Village Quest: Bring Me Eggs!",
+0x2728:"4★ Village Quest: Attack of the Giant Bugs!",
+0x2729:"4★ Village Quest: Slay the Genprey!",
+0x272a:"4★ Village Quest: Slay the Gendrome!",
+0x272b:"4★ Village Quest: Ioprey Hunting!",
+0x272c:"4★ Village Quest: Slay the Gypceros",
+0x272d:"5★ Village Quest: Lady Gourmet's Dream",
+0x272e:"5★ Village Quest: The Plague of Yian Kut-Ku",
+0x272f:"5★ Village Quest: Fang of the Iodrome!",
+0x2730:"5★ Village Quest: Attack of the Rathalos",
+0x2731:"5★ Village Quest: Attack of the Rathalos",
+0x2732:"5★ Village Quest: Catch a Rathalos",
+0x2733:"5★ Village Quest: Water Wyvern in the Desert",
+0x2734:"5★ Village Quest: Basarios: Unseen Peril",
+0x2735:"5★ Village Quest: Queen of the Desert",
+0x2736:"5★ Village Quest: Queen of the Desert",
+0x2737:"5★ Village Quest: Slay the Rathian!",
+0x2738:"5★ Village Quest: Slay the Rathian!",
+0x2739:"Urgent Village Quest: Horn of the Monoblos",
+0x273a:"Urgent Village Quest: Horn of the Monoblos",
+0x273b:"Urgent Village Quest: Terror of the Gravios",
+0x273c:"Urgent Village Quest: Handle With Care!",
+0x273d:"Urgent Village Quest: The Runaway Diablos",
+0x273e:"Urgent Village Quest: The Shadow in the Cave",
+0x273f:"Urgent Village Quest: A Troublesome Pair",
+0x2740:"Urgent Village Quest: A Giant Dragon Invades!",
+0x4e21:"Training Quest: Kut-Ku - Greatsword",
+0x4e22:"Training Quest: Kut-Ku - Hammer",
+0x4e23:"Training Quest: Kut-Ku - Lance",
+0x4e24:"Training Quest: Kut-Ku - Sword and Shield",
+0x4e25:"Training Quest: Kut-Ku - Bowgun",
+0x4e26:"Training Quest: Rathalos - Greatsword",
+0x4e27:"Training Quest: Rathalos - Hammer",
+0x4e28:"Training Quest: Rathalos - Lance",
+0x4e29:"Training Quest: Rathalos - Sword and Shield",
+0x4e2a:"Training Quest: Rathalos - Bowgun",
+0x4e2b:"Training Quest: Gypeceros - Greatsword",
+0x4e2c:"Training Quest: Gypeceros - Hammer",
+0x4e2d:"Training Quest: Gypeceros - Lance",
+0x4e2e:"Training Quest: Gypeceros - Sword and Shield",
+0x4e2f:"Training Quest: Gypeceros - Bowgun",
+0x4e30:"Training Quest: Plesioth - Greatsword",
+0x4e31:"Training Quest: Plesioth - Hammer",
+0x4e32:"Training Quest: Plesioth - Lance",
+0x4e33:"Training Quest: Plesioth - Sword and Shield",
+0x4e34:"Training Quest: Plesioth - Bowgun",
+0x4e35:"Training Quest: Khezu - Greatsword",
+0x4e36:"Training Quest: Khezu - Hammer",
+0x4e37:"Training Quest: Khezu - Lance",
+0x4e38:"Training Quest: Khezu - Sword and Shield",
+0x4e39:"Training Quest: Khezu - Bowgun",
+0x4e3a:"Training Quest: Rathian - Greatsword",
+0x4e3b:"Training Quest: Rathian - Hammer",
+0x4e3c:"Training Quest: Rathian - Lance",
+0x4e3d:"Training Quest: Rathian - Dual Blades",
+0x4e3e:"Training Quest: Rathian - Bowgun",
+0x4e3f:"Training Quest: Cephadrome - Greatsword",
+0x4e40:"Training Quest: Cephadrome - Hammer",
+0x4e41:"Training Quest: Cephadrome - Lance",
+0x4e42:"Training Quest: Cephadrome - Sword and Shield",
+0x4e43:"Training Quest: Cephadrome - Bowgun",
+0x4e44:"Training Quest: Monoblos - Greatsword",
+0x4e45:"Training Quest: Monoblos - Hammer",
+0x4e46:"Training Quest: Monoblos - Lance",
+0x4e47:"Training Quest: Monoblos - Sword and Shield",
+0x4e48:"Training Quest: Monoblos - Bowgun",
+0x4e49:"Training Quest: Basarios - Greatsword",
+0x4e4a:"Training Quest: Basarios - Hammer",
+0x4e4b:"Training Quest: Basarios - Lance",
+0x4e4c:"Training Quest: Basarios - Dual Blades",
+0x4e4d:"Training Quest: Basarios - Bowgun",
+0x4e4e:"Training Quest: Gravios - Greatsword",
+0x4e4f:"Training Quest: Gravios - Hammer",
+0x4e50:"Training Quest: Gravios - Lance",
+0x4e51:"Training Quest: Gravios - Sword and Shield",
+0x4e52:"Training Quest: Gravios - Bowgun",
+0xea63:"Event Quest: The Swamp Lightning",
+0xea64:"Event Quest: A Giant Dragon Invades!",
+0xea65:"Event Quest: The Furball Arena",
+0xea66:"Event Quest: Wrath of Calamity",
+0xea67:"Event Quest: Revenge of the BBQ!",
+0xea69:"Event Quest: Legendary Black Dragon",
+0xea6a:"Event Quest: Thunder and Lightning",
+0xea6b:"Event Quest: Treasure Hunting!",
+0xea6c:"Event Quest: Dengeki Festival Returns!",
+0xea6d:"Event Quest: Famitsu: The Blue Wyverns",
+0xea7d:"Event Quest: Advent of Calamity",
+}
+
+
+rich_presence_conditional_display(
+    IsOnQuest() && MapId() == 0x8 && IsBattlegroundCampQuest(),
+    "Out on a Quest | {0} | Battleground - Camp Site",
+    rich_presence_lookup("CurrentQuest", QuestActive(), CurrentQuestLookup)
+)
+
+rich_presence_conditional_display(
+    IsOnQuest() && HasMap(),
+    "Out on a Quest | {0} | {1}",
+    rich_presence_lookup("CurrentQuest", QuestActive(), CurrentQuestLookup),
+    rich_presence_lookup("CurrentMap", MapId(), CurrentMapLookup)
+)
+
+rich_presence_conditional_display(
+    IsNotOnQuest() && HasMap() && IsOnlineTown(),
+    "{0} | {1} Town {2} - {3} • Zenny:{4} • Playtime:{5} | Village Quests:{6}/48 | Town Quests:{7}/144 | Training Quests:{8}/50",
+    rich_presence_lookup("HunterRank", OnlineCurrentHunterRank(), HunterRankLookup),
+    rich_presence_lookup("SelectedArea", SelectedArea(), SelectedAreaLookup),
+    rich_presence_value("CurrentTown", CurrentSelectedTown(), format="VALUE"),
+    rich_presence_lookup("CurrentMap", MapId(), CurrentMapLookup),
+    rich_presence_value("Zenny", Zenny(), format="VALUE"),
+    rich_presence_value("Playtime", TotalTime(), format="SECS"),
+    rich_presence_value("VillageQuestTotal", VillageQuestTotal(), format="VALUE"),
+    rich_presence_value("TownQuestTotal", TownQuestTotal(), format="VALUE"),
+    rich_presence_value("TrainingQuestTotal", TrainingQuestTotal(), format="VALUE")
+)
+
+rich_presence_conditional_display(
+    IsNotOnQuest() && HasMap() && IsVillageOffline(),
+    "{0} | {1} • Zenny:{2} • Playtime:{3} | Village Quests:{4}/48 | Town Quests:{5}/144 | Training Quests:{6}/50",
+    rich_presence_lookup("HunterRank", OnlineCurrentHunterRank(), HunterRankLookup),
+    rich_presence_lookup("CurrentMap", MapId(), CurrentMapLookup),
+    rich_presence_value("Zenny", Zenny(), format="VALUE"),
+    rich_presence_value("Playtime", TotalTime(), format="SECS"),
+    rich_presence_value("VillageQuestTotal", VillageQuestTotal(), format="VALUE"),
+    rich_presence_value("TownQuestTotal", TownQuestTotal(), format="VALUE"),
+    rich_presence_value("TrainingQuestTotal", TrainingQuestTotal(), format="VALUE")
+)
+rich_presence_display("Playing Monster Hunter G")
+
+
+////////////////////////////////Achievements to Follow///////////////////////////////////////
+
+function VillageQuestCompleteTrigger(questId,completedQuest) =>
+    QuestActive()==questId&&
+    completedQuest>prev(completedQuest)
+
+function EmitVillageQuestAchievement(title,description,points,questId,completedQuest)
+{
+    achievement(
+        title=title,
+        description=description,
+        points=points,
+        trigger=VillageQuestCompleteTrigger(questId,completedQuest)
+    )
+}
+
+function EmitVillageProgressionQuestAchievement(title,description,points,questId,completedQuest)
+{
+    achievement(
+        title=title,
+        description=description,
+        points=points,
+        type="progression",
+        trigger=VillageQuestCompleteTrigger(questId,completedQuest)
+    )
+}
+
+function EmitVillageWinQuestAchievement(title,description,points,questId,completedQuest)
+{
+    achievement(
+        title=title,
+        description=description,
+        points=points,
+        type="win_condition",
+        trigger=VillageQuestCompleteTrigger(questId,completedQuest)
+    )
+}
+
+function VillageBasicsTotal()
+{
+return
+CompletedVillageBasicsFindingRawMeat()+
+CompletedVillageBasicsPreparingMeat()+
+CompletedVillageBasicsSearchingForItems()+
+CompletedVillageBasicsCombiningItems()+
+CompletedVillageBasicsFishing()
+}
+
+achievement(
+    title="Greenhorn No More",
+    description="Complete all \"Basics\" Quests",
+    points=5,
+    trigger=
+        (
+        FlagImportedPoogieSkin() == 1 &&
+        prev(VillageBasicsTotal()==0) &&
+        VillageBasicsTotal()==5
+        ) ||
+        (
+        IsInGame() &&
+        prev(VillageBasicsTotal()==4) &&
+        VillageBasicsTotal()==5
+        )
+)
+
+EmitVillageProgressionQuestAchievement(
+    "First Hunt, First Kill",
+    "Complete the Village urgent quest \"Your First Monster Hunt!\"",
+    5,
+    0x2716,
+    CompletedVillage2StarYourFirstMonsterHunt()
+)
+
+EmitVillageQuestAchievement(
+    "Forest Bounty",
+    "Complete the 2★ Village Quest: \"Mushroom Picking\"",
+    2,
+    0x2717,
+    CompletedVillage2StarMushroomPicking()
+)
+
+EmitVillageQuestAchievement(
+    "Forge Favor Earned",
+    "Complete the 2★ Village Quest: \"Present for the Armorer\"",
+    2,
+    0x2718,
+    CompletedVillage2StarPresentForTheArmorer()
+)
+
+EmitVillageQuestAchievement(
+    "Feast for the Village",
+    "Complete the 2★ Village Quest: \"Help for the Festival\"",
+    2,
+    0x2719,
+    CompletedVillage2StarHelpForTheFestival()
+)
+
+EmitVillageQuestAchievement(
+    "Egg Thief",
+    "Complete the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
+    5,
+    0x271A,
+    CompletedVillage2StarRaidTheWyvernsNest()
+)
+
+achievement(
+    title="Nest Protector No More",
+    description="Successfully hunt the Rathalos in the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
+    points=5,
+    trigger=
+        (
+        QuestActive() == 0x271A &&
+        TotalRathalosHunted() > prev(TotalRathalosHunted())
+        )
+)
+
+EmitVillageProgressionQuestAchievement(
+    "Pack Leader Down",
+    "Complete the Village urgent quest \"The Formidable Velocidrome!\"",
+    10,
+    0x271E,
+    CompletedVillage3StarTheFormidableVelocidrome()
+)
+
+EmitVillageQuestAchievement(
+    "Big Ears Down",
+    "Complete the 3★ Village Quest: \"Slay the Yian Kut-Ku!\"",
+    5,
+    0x271B,
+    CompletedVillage3StarSlayTheYianKutKu()
+)
+
+EmitVillageQuestAchievement(
+    "Pack Thinned",
+    "Complete the 3★ Village Quest: \"Slay the Velociprey!\"",
+    3,
+    0x271C,
+    CompletedVillage3StarSlayTheVelociprey()
+)
+
+EmitVillageQuestAchievement(
+    "A Hunter’s Taste",
+    "Complete the 3★ Village Quest: \"Liver of Legend!\"",
+    4,
+    0x271D,
+    CompletedVillage3StarLiverOfLegend()
+)
+
+EmitVillageQuestAchievement(
+    "Jungle Justice",
+    "Complete the 3★ Village Quest: \"Jungle Menace\"",
+    5,
+    0x271F,
+    CompletedVillage3StarJungleMenace()
+)
+
+EmitVillageQuestAchievement(
+    "Spores Galore",
+    "Complete the 3★ Village Quest: \"The Musroom Hunt!\"",
+    2,
+    0x2720,
+    CompletedVillage3StarTheMushroomHunt()
+)
+
+EmitVillageQuestAchievement(
+    "Handle With Eggs",
+    "Complete the 3★ Village Quest: \"Find the Wyvern Eggs!\"",
+    5,
+    0x2721,
+    CompletedVillage3StarFindTheWyvernEggs()
+)
+
+EmitVillageQuestAchievement(
+    "Trouble No More",
+    "Complete the 3★ Village Quest: \"Trouble in the Forest\"",
+    5,
+    0x2722,
+    CompletedVillage3StarTroubleInTheForest()
+)
+
+EmitVillageProgressionQuestAchievement(
+    "Sand Swimmer Slain",
+    "Complete the Village urgent quest \"The Land Shark\"",
+    10,
+    0x2726,
+    CompletedVillage4StarTheLandShark()
+)
+
+EmitVillageQuestAchievement(
+    "Caught Red Beaked",
+    "Complete the 4★ Village Quest: \"Catch a Yian Kut-Ku\"",
+    10,
+    0x2723,
+    CompletedVillage4StarCatchAYianKutKu()
+)
+
+EmitVillageQuestAchievement(
+    "Packbreaker",
+    "Complete the 4★ Village Quest: \"Slay the Velociprey Pack!\"",
+    5,
+    0x2724,
+    CompletedVillage4StarSlayTheVelocipreyPack()
+)
+
+EmitVillageQuestAchievement(
+    "King Unseated",
+    "Complete the 4★ Village Quest: \"Velocidrome Redux\"",
+    10,
+    0x2725,
+    CompletedVillage4StarVelocidromeRedux()
+)
+
+EmitVillageQuestAchievement(
+    "Egg Runner",
+    "Complete the 4★ Village Quest: \"Bring Me Eggs!\"",
+    10,
+    0x2727,
+    CompletedVillage4StarBringMeEggs()
+)
+
+EmitVillageQuestAchievement(
+    "Bug Squasher",
+    "Complete the 4★ Village Quest: \"Attack of the Giant Bugs!\"",
+    5,
+    0x2728,
+    CompletedVillage4StarAttackOfTheGiantBugs()
+)
+
+EmitVillageQuestAchievement(
+    "Paralysis Broken",
+    "Complete the 4★ Village Quest: \"Slay the Genprey!\"",
+    5,
+    0x2729,
+    CompletedVillage4StarSlayTheGenprey()
+)
+
+EmitVillageQuestAchievement(
+    "Alpha Silenced",
+    "Complete the 4★ Village Quest: \"Slay the Gendrome!\"",
+    10,
+    0x272A,
+    CompletedVillage4StarSlayTheGendrome()
+)
+
+EmitVillageQuestAchievement(
+    "Venom Drained",
+    "Complete the 4★ Village Quest: \"Ioprey Hunting!\"",
+    5,
+    0x272B,
+    CompletedVillage4StarIopreyHunting()
+)
+
+EmitVillageQuestAchievement(
+    "Flash No More",
+    "Complete the 4★ Village Quest: \"Slay the Gypceros\"",
+    10,
+    0x272C,
+    CompletedVillage4StarSlayTheGypceros()
+)
+
+EmitVillageProgressionQuestAchievement(
+    "King of the Skies",
+    "Complete the Village urgent quest \"Attack of the Rathalos\"",
+    10,
+    0x2730,
+    CompletedVillage5StarAttackOfTheRathalos()
+)
+
+EmitVillageQuestAchievement(
+    "A Gourmet’s Delight",
+    "Complete the 5★ Village Quest: \"Lady Gourmet's Dream\"",
+    10,
+    0x272D,
+    CompletedVillage5StarLadyGourmetsDream()
+)
+
+EmitVillageQuestAchievement(
+    "Feathered Frenzy Ended",
+    "Complete the 5★ Village Quest: \"The Plague of Yian Kut-Ku\"",
+    10,
+    0x272E,
+    CompletedVillage5StarThePlagueOfYianKutKu()
+)
+
+EmitVillageQuestAchievement(
+    "Venom Fang Broken",
+    "Complete the 5★ Village Quest: \"Fang of the Iodrome!\"",
+    10,
+    0x272F,
+    CompletedVillage5StarFangOfTheIodrome()
+)
+
+EmitVillageQuestAchievement(
+    "Sky King Challenged",
+    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
+    10,
+    0x2730,
+    CompletedVillage5StarAttackOfTheRathalos()
+)
+
+achievement(
+    title="Nest Protector No More",
+    description="Slay the Rathalos in Complete the 5★ Village Quest: \"Attack of the Rathalos\" using only the \"Great Bone Club\" and wearing Low Rank leather armor",
+    points=5,
+    trigger=
+        (
+        QuestActive() == 0x2730 &&
+        WeaponEquipped() == 0x64 &&
+        EquippedHeadgear() == 0x1 &&
+        EquippedTorso() == 0x1 &&
+        EquippedHands() == 0x1 &&
+        EquippedWaist() == 0x1 &&
+        EquippedLegs() == 0x1 &&
+        prev(QuestStatus() == 0x3) && 
+        QuestStatus() == 0x4
+        )
+)
+
+EmitVillageQuestAchievement(
+    "Azure King Fallen",
+    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
+    10,
+    0x2731,
+    CompletedVillage5StarAttackOfTheRathalosAzure()
+)
+
+EmitVillageQuestAchievement(
+    "King in Chains",
+    "Complete the 5★ Village Quest: \"Catch a Rathalos\"",
+    10,
+    0x2732,
+    CompletedVillage5StarCatchARathalos()
+)
+
+EmitVillageQuestAchievement(
+    "Water Wyvern Wounded",
+    "Complete the 5★ Village Quest: \"Water Wyvern in the Desert\"",
+    10,
+    0x2733,
+    CompletedVillage5StarWaterWyvernInTheDesert()
+)
+
+EmitVillageQuestAchievement(
+    "Stone Shell Shattered",
+    "Complete the 5★ Village Quest: \"Basarios: Unseen Peril\"",
+    10,
+    0x2734,
+    CompletedVillage5StarBasariosUnseenPeril()
+)
+
+EmitVillageQuestAchievement(
+    "Queen Brought Low",
+    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
+    10,
+    0x2735,
+    CompletedVillage5StarQueenOfTheDesert()
+)
+
+EmitVillageQuestAchievement(
+    "Pink Queen Fallen",
+    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
+    10,
+    0x2736,
+    CompletedVillage5StarQueenOfTheDesertPink()
+)
+
+EmitVillageQuestAchievement(
+    "Queen’s Hunt",
+    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
+    10,
+    0x2737,
+    CompletedVillage5StarSlayTheRathian()
+)
+
+EmitVillageQuestAchievement(
+    "Queen’s Encore",
+    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
+    10,
+    0x2738,
+    CompletedVillage5StarSlayTheRathianPink()
+)
+
+EmitVillageWinQuestAchievement(
+    "One Horn Falls",
+    "Complete the Village urgent quest \"Horn of the Monoblos\"",
+    25,
+    0x2739,
+    CompletedVillage6StarHornOfTheMonoblos()
+)
+
+EmitVillageQuestAchievement(
+    "White Horn Broken",
+    "Complete the Village urgent quest \"Horn of the Monoblos\"",
+    10,
+    0x273A,
+    CompletedVillage6StarHornOfTheMonoblosWhite()
+)
+
+EmitVillageQuestAchievement(
+    "Walking Fortress Fallen",
+    "Complete the Village urgent quest \"Terror of the Gravios\"",
+    10,
+    0x273B,
+    CompletedVillage6StarTerrorOfTheGravios()
+)
+
+EmitVillageQuestAchievement(
+    "Handle With Care",
+    "Complete the Village urgent quest \"Handle With Care!\"",
+    10,
+    0x273C,
+    CompletedVillage6StarHandleWithCare()
+)
+
+EmitVillageQuestAchievement(
+    "Desert Tyrant Tamed",
+    "Complete the Village urgent quest \"The Runaway Diablos\"",
+    25,
+    0x273D,
+    CompletedVillage6StarTheRunawayDiablos()
+)
+
+EmitVillageQuestAchievement(
+    "Shadow Uncovered",
+    "Complete the Village urgent quest \"The Shadow in the Cave\"",
+    10,
+    0x273E,
+    CompletedVillage6StarTheShadowInTheCave()
+)
+
+EmitVillageQuestAchievement(
+    "Two Become None",
+    "Complete the Village urgent quest \"A Troublesome Pair\"",
+    25,
+    0x273F,
+    CompletedVillage6StarATroublesomePair()
+)
+
+EmitVillageQuestAchievement(
+    "Calamity Averted",
+    "Complete the Village urgent quest \"A Giant Dragon Invades!\"",
+    25,
+    0x2740,
+    CompletedVillage6StarAGiantDragonInvades()
+)
+
+function ChiefWisdomReadTotal()
+{
+return
+ReadWisdomHunterBasicsViewingYourSurroundings()+
+ReadWisdomAboutTheSupplyBox()+
+ReadWisdomAboutBeds()+
+ReadWisdomAboutTheDeliveryBox()+
+ReadWisdomUsingWeapons()+
+ReadWisdomHunterBasicsHunting()+
+ReadWisdomCarvingUpAKill()+
+ReadWisdomHunterBasicsSurvivalSkills()+
+ReadWisdomSprinting()+
+ReadWisdomHowToBarbeque()+
+ReadWisdomAbandoningAQuest()+
+ReadWisdomHunterBasicsSearching()+
+ReadWisdomObtainingItems()+
+ReadWisdomClimbingCliffsAndVines()+
+ReadWisdomHunterBasicsItemCombination()+
+ReadWisdomCombination()+
+ReadWisdomHunterBasicsFishing()+
+ReadWisdomHowToFish()+
+ReadWisdomHunterBasicsWInningBattles()+
+ReadWisdomRewardMoney()+
+ReadWisdomConfirmingQuestDetails()+
+ReadWisdomCarvingUpAKill_2()+
+ReadWisdomHunterBasicsGatheringItems()+
+ReadWisdomAboutBugCollecting()+
+ReadWisdomAboutMining()+
+ReadWisdomUsingBugnets()+
+ReadWisdomUsingPickaxes()+
+ReadWisdomHunterBasicsRecoveringFromInjury()+
+ReadWisdomWyvernTactis1()+
+ReadWisdomHowToCarryEggs()+
+ReadWisdomHuntersBasicsItemsInCombat()+
+ReadWisdomFlashBombs()+
+ReadWisdomSmallBarrelBombs()+
+ReadWisdomLargeBarrelBombs()+
+ReadWisdomHunterBasicsMortalCombat()+
+ReadWisdomPaintballs()+
+ReadWisdomSmokeBombs()+
+ReadWisdomRawMeat()+
+ReadWisdomPitfallTraps()+
+ReadWisdomWyvernTactics2()+
+ReadWisdomWyvernTactics3()+
+ReadWisdomCapturingMonsters()+
+ReadWisdomTranqBombs()+
+ReadWisdomTranqShells()+
+ReadWisdomWyvernTactics1()+
+ReadWisdomWyvernTactics2_2()+
+ReadWisdomWyvernTactics3_2()
+}
+
+achievement(
+    title="Studious Hunter",
+    description="Read all Village Elder’s Wisdom",
+    points=3,
+    trigger=
+        IsInGame() &&
+        measured(ChiefWisdomReadTotal()==47)&&
+        prev(ChiefWisdomReadTotal()==46)
+)
+
+achievement(
+    title="Blade of Legends",
+    description="Retrieve the Hero’s Blade",
+    points=5,
+    trigger=
+        IsInGame() &&
+        FlagHeroSwordHasBeenPulled()>prev(FlagHeroSwordHasBeenPulled())
+)
+
+achievement(
+    title="Guild Recognized",
+    description="Receive the Hunter Citation",
+    points=5,
+    trigger=
+        IsInGame() &&
+        FlagHunterCitationReceivedFromVillageElder()>prev(FlagHunterCitationReceivedFromVillageElder())
+)
+
+achievement(
+    title="Village Relic",
+    description="Acquire the Village Chief’s Old Sword",
+    points=5,
+    trigger=
+        IsInGame() &&
+        FlagChiefsOldSwordReceived()>prev(FlagChiefsOldSwordReceived())
+)
+
+achievement(
+    title="Early Bird Reward",
+    description="Acquire the Early Bird Piercing",
+    points=10,
+    trigger=
+        IsInGame() &&
+        FlagEarlyBirdPiercingHundted20MoreOfEachWyvern()>prev(FlagEarlyBirdPiercingHundted20MoreOfEachWyvern())
+)
+
+achievement(
+    title="You’re Coming Home With Me",
+    description="Befriend a Poogie",
+    points=1,
+    trigger=
+        IsInGame() &&
+        FlagBefrienedPoogie()>prev(FlagBefrienedPoogie())
+)
+
+function ItemCombineTotal()
+{
+return
+HasRecovSLv2Combine()+
+HasMegaPotionCombine()+
+HasMegaNutrientsCombine()+
+HasMaxPotionCombine()+
+HasPowerPillCombine()+
+HasArmorPillCombine()+
+HasAncientPotionCombine()+
+HasMegaDemondrugCombine()+
+HasDemonFluteCombine()+
+HasMegaArmorskinCombine()+
+HasArmorFluteCombine()+
+HasSmBarrelBombPlusCombine()+
+HasLgBarrelBombPlusCombine()+
+HasPowerJuiceCombine()+
+HasImmunizerCombine()+
+HasDemondrugCombine()+
+HasArmorskinCombine()+
+HasLgBarrelBombCombine()+
+HasSonicBombCombine()+
+HasLifepowderCombine()+
+HasHealthFluteCombine()+
+HasPowertalonCombine()+
+HasArmortalonCombine()+
+HasDruggedMeatCombine()+
+HasTaintedMeatCombine()+
+HasPoisonedMeatCombine()+
+HasMegaJuiceCombine()+
+HasSleepingThrowingKnifeCombine()+
+HasParalyzeThrowingKnifeCombine()+
+HasPoisonThrowingKnifeCombine()+
+HasDungBombCombine()+
+HasSmokeBombCombine()+
+HasPoisonSmokeBombCombine()+
+HasFlashBombCombine()+
+HasNetCombine()+
+HasPitfallTrapCombine()+
+HasBugnetCombine()+
+HasMegaBugnetCombine()+
+HasOldBugnetCombine()+
+HasSmBarrelBombCombine()+
+HasRecovSLv1Combine()+
+HasFlamingSCombine()+
+HasSleepSLv1Combine()+
+HasStunSLv1Combine()+
+HasPoisonSLv1Combine()+
+HasPaintSCombine()+
+HasDemonSCombine()+
+HasArmorSCombine()+
+HasPelletSLv1Combine()+
+HasNormalSLv2Combine()+
+HasClustSLv1Combine()+
+HasIceSCombine()+
+HasPierceSLv2Combine()+
+HasNormalSLv3Combine()+
+HasCragSLv1Combine()+
+HasThunderSCombine()+
+HasPelletSLv2Combine()+
+HasPierceSLv1Combine()+
+HasSleepSLv2Combine()+
+HasPierceSLv3Combine()+
+HasCragSLv2Combine()+
+HasPelletSLv3Combine()+
+HasClustSLv2Combine()+
+HasStunSLv2Combine()+
+HasPoisonSLv2Combine()+
+HasDragonSCombine()+
+HasClustSLv3Combine()+
+HasCragSLv3Combine()+
+HasArrowanaBaitCombine()+
+HasTunaBaitCombine()+
+HasGoldenfishBaitCombine()+
+HasAntidoteFluteCombine()+
+HasCatalystCombine()+
+HasPotionCombine()+
+HasAntidoteCombine()+
+HasGunpowderCombine()+
+HasPaintballCombine()+
+HasBombMaterialCombine()+
+HasHerbalMedicineCombine()+
+HasSpicyMushroomCombine()+
+HasHotDrinkCombine()+
+HasNutrientsCombine()+
+HasOldPickaxeCombine()+
+HasIronPickaxeCombine()+
+HasAntisepticStoneCombine()+
+HasMegaPickaxeCombine()+
+HasCoolDrinkCombine()+
+HasLifecrystalsCombine()
+}
+
+function VillageMonsterInfoTotal()
+{
+return
+BoughtMosswineInfo()+
+BoughtBullfangoInfo()+
+BoughtKelbiInfo()+
+BoughtAptonothInfo()+
+BoughtApcerosInfo()+
+BoughtFelyneInfo()+
+BoughtMelynxInfo()+
+BoughtVelocipreyInfo()+
+BoughtVelocidromeInfo()+
+BoughtGenpreyInfo()+
+BoughtGendromeInfo()+
+BoughtIopreyInfo()+
+BoughtIodromeInfo()+
+BoughtRathalosInfo()+
+BoughtRathianInfo()+
+BoughtYianKutKuInfo()+
+BoughtGypcerosInfo()+
+BoughtVespoidInfo()+
+BoughtHornetaurInfo()+
+BoughtKhezuInfo()+
+BoughtPlesiothInfo()+
+BoughtCephalosInfo()+
+BoughtCephadromeInfo()+
+BoughtMonoblosInfo()+
+BoughtDiablosInfo()+
+BoughtGraviosInfo()+
+BoughtBasariosInfo()+
+BoughtLaoShanLungInfo()
+}
+
+achievement(
+    title="Master of Craft",
+    description="Learn all item combinations",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(ItemCombineTotal()==88) &&
+        prev(ItemCombineTotal()==87)
+)
+
+achievement(
+    title="Hunter’s Knowledge",
+    description="Acquire all available monster data in the Village",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(VillageMonsterInfoTotal()==28) &&
+        prev(VillageMonsterInfoTotal()==27)
+)
+
+function KutKuTrainingTotal()
+{
+return
+CompletedTrainingQuestsKutKuGreatsword()+
+CompletedTrainingQuestsKutKuHammer()+
+CompletedTrainingQuestsKutKuLance()+
+CompletedTrainingQuestsKutKuSwordAndShield()+
+CompletedTrainingQuestsKutKuBowgun()
+}
+
+function RathalosTrainingTotal()
+{
+return
+CompletedTrainingQuestsRathalosGreatsword()+
+CompletedTrainingQuestsRathalosHammer()+
+CompletedTrainingQuestsRathalosLance()+
+CompletedTrainingQuestsRathalosSwordAndShield()+
+CompletedTrainingQuestsRathalosBowgun()
+}
+
+function GypcerosTrainingTotal()
+{
+return
+CompletedTrainingQuestsGypcerosGreatsword()+
+CompletedTrainingQuestsGypcerosHammer()+
+CompletedTrainingQuestsGypcerosLance()+
+CompletedTrainingQuestsGypcerosSwordAndShield()+
+CompletedTrainingQuestsGypcerosBowgun()
+}
+
+function PlesiothTrainingTotal()
+{
+return
+CompletedTrainingQuestsPlesiothGreatsword()+
+CompletedTrainingQuestsPlesiothHammer()+
+CompletedTrainingQuestsPlesiothLance()+
+CompletedTrainingQuestsPlesiothSwordAndShield()+
+CompletedTrainingQuestsPlesiothBowgun()
+}
+
+function KhezuTrainingTotal()
+{
+return
+CompletedTrainingQuestsKhezuGreatsword()+
+CompletedTrainingQuestsKhezuHammer()+
+CompletedTrainingQuestsKhezuLance()+
+CompletedTrainingQuestsKhezuSwordAndShield()+
+CompletedTrainingQuestsKhezuBowgun()
+}
+
+function RathianTrainingTotal()
+{
+return
+CompletedTrainingQuestsRathianGreatsword()+
+CompletedTrainingQuestsRathianHammer()+
+CompletedTrainingQuestsRathianLance()+
+CompletedTrainingQuestsRathianDualBlades()+
+CompletedTrainingQuestsRathianBowgun()
+}
+
+function CephadromeTrainingTotal()
+{
+return
+CompletedTrainingQuestsCephadromeGreatsword()+
+CompletedTrainingQuestsCephadromeHammer()+
+CompletedTrainingQuestsCephadromeLance()+
+CompletedTrainingQuestsCephadromeSwordAndShield()+
+CompletedTrainingQuestsCephadromeBowgun()
+}
+
+function MonoblosTrainingTotal()
+{
+return
+CompletedTrainingQuestsMonoblosGreatsword()+
+CompletedTrainingQuestsMonoblosHammer()+
+CompletedTrainingQuestsMonoblosLance()+
+CompletedTrainingQuestsMonoblosSwordAndShield()+
+CompletedTrainingQuestsMonoblosBowgun()
+}
+
+function BasariosTrainingTotal()
+{
+return
+CompletedTrainingQuestsBasariosGreatsword()+
+CompletedTrainingQuestsBasariosHammer()+
+CompletedTrainingQuestsBasariosLance()+
+CompletedTrainingQuestsBasariosDualBlades()+
+CompletedTrainingQuestsBasariosBowgun()
+}
+
+function GraviosTrainingTotal()
+{
+return
+CompletedTrainingQuestsGraviosGreatsword()+
+CompletedTrainingQuestsGraviosHammer()+
+CompletedTrainingQuestsGraviosLance()+
+CompletedTrainingQuestsGraviosSwordAndShield()+
+CompletedTrainingQuestsGraviosBowgun()
+}
+
+achievement(
+    title="Coin Collector",
+    description="Possess 200,000 Zenny",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(Zenny()>=200000) &&
+        prev(Zenny()<200000)
+)
+
+achievement(
+    title="Overflowing Coffers",
+    description="Possess 999,999 Zenny",
+    points=25,
+    trigger=
+        IsInGame() &&
+        measured(Zenny()>=999999) &&
+        prev(Zenny()<999999)
+)
+
+achievement(
+    title="Burning Beak",
+    description="Complete all Kut-Ku Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(KutKuTrainingTotal()==5) &&
+        prev(KutKuTrainingTotal()==4)
+)
+
+achievement(
+    title="King’s Trial",
+    description="Complete all Rathalos Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(RathalosTrainingTotal()==5) &&
+        prev(RathalosTrainingTotal()==4)
+)
+
+achievement(
+    title="False Flash Trial",
+    description="Complete all Gypceros Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(GypcerosTrainingTotal()==5) &&
+        prev(GypcerosTrainingTotal()==4)
+)
+
+achievement(
+    title="Tidal Trial",
+    description="Complete all Plesioth Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(PlesiothTrainingTotal()==5) &&
+        prev(PlesiothTrainingTotal()==4)
+)
+
+achievement(
+    title="Cavern Trial",
+    description="Complete all Khezu Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(KhezuTrainingTotal()==5) &&
+        prev(KhezuTrainingTotal()==4)
+)
+
+achievement(
+    title="Queen’s Trial",
+    description="Complete all Rathian Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(RathianTrainingTotal()==5) &&
+        prev(RathianTrainingTotal()==4)
+)
+
+achievement(
+    title="Sand Ambush",
+    description="Complete all Cephadrome Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(CephadromeTrainingTotal()==5) &&
+        prev(CephadromeTrainingTotal()==4)
+)
+
+achievement(
+    title="One-Horn Trial",
+    description="Complete all Monoblos Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(MonoblosTrainingTotal()==5) &&
+        prev(MonoblosTrainingTotal()==4)
+)
+
+achievement(
+    title="Stone Shell Trial",
+    description="Complete all Basarios Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(BasariosTrainingTotal()==5) &&
+        prev(BasariosTrainingTotal()==4)
+)
+
+achievement(
+    title="Stone Endurance",
+    description="Complete all Gravios Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(GraviosTrainingTotal()==5) &&
+        prev(GraviosTrainingTotal()==4)
+)
+
+function JungleGatheringRemaining()
+{
+return
+JungleArea3FelvineGatheringPoint()+
+JungleArea3HuskGatheringPoint()+
+JungleArea3OreDepGatheringPoint()+
+JungleArea3HiddenMushroomsGatheringPoint()+
+JungleArea1HuskGatheringPoint()+
+JungleArea1NutsGatheringPoint()+
+JungleArea1BugsGatheringPoint()+
+JungleArea1BerriesGatheringPoint()+
+JungleArea7SapGatheringPoint()+
+JungleArea7IvyGatheringPoint()+
+JungleArea7PlantsGatheringPoint()+
+JungleArea7PlantsGatheringPoint_2()+
+JungleArea5PlantsGatheringPoint()+
+JungleArea5PlantsGatheringPoint_2()+
+JungleArea5PlantsGatheringPoint_3()+
+JungleArea5BugsGatheringPoint()+
+JungleArea4OreDepGatheringPoint()+
+JungleArea4OreDepGatheringPoint_2()+
+JungleArea4OreDepGatheringPoint_3()+
+JungleArea4FrogsGatheringPoint()+
+JungleArea6DungGatheringPoint()+
+JungleArea6MonsterNestGatheringPoint()+
+JungleArea6SpiderwebGatheringPoint()+
+JungleArea6HiddenKutKuGatheringPoint()+
+JungleArea9OreDepGatheringPoint()+
+JungleArea9MushroomsGatheringPoint()+
+JungleArea9PlantsGatheringPoint()+
+JungleArea9HiddenMushroomsGatheringPoint()+
+JungleArea10OreDepGatheringPoint()+
+JungleArea10DragonSeedGatheringPoint()+
+JungleArea10NutsGatheringPoint()+
+JungleArea10HiddenMushroomsGatheringPoint()+
+JungleArea8MushroomsGatheringPoint()+
+JungleArea8PlantsGatheringPoint()+
+JungleArea8PlantsGatheringPoint_2()+
+JungleArea8FrogsGatheringPoint()+
+JungleArea2IvyGatheringPoint()+
+JungleArea2MushroomsGatheringPoint()+
+JungleArea2HoneyGatheringPoint()+
+JungleArea2HiddenMushroomsBugsMushroomsOnMushroomHuntsGatheringPoint()
+}
+
+function ForestAndHillsGatheringRemaining()
+{
+return
+ForestAndHillsArea6SpiderwebsGatheringPoint()+
+ForestAndHillsArea6OreDepGatheringPoint()+
+ForestAndHillsArea6IvyGatheringPoint()+
+ForestAndHillsArea6PlantsGatheringPoint()+
+ForestAndHillsArea3BerriesGatheringPoint()+
+ForestAndHillsArea3ShroomsGatheringPoint()+
+ForestAndHillsArea3HusksGatheringPoint()+
+ForestAndHillsArea3PlantsGatheringPoint()+
+ForestAndHillsArea10PlantsSleepGatheringPoint()+
+ForestAndHillsArea10PlantsGatheringPoint()+
+ForestAndHillsArea10BerriesGatheringPoint()+
+ForestAndHillsArea10ShroomsGatheringPoint()+
+ForestAndHillsArea8SpiderwebGatheringPoint()+
+ForestAndHillsArea8IvyPatchGatheringPoint()+
+ForestAndHillsArea8PlantsGatheringPoint()+
+ForestAndHillsArea8MushroomsGatheringPoint()+
+ForestAndHillsArea9PlantsGatheringPoint()+
+ForestAndHillsArea9HoneyGatheringPoint()+
+ForestAndHillsArea9BugsGatheringPoint()+
+ForestAndHillsArea9ShroomsGatheringPoint()+
+ForestAndHillsArea4BerriesGatheringPoint()+
+ForestAndHillsArea4HusksGatheringPoint()+
+ForestAndHillsArea4PlantsGatheringPoint()+
+ForestAndHillsArea4MushroomsGatheringPoint()+
+ForestAndHillsArea2PlantsGatheringPoint()+
+ForestAndHillsArea2IvyGatheringPoint()+
+ForestAndHillsArea2NutsGatheringPoint()+
+ForestAndHillsArea2BerriesGatheringPoint()+
+ForestAndHillsArea1SeedsGatheringPoint()+
+ForestAndHillsArea1DungPileGatheringPoint()+
+ForestAndHillsArea1BugsGatheringPoint()+
+ForestAndHillsArea1BerriesGatheringPoint()+
+ForestAndHillsArea5DungGatheringPoint()+
+ForestAndHillsArea5MonsterNestGatheringPoint()+
+ForestAndHillsArea5OreDepGatheringPoint()+
+ForestAndHillsArea5BonesGatheringPoint()+
+ForestAndHillsArea7PlantsGatheringPoint()+
+ForestAndHillsArea7FelvineGatheringPoint()+
+ForestAndHillsArea7HoneyGatheringPoint()+
+ForestAndHillsArea7MushroomGatheringPoint()+
+ForestAndHillsArea11StonesGatheringPoint()+
+ForestAndHillsArea11OreDepGatheringPoint()+
+ForestAndHillsArea11BaitGatheringPoint()+
+ForestAndHillsArea12SpiderwebGatheringPoint()+
+ForestAndHillsArea12BugsGatheringPoint()+
+ForestAndHillsArea12BarrelsGatheringPoint()
+}
+
+function DesertGatheringRemaining()
+{
+return
+DesertArea2CactusGatheringPoint()+
+DesertArea2CactusGatheringPoint_2()+
+DesertArea2SeedsGatheringPoint()+
+DesertArea2BerriesGatheringPoint()+
+DesertArea6OreDepGatheringPoint()+
+DesertArea6OreDepGatheringPoint_2()+
+DesertArea6OreDepGatheringPoint_3()+
+DesertArea6PlantsGatheringPoint()+
+DesertArea9BerriesGatheringPoint()+
+DesertArea9CactusGatheringPoint()+
+DesertArea9DungGatheringPoint()+
+DesertArea9BonesGatheringPoint()+
+DesertArea8DungGatheringPoint()+
+DesertArea8MonsterNestGatheringPoint()+
+DesertArea8HuskGatheringPoint()+
+DesertArea8BerriesGatheringPoint()+
+DesertArea1HusksGatheringPoint()+
+DesertArea1BerriesGatheringPoint()+
+DesertArea1SeedsGatheringPoint()+
+DesertArea1PlantsGatheringPoint()+
+DesertArea4PlantsGatheringPoint()+
+DesertArea4HuskGatheringPoint()+
+DesertArea4BerriesGatheringPoint()+
+DesertArea5BugsGatheringPoint()+
+DesertArea5HuskGatheringPoint()+
+DesertArea5SeedsGatheringPoint()+
+DesertArea5StonesGatheringPoint()+
+DesertArea10FelvineGatheringPoint()+
+DesertArea10HuskGatheringPoint()+
+DesertArea10StonesGatheringPoint()+
+DesertArea10SeedsGatheringPoint()+
+DesertArea11PlantsGatheringPoint()+
+DesertArea11BarrelsGatheringPoint()+
+DesertArea11BugsGatheringPoint()+
+DesertArea7CactusGatheringPoint()+
+DesertArea7PlantsGatheringPoint()+
+DesertArea7FHerbGatheringPoint()+
+DesertArea7HuskGatheringPoint()+
+DesertArea3CactusGatheringPoint()+
+DesertArea3PlantsGatheringPoint()+
+DesertArea3BerriesGatheringPoint()+
+DesertArea3HusksGatheringPoint()
+}
+
+function SwampGatheringRemaining()
+{
+return
+SwampArea3PlantsGatheringPoint()+
+SwampArea3PlantsGatheringPoint_2()+
+SwampArea3BugsGatheringPoint()+
+SwampArea3BugsGatheringPoint_2()+
+SwampArea5HusksGatheringPoint()+
+SwampArea5MushroomsGatheringPoint()+
+SwampArea5HusksGatheringPoint_2()+
+SwampArea5MushroomsGatheringPoint_2()+
+SwampArea1BugsGatheringPoint()+
+SwampArea1MushroomsGatheringPoint()+
+SwampArea1SeedsGatheringPoint()+
+SwampArea1BugsGatheringPoint_2()+
+SwampArea4SpiderwebGatheringPoint()+
+SwampArea4IvyGatheringPoint()+
+SwampArea4AHerbGatheringPoint()+
+SwampArea1SHerbGatheringPoint()+
+SwampArea2HusksGatheringPoint()+
+SwampArea2PlantsGatheringPoint()+
+SwampArea2BugsGatheringPoint()+
+SwampArea2PlantsGatheringPoint_2()+
+SwampArea9AHerbGatheringPoint()+
+SwampArea9HusksGatheringPoint()+
+SwampArea9SHerbGatheringPoint()+
+SwampArea8PlantsGatheringPoint()+
+SwampArea8WormsGatheringPoint()+
+SwampArea8OreDepGatheringPoint()+
+SwampArea8OreDepGatheringPoint_2()+
+SwampArea10MushroomsGatheringPoint()+
+SwampArea10PlantsGatheringPoint()+
+SwampArea10MushroomsGatheringPoint_2()+
+SwampArea10WormsGatheringPoint()+
+SwampArea6MushroomsGatheringPoint()+
+SwampArea6MushroomsGatheringPoint_2()+
+SwampArea6StonesGatheringPoint()+
+SwampArea11MushroomsGatheringPoint()+
+SwampArea11BugsGatheringPoint()+
+SwampArea11OreDepGatheringPoint()+
+SwampArea11StonesGatheringPoint()+
+SwampArea7OreDepGatheringPoint()+
+SwampArea7MushroomsGatheringPoint()+
+SwampArea7StonesGatheringPoint()+
+SwampArea7AHerbsGatheringPoint()
+}
+
+function VolcanoGatheringRemaining()
+{
+return
+VolcanoArea2HusksGatheringPoint()+
+VolcanoArea2OreDepGatheringPoint()+
+VolcanoArea2SeedsGatheringPoint()+
+VolcanoArea2StonesGatheringPoint()+
+VolcanoArea4HusksGatheringPoint()+
+VolcanoArea4OreDepGatheringPoint()+
+VolcanoArea4OreDepGatheringPoint_2()+
+VolcanoArea4ArmorSeedGatheringPoint()+
+VolcanoArea5HusksGatheringPoint()+
+VolcanoArea5FHerbGatheringPoint()+
+VolcanoArea5HusksGatheringPoint_2()+
+VolcanoArea5OreDepGatheringPoint()+
+VolcanoArea8SeedsGatheringPoint()+
+VolcanoArea8OreDepGatheringPoint()+
+VolcanoArea8OreDepGatheringPoint_2()+
+VolcanoArea8OreDepGatheringPoint_3()+
+VolcanoArea1StonesGatheringPoint()+
+VolcanoArea1HusksGatheringPoint()+
+VolcanoArea1OreDepGatheringPoint()+
+VolcanoArea1WormsGatheringPoint()+
+VolcanoArea3FHerbGatheringPoint()+
+VolcanoArea3OreDepGatheringPoint()+
+VolcanoArea3BerriesGatheringPoint()+
+VolcanoArea3OreDepGatheringPoint_2()+
+VolcanoArea6BerriesGatheringPoint()+
+VolcanoArea6PlantsGatheringPoint()+
+VolcanoArea6FHerbGatheringPoint()+
+VolcanoArea6PowerSeedsGatheringPoint()+
+VolcanoArea7BerriesGatheringPoint()+
+VolcanoArea7FHerbGatheringPoint()+
+VolcanoArea7FHerbGatheringPoint_2()+
+VolcanoArea7PowerSeedGatheringPoint()
+}
+
+achievement(
+    title="Forest Circuit",
+    description="Completely gather from every gathering point in the Forest and Hills",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(ForestAndHillsGatheringRemaining()==0) &&
+        prev(ForestAndHillsGatheringRemaining()>0)
+)
+
+achievement(
+    title="Dune Circuit",
+    description="Completely gather from every gathering point in the Desert",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(DesertGatheringRemaining()==0) &&
+        prev(DesertGatheringRemaining()>0)
+)
+
+achievement(
+    title="Jungle Circuit",
+    description="Completely gather from every gathering point in the Jungle",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(JungleGatheringRemaining()==0) &&
+        prev(JungleGatheringRemaining()>0)
+)
+
+achievement(
+    title="Marsh Circuit",
+    description="Completely gather from every gathering point in the Swamp",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(SwampGatheringRemaining()==0) &&
+        prev(SwampGatheringRemaining()>0)
+)
+
+achievement(
+    title="Volcanic Circuit",
+    description="Completely gather from every gathering point in the Volcano",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(VolcanoGatheringRemaining()==0) &&
+        prev(VolcanoGatheringRemaining()>0)
+)
+
+achievement(
+    title="Truffle Trouble",
+    description="Successfully hunt 50 Mosswine",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalMosswineHunted()>=50) &&
+        prev(TotalMosswineHunted()<50)
+)
+
+achievement(
+    title="Boar Rush Broken",
+    description="Successfully hunt 50 Bullfango",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalBullfangoHunted()>=50) &&
+        prev(TotalBullfangoHunted()<50)
+)
+
+achievement(
+    title="Swift as Wind",
+    description="Successfully hunt 50 Kelbi",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalKelbiHunted()>=50) &&
+        prev(TotalKelbiHunted()<50)
+)
+
+achievement(
+    title="Herd Thinner",
+    description="Successfully hunt 50 Aptonoth",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalAptonothHunted()>=50) &&
+        prev(TotalAptonothHunted()<50)
+)
+
+achievement(
+    title="Shell Cracked",
+    description="Successfully hunt 50 Apceros",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalApcerosHunted()>=50) &&
+        prev(TotalApcerosHunted()<50)
+)
+
+achievement(
+    title="Cat Scratch Hunter",
+    description="Successfully hunt 50 Felyne",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalFelyneHunted()>=50) &&
+        prev(TotalFelyneHunted()<50)
+)
+
+achievement(
+    title="Thief No More",
+    description="Successfully hunt 50 Melynx",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalMelynxHunted()>=50) &&
+        prev(TotalMelynxHunted()<50)
+)
+
+achievement(
+    title="Stinger Silenced",
+    description="Successfully hunt 50 Vespoid",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalVespoidHunted()>=50) &&
+        prev(TotalVespoidHunted()<50)
+)
+
+achievement(
+    title="Shell Splitter",
+    description="Successfully hunt 50 Hornetaur",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalHornetaurHunted()>=50) &&
+        prev(TotalHornetaurHunted()<50)
+)
+
+achievement(
+    title="Packbreaker",
+    description="Successfully hunt 50 Velociprey",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalVelocipreyHunted()>=50) &&
+        prev(TotalVelocipreyHunted()<50)
+)
+
+achievement(
+    title="Shock Broken",
+    description="Successfully hunt 50 Genprey",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalGenpreyHunted()>=50) &&
+        prev(TotalGenpreyHunted()<50)
+)
+
+achievement(
+    title="Poison Purged",
+    description="Successfully hunt 50 Ioprey",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalIopreyHunted()>=50) &&
+        prev(TotalIopreyHunted()<50)
+)
+
+function TotalYianKutKuSpeciesHunted()
+{
+return
+TotalYianKutKuHunted()+
+TotalBlueYianKutKuHunted()
+}
+
+function TotalGypcerosSpeciesHunted()
+{
+return
+TotalGypcerosHunted()+
+TotalPurpleGypcerosHunted()
+}
+
+function TotalRathianSpeciesHunted()
+{
+return
+TotalRathianHunted()+
+TotalPinkRathianHunted()+
+TotalGoldRathianHunted()
+}
+
+function TotalRathalosSpeciesHunted()
+{
+return
+TotalRathalosHunted()+
+TotalAzureRathalosHunted()+
+TotalSilverRathalosHunted()
+}
+
+function TotalKhezuSpeciesHunted()
+{
+return
+TotalKhezuHunted()+
+TotalRedKhezuHunted()
+}
+
+function TotalPlesiothSpeciesHunted()
+{
+return
+TotalPlesiothHunted()+
+TotalGreenPlesiothHunted()
+}
+
+function TotalGraviosSpeciesHunted()
+{
+return
+TotalGraviosHunted()+
+TotalBlackGraviosHunted()
+}
+
+function TotalDiablosSpeciesHunted()
+{
+return
+TotalDiablosHunted()+
+TotalBlackDiablosHunted()
+}
+
+function TotalMonoblosSpeciesHunted()
+{
+return
+TotalMonoblosHunted()+
+TotalWhiteMonobolosHunted()
+}
+
+function TotalLaoShanLungRepelled()
+{
+return
+TotalLaoshunRepeled()+
+TotalAshenLaoshunRepeled()
+}
+
+achievement(
+    title="Alpha No More",
+    description="Successfully hunt 10 Velocidrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalVelocidromeHunted()>=10) &&
+        prev(TotalVelocidromeHunted()<10)
+)
+
+achievement(
+    title="Pack Extinguished",
+    description="Successfully hunt 20 Velocidrome",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalVelocidromeHunted()>=20) &&
+        prev(TotalVelocidromeHunted()<20)
+)
+
+achievement(
+    title="Alpha in the Making",
+    description="Obtain a Silver Crown or larger for Velocidrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        LargestVelocidromeLengthHunted()>=0x77 &&
+        prev(LargestVelocidromeLengthHunted()<0x77)
+)
+
+achievement(
+    title="Fangs of Paralysis Falter",
+    description="Successfully hunt 10 Gendrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalGendromeHunted()>=10) &&
+        prev(TotalGendromeHunted()<10)
+)
+
+achievement(
+    title="Shock Threats Extinguished",
+    description="Successfully hunt 20 Gendrome",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalGendromeHunted()>=20) &&
+        prev(TotalGendromeHunted()<20)
+)
+
+achievement(
+    title="Shocking King in Training",
+    description="Obtain a Silver Crown or larger for Gendrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        LargestGendromeLengthHunted()>=0x77 &&
+        prev(LargestGendromeLengthHunted()<0x77)
+)
+
+achievement(
+    title="Toxic Pack Driven Off",
+    description="Successfully hunt 10 Iodrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalIodromeHunted()>=10) &&
+        prev(TotalIodromeHunted()<10)
+)
+
+achievement(
+    title="Poisonous Threats Neutralized",
+    description="Successfully hunt 20 Iodrome",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalIodromeHunted()>=20) &&
+        prev(TotalIodromeHunted()<20)
+)
+
+achievement(
+    title="The Spitting Tyrant",
+    description="Obtain a Silver Crown or larger for Iodrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        LargestIodromeLengthHunted()>=0x7c &&
+        prev(LargestIodromeLengthHunted()<0x7c)
+)
+
+achievement(
+    title="Earplugs Recommended",
+    description="Successfully hunt 10 Yian Kut-Ku",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalYianKutKuSpeciesHunted()>=10) &&
+        prev(TotalYianKutKuSpeciesHunted()<10)
+)
+
+achievement(
+    title="Feathers Scattered",
+    description="Successfully hunt 20 Yian Kut-Ku",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalYianKutKuSpeciesHunted()>=20) &&
+        prev(TotalYianKutKuSpeciesHunted()<20)
+)
+
+achievement(
+    title="Loud, Proud, and Growing",
+    description="Obtain a Silver Crown or larger for Yian Kut-Ku",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestYianKutKuLengthHunted()>=0x72 &&
+                prev(LargestYianKutKuLengthHunted()<0x72)
+            ) ||
+            (
+                LargestBlueYianKutKuLengthHunted()>=0x72 &&
+                prev(LargestBlueYianKutKuLengthHunted()<0x72)
+            )
+        )
+)
+
+achievement(
+    title="Flash Out",
+    description="Successfully hunt 10 Gypceros",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalGypcerosSpeciesHunted()>=10) &&
+        prev(TotalGypcerosSpeciesHunted()<10)
+)
+
+achievement(
+    title="No More Tricks",
+    description="Successfully hunt 20 Gypceros",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalGypcerosSpeciesHunted()>=20) &&
+        prev(TotalGypcerosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Flashy and Full of It",
+    description="Obtain a Silver Crown or larger for Gypceros",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestGypcerosLengthHunted()>=0x76 &&
+                prev(LargestGypcerosLengthHunted()<0x76)
+            ) ||
+            (
+                LargestPurpleGypcerosLengthHunted()>=0x76 &&
+                prev(LargestPurpleGypcerosLengthHunted()<0x76)
+            )
+        )
+)
+
+achievement(
+    title="Under the Sand",
+    description="Successfully hunt 10 Cephadrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalCephadromeHunted()>=10) &&
+        prev(TotalCephadromeHunted()<10)
+)
+
+achievement(
+    title="Sandstorm Stilled",
+    description="Successfully hunt 20 Cephadrome",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalCephadromeHunted()>=20) &&
+        prev(TotalCephadromeHunted()<20)
+)
+
+achievement(
+    title="Not Just a Ripple Anymore",
+    description="Obtain a Silver Crown or larger for Cephadrome",
+    points=5,
+    trigger=
+        IsInGame() &&
+        LargestCephadromeLengthHunted()>=0x76 &&
+        prev(LargestCephadromeLengthHunted()<0x76)
+)
+
+achievement(
+    title="Queen’s Temper",
+    description="Successfully hunt 10 Rathian",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalRathianSpeciesHunted()>=10) &&
+        prev(TotalRathianSpeciesHunted()<10)
+)
+
+achievement(
+    title="Queen’s Fall",
+    description="Successfully hunt 20 Rathian",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalRathianSpeciesHunted()>=20) &&
+        prev(TotalRathianSpeciesHunted()<20)
+)
+
+achievement(
+    title="Queen With Something to Prove",
+    description="Obtain a Silver Crown or larger for Rathian",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestRathianLengthHunted()>=0x79 &&
+                prev(LargestRathianLengthHunted()<0x79)
+            ) ||
+            (
+                LargestPinkRathianLengthHunted()>=0x79 &&
+                prev(LargestPinkRathianLengthHunted()<0x79)
+            ) ||
+            (
+                LargestGoldRathianLengthHunted()>=0x79 &&
+                prev(LargestGoldRathianLengthHunted()<0x79)
+            )
+        )
+)
+
+achievement(
+    title="Skyfall Trial",
+    description="Successfully hunt 10 Rathalos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalRathalosSpeciesHunted()>=10) &&
+        prev(TotalRathalosSpeciesHunted()<10)
+)
+
+achievement(
+    title="King Grounded",
+    description="Successfully hunt 20 Rathalos",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalRathalosSpeciesHunted()>=20) &&
+        prev(TotalRathalosSpeciesHunted()<20)
+)
+
+achievement(
+    title="King in the Making",
+    description="Obtain a Silver Crown or larger for Rathalos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestRathalosLengthHunted()>=0x72 &&
+                prev(LargestRathalosLengthHunted()<0x72)
+            ) ||
+            (
+                LargestAzureRathalosLengthHunted()>=0x72 &&
+                prev(LargestAzureRathalosLengthHunted()<0x72)
+            ) ||
+            (
+                LargestSilverRathalosLengthHunted()>=0x72 &&
+                prev(LargestSilverRathalosLengthHunted()<0x72)
+            )
+        )
+)
+
+achievement(
+    title="Silence in the Dark",
+    description="Successfully hunt 10 Khezu",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalKhezuSpeciesHunted()>=10) &&
+        prev(TotalKhezuSpeciesHunted()<10)
+)
+
+achievement(
+    title="Darkness Conquered",
+    description="Successfully hunt 20 Khezu",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalKhezuSpeciesHunted()>=20) &&
+        prev(TotalKhezuSpeciesHunted()<20)
+)
+
+achievement(
+    title="Pale Terror Growing",
+    description="Obtain a Silver Crown or larger for Khezu",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestKhezuLengthHunted()>=0x76 &&
+                prev(LargestKhezuLengthHunted()<0x76)
+            ) ||
+            (
+                LargestRedKhezuLengthHunted()>=0x76 &&
+                prev(LargestRedKhezuLengthHunted()<0x76)
+            )
+        )
+)
+
+achievement(
+    title="Shoreline Chaos",
+    description="Successfully hunt 10 Plesioth",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalPlesiothSpeciesHunted()>=10) &&
+        prev(TotalPlesiothSpeciesHunted()<10)
+)
+
+achievement(
+    title="Flood Receded",
+    description="Successfully hunt 20 Plesioth",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalPlesiothSpeciesHunted()>=20) &&
+        prev(TotalPlesiothSpeciesHunted()<20)
+)
+
+achievement(
+    title="Rising Tide Threat",
+    description="Obtain a Silver Crown or larger for Plesioth",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestPlesiothLengthHunted()>=0x7b &&
+                prev(LargestPlesiothLengthHunted()<0x7b)
+            ) ||
+            (
+                LargestGreenPlesiothLengthHunted()>=0x7b &&
+                prev(LargestGreenPlesiothLengthHunted()<0x7b)
+            )
+        )
+)
+
+achievement(
+    title="Hidden No Longer",
+    description="Successfully hunt 10 Basarios",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalBasariosHunted()>=10) &&
+        prev(TotalBasariosHunted()<10)
+)
+
+achievement(
+    title="Stone Unraveled",
+    description="Successfully hunt 20 Basarios",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalBasariosHunted()>=20) &&
+        prev(TotalBasariosHunted()<20)
+)
+
+achievement(
+    title="Buried Watcher Stirring",
+    description="Obtain a Silver Crown or larger for Basarios",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestBasariosLengthHunted()>=0x76 &&
+                prev(LargestBasariosLengthHunted()<0x76)
+            ) ||
+            (
+                LargestBasariosLengthHunted_2()>=0x76 &&
+                prev(LargestBasariosLengthHunted_2()<0x76)
+            )
+        )
+)
+
+achievement(
+    title="Armor Tested",
+    description="Successfully hunt 10 Gravios",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalGraviosSpeciesHunted()>=10) &&
+        prev(TotalGraviosSpeciesHunted()<10)
+)
+
+achievement(
+    title="Fortress Toppled",
+    description="Successfully hunt 20 Gravios",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalGraviosSpeciesHunted()>=20) &&
+        prev(TotalGraviosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Fortress in the Making",
+    description="Obtain a Silver Crown or larger for Gravios",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestGraviosLengthHunted()>=0x7b &&
+                prev(LargestGraviosLengthHunted()<0x7b)
+            ) ||
+            (
+                LargestBlackGraviosLengthHunted()>=0x87 &&
+                prev(LargestBlackGraviosLengthHunted()<0x87)
+            )
+        )
+)
+
+achievement(
+    title="Charge Denied",
+    description="Successfully hunt 10 Diablos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalDiablosSpeciesHunted()>=10) &&
+        prev(TotalDiablosSpeciesHunted()<10)
+)
+
+achievement(
+    title="Horned Menace Ended",
+    description="Successfully hunt 20 Diablos",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalDiablosSpeciesHunted()>=20) &&
+        prev(TotalDiablosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Desert King in Waiting",
+    description="Obtain a Silver Crown or larger for Diablos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestDiablosLengthHunted()>=0x7b &&
+                prev(LargestDiablosLengthHunted()<0x7b)
+            ) ||
+            (
+                LargestBlackDiablosLengthHunted()>=0x7b &&
+                prev(LargestBlackDiablosLengthHunted()<0x7b)
+            )
+        )
+)
+
+achievement(
+    title="Lone Fury Faced",
+    description="Successfully hunt 10 Monoblos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalMonoblosSpeciesHunted()>=10) &&
+        prev(TotalMonoblosSpeciesHunted()<10)
+)
+
+achievement(
+    title="One Horn Broken",
+    description="Successfully hunt 20 Monoblos",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalMonoblosSpeciesHunted()>=20) &&
+        prev(TotalMonoblosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Wandering Tyrant",
+    description="Obtain a Silver Crown or larger for Monoblos",
+    points=5,
+    trigger=
+        IsInGame() &&
+        (
+            (
+                LargestMonoblosLengthHunted()>=0x74 &&
+                prev(LargestMonoblosLengthHunted()<0x74)
+            ) ||
+            (
+                LargestWhiteMonoblosLengthHunted()>=0x74 &&
+                prev(LargestWhiteMonoblosLengthHunted()<0x74)
+            )
+        )
+)
+
+achievement(
+    title="Wall Unbroken",
+    description="Successfully repel Lao-Shan Lung 10 times",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(TotalLaoShanLungRepelled()>=10) &&
+        prev(TotalLaoShanLungRepelled()<10)
+)
+
+achievement(
+    title="Fortress Stands",
+    description="Successfully repel Lao-Shan Lung 20 times",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(TotalLaoShanLungRepelled()>=20) &&
+        prev(TotalLaoShanLungRepelled()<20)
+)
+
+////////////////////////////////Leaderboards to Follow///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function EmitMonsterSizeLeaderboard(title,description,sizeAccessor,multiplier)
+
+{
+leaderboard(
+    title=title,
+    description=description,
+    start=
+        IsOnQuest() &&
+        sizeAccessor()>prev(sizeAccessor())
+        ,
+    cancel=
+        QuestActive() == 0x0,
+    submit=
+        sizeAccessor()>prev(sizeAccessor()),
+    value=
+        measured(sizeAccessor() * multiplier),
+    format="FIXED1",
+    lower_is_better=false
+)
+}
+
+EmitMonsterSizeLeaderboard("Velocidrome Size","Largest Velocidrome hunted",LargestVelocidromeLengthHunted,7.383739837398374)
+EmitMonsterSizeLeaderboard("Gendrome Size","Largest Gendrome hunted",LargestGendromeLengthHunted,7.321138211382114)
+EmitMonsterSizeLeaderboard("Iodrome Size","Largest Iodrome hunted",LargestIodromeLengthHunted,7.746341463414634)
+EmitMonsterSizeLeaderboard("Yian Kut-Ku Size","Largest Yian Kut-Ku hunted",LargestYianKutKuLengthHunted,9.198373983739837)
+EmitMonsterSizeLeaderboard("Gypceros Size","Largest Gypceros hunted",LargestGypcerosLengthHunted,10.13739837398374)
+EmitMonsterSizeLeaderboard("Cephadrome Size","Largest Cephadrome hunted",LargestCephadromeLengthHunted,15.38292682926829)
+EmitMonsterSizeLeaderboard("Rathian Size","Largest Rathian hunted",LargestRathianLengthHunted,16.45609756097561)
+EmitMonsterSizeLeaderboard("Pink Rathian Size","Largest Pink Rathian hunted",LargestPinkRathianLengthHunted,16.45609756097561)
+EmitMonsterSizeLeaderboard("Rathalos Size","Largest Rathalos hunted",LargestRathalosLengthHunted,16.29430894308943)
+EmitMonsterSizeLeaderboard("Azure Rathalos Size","Largest Azure Rathalos hunted",LargestAzureRathalosLengthHunted,16.29430894308943)
+EmitMonsterSizeLeaderboard("Khezu Size","Largest Khezu hunted",LargestKhezuLengthHunted,8.731707317073171)
+EmitMonsterSizeLeaderboard("Plesioth Size","Largest Plesioth hunted",LargestPlesiothLengthHunted,23.1520325203252)
+leaderboard(
+    title="Basarios Size",
+    description="Largest Basarios hunted",
+    start=
+        IsOnQuest() &&
+        LargestBasariosLengthHunted()>prev(LargestBasariosLengthHunted()) ||
+        LargestBasariosLengthHunted_2()>prev(LargestBasariosLengthHunted_2()),
+    cancel=
+        QuestActive() == 0x0,
+    submit=
+        LargestBasariosLengthHunted()>prev(LargestBasariosLengthHunted()) ||
+        LargestBasariosLengthHunted_2()>prev(LargestBasariosLengthHunted_2()),
+    value=
+        max_of(measured(LargestBasariosLengthHunted() * 12.97596899224806),
+        measured(LargestBasariosLengthHunted_2() * 12.97596899224806))
+        ,
+    format="FIXED1",
+    lower_is_better=false
+)
+EmitMonsterSizeLeaderboard("Gravios Size","Largest Gravios hunted",LargestGraviosLengthHunted,20.99918699186992)
+EmitMonsterSizeLeaderboard("Diablos Size","Largest Diablos hunted",LargestDiablosLengthHunted,19.93414634146341)
+EmitMonsterSizeLeaderboard("Monoblos Size","Largest Monoblos hunted",LargestMonoblosLengthHunted,20.04227642276423)
+EmitMonsterSizeLeaderboard("White Monoblos Size","Largest White Monoblos hunted",LargestWhiteMonoblosLengthHunted,20.04227642276423)
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////Online Subset Follows////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function TownQuestCompleteTrigger(questId,completedQuest) =>
+    QuestActive()==questId &&
+    completedQuest>prev(completedQuest)
+
+function EmitTownQuestAchievement(title,description,points,questId,completedQuest)
+{
+    achievement(
+        title=title,
+        description=description,
+        points=points,
+        set=AchievementSetOnline,
+        trigger=TownQuestCompleteTrigger(questId,completedQuest)
+    )
+}
+
+function FatalisTownQuestCompleteTrigger()=>
+    TownQuestCompleteTrigger(0xBBC,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon1())||
+    TownQuestCompleteTrigger(0xBBD,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon2())||
+    TownQuestCompleteTrigger(0xBBE,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon3())||
+    TownQuestCompleteTrigger(0xBBF,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon4())
+
+function EmitFatalisTownQuestAchievement(title,description,points)
+{
+    achievement(
+        title=title,
+        description=description,
+        points=points,
+        set=AchievementSetOnline,
+        trigger=FatalisTownQuestCompleteTrigger()
+    )
+}
+
+EmitTownQuestAchievement(
+    "We Need More Mushrooms",
+    "Complete the 1★ Town Quest: \"Mushroom Picking\"",
+    1,
+    0x1,
+    CompletedTown1StarMushroomPicking()
+)
+
+EmitTownQuestAchievement(
+    "Sculptor Needs A Favor",
+    "Complete the 1★ Town Quest: \"The Sculptor's Errand\"",
+    1,
+    0x2,
+    CompletedTown1StarTheSculptorsErrand()
+)
+
+EmitTownQuestAchievement(
+    "Time For A Feast",
+    "Complete the 1★ Town Quest: \"It's Party Time!\"",
+    1,
+    0x3,
+    CompletedTown1StarItsPartyTime()
+)
+
+EmitTownQuestAchievement(
+    "Kut-Ku Is Acting Up",
+    "Complete the 1★ Town Quest: \"Attack of the Yian Kut-Ku\"",
+    3,
+    0x4,
+    CompletedTown1StarAttackOfTheYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Velociprey Are Everywhere Today",
+    "Complete the 1★ Town Quest: \"Velociprey Hunt\"",
+    3,
+    0x6,
+    CompletedTown1StarVelocipreyHunt()
+)
+
+EmitTownQuestAchievement(
+    "Pack Leaders Need Handling",
+    "Complete the 1★ Town Quest: \"The Velociprey Lords\"",
+    5,
+    0x7,
+    CompletedTown1StarTheVelocipreyLords()
+)
+
+EmitTownQuestAchievement(
+    "This Better Taste Amazing",
+    "Complete the 1★ Town Quest: \"Illusory Delicacy!\"",
+    4,
+    0xB,
+    CompletedTown1StarIllusoryDelicacy()
+)
+
+EmitTownQuestAchievement(
+    "Crystals For The Guild",
+    "Complete the 1★ Town Quest: \"Crystal Hunting!\"",
+    5,
+    0x14,
+    CompletedTown1StarCrystalHunting()
+)
+
+EmitTownQuestAchievement(
+    "Goldfish Worth The Trouble",
+    "Complete the 1★ Town Quest: \"Panning for Goldenfish\"",
+    3,
+    0x15,
+    CompletedTown1StarPanningForGoldenfish()
+)
+
+EmitTownQuestAchievement(
+    "Bugs Are Getting Bold",
+    "Complete the 1★ Town Quest: \"Attack of the Giant Bugs\"",
+    5,
+    0x23,
+    CompletedTown1StarAttackOfTheGiantBugs()
+)
+
+EmitTownQuestAchievement(
+    "Jungle Sounds Too Loud",
+    "Complete the 1★ Town Quest: \"Jungle Menace\"",
+    5,
+    0x24,
+    CompletedTown1StarJungleMenace()
+)
+
+EmitTownQuestAchievement(
+    "More Mushrooms, Naturally",
+    "Complete the 1★ Town Quest: \"The Mushroom Hunt!\"",
+    5,
+    0x25,
+    CompletedTown1StarTheMushroomHunt()
+)
+
+EmitTownQuestAchievement(
+    "Show Us Your Cooking",
+    "Complete the 1★ Town Quest: \"Show me your Cooking Skills!\"",
+    5,
+    0x26,
+    CompletedTown1StarShowMeYourCookingSkills()
+)
+
+EmitTownQuestAchievement(
+    "Gypceros Won't Fool Us Again",
+    "Complete the Urgent Town Quest: \"Slay the Gypceros!\"",
+    10,
+    0x27,
+    CompletedTown2StarSlayTheGypceros()
+)
+
+EmitTownQuestAchievement(
+    "Venom Bird Causes Trouble",
+    "Complete the 2★ Town Quest: \"Gypceros: Venomous Terror\"",
+    5,
+    0x5,
+    CompletedTown2StarGypcerosVenomousTerror()
+)
+
+EmitTownQuestAchievement(
+    "Stay Out Of Nests",
+    "Complete the 2★ Town Quest: \"Raid the Wyvern's Nest\"",
+    5,
+    0x8,
+    CompletedTown2StarRaidTheWyvernsNest()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Is Really Angry",
+    "Complete the 2★ Town Quest: \"Attack of the Rathian!\"",
+    5,
+    0xA,
+    CompletedTown2StarAttackOfTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Desert Queen Wants Attention",
+    "Complete the 2★ Town Quest: \"Queen of the Desert\"",
+    5,
+    0xC,
+    CompletedTown2StarQueenOfTheDesert()
+)
+
+EmitTownQuestAchievement(
+    "Something Swims Under Sand",
+    "Complete the 2★ Town Quest: \"The Land Shark\"",
+    5,
+    0xD,
+    CompletedTown2StarTheLandShark()
+)
+
+EmitTownQuestAchievement(
+    "Genprey Need Thinning Out",
+    "Complete the 2★ Town Quest: \"Slay the Genprey\"",
+    5,
+    0xE,
+    CompletedTown2StarSlayTheGenprey()
+)
+
+EmitTownQuestAchievement(
+    "Gendrome Brought Friends",
+    "Complete the 2★ Town Quest: \"Leaders of the Genprey\"",
+    5,
+    0xF,
+    CompletedTown2StarLeadersOfTheGenprey()
+)
+
+EmitTownQuestAchievement(
+    "Don't Drop The Egg",
+    "Complete the 2★ Town Quest: \"Apceros Egg Hunt\"",
+    5,
+    0x10,
+    CompletedTown2StarApcerosEggHunt()
+)
+
+EmitTownQuestAchievement(
+    "Boars Own The Swamp",
+    "Complete the 2★ Town Quest: \"Trouble in the Swamp\"",
+    5,
+    0x13,
+    CompletedTown2StarTroubleInTheSwampBullfango()
+)
+
+EmitTownQuestAchievement(
+    "Bring Back Sootstone Ore",
+    "Complete the 2★ Town Quest: \"Get me Sootstone Ore!\"",
+    5,
+    0x17,
+    CompletedTown2StarGetMeSootstoneOre()
+)
+
+EmitTownQuestAchievement(
+    "Gendrome Again, Naturally",
+    "Complete the 2★ Town Quest: \"Slay the Gendrome!\"",
+    5,
+    0x18,
+    CompletedTown2StarSlayTheGendrome()
+)
+
+EmitTownQuestAchievement(
+    "Keep The Dragonator Fed",
+    "Complete the 2★ Town Quest: \"Re-Supply the Dragonator\"",
+    5,
+    0x1C,
+    CompletedTown2StarReSupplyTheDragonator()
+)
+
+EmitTownQuestAchievement(
+    "That Rock Is Alive",
+    "Complete the 2★ Town Quest: \"Basarios: Unseen Peril!\"",
+    5,
+    0x1D,
+    CompletedTown2StarBasariosUnseenPeril()
+)
+
+EmitTownQuestAchievement(
+    "More Coal, Less Complaining",
+    "Complete the 2★ Town Quest: \"More Coal Please\"",
+    5,
+    0x28,
+    CompletedTown2StarMoreCoalPlease()
+)
+
+EmitTownQuestAchievement(
+    "Catch The Beaked Troublemaker",
+    "Complete the 2★ Town Quest: \"Catch a Yian Kut-Ku\"",
+    5,
+    0x2F,
+    CompletedTown2StarCatchAYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Khezu Hates The Dark?",
+    "Complete the 2★ Town Quest: \"Wyvern in the Darkness\"",
+    5,
+    0x29,
+    CompletedTown3StarWyvernInTheDarkness()
+)
+
+EmitTownQuestAchievement(
+    "Rathalos Takes The Stage",
+    "Complete the Urgent Town Quest: \"Slay the Rathalos!\"",
+    10,
+    0x9,
+    CompletedTown3StarSlayTheRathalos()
+)
+
+EmitTownQuestAchievement(
+    "Diablos Is Out Again",
+    "Complete the 3★ Town Quest: \"The Runaway Diablos\"",
+    5,
+    0x11,
+    CompletedTown3StarTheRunawayDiablos()
+)
+
+EmitTownQuestAchievement(
+    "Khezu Lurks Down There",
+    "Complete the 3★ Town Quest: \"The Shadow in the Cave\"",
+    5,
+    0x19,
+    CompletedTown3StarTheShadowInTheCave()
+)
+
+EmitTownQuestAchievement(
+    "Gravios Blocks The Way",
+    "Complete the 3★ Town Quest: \"The Fearsome Gravios\"",
+    5,
+    0x1A,
+    CompletedTown3StarTheFearsomeGravios()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Needs A Lesson",
+    "Complete the 3★ Town Quest: \"Slay the Rathian!\"",
+    5,
+    0x1B,
+    CompletedTown3StarSlayTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Volcano Job Sounds Dangerous",
+    "Complete the 3★ Town Quest: \"Volcanic Valor\"",
+    5,
+    0x1E,
+    CompletedTown3StarVolcanicValor()
+)
+
+EmitTownQuestAchievement(
+    "Ioprey Need Clearing Out",
+    "Complete the 3★ Town Quest: \"Ioprey Hunting\"",
+    5,
+    0x1F,
+    CompletedTown3StarIopreyHunting()
+)
+
+EmitTownQuestAchievement(
+    "Iodrome Brought Backup Today",
+    "Complete the 3★ Town Quest: \"Leaders of the Ioprey\"",
+    5,
+    0x20,
+    CompletedTown3StarLeadersOfTheIoprey()
+)
+
+EmitTownQuestAchievement(
+    "Powderstone Runs Feel Terrible",
+    "Complete the 3★ Town Quest: \"Bring us Powderstone!\"",
+    5,
+    0x21,
+    CompletedTown3StarBringUsPowderstone()
+)
+
+EmitTownQuestAchievement(
+    "Iodrome Won't Behave Today",
+    "Complete the 3★ Town Quest: \"Slay the Iodrome!\"",
+    5,
+    0x2A,
+    CompletedTown3StarSlayTheIodrome()
+)
+
+EmitTownQuestAchievement(
+    "Plesioth Owns The River",
+    "Complete the 3★ Town Quest: \"Water Wyvern in the Jungle\"",
+    5,
+    0x2B,
+    CompletedTown3StarWaterWyvernInTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "Eggs Make Everything Worse",
+    "Complete the 3★ Town Quest: \"Wyvern Egg Hunt\"",
+    5,
+    0x2C,
+    CompletedTown3StarWyvernEggHunt()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Likes The Jungle",
+    "Complete the 3★ Town Quest: \"Queen of the Jungle\"",
+    5,
+    0x2D,
+    CompletedTown3StarQueenOfTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "Catching Rathalos Sounds Easy?",
+    "Complete the 3★ Town Quest: \"Catch a Rathalos\"",
+    5,
+    0x2E,
+    CompletedTown3StarCatchARathalos()
+)
+
+EmitTownQuestAchievement(
+    "Please Keep Gypceros Contained",
+    "Complete the 3★ Town Quest: \"Catch a Gypceros\"",
+    5,
+    0x30,
+    CompletedTown3StarCatchAGypceros()
+)
+
+EmitTownQuestAchievement(
+    "Bring Khezu Back Breathing",
+    "Complete the 3★ Town Quest: \"Get me a Live Khezu!\"",
+    5,
+    0x31,
+    CompletedTown3StarGetMeALiveKhezu()
+)
+
+EmitTownQuestAchievement(
+    "Plesioth Delivery Sounds Ridiculous",
+    "Complete the 3★ Town Quest: \"Bring me a Plesioth!\"",
+    5,
+    0x32,
+    CompletedTown3StarBringMeAPlesioth()
+)
+
+EmitTownQuestAchievement(
+    "Lao Is Getting Close",
+    "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
+    10,
+    0xBB9,
+    CompletedTown3StarAGiantDragonInvades()
+)
+
+EmitTownQuestAchievement(
+    "Kut-Ku Still Wants Trouble",
+    "Complete the 4★ Town Quest: \"Attack of the Yian Kut-Ku\"",
+    5,
+    0x3E9,
+    CompletedTown4StarAttackOfTheYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Another Egg, Another Problem",
+    "Complete the 4★ Town Quest: \"Wyvern Egg Hunt\"",
+    5,
+    0x3EA,
+    CompletedTown4StarWyvernEggHunt()
+)
+
+EmitTownQuestAchievement(
+    "Velocidromes Return With Friends",
+    "Complete the 4★ Town Quest: \"The Velociprey Lords\"",
+    5,
+    0x3EB,
+    CompletedTown4StarTheVelocipreyLords()
+)
+
+EmitTownQuestAchievement(
+    "Nest Raids Never End",
+    "Complete the 4★ Town Quest: \"Raid the Wyvern's Nest\"",
+    5,
+    0x3EC,
+    CompletedTown4StarRaidTheWyvernsNest()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Brought More Fire",
+    "Complete the 4★ Town Quest: \"Attack of the Rathian\"",
+    5,
+    0x3ED,
+    CompletedTown4StarAttackOfTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Gourmet Has Dangerous Taste",
+    "Complete the 4★ Town Quest: \"The Lady Gourmet\"",
+    5,
+    0x3EE,
+    CompletedTown4StarTheLadyGourmet()
+)
+
+EmitTownQuestAchievement(
+    "Desert Queen Returns Angry",
+    "Complete the 4★ Town Quest: \"Queen of the Desert\"",
+    5,
+    0x3EF,
+    CompletedTown4StarQueenOfTheDesert()
+)
+
+EmitTownQuestAchievement(
+    "Cephadrome Makes Desert Waves",
+    "Complete the 4★ Town Quest: \"Swimming in the Desert\"",
+    5,
+    0x3F0,
+    CompletedTown4StarSwimmingInTheDesert()
+)
+
+EmitTownQuestAchievement(
+    "Apceros Eggs Weigh Plenty",
+    "Complete the 4★ Town Quest: \"Apceros Egg Hunt\"",
+    5,
+    0x3F1,
+    CompletedTown4StarApcerosEggHunt()
+)
+
+EmitTownQuestAchievement(
+    "Goldfish Again? Fine, Whatever",
+    "Complete the 4★ Town Quest: \"Panning for Goldenfish\"",
+    5,
+    0x3F2,
+    CompletedTown4StarPanningForGoldenfish()
+)
+
+EmitTownQuestAchievement(
+    "Gypceros Found The Swamp",
+    "Complete the 4★ Town Quest: \"Trouble in the Swamp\"",
+    5,
+    0x3F3,
+    CompletedTown4StarTroubleInTheSwamp()
+)
+
+EmitTownQuestAchievement(
+    "Quartz Does Not Gather Itself",
+    "Complete the 4★ Town Quest: \"Quartz Ore Request\"",
+    5,
+    0x3F4,
+    CompletedTown4StarQuartzOreRequest()
+)
+
+EmitTownQuestAchievement(
+    "Gendrome Brought The Crew",
+    "Complete the 4★ Town Quest: \"Slay the Gendrome!\"",
+    5,
+    0x3F5,
+    CompletedTown4StarSlayTheGendrome()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Wants Round Two",
+    "Complete the 4★ Town Quest: \"Slay the Rathian!\"",
+    5,
+    0x3F6,
+    CompletedTown4StarSlayTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Bugs Still Won't Quit",
+    "Complete the 4★ Town Quest: \"Attack of the Giant Bugs!\"",
+    5,
+    0x3F7,
+    CompletedTown4StarAttackOfTheGiantBugs()
+)
+
+EmitTownQuestAchievement(
+    "Kut-Ku Jungle Patrol",
+    "Complete the 4★ Town Quest: \"Jungle Menace\"",
+    5,
+    0x3F8,
+    CompletedTown4StarJungleMenace()
+)
+
+EmitTownQuestAchievement(
+    "Gypceros Needs A Timeout",
+    "Complete the 4★ Town Quest: \"Slay the Gypceros!\"",
+    5,
+    0x3F9,
+    CompletedTown4StarSlayTheGypceros()
+)
+
+EmitTownQuestAchievement(
+    "Capture Kut-Ku, Somehow",
+    "Complete the 4★ Town Quest: \"Catch a Yian Kut-Ku\"",
+    5,
+    0x3FA,
+    CompletedTown4StarCatchAYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Bring Plesioth In Dripping",
+    "Complete the 4★ Town Quest: \"Bring me a Plesioth!\"",
+    5,
+    0x3FB,
+    CompletedTown4StarBringMeAPlesioth()
+)
+
+EmitTownQuestAchievement(
+    "Lao Came Back Early",
+    "Complete the 4★ Town Quest: \"A Giant Dragon Invades!\"",
+    5,
+    0xBBA,
+    CompletedTown4StarAGiantDragonInvades()
+)
+
+EmitTownQuestAchievement(
+    "Four Horns, No Thanks",
+    "Complete the Urgent Town Quest: \"Four Horns\"",
+    10,
+    0x40B,
+    CompletedTown5StarFourHorns()
+)
+
+EmitTownQuestAchievement(
+    "Rathalos Still Owns Skies",
+    "Complete the 5★ Town Quest: \"Slay the Rathalos!\"",
+    10,
+    0x3FC,
+    CompletedTown5StarSlayTheRathalos()
+)
+
+EmitTownQuestAchievement(
+    "Azure Rathalos Looks Annoyed",
+    "Complete the 5★ Town Quest: \"Slay the Rathalos!\"",
+    10,
+    0x3FD,
+    CompletedTown5StarSlayTheRathalosAzure()
+)
+
+EmitTownQuestAchievement(
+    "Diablos Is Running Wild",
+    "Complete the 5★ Town Quest: \"The Runaway Diablos\"",
+    10,
+    0x3FE,
+    CompletedTown5StarTheRunawayDiablos()
+)
+
+EmitTownQuestAchievement(
+    "Crystals Under Heavy Guard",
+    "Complete the 5★ Town Quest: \"Crystal Hunting!\"",
+    10,
+    0x3FF,
+    CompletedTown5StarCrystalHunting()
+)
+
+EmitTownQuestAchievement(
+    "Gravios Won't Move Aside",
+    "Complete the 5★ Town Quest: \"The Fearsome Gravios\"",
+    10,
+    0x400,
+    CompletedTown5StarTheFearsomeGravios()
+)
+
+EmitTownQuestAchievement(
+    "Basarios Forgot To Hide",
+    "Complete the 5★ Town Quest: \"Basarios: Unseen Peril\"",
+    10,
+    0x401,
+    CompletedTown5StarBasariosUnseenPeril()
+)
+
+EmitTownQuestAchievement(
+    "Gravios Likes Hot Places",
+    "Complete the 5★ Town Quest: \"Volcanic Valor\"",
+    10,
+    0x402,
+    CompletedTown5StarVolcanicValor()
+)
+
+EmitTownQuestAchievement(
+    "Iodrome Leaders Need Sorting",
+    "Complete the 5★ Town Quest: \"Leaders of the Ioprey\"",
+    10,
+    0x403,
+    CompletedTown5StarLeadersOfIoprey()
+)
+
+EmitTownQuestAchievement(
+    "Powderstone Again? Seriously?",
+    "Complete the 5★ Town Quest: \"Bring us some Powderstone!\"",
+    10,
+    0x404,
+    CompletedTown5StarBringUsPowderstone()
+)
+
+EmitTownQuestAchievement(
+    "Khezu Waits In Darkness",
+    "Complete the 5★ Town Quest: \"Wyvern in the Darkness\"",
+    10,
+    0x405,
+    CompletedTown5StarWyvernInTheDarkness()
+)
+
+EmitTownQuestAchievement(
+    "Plesioth Floods The Jungle",
+    "Complete the 5★ Town Quest: \"Water Wyvern in the Jungle\"",
+    10,
+    0x406,
+    CompletedTown5StarWaterWyvernInTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "More Powderstone, More Panic",
+    "Complete the 5★ Town Quest: \"Get me some Powderstone!\"",
+    10,
+    0x407,
+    CompletedTown5StarGetMeSomePowderstone()
+)
+
+EmitTownQuestAchievement(
+    "Jungle Rathian Means Business",
+    "Complete the 5★ Town Quest: \"Queen of the Jungle\"",
+    10,
+    0x408,
+    CompletedTown5StarQueenOfTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "Pink Rathian Joins In",
+    "Complete the 5★ Town Quest: \"Queen of the Jungle\"",
+    10,
+    0x409,
+    CompletedTown5StarQueenOfTheJunglePink()
+)
+
+EmitTownQuestAchievement(
+    "Rathian And Rathalos Together",
+    "Complete the 5★ Town Quest: \"A Troublesome Pair\"",
+    10,
+    0x40A,
+    CompletedTown5StarATroublesomePair()
+)
+
+EmitTownQuestAchievement(
+    "Two Basarios, Double Trouble",
+    "Complete the 5★ Town Quest: \"Two Rock Wyverns\"",
+    10,
+    0x40C,
+    CompletedTown5StarTwoRockWyverns()
+)
+
+EmitTownQuestAchievement(
+    "Land And Sky Problems",
+    "Complete the 5★ Town Quest: \"Wyverns of Land and Sky\"",
+    10,
+    0x40D,
+    CompletedTown5StarWyvernsOfLandAndSky()
+)
+
+EmitTownQuestAchievement(
+    "Catch The Sky King",
+    "Complete the 5★ Town Quest: \"Catch a Rathalos\"",
+    10,
+    0x40E,
+    CompletedTown5StarCatchARathalos()
+)
+
+EmitTownQuestAchievement(
+    "Live Khezu Delivery Requested",
+    "Complete the 5★ Town Quest: \"Get me a Live Khezu!\"",
+    10,
+    0x40F,
+    CompletedTown5StarGetMeALiveKhezu()
+)
+
+EmitTownQuestAchievement(
+    "Lao Wants Another Visit",
+    "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
+    10,
+    0xBBB,
+    CompletedTown8StarAGiantDragonInvades()
+)
+
+EmitTownQuestAchievement(
+    "Kut-Ku Graduates To G",
+    "Complete the 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
+    10,
+    0x7D1,
+    CompletedTown6StarGRankAttackOfTheYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Blue Kut-Ku Joins In",
+    "Complete the 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
+    10,
+    0x7D2,
+    CompletedTown6StarGRankAttackOfTheYianKutKuBlue()
+)
+
+EmitTownQuestAchievement(
+    "Jungle Kut-Ku Gets Meaner",
+    "Complete the 6★ Town Quest: \"Jungle Menace\"",
+    10,
+    0x7D3,
+    CompletedTown6StarGRankJungleMenace()
+)
+
+EmitTownQuestAchievement(
+    "Blue Kut-Ku Loves Jungles",
+    "Complete the 6★ Town Quest: \"Jungle Menace\"",
+    10,
+    0x7D4,
+    CompletedTown6StarGRankJungleMenaceBlue()
+)
+
+EmitTownQuestAchievement(
+    "Gypceros Still Spreads Venom",
+    "Complete the 6★ Town Quest: \"Gypceros: Venomous Terror\"",
+    10,
+    0x7D5,
+    CompletedTown6StarGRankGypcerosVenomousTerror()
+)
+
+EmitTownQuestAchievement(
+    "Purple Gypceros Looks Worse",
+    "Complete the 6★ Town Quest: \"Gypceros: Venomous Terror\"",
+    10,
+    0x7D6,
+    CompletedTown6StarGRankGypcerosVenomousTerrorPurple()
+)
+
+EmitTownQuestAchievement(
+    "Swamp Gypceros Acts Up",
+    "Complete the 6★ Town Quest: \"Trouble in the Swamp\"",
+    10,
+    0x7D7,
+    CompletedTown6StarGRankTroubleInTheSwamp()
+)
+
+EmitTownQuestAchievement(
+    "Purple Swamp Looks Toxic",
+    "Complete the 6★ Town Quest: \"Trouble in the Swamp\"",
+    10,
+    0x7D8,
+    CompletedTown6StarGRankTroubleInTheSwampPurple()
+)
+
+EmitTownQuestAchievement(
+    "Gypceros Finally Gets Serious",
+    "Complete the 6★ Town Quest: \"Slay the Gypceros!\"",
+    10,
+    0x7D9,
+    CompletedTown6StarGRankSlayTheGypceros()
+)
+
+EmitTownQuestAchievement(
+    "Purple Gypceros Still Tricks",
+    "Complete the 6★ Town Quest: \"Slay the Gypceros!\"",
+    10,
+    0x7DA,
+    CompletedTown6StarGRankSlayTheGypcerosPurple()
+)
+
+EmitTownQuestAchievement(
+    "Too Many Kut-Ku",
+    "Complete the 6★ Town Quest: \"The Plague of Yian Kut-Ku\"",
+    10,
+    0x7DB,
+    CompletedTown6StarGRankThePlagueOfYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Cephadrome Keeps Digging",
+    "Complete the 6★ Town Quest: \"The Burrowing Monster\"",
+    10,
+    0x7DC,
+    CompletedTown6StarGRankTheBurrowingMonster()
+)
+
+EmitTownQuestAchievement(
+    "Blue Kut-Ku Ambush Duty",
+    "Complete the 6★ Town Quest: \"Trapped by Yian Kut-Ku\"",
+    10,
+    0x7DD,
+    CompletedTown6StarGRankTrappedByYianKutKu()
+)
+
+EmitTownQuestAchievement(
+    "Purple Poison Party",
+    "Complete the 6★ Town Quest: \"Deadly Poisonous Siege\"",
+    10,
+    0x7DE,
+    CompletedTown6StarGRankDeadlyPoisonousSiege()
+)
+
+EmitTownQuestAchievement(
+    "Two Shadows, One Desert",
+    "Complete the 6★ Town Quest: \"The Two Sand Shadows\"",
+    10,
+    0x7DF,
+    CompletedTown6StarGRankTheTwoSandShadows()
+)
+
+EmitTownQuestAchievement(
+    "Thunder Duo Needs Separating",
+    "Complete the Urgent Town Quest: \"The Thunderous Duo\"",
+    25,
+    0x7EC,
+    CompletedTown7StarGRankTheThunderousDuo()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Returns To Fight",
+    "Complete the 7★ Town Quest: \"Attack of the Rathian\"",
+    10,
+    0x7E0,
+    CompletedTown7StarGRankAttackOfTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Pink Rathian Wants Trouble",
+    "Complete the 7★ Town Quest: \"Attack of the Rathian\"",
+    10,
+    0x7E1,
+    CompletedTown7StarGRankAttackOfTheRathianPink()
+)
+
+EmitTownQuestAchievement(
+    "Desert Rathian Rules Again",
+    "Complete the 7★ Town Quest: \"Queen of the Desert\"",
+    10,
+    0x7E2,
+    CompletedTown7StarGRankQueenOfTheDesert()
+)
+
+EmitTownQuestAchievement(
+    "Pink Desert Queen Arrives",
+    "Complete the 7★ Town Quest: \"Queen of the Desert\"",
+    10,
+    0x7E3,
+    CompletedTown7StarGRankQueenOfTheDesertPink()
+)
+
+EmitTownQuestAchievement(
+    "Rathian Falls Again Today",
+    "Complete the 7★ Town Quest: \"Slay the Rathian!\"",
+    10,
+    0x7E4,
+    CompletedTown7StarGRankSlayTheRathian()
+)
+
+EmitTownQuestAchievement(
+    "Pink Rathian Falls Too",
+    "Complete the 7★ Town Quest: \"Slay the Rathian!\"",
+    10,
+    0x7E5,
+    CompletedTown7StarGRankSlayTheRathianPink()
+)
+
+EmitTownQuestAchievement(
+    "Khezu Owns This Cave",
+    "Complete the 7★ Town Quest: \"The Shadow in the Cave\"",
+    10,
+    0x7E6,
+    CompletedTown7StarGRankTheShadowInTheCave()
+)
+
+EmitTownQuestAchievement(
+    "Red Khezu Screams Louder",
+    "Complete the 7★ Town Quest: \"The Shadow in the Cave\"",
+    10,
+    0x7E7,
+    CompletedTown7StarGRankTheShadowInTheCaveRed()
+)
+
+EmitTownQuestAchievement(
+    "Khezu Likes Total Darkness",
+    "Complete the 7★ Town Quest: \"Wyvern in the Darkness\"",
+    10,
+    0x7E8,
+    CompletedTown7StarGRankWyvernInTheDarkness()
+)
+
+EmitTownQuestAchievement(
+    "Red Khezu In Darkness",
+    "Complete the 7★ Town Quest: \"Wyvern in the Darkness\"",
+    10,
+    0x7E9,
+    CompletedTown7StarGRankWyvernInTheDarknessRed()
+)
+
+EmitTownQuestAchievement(
+    "Basarios Hides Too Well",
+    "Complete the 7★ Town Quest: \"Basarios: Invisible Terror\"",
+    10,
+    0x7EA,
+    CompletedTown7StarGRankBasariosInvisibleTerror()
+)
+
+EmitTownQuestAchievement(
+    "Two Rock Wyverns Roll",
+    "Complete the 7★ Town Quest: \"Two Rock Wyverns\"",
+    10,
+    0x7EB,
+    CompletedTown7StarGRankTwoRockWyverns()
+)
+
+EmitTownQuestAchievement(
+    "Two Khezu, Too Loud",
+    "Complete the 7★ Town Quest: \"The Thunderous Duo\"",
+    10,
+    0x7EC,
+    CompletedTown7StarGRankTheThunderousDuo()
+)
+
+EmitTownQuestAchievement(
+    "Red Thunder Feels Worse",
+    "Complete the 7★ Town Quest: \"The Thunderous Duo\"",
+    25,
+    0x7ED,
+    CompletedTown7StarGRankTheThunderousDuoRed()
+)
+
+EmitTownQuestAchievement(
+    "Rathian, Rathalos, Repeat",
+    "Complete the 7★ Town Quest: \"Wyverns of Land and Sky\"",
+    25,
+    0x7EE,
+    CompletedTown7StarGRankWyvernsOfLandAndSky()
+)
+
+EmitTownQuestAchievement(
+    "Pink And Azure Arrive",
+    "Complete the Urgent Town Quest: \"Pink and Azure\"",
+    25,
+    0x802,
+    CompletedTown8StarGRankPinkAndAzure()
+)
+
+EmitTownQuestAchievement(
+    "Jungle Rathian Still Reigns",
+    "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
+    10,
+    0x7EF,
+    CompletedTown8StarGRankQueenOfTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "Pink Jungle Queen Returns",
+    "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
+    10,
+    0x7F0,
+    CompletedTown8StarGRankQueenOfTheJunglePink()
+)
+
+EmitTownQuestAchievement(
+    "Gold Rathian Shows Off",
+    "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
+    25,
+    0x7F1,
+    CompletedTown8StarGRankQueenOfTheJungleGold()
+)
+
+EmitTownQuestAchievement(
+    "Rathalos Refuses To Land",
+    "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
+    10,
+    0x7F2,
+    CompletedTown8StarGRankSlayTheRathalos()
+)
+
+EmitTownQuestAchievement(
+    "Azure Rathalos Still Burning",
+    "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
+    10,
+    0x7F3,
+    CompletedTown8StarGRankSlayTheRathalosAzure()
+)
+
+EmitTownQuestAchievement(
+    "Silver Rathalos Means Trouble",
+    "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
+    25,
+    0x7F4,
+    CompletedTown8StarGRankSlayTheRathalosSilver()
+)
+
+EmitTownQuestAchievement(
+    "Smoke-Clad King Starts Trouble",
+    "Complete the 8★ Town Quest: \"The Smoke Clad King\"",
+    10,
+    0x7F5,
+    CompletedTown8StarGRankTheSmokeCladKing()
+)
+
+EmitTownQuestAchievement(
+    "Azure Smoke Means Rathalos",
+    "Complete the 8★ Town Quest: \"The Smoke Clad King\"",
+    25,
+    0x7F6,
+    CompletedTown8StarGRankTheSmokeCladKingAzure()
+)
+
+EmitTownQuestAchievement(
+    "Plesioth Floods Everything Again",
+    "Complete the 8★ Town Quest: \"Water Wyvern in the Jungle\"",
+    10,
+    0x7F7,
+    CompletedTown8StarGRankWaterWyvernInTheJungle()
+)
+
+EmitTownQuestAchievement(
+    "Green Plesioth Joins Splashing",
+    "Complete the 8★ Town Quest: \"Water Wyvern in the Jungle\"",
+    25,
+    0x7F8,
+    CompletedTown8StarGRankWaterWyvernInTheJungleGreen()
+)
+
+EmitTownQuestAchievement(
+    "Diablos Breaks Loose Again",
+    "Complete the 8★ Town Quest: \"The Runaway Diablos\"",
+    10,
+    0x7F9,
+    CompletedTown8StarGRankTheRunawayDiablos()
+)
+
+EmitTownQuestAchievement(
+    "Black Diablos Is Furious",
+    "Complete the 8★ Town Quest: \"The Runaway Diablos\"",
+    25,
+    0x7FA,
+    CompletedTown8StarGRankTheRunawayDiablosBlack()
+)
+
+EmitTownQuestAchievement(
+    "Gravios Loves The Volcano",
+    "Complete the 8★ Town Quest: \"Volcanic Valor\"",
+    10,
+    0x7FB,
+    CompletedTown8StarGRankVolcanicValor()
+)
+
+EmitTownQuestAchievement(
+    "Black Gravios Burns Hotter",
+    "Complete the 8★ Town Quest: \"Volcanic Valor\"",
+    25,
+    0x7FC,
+    CompletedTown8StarGRankVolcanicValorBlack()
+)
+
+EmitTownQuestAchievement(
+    "Four Black Horns Charging",
+    "Complete the 8★ Town Quest: \"Four Horns\"",
+    25,
+    0x7FD,
+    CompletedTown8StarGRankFourHorns()
+)
+
+EmitTownQuestAchievement(
+    "Two Black Gravios Glowing",
+    "Complete the 8★ Town Quest: \"Blazing Jewels\"",
+    25,
+    0x7FE,
+    CompletedTown8StarGRankBlazingJewels()
+)
+
+EmitTownQuestAchievement(
+    "Two Green Plesioth Splashing",
+    "Complete the 8★ Town Quest: \"Dual Plesioth\"",
+    25,
+    0x7FF,
+    CompletedTown8StarGRankDualPlesioth()
+)
+
+EmitTownQuestAchievement(
+    "Royal Wyverns Team Up",
+    "Complete the 8★ Town Quest: \"Wyverns of Land and Sky\"",
+    25,
+    0x800,
+    CompletedTown8StarGRankWyvernsOfLandAndSky()
+)
+
+EmitTownQuestAchievement(
+    "Gold And Silver Together",
+    "Complete the 8★ Town Quest: \"Wyverns of Land and Sky\"",
+    25,
+    0x801,
+    CompletedTown8StarGRankWyvernsOfLandAndSkyGoldSilver()
+)
+
+EmitTownQuestAchievement(
+    "Ashen Lao Approaches Fortress",
+    "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
+    25,
+    0xBBB,
+    CompletedTown8StarAGiantDragonInvades()
+)
+
+EmitFatalisTownQuestAchievement(
+    "Fatalis Is Everyone's Problem",
+    "Complete any of the Urgent Town Quest: \"The Legendary Black Dragon\"",
+    25
+)
+
+function TownMonsterInfoTotal()
+{
+return
+BoughtKirinInfo()+
+BoughtFatalisInfo()
+}
+
+function AlchemyItemCombineTotal()
+{
+return
+HasAlchemyMonsterBrothCombine()+
+HasAlchemyRawMeatCombine()+
+HasAlchemyHuskberryCombine()+
+HasAlchemyHoneyCombine()+
+HasAlchemyScreamerCombine()+
+HasAlchemyFireHerbCombine()+
+HasAlchemyBlueMushroomCombine()+
+HasAlchemySushifishCombine()+
+HasAlchemyLargeBarrelCombine()+
+HasAlchemyHerbCombine()+
+HasAlchemySmallBarrelCombine()+
+HasAlchemyPsychoserumCombine()+
+HasAlchemyRumblefishCombine()+
+HasAlchemyPowerExtractCombine()+
+HasAlchemyNeedleberryCombine()+
+HasAlchemyArmorSeedCombine()+
+HasAlchemyPowerSeedCombine()+
+HasAlchemyWhetstoneCombine()+
+HasAlchemyMonsterFluidCombine()+
+HasAlchemyRareSteakCombine()
+}
+
+achievement(
+    title="Master Alchemist",
+    description="Learn all Alchemy item combinations",
+    points=5,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(AlchemyItemCombineTotal()==20) &&
+        prev(AlchemyItemCombineTotal()==19)
+)
+
+achievement(
+    title="Secrets of the Ancients",
+    description="Acquire the special Monster Data in Minegarde",
+    points=1,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TownMonsterInfoTotal()==2) &&
+        prev(TownMonsterInfoTotal()==1)
+)
+
+achievement(
+    title="First Steps Toward Greatness",
+    description="Attain the rank of Rookie Hunter",
+    points=5,
+    set=AchievementSetOnline,
+    trigger=
+        (
+        IsInGame() &&
+        measured(OnlineCurrentHunterRank() == 0x04) &&
+        prev(OnlineCurrentHunterRank() == 0x03)
+        ) ||
+        (
+        FlagImportedPoogieSkin() == 1 &&
+        measured(OnlineCurrentHunterRank() == 0x04) &&
+        prev(OnlineCurrentHunterRank() != 0x04)
+        )
+)
+
+
+achievement(
+    title="Trusted Hand for Hire",
+    description="Attain the rank of Mercenary",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        (
+        IsInGame() &&
+        measured(OnlineCurrentHunterRank() == 0x0D) &&
+        prev(OnlineCurrentHunterRank() == 0x0c)
+        ) ||
+        (
+        FlagImportedPoogieSkin() == 1 &&
+        measured(OnlineCurrentHunterRank() == 0x0D) &&
+        prev(OnlineCurrentHunterRank() != 0x0D)
+        )
+)
+
+achievement(
+    title="A Cut Above the Rest",
+    description="Attain the rank of Weapons Master",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(OnlineCurrentHunterRank() == 0x15) &&
+        prev(OnlineCurrentHunterRank() == 0x14)
+)
+
+achievement(
+    title="Among the Guild’s Finest",
+    description="Attain the rank of Monster Hunter G",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(OnlineCurrentHunterRank() == 0x1E) &&
+        prev(OnlineCurrentHunterRank() == 0x1d)
+)
+
+achievement(
+    title="A Room You Can Rely On",
+    description="Use the Rook Room",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        OnlineRookGuestHouseTimesEntered()>prev(OnlineRookGuestHouseTimesEntered())
+)
+
+achievement(
+    title="A Noticeable Step Up",
+    description="Use the Bishop Room",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        OnlineBishopGuestHouseTimesEntered()>prev(OnlineBishopGuestHouseTimesEntered())
+)
+
+achievement(
+    title="A Stay Worth the Zenny",
+    description="Use the Queen Room",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        OnlineQueenGuestHouseTimesEntered()>prev(OnlineQueenGuestHouseTimesEntered())
+)
+
+achievement(
+    title="Luxury Fit for a Veteran Hunter",
+    description="Use the King Room",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        OnlineKingGuestHouseTimesEntered()>prev(OnlineKingGuestHouseTimesEntered())
+)
+
+achievement(
+    title="You Can Fit a Lot of Dung in There",
+    description="Fully upgrade your Chest storage",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(ChestUpgrade() == 0x03) &&
+        prev(ChestUpgrade() == 0x02)
+)
+
+achievement(
+    title="Joined the Circuis",
+    description="Equipped the Community \"Clown Suit\"",
+    points=2,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        prev(EquippedHeadgear() != 0xb1) && EquippedHeadgear() == 0xb1 &&
+        prev(EquippedTorso() != 0x96) && EquippedTorso() == 0x96 &&
+        prev(EquippedHands() != 0x88) && EquippedHands() == 0x88 &&
+        prev(EquippedWaist() != 0x19) && EquippedWaist() == 0x19 &&
+        prev(EquippedLegs() != 0x8c) && EquippedLegs() == 0x8c
+)
+
+function GoldCrownVelocidrome()
+{
+return
+LargestVelocidromeLengthHunted()>=0x7B &&
+prev(LargestVelocidromeLengthHunted()<0x7B)
+}
+
+function GoldCrownGendrome()
+{
+return
+LargestGendromeLengthHunted()>=0x7B &&
+prev(LargestGendromeLengthHunted()<0x7B)
+}
+
+function GoldCrownIodrome()
+{
+return
+LargestIodromeLengthHunted()>=0x88 &&
+prev(LargestIodromeLengthHunted()<0x88)
+}
+
+function GoldCrownYianKutKuFamily()
+{
+return
+(
+    LargestYianKutKuLengthHunted()>=0x7A &&
+    prev(LargestYianKutKuLengthHunted()<0x7A)
+) ||
+(
+    LargestBlueYianKutKuLengthHunted()>=0x7A &&
+    prev(LargestBlueYianKutKuLengthHunted()<0x7A)
+)
+}
+
+function GoldCrownGypcerosFamily()
+{
+return
+(
+    LargestGypcerosLengthHunted()>=0x7D &&
+    prev(LargestGypcerosLengthHunted()<0x7D)
+) ||
+(
+    LargestPurpleGypcerosLengthHunted()>=0x7D &&
+    prev(LargestPurpleGypcerosLengthHunted()<0x7D)
+)
+}
+
+function GoldCrownCephadrome()
+{
+return
+LargestCephadromeLengthHunted()>=0x7A &&
+prev(LargestCephadromeLengthHunted()<0x7A)
+}
+
+function GoldCrownRathianFamily()
+{
+return
+(
+    LargestRathianLengthHunted()>=0x81 &&
+    prev(LargestRathianLengthHunted()<0x81)
+) ||
+(
+    LargestPinkRathianLengthHunted()>=0x81 &&
+    prev(LargestPinkRathianLengthHunted()<0x81)
+) ||
+(
+    LargestGoldRathianLengthHunted()>=0x81 &&
+    prev(LargestGoldRathianLengthHunted()<0x81)
+)
+}
+
+function GoldCrownRathalosFamily()
+{
+return
+(
+    LargestRathalosLengthHunted()>=0x7F &&
+    prev(LargestRathalosLengthHunted()<0x7F)
+) ||
+(
+    LargestAzureRathalosLengthHunted()>=0x7F &&
+    prev(LargestAzureRathalosLengthHunted()<0x7F)
+) ||
+(
+    LargestSilverRathalosLengthHunted()>=0x7F &&
+    prev(LargestSilverRathalosLengthHunted()<0x7F)
+)
+}
+
+function GoldCrownKhezuFamily()
+{
+return
+(
+    LargestKhezuLengthHunted()>=0x87 &&
+    prev(LargestKhezuLengthHunted()<0x87)
+) ||
+(
+    LargestRedKhezuLengthHunted()>=0x87 &&
+    prev(LargestRedKhezuLengthHunted()<0x87)
+)
+}
+
+function GoldCrownPlesiothFamily()
+{
+return
+(
+    LargestPlesiothLengthHunted()>=0x86 &&
+    prev(LargestPlesiothLengthHunted()<0x86)
+) ||
+(
+    LargestGreenPlesiothLengthHunted()>=0x86 &&
+    prev(LargestGreenPlesiothLengthHunted()<0x86)
+)
+}
+
+function GoldCrownBasarios()
+{
+return
+LargestBasariosLengthHunted()>=0x81 &&
+prev(LargestBasariosLengthHunted()<0x81)
+}
+
+function GoldCrownGraviosFamily()
+{
+return
+(
+    LargestGraviosLengthHunted()>=0x87 &&
+    prev(LargestGraviosLengthHunted()<0x87)
+) ||
+(
+    LargestBlackGraviosLengthHunted()>=0x87 &&
+    prev(LargestBlackGraviosLengthHunted()<0x87)
+)
+}
+
+function GoldCrownDiablosFamily()
+{
+return
+(
+    LargestDiablosLengthHunted()>=0x8B &&
+    prev(LargestDiablosLengthHunted()<0x8B)
+) ||
+(
+    LargestBlackDiablosLengthHunted()>=0x8B &&
+    prev(LargestBlackDiablosLengthHunted()<0x8B)
+)
+}
+
+function GoldCrownKirin()
+{
+return
+LargestKirinLengthHunted()>=0x01 &&
+prev(LargestKirinLengthHunted()<0x01)
+}
+
+function TotalFatalisSpeciesHunted()
+{
+return
+TotalFatalisHunted()+
+TotalCrimsonFatalisHunted()
+}
+
+achievement(
+    title="Alpha of Alphas",
+    description="Obtain a Gold Crown for Velocidrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownVelocidrome()
+)
+
+achievement(
+    title="Paralysis Tyrant of the Pack",
+    description="Obtain a Gold Crown for Gendrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownGendrome()
+)
+
+achievement(
+    title="Toxic Alpha of the Lands",
+    description="Obtain a Gold Crown for Iodrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownIodrome()
+)
+
+achievement(
+    title="Scarlet Menace of the Jungle",
+    description="Obtain a Gold Crown for Yian Kut-Ku",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownYianKutKuFamily()
+)
+
+achievement(
+    title="Master Deceiver of the Wilds",
+    description="Obtain a Gold Crown for Gypceros",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownGypcerosFamily()
+)
+
+achievement(
+    title="Dune Phantom Beneath the Sands",
+    description="Obtain a Gold Crown for Cephadrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownCephadrome()
+)
+
+achievement(
+    title="Empress of Flame and Fury",
+    description="Obtain a Gold Crown for Rathian",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownRathianFamily()
+)
+
+achievement(
+    title="Lord of the Open Skies",
+    description="Obtain a Gold Crown for Rathalos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownRathalosFamily()
+)
+
+achievement(
+    title="Nightmare Lurking in the Cave",
+    description="Obtain a Gold Crown for Khezu",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownKhezuFamily()
+)
+
+achievement(
+    title="Tidal Terror of the Waters",
+    description="Obtain a Gold Crown for Plesioth",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownPlesiothFamily()
+)
+
+achievement(
+    title="Stone Sentinel Hidden in Plain Sight",
+    description="Obtain a Gold Crown for Basarios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownBasarios()
+)
+
+achievement(
+    title="Living Fortress of the Volcanic Lands",
+    description="Obtain a Gold Crown for Gravios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownGraviosFamily()
+)
+
+achievement(
+    title="Desert Tyrant of Shifting Sands",
+    description="Obtain a Gold Crown for Diablos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownDiablosFamily()
+)
+
+achievement(
+    title="Snowpack Slain",
+    description="Successfully hunt 50 White Velociprey",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalWhiteVelocipreyHunted()>=50) &&
+        prev(TotalWhiteVelocipreyHunted()<50)
+)
+
+achievement(
+    title="Blue Kut-Ku Count Begins",
+    description="Successfully hunt 10 Blue Yian Kut-Ku",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlueYianKutKuHunted()>=10) &&
+        prev(TotalBlueYianKutKuHunted()<10)
+)
+
+achievement(
+    title="Blue Kut-Ku Keeps Falling",
+    description="Successfully hunt 20 Blue Yian Kut-Ku",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlueYianKutKuHunted()>=20) &&
+        prev(TotalBlueYianKutKuHunted()<20)
+)
+
+achievement(
+    title="Purple Gypceros Starts Lying",
+    description="Successfully hunt 10 Purple Gypceros",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalPurpleGypcerosHunted()>=10) &&
+        prev(TotalPurpleGypcerosHunted()<10)
+)
+
+achievement(
+    title="Purple Gypceros Finally Stops",
+    description="Successfully hunt 20 Purple Gypceros",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalPurpleGypcerosHunted()>=20) &&
+        prev(TotalPurpleGypcerosHunted()<20)
+)
+
+achievement(
+    title="Pink Rathian Count Begins",
+    description="Successfully hunt 10 Pink Rathian",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalPinkRathianHunted()>=10) &&
+        prev(TotalPinkRathianHunted()<10)
+)
+
+achievement(
+    title="Pink Rathian Keeps Falling",
+    description="Successfully hunt 20 Pink Rathian",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalPinkRathianHunted()>=20) &&
+        prev(TotalPinkRathianHunted()<20)
+)
+
+achievement(
+    title="Azure Rathalos Stays Angry",
+    description="Successfully hunt 10 Azure Rathalos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalAzureRathalosHunted()>=10) &&
+        prev(TotalAzureRathalosHunted()<10)
+)
+
+achievement(
+    title="Azure Rathalos Finally Drops",
+    description="Successfully hunt 20 Azure Rathalos",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalAzureRathalosHunted()>=20) &&
+        prev(TotalAzureRathalosHunted()<20)
+)
+
+achievement(
+    title="Silver Rathalos Shines Trouble",
+    description="Successfully hunt 10 Silver Rathalos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalSilverRathalosHunted()>=10) &&
+        prev(TotalSilverRathalosHunted()<10)
+)
+
+achievement(
+    title="Silver Rathalos Drops Hard",
+    description="Successfully hunt 20 Silver Rathalos",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalSilverRathalosHunted()>=20) &&
+        prev(TotalSilverRathalosHunted()<20)
+)
+
+achievement(
+    title="Gold Rathian Starts Showing",
+    description="Successfully hunt 10 Gold Rathian",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalGoldRathianHunted()>=10) &&
+        prev(TotalGoldRathianHunted()<10)
+)
+
+achievement(
+    title="Gold Rathian Loses Crown",
+    description="Successfully hunt 20 Gold Rathian",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalGoldRathianHunted()>=20) &&
+        prev(TotalGoldRathianHunted()<20)
+)
+
+achievement(
+    title="Black Diablos Digs Trouble",
+    description="Successfully hunt 10 Black Diablos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlackDiablosHunted()>=10) &&
+        prev(TotalBlackDiablosHunted()<10)
+)
+
+achievement(
+    title="Black Diablos Stops Charging",
+    description="Successfully hunt 20 Black Diablos",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlackDiablosHunted()>=20) &&
+        prev(TotalBlackDiablosHunted()<20)
+)
+
+achievement(
+    title="Black Gravios Stands Firm",
+    description="Successfully hunt 10 Black Gravios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlackGraviosHunted()>=10) &&
+        prev(TotalBlackGraviosHunted()<10)
+)
+
+achievement(
+    title="Black Gravios Finally Crumbles",
+    description="Successfully hunt 20 Black Gravios",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalBlackGraviosHunted()>=20) &&
+        prev(TotalBlackGraviosHunted()<20)
+)
+
+achievement(
+    title="Green Plesioth Makes Waves",
+    description="Successfully hunt 10 Green Plesioth",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalGreenPlesiothHunted()>=10) &&
+        prev(TotalGreenPlesiothHunted()<10)
+)
+
+achievement(
+    title="Green Plesioth Comes Ashore",
+    description="Successfully hunt 20 Green Plesioth",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalGreenPlesiothHunted()>=20) &&
+        prev(TotalGreenPlesiothHunted()<20)
+)
+
+achievement(
+    title="Red Khezu Starts Screaming",
+    description="Successfully hunt 10 Red Khezu",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalRedKhezuHunted()>=10) &&
+        prev(TotalRedKhezuHunted()<10)
+)
+
+achievement(
+    title="Red Khezu Quiet At Last",
+    description="Successfully hunt 20 Red Khezu",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalRedKhezuHunted()>=20) &&
+        prev(TotalRedKhezuHunted()<20)
+)
+
+achievement(
+    title="Ashen Lao Siege Endured",
+    description="Successfully repel 10 Ashen Lao-Shan Lung",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalAshenLaoshunRepeled()>=10) &&
+        prev(TotalAshenLaoshunRepeled()<10)
+)
+
+achievement(
+    title="Ashen Lao Finally Turns Back",
+    description="Successfully repel 20 Ashen Lao-Shan Lung",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalAshenLaoshunRepeled()>=20) &&
+        prev(TotalAshenLaoshunRepeled()<20)
+)
+
+achievement(
+    title="Kirin Hunt Begins Brightly",
+    description="Successfully hunt 10 Kirin",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalKirinHunted()>=10) &&
+        prev(TotalKirinHunted()<10)
+)
+
+achievement(
+    title="Kirin Keeps Striking Back",
+    description="Successfully hunt 20 Kirin",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalKirinHunted()>=20) &&
+        prev(TotalKirinHunted()<20)
+)
+
+achievement(
+    title="Kirin Crown Fits Nicely",
+    description="Obtain a Gold Crown for Kirin",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        GoldCrownKirin()
+)
+
+achievement(
+    title="Fatalis Hunt Begins Badly",
+    description="Successfully hunt 10 Fatalis",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalFatalisSpeciesHunted()>=10) &&
+        prev(TotalFatalisSpeciesHunted()<10)
+)
+
+achievement(
+    title="Fatalis Somehow Returns Again",
+    description="Successfully hunt 20 Fatalis",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsInGame() &&
+        measured(TotalFatalisSpeciesHunted()>=20) &&
+        prev(TotalFatalisSpeciesHunted()<20)
+)
+
+achievement(
+    title="Guildmaster Challenge: Polytan Parade",
+    description="Slay 20 Khezu in the 3★ Event Quest \"Dengeki Festival Returns!\"",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        QuestActive() == 0xea6c &&
+        TotalKhezuHunted() == prev(TotalKhezuHunted() + 20)
+)
+
+achievement(
+    title="Guildmaster Challenge: Legend",
+    description="(4-Player) Slay Fatalis in the 5★ Event Quest \"Legendary Black Dragon\" while all players are not wearing armour",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        OnQuestPlayerCount() == 0x3 &&
+        OnlineInQuestHostPlayerDataEquippedHead() == 0x0 &&
+        OnlineInQuestHostPlayerDataEquippedBody() == 0x0 &&
+        OnlineInQuestHostPlayerDataEquippedHand() == 0x0 &&
+        OnlineInQuestHostPlayerDataEquippedWaist() == 0x0 &&
+        OnlineInQuestHostPlayerDataEquippedLegs() == 0x0 &&
+        OnlineInQuestPlayer2DataEquippedHead() == 0x0 &&
+        OnlineInQuestPlayer2DataEquippedBody() == 0x0 &&
+        OnlineInQuestPlayer2DataEquippedHand() == 0x0 &&
+        OnlineInQuestPlayer2DataEquippedWaist() == 0x0 &&
+        OnlineInQuestPlayer2DataEquippedLegs() == 0x0 &&
+        OnlineInQuestPlayer3DataEquippedHead() == 0x0 &&
+        OnlineInQuestPlayer3DataEquippedBody() == 0x0 &&
+        OnlineInQuestPlayer3DataEquippedHand() == 0x0 &&
+        OnlineInQuestPlayer3DataEquippedWaist() == 0x0 &&
+        OnlineInQuestPlayer3DataEquippedLegs() == 0x0 &&
+        OnlineInQuestPlayer4DataEquippedHead() == 0x0 &&
+        OnlineInQuestPlayer4DataEquippedBody() == 0x0 &&
+        OnlineInQuestPlayer4DataEquippedHand() == 0x0 &&
+        OnlineInQuestPlayer4DataEquippedWaist() == 0x0 &&
+        OnlineInQuestPlayer4DataEquippedLegs() == 0x0 &&
+        QuestActive() == 0xea69 &&
+        QuestStatus() == 0x4 &&
+        prev(QuestStatus() == 0x3)
+)
+
+achievement(
+    title="Guildmaster Challenge: Sensei's Challenge",
+    description="Slay 20 Yian Kut-Ku in the Town 6★ Quest \"The Plague of Yian Kut-Ku\"",
+    points=50,
+    set=AchievementSetOnline,
+    trigger=
+        QuestActive() == 0x7db &&
+        TotalYianKutKuHunted() == prev(TotalYianKutKuHunted() + 20)
+)
+
+achievement(
+    title="Guildmaster Challenge: Famitsu Fan",
+    description="(4-Player) Slay Diablos in the Town 8★ Quest \"The Runaway Diablos\" (Black) while all players are using the Gabas Dual Blades",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        OnQuestPlayerCount() == 0x3 &&
+        OnlineInQuestHostPlayerDataEquippedWeapon() == 0x109 &&
+        OnlineInQuestPlayer2DataEquippedWeapon() == 0x109 &&
+        OnlineInQuestPlayer3DataEquippedWeapon() == 0x109 &&
+        OnlineInQuestPlayer4DataEquippedWeapon() == 0x109 &&
+        QuestActive() == 0x7f9 &&
+        QuestStatus() == 0x4 &&
+        prev(QuestStatus() == 0x3)
+)
+
+/////////////////////////////////////Leaderboard to Follow////////////////////////////
+function EmitMonsterSizeLeaderboard(title,description,sizeAccessor,multiplier)
+
+{
+leaderboard(
+    title=title,
+    description=description,
+    set=AchievementSetOnline,
+    start=
+        IsOnQuest() &&
+        sizeAccessor()>prev(sizeAccessor())
+        ,
+    cancel=
+        QuestActive() == 0x0,
+    submit=
+        sizeAccessor()>prev(sizeAccessor()),
+    value=
+        measured(sizeAccessor() * multiplier),
+    format="FIXED1",
+    lower_is_better=false
+)
+}
+
+EmitMonsterSizeLeaderboard("Blue Yian Kut-Ku Size","Largest Blue Yian Kut-Ku hunted",LargestBlueYianKutKuLengthHunted,9.198373983739837)
+EmitMonsterSizeLeaderboard("Purple Gypceros Size","Largest Purple Gypceros hunted",LargestPurpleGypcerosLengthHunted,10.13739837398374)
+EmitMonsterSizeLeaderboard("Gold Rathian Size","Largest Gold Rathian hunted",LargestGoldRathianLengthHunted,16.45609756097561)
+EmitMonsterSizeLeaderboard("Silver Rathalos Size","Largest Silver Rathalos hunted",LargestSilverRathalosLengthHunted,16.29430894308943)
+EmitMonsterSizeLeaderboard("Red Khezu Size","Largest Red Khezu hunted",LargestRedKhezuLengthHunted,8.731707317073171)
+EmitMonsterSizeLeaderboard("Green Plesioth Size","Largest Green Plesioth hunted",LargestGreenPlesiothLengthHunted,23.1520325203252)
+EmitMonsterSizeLeaderboard("Black Gravios Size","Largest Black Gravios hunted",LargestBlackGraviosLengthHunted,20.99918699186992)
+EmitMonsterSizeLeaderboard("Black Diablos Size","Largest Black Diablos hunted",LargestBlackDiablosLengthHunted,19.93414634146341)
+EmitMonsterSizeLeaderboard("Kirin Size","Largest Kirin hunted",LargestKirinLengthHunted,4.643089430894309)
+

@@ -6521,7 +6521,7 @@ function EmitAnyCharacterCircuitStageAchievement(id, title, stageNumber, previou
     achievement(
         id=id,
         title=title,
-        description="Complete Stage " + stageNumber + " of any Character's Circuit.",
+        description="Complete Stage " + stageNumber + " of any Circuit.",
         points=10,
         type="progression",
         trigger=
@@ -6531,19 +6531,19 @@ function EmitAnyCharacterCircuitStageAchievement(id, title, stageNumber, previou
 }
 
 StageTitles = {
-    1: "Launch Big, Land Bigger",
+    1: "Causing a Crater Worth of Tricks",
     2: "Shortcut Through Burning Belts",
-    3: "Grass Bump, Flame Trick",
-    4: "Garden Chaos, Gnome Glory",
-    5: "Rhythm Section, Hoop Mania",
-    6: "Sky Rockets, Big Airtime",
-    7: "Bounce Hard, Crash Loud",
+    3: "Bumping Against the Fiery Roads",
+    4: "Gnome Alone",
+    5: "Rhythm Heaven",
+    6: "Reaching New Heights",
+    7: "There Are Going to Be Craters!",
     8: "No Rules in the Dome",
-    9: "Steel Beams, Sick Flips",
+    9: "Stealing the Show",
     10: "Turn up the Heat",
-    11: "Gnome Turf, Trick Storm",
-    12: "Freek It, Flip It",
-    13: "Blast Tricks, No Gravity",
+    11: "Different Turf, Different Tricks",
+    12: "Freaking Out the Crowd with Flips",
+    13: "Blastin' With No Gravity",
 }
 
 for stage in range(1, 13)
@@ -6585,7 +6585,7 @@ EmitFinalCircuitAchievement(
 
 EmitFinalCircuitAchievement(
     601099,
-    "Hi There the Name’s Leeann",
+    "Hey There, the Name's Leeann",
     "Complete the final stage of Leeann Tweeden's Circuit.",
     LeeannTweedenCurrentCircuitStage(),
     LeeannTweedenCircuitStage14FreestyleTheBurbs()
@@ -6601,7 +6601,7 @@ EmitFinalCircuitAchievement(
 
 EmitFinalCircuitAchievement(
     601101,
-    "I’m Clifford the Fly'n Hawaiian",
+    "I'm Clifford, the Fly'n Hawaiian",
     "Complete the final stage of Clifford Adoptane's Circuit.",
     CliffordAdoptaneCurrentCircuitStage(),
     CliffordAdoptaneCircuitStage14FreestyleTheBurbs()
@@ -6617,7 +6617,7 @@ EmitFinalCircuitAchievement(
 
 EmitFinalCircuitAchievement(
     601103,
-    "Come on Pick Me!",
+    "Come On, Pick Me!",
     "Complete the final stage of Jessica Patterson's Circuit.",
     JessicaPattersonCurrentCircuitStage(),
     JessicaPattersonCircuitStage14FreestyleTheBurbs()
@@ -6723,7 +6723,7 @@ EmitMaxStatsAchievement(
 
 EmitMaxStatsAchievement(
     601111,
-    "Mad Mike, Max Stats",
+    "Mad Max's Brother, Mike Max",
     "Max out all of Mike Jones's stats.",
     StatsMikeJonesSpeed(), 0x13,
     StatsMikeJonesBoost(), 0x0f,
@@ -6961,7 +6961,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601114,
     "Airborne Madness",
-    "Land every single trick for Mike Metzger to unlock his 'Ecko MX' skin.",
+    "Land every trick as Mike Metzger to unlock his \"Ecko MX\" skin.",
     MikeMetzgerTricksUnlockedCount(),
     50
 )
@@ -6969,14 +6969,14 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601115,
     "In the House!",
-    "Land 20 combos for Mike Metzger to unlock 'All Tatted Up' skin.",
+    "Land 20 combos as Mike Metzger to unlock his \"All Tatted Up\" skin.",
     MikeMetzgerCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601116,
-    "Combo Chaos, Metzger’s Reign",
-    "Land every single combo for Mike Metzger.",
+    "Metzger's Reign",
+    "Land every combo as Mike Metzger.",
     MikeMetzgerCombosUnlockedCount(),
     60
 )
@@ -6991,8 +6991,8 @@ EmitUnlockAllBikesAchievement(
 
 EmitUnlockAllTricksSkinAchievement(
     601118,
-    "Twisted Steel, Deegan Style",
-    "Land every single trick for Brian Deegan to unlock his 'Muscle Bound' skin.",
+    "Muscle March",
+    "Land every trick as Brian Deegan to unlock his \"Muscle Bound\" skin.",
     BrianDeeganTricksUnlockedCount(),
     50
 )
@@ -7000,14 +7000,14 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601119,
     "Does It Really Matter How I Look?!",
-    "Land 20 combos for Brian Deegan to unlock 'Commander' skin.",
+    "Land 20 combos as Brian Deegan to unlock his \"Commander\" skin.",
     BrianDeeganCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601120,
-    "Nitro-Fueled Fury, Deegan’s Blend",
-    "Land every single combo for Brian Deegan.",
+    "Deegan's Nitro-Fueled Fury",
+    "Land every combo as Brian Deegan.",
     BrianDeeganCombosUnlockedCount(),
     57
 )
@@ -7023,7 +7023,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601122,
     "Beauty Breaks the Laws",
-    "Land every single trick for Leeann Tweeden to unlock his 'Fun Lovin'' skin.",
+    "Land every trick as Leeann Tweeden to unlock her \"Fun Lovin'\" skin.",
     LeeannTweedenTricksUnlockedCount(),
     50
 )
@@ -7031,21 +7031,21 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601123,
     "I Look Good in This",
-    "Land 20 combos for Leeann Tweeden to unlock 'Red Hot' skin.",
+    "Land 20 combos as Leeann Tweeden to unlock \"Red Hot\" skin.",
     LeeannTweedenCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601124,
     "Combo Queen in Control",
-    "Land every single combo for Leeann Tweeden.",
+    "Land single combo as Leeann Tweeden.",
     LeeannTweedenCombosUnlockedCount(),
     59
 )
 
 EmitUnlockAllBikesAchievement(
     601125,
-    "I Will Fly like an Rocket!",
+    "I Will Fly Like a Rocket!",
     "Unlock all of Stefy Bau's bikes.",
     StefyBauBikesUnlockedCount(),
     4
@@ -7054,7 +7054,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601126,
     "Bau Breaks the Bounds",
-    "Land every single trick for Stefy Bau to unlock his 'Playing Jax' skin.",
+    "Land every trick as Stefy Bau to unlock his \"Playing Jax\" skin.",
     StefyBauTricksUnlockedCount(),
     50
 )
@@ -7062,14 +7062,14 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601127,
     "I Am So Stylish",
-    "Land 20 combos for Stefy Bau to unlock 'UFO Racer' skin.",
+    "Land 20 combos as Stefy Bau to unlock \"UFO Racer\" skin.",
     StefyBauCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601128,
-    "Stefy Chains like a Storm",
-    "Land every single combo for Stefy Bau.",
+    "Stefy Chains Like a Storm",
+    "Land every combo as Stefy Bau.",
     StefyBauCombosUnlockedCount(),
     64
 )
@@ -7077,7 +7077,7 @@ EmitUnlockAllCombosAchievement(
 EmitBeatRivalMainEventAchievement(
     601129,
     "Hey Bro",
-    "Beat Clifford Adoptane after he gets in your face in the Main Event of a Circuit race.",
+    "Beat Clifford Adoptane after he gets in your face during the Main Event of a Circuit race.",
     CliffordAdoptane()
 )
 
@@ -7092,7 +7092,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601131,
     "Tropical Storm on Two Wheels",
-    "Land every single trick for Clifford Adoptane to unlock his 'Tiki' skin.",
+    "Land every trick as Clifford Adoptane to unlock his \"Tiki\" skin.",
     CliffordAdoptaneTricksUnlockedCount(),
     50
 )
@@ -7100,14 +7100,14 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601132,
     "Fly Gear on a Fly Guy",
-    "Land 20 combos for Clifford Adoptane to unlock 'Tankin' It' skin.",
+    "Land 20 combos as Clifford Adoptane to unlock \"Tankin' It\" skin.",
     CliffordAdoptaneCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601133,
-    "Combos Cut like Coral",
-    "Land every single combo for Clifford Adoptane.",
+    "Combos Cut Like Coral",
+    "Land every combo as Clifford Adoptane.",
     CliffordAdoptaneCombosUnlockedCount(),
     61
 )
@@ -7115,7 +7115,7 @@ EmitUnlockAllCombosAchievement(
 EmitBeatRivalMainEventAchievement(
     601134,
     "What You Lookin' At?",
-    "Beat Mike Jones after he gets in your face in the Main Event of a Circuit race.",
+    "Beat Mike Jones after he gets in your face during the Main Event of a Circuit race.",
     MikeJones()
 )
 
@@ -7130,7 +7130,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601136,
     "Madness in Every Move",
-    "Land every single trick for Mike Jones to unlock his 'Blue Collar' skin.",
+    "Land every trick as Mike Jones to unlock his \"Blue Collar\" skin.",
     MikeJonesTricksUnlockedCount(),
     50
 )
@@ -7138,22 +7138,22 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601137,
     "Let’s Just Ride!",
-    "Land 20 combos for Mike Jones to unlock 'High Roller' skin.",
+    "Land 20 combos as Mike Jones to unlock his \"High Roller\" skin.",
     MikeJonesCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601138,
     "Mad Combos, Mad Respect",
-    "Land every single combo for Mike Jones.",
+    "Land every combo as Mike Jones.",
     MikeJonesCombosUnlockedCount(),
     55
 )
 
 EmitBeatRivalMainEventAchievement(
     601139,
-    "Jessica",
-    "Beat Jessica Patterson after he gets in your face in the Main Event of a Circuit race.",
+    "Pitter-Patter Out of my Way!",
+    "Beat Jessica Patterson as she gets in your face during the Main Event of a Circuit race.",
     JessicaPatterson()
 )
 
@@ -7168,7 +7168,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601141,
     "Grace Goes Full Send",
-    "Land every single trick for Jessica Patterson to unlock his 'Warming Up' skin.",
+    "Land every trick as Jessica Patterson to unlock her \"Warming Up\" skin.",
     JessicaPattersonTricksUnlockedCount(),
     50
 )
@@ -7176,22 +7176,22 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601142,
     "This Is Hecka Cool",
-    "Land 20 combos for Jessica Patterson to unlock 'Hoodie Style' skin.",
+    "Land 20 combos as Jessica Patterson to unlock her \"Hoodie Style\" skin.",
     JessicaPattersonCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601143,
     "Jessica’s Flow Never Falters",
-    "Land every single combo for Jessica Patterson.",
+    "Land every combo as Jessica Patterson.",
     JessicaPattersonCombosUnlockedCount(),
     61
 )
 
 EmitBeatRivalMainEventAchievement(
     601144,
-    "Albee",
-    "Beat Greg Albertyn after he gets in your face in the Main Event of a Circuit race.",
+    "Well Albee!",
+    "Beat Greg Albertyn as he gets in your face during the Main Event of a Circuit race.",
     GregAlbertyn()
 )
 
@@ -7206,7 +7206,7 @@ EmitUnlockAllBikesAchievement(
 EmitUnlockAllTricksSkinAchievement(
     601146,
     "South African Sky Shredder",
-    "Land every single trick for Greg Albertyn to unlock his 'Sharp Dresser' skin.",
+    "Land every trick as Greg Albertyn to unlock his \"Sharp Dresser\" skin.",
     GregAlbertynTricksUnlockedCount(),
     50
 )
@@ -7214,14 +7214,14 @@ EmitUnlockAllTricksSkinAchievement(
 EmitUnlock20CombosSkinAchievement(
     601147,
     "This Is a Good Look",
-    "Land 20 combos for Greg Albertyn to unlock 'Star Rider' skin.",
+    "Land 20 combos as Greg Albertyn to unlock \"Star Rider\" skin.",
     GregAlbertynCombosUnlockedCount()
 )
 
 EmitUnlockAllCombosAchievement(
     601148,
     "Albee’s Combos Crush Hard",
-    "Land every single combo for Greg Albertyn.",
+    "Land every combo as Greg Albertyn.",
     GregAlbertynCombosUnlockedCount(),
     64
 )
@@ -7280,7 +7280,7 @@ function EmitBonusZoneAchievement(id, title, description, trackId, targetZones)
 EmitBonusZoneAchievement(
     601189,
     "Monumental Sweep",
-    "Hit all 7 Bonus Zones on Monumental Motoplex in any Gamemode.",
+    "Hit all 7 Bonus Zones on Monumental Motoplex in any game mode.",
     0x0,
     7
 )
@@ -7288,7 +7288,7 @@ EmitBonusZoneAchievement(
 EmitBonusZoneAchievement(
     601190,
     "Crust Zone",
-    "Hit all 7 Bonus Zones on Crust Belt in any Gamemode.",
+    "Hit all 7 Bonus Zones on Crust Belt in any game mode.",
     0x1,
     7
 )
@@ -7296,7 +7296,7 @@ EmitBonusZoneAchievement(
 EmitBonusZoneAchievement(
     601191,
     "Burn Zone Blitz",
-    "Hit all 8 Bonus Zones on Burn It Up in any Gamemode.",
+    "Hit all 8 Bonus Zones on Burn It Up in any game mode.",
     0x2,
     8
 )
@@ -7304,7 +7304,7 @@ EmitBonusZoneAchievement(
 EmitBonusZoneAchievement(
     601192,
     "Gnome Zone Domination",
-    "Hit all 6 Bonus Zones on Gnome Sweet Gnome in any Gamemode.",
+    "Hit all 6 Bonus Zones on Gnome Sweet Gnome in any game mode.",
     0x3,
     6
 )
@@ -7312,7 +7312,7 @@ EmitBonusZoneAchievement(
 EmitBonusZoneAchievement(
     601193,
     "Ride Every Line",
-    "Hit all 7 Bonus Zones on Let It Ride in any Gamemode.",
+    "Hit all 7 Bonus Zones on Let It Ride in any game mode.",
     0x4,
     7
 )
@@ -7320,14 +7320,14 @@ EmitBonusZoneAchievement(
 EmitBonusZoneAchievement(
     601194,
     "Rocket Run Clean",
-    "Hit all 5 Bonus Zones on Rocket Garden in any Gamemode.",
+    "Hit all 5 Bonus Zones on Rocket Garden in any game mode.",
     0x5,
     5
 )
 
 achievement(
     id=601149,
-    title="Hold it Wide!!",
+    title="Hold It Wide!!",
     description="Freek out for more than 1 minute.",
     points=5,
     trigger=
@@ -7599,7 +7599,7 @@ EmitRaceStyleTrackHighestTrickAchievement(
 EmitRaceStyleTrackHighestTrickAchievement(
     601153,
     "Gnome Sweet Score",
-    "Beat Leeann's Individual Trick score of 40,000 on Gnome Sweet Gnome.",
+    "Beat Leeann's Individual Trick score of 50,000 on Let It Ride.",
     0x3,
     40000
 )
