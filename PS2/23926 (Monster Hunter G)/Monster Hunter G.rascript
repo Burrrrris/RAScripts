@@ -6432,15 +6432,15 @@ achievement(
         EquippedTorso() == 0x1 &&
         EquippedHands() == 0x1 &&
         EquippedWaist() == 0x1 &&
-        EquippedLegs() == 0x1 &&
+        EquippedLegs() == 0x0 &&
         prev(QuestStatus() == 0x3) && 
-        QuestStatus() == 0x4
+        trigger_when(QuestStatus() == 0x4)
         )
 )
 
 EmitVillageQuestAchievement(
     "Azure King Fallen",
-    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
+    "Complete the Azure Rathalos subspecies 5★ Village Quest: \"Attack of the Rathalos\"",
     10,
     0x2731,
     CompletedVillage5StarAttackOfTheRathalosAzure(),
@@ -6490,7 +6490,7 @@ EmitVillageQuestAchievement(
 
 EmitVillageQuestAchievement(
     "Pink Queen Fallen",
-    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
+    "Complete the Pink Rathian subspecies5★ Village Quest: \"Queen of the Desert\"",
     10,
     0x2736,
     CompletedVillage5StarQueenOfTheDesertPink(),
@@ -6510,7 +6510,7 @@ EmitVillageQuestAchievement(
 
 EmitVillageQuestAchievement(
     "Queen’s Encore",
-    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
+    "Complete the Pink Rathian subspecies 5★ Village Quest: \"Slay the Rathian!\"",
     10,
     0x2738,
     CompletedVillage5StarSlayTheRathianPink(),
@@ -6530,7 +6530,7 @@ EmitVillageWinQuestAchievement(
 
 EmitVillageQuestAchievement(
     "White Horn Broken",
-    "Complete the Village urgent quest \"Horn of the Monoblos\"",
+    "Complete the White Monoblos subspecies Village urgent quest \"Horn of the Monoblos\"",
     10,
     0x273A,
     CompletedVillage6StarHornOfTheMonoblosWhite(),
@@ -8564,7 +8564,7 @@ EmitTownQuestAchievement(
     610058,
     "692222",
     "Azure Rathalos Looks Annoyed",
-    "Complete the 5★ Town Quest: \"Slay the Rathalos!\"",
+    "Complete the Azure Rathalos subspecies 5★ Town Quest: \"Slay the Rathalos!\"",
     10,
     0x3FD,
     CompletedTown5StarSlayTheRathalosAzure()
@@ -8684,7 +8684,7 @@ EmitTownQuestAchievement(
     610070,
     "692234",
     "Pink Rathian Joins In",
-    "Complete the 5★ Town Quest: \"Queen of the Jungle\"",
+    "Complete the Pink Rathian subspecies 5★ Town Quest: \"Queen of the Jungle\"",
     10,
     0x409,
     CompletedTown5StarQueenOfTheJunglePink()
@@ -8764,7 +8764,7 @@ EmitTownQuestAchievement(
     610078,
     "692242",
     "Blue Kut-Ku Joins In",
-    "Complete the 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
+    "Complete the Blue Yian Kut-Ku subspecies 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
     10,
     0x7D2,
     CompletedTown6StarGRankAttackOfTheYianKutKuBlue()
@@ -8784,7 +8784,7 @@ EmitTownQuestAchievement(
     610080,
     "692244",
     "Blue Kut-Ku Loves Jungles",
-    "Complete the 6★ Town Quest: \"Jungle Menace\"",
+    "Complete the Blue Yian Kut-Ku subspecies 6★ Town Quest: \"Jungle Menace\"",
     10,
     0x7D4,
     CompletedTown6StarGRankJungleMenaceBlue()
@@ -8804,7 +8804,7 @@ EmitTownQuestAchievement(
     610082,
     "692246",
     "Purple Gypceros Looks Worse",
-    "Complete the 6★ Town Quest: \"Gypceros: Venomous Terror\"",
+    "Complete the Purple Gypceros subspecies 6★ Town Quest: \"Gypceros: Venomous Terror\"",
     10,
     0x7D6,
     CompletedTown6StarGRankGypcerosVenomousTerrorPurple()
@@ -8824,7 +8824,7 @@ EmitTownQuestAchievement(
     610084,
     "692248",
     "Purple Swamp Looks Toxic",
-    "Complete the 6★ Town Quest: \"Trouble in the Swamp\"",
+    "Complete the Purple Gypceros subspecies 6★ Town Quest: \"Trouble in the Swamp\"",
     10,
     0x7D8,
     CompletedTown6StarGRankTroubleInTheSwampPurple()
@@ -8844,7 +8844,7 @@ EmitTownQuestAchievement(
     610086,
     "692250",
     "Purple Gypceros Still Tricks",
-    "Complete the 6★ Town Quest: \"Slay the Gypceros!\"",
+    "Complete the Purple Gypceros subspecies 6★ Town Quest: \"Slay the Gypceros!\"",
     10,
     0x7DA,
     CompletedTown6StarGRankSlayTheGypcerosPurple()
@@ -8924,7 +8924,7 @@ EmitTownQuestAchievement(
     610094,
     "692258",
     "Pink Rathian Wants Trouble",
-    "Complete the 7★ Town Quest: \"Attack of the Rathian\"",
+    "Complete the Pink Rathian subspecies 7★ Town Quest: \"Attack of the Rathian\"",
     10,
     0x7E1,
     CompletedTown7StarGRankAttackOfTheRathianPink()
@@ -8944,7 +8944,7 @@ EmitTownQuestAchievement(
     610096,
     "692260",
     "Pink Desert Queen Arrives",
-    "Complete the 7★ Town Quest: \"Queen of the Desert\"",
+    "Complete the Pink Rathian subspecies 7★ Town Quest: \"Queen of the Desert\"",
     10,
     0x7E3,
     CompletedTown7StarGRankQueenOfTheDesertPink()
@@ -8964,7 +8964,7 @@ EmitTownQuestAchievement(
     610098,
     "692262",
     "Pink Rathian Falls Too",
-    "Complete the 7★ Town Quest: \"Slay the Rathian!\"",
+    "Complete the Pink Rathian subspecies 7★ Town Quest: \"Slay the Rathian!\"",
     10,
     0x7E5,
     CompletedTown7StarGRankSlayTheRathianPink()
@@ -8984,7 +8984,7 @@ EmitTownQuestAchievement(
     610100,
     "692264",
     "Red Khezu Screams Louder",
-    "Complete the 7★ Town Quest: \"The Shadow in the Cave\"",
+    "Complete the Red Khezu subspecies 7★ Town Quest: \"The Shadow in the Cave\"",
     10,
     0x7E7,
     CompletedTown7StarGRankTheShadowInTheCaveRed()
@@ -9004,7 +9004,7 @@ EmitTownQuestAchievement(
     610102,
     "692266",
     "Red Khezu In Darkness",
-    "Complete the 7★ Town Quest: \"Wyvern in the Darkness\"",
+    "Complete the Red Khezu subspecies 7★ Town Quest: \"Wyvern in the Darkness\"",
     10,
     0x7E9,
     CompletedTown7StarGRankWyvernInTheDarknessRed()
@@ -9034,7 +9034,7 @@ EmitTownQuestAchievement(
     610105,
     "692269",
     "Red Thunder Feels Worse",
-    "Complete the 7★ Town Quest: \"The Thunderous Duo\"",
+    "Complete the Red Khezu subspecies 7★ Town Quest: \"The Thunderous Duo\"",
     25,
     0x7ED,
     CompletedTown7StarGRankTheThunderousDuoRed()
@@ -9074,7 +9074,7 @@ EmitTownQuestAchievement(
     610109,
     "692273",
     "Pink Jungle Queen Returns",
-    "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
+    "Complete the Pink Rathian subspecies 8★ Town Quest: \"Queen of the Jungle\"",
     10,
     0x7F0,
     CompletedTown8StarGRankQueenOfTheJunglePink()
@@ -9084,7 +9084,7 @@ EmitTownQuestAchievement(
     610110,
     "692274",
     "Gold Rathian Shows Off",
-    "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
+    "Complete the Gold Rathian rare species 8★ Town Quest: \"Queen of the Jungle\"",
     25,
     0x7F1,
     CompletedTown8StarGRankQueenOfTheJungleGold()
@@ -9104,7 +9104,7 @@ EmitTownQuestAchievement(
     610112,
     "692276",
     "Azure Rathalos Still Burning",
-    "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
+    "Complete the Azure Rathalos subspecies 8★ Town Quest: \"Slay the Rathalos!\"",
     10,
     0x7F3,
     CompletedTown8StarGRankSlayTheRathalosAzure()
@@ -9114,7 +9114,7 @@ EmitTownQuestAchievement(
     610113,
     "692277",
     "Silver Rathalos Means Trouble",
-    "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
+    "Complete the Silver Rathalos rare species 8★ Town Quest: \"Slay the Rathalos!\"",
     25,
     0x7F4,
     CompletedTown8StarGRankSlayTheRathalosSilver()
@@ -9134,7 +9134,7 @@ EmitTownQuestAchievement(
     610115,
     "692279",
     "Azure Smoke Means Rathalos",
-    "Complete the 8★ Town Quest: \"The Smoke Clad King\"",
+    "Complete the Azure Rathalos subspecies 8★ Town Quest: \"The Smoke Clad King\"",
     25,
     0x7F6,
     CompletedTown8StarGRankTheSmokeCladKingAzure()
@@ -9154,7 +9154,7 @@ EmitTownQuestAchievement(
     610117,
     "692281",
     "Green Plesioth Joins Splashing",
-    "Complete the 8★ Town Quest: \"Water Wyvern in the Jungle\"",
+    "Complete the Green Plesioth subspecies 8★ Town Quest: \"Water Wyvern in the Jungle\"",
     25,
     0x7F8,
     CompletedTown8StarGRankWaterWyvernInTheJungleGreen()
@@ -9174,7 +9174,7 @@ EmitTownQuestAchievement(
     610119,
     "692283",
     "Black Diablos Is Furious",
-    "Complete the 8★ Town Quest: \"The Runaway Diablos\"",
+    "Complete the Black Diablos subspecies 8★ Town Quest: \"The Runaway Diablos\"",
     25,
     0x7FA,
     CompletedTown8StarGRankTheRunawayDiablosBlack()
@@ -9194,7 +9194,7 @@ EmitTownQuestAchievement(
     610121,
     "692285",
     "Black Gravios Burns Hotter",
-    "Complete the 8★ Town Quest: \"Volcanic Valor\"",
+    "Complete the Black Gravios subspecies 8★ Town Quest: \"Volcanic Valor\"",
     25,
     0x7FC,
     CompletedTown8StarGRankVolcanicValorBlack()
