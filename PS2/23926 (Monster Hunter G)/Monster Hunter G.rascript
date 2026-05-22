@@ -3708,7 +3708,7 @@ function TotalVelocidromeHunted() => word(0x32CFBC)
 function TotalGendromeHunted() => word(0x32CFBE)
 
 // $32CFC0: [16-Bit] Total Hornetaur Hunted
-function TotalHornetaurHunted() => word(0x32CFC0)
+function TotalHornetaurHunted() => word(0x32cfb6)
 
 // $32CFC2: [16-Bit] Total Ioprey Hunted
 function TotalIopreyHunted() => word(0x32CFC2)
@@ -5334,7 +5334,7 @@ CurrentQuestLookup = {
 0x271d:"3★ Village Quest: Liver of Legend!",
 0x271e:"3★ Village Quest: The Formidable Velocidrome!",
 0x271f:"3★ Village Quest: Jungle Menace",
-0x2720:"3★ Village Quest: The Musroom Hunt!",
+0x2720:"3★ Village Quest: The Mushroom Hunt!",
 0x2721:"3★ Village Quest: Find the Wyvern Eggs!",
 0x2722:"3★ Village Quest: Trouble in the Forest",
 0x2723:"4★ Village Quest: Catch a Yian Kut-Ku",
@@ -5377,11 +5377,11 @@ CurrentQuestLookup = {
 0x4e28:"Training Quest: Rathalos - Lance",
 0x4e29:"Training Quest: Rathalos - Sword and Shield",
 0x4e2a:"Training Quest: Rathalos - Bowgun",
-0x4e2b:"Training Quest: Gypeceros - Greatsword",
-0x4e2c:"Training Quest: Gypeceros - Hammer",
-0x4e2d:"Training Quest: Gypeceros - Lance",
-0x4e2e:"Training Quest: Gypeceros - Sword and Shield",
-0x4e2f:"Training Quest: Gypeceros - Bowgun",
+0x4e2b:"Training Quest: Gypceros - Greatsword",
+0x4e2c:"Training Quest: Gypceros - Hammer",
+0x4e2d:"Training Quest: Gypceros - Lance",
+0x4e2e:"Training Quest: Gypceros - Sword and Shield",
+0x4e2f:"Training Quest: Gypceros - Bowgun",
 0x4e30:"Training Quest: Plesioth - Greatsword",
 0x4e31:"Training Quest: Plesioth - Hammer",
 0x4e32:"Training Quest: Plesioth - Lance",
@@ -5417,6 +5417,8 @@ CurrentQuestLookup = {
 0x4e50:"Training Quest: Gravios - Lance",
 0x4e51:"Training Quest: Gravios - Sword and Shield",
 0x4e52:"Training Quest: Gravios - Bowgun",
+0xea61:"Event Quest: A Giant Dragon Invades!",
+0xea62:"Event Quest: On the Trail of the Beast!",
 0xea63:"Event Quest: The Swamp Lightning",
 0xea64:"Event Quest: A Giant Dragon Invades!",
 0xea65:"Event Quest: The Furball Arena",
@@ -5478,20 +5480,24 @@ function VillageQuestCompleteTrigger(questId,completedQuest) =>
     QuestActive()==questId&&
     completedQuest>prev(completedQuest)
 
-function EmitVillageQuestAchievement(title,description,points,questId,completedQuest)
+function EmitVillageQuestAchievement(title,description,points,questId,completedQuest,id,badge)
 {
     achievement(
         title=title,
+        id=id,
+        badge=badge,
         description=description,
         points=points,
         trigger=VillageQuestCompleteTrigger(questId,completedQuest)
     )
 }
 
-function EmitVillageProgressionQuestAchievement(title,description,points,questId,completedQuest)
+function EmitVillageProgressionQuestAchievement(title,description,points,questId,completedQuest,id,badge)
 {
     achievement(
         title=title,
+        id=id,
+        badge=badge,
         description=description,
         points=points,
         type="progression",
@@ -5499,10 +5505,12 @@ function EmitVillageProgressionQuestAchievement(title,description,points,questId
     )
 }
 
-function EmitVillageWinQuestAchievement(title,description,points,questId,completedQuest)
+function EmitVillageWinQuestAchievement(title,description,points,questId,completedQuest,id,badge)
 {
     achievement(
         title=title,
+        id=id,
+        badge=badge,
         description=description,
         points=points,
         type="win_condition",
@@ -5519,404 +5527,6 @@ CompletedVillageBasicsSearchingForItems()+
 CompletedVillageBasicsCombiningItems()+
 CompletedVillageBasicsFishing()
 }
-
-achievement(
-    title="Greenhorn No More",
-    description="Complete all \"Basics\" Quests",
-    points=5,
-    trigger=
-        (
-        FlagImportedPoogieSkin() == 1 &&
-        prev(VillageBasicsTotal()==0) &&
-        VillageBasicsTotal()==5
-        ) ||
-        (
-        IsInGame() &&
-        prev(VillageBasicsTotal()==4) &&
-        VillageBasicsTotal()==5
-        )
-)
-
-EmitVillageProgressionQuestAchievement(
-    "First Hunt, First Kill",
-    "Complete the Village urgent quest \"Your First Monster Hunt!\"",
-    5,
-    0x2716,
-    CompletedVillage2StarYourFirstMonsterHunt()
-)
-
-EmitVillageQuestAchievement(
-    "Forest Bounty",
-    "Complete the 2★ Village Quest: \"Mushroom Picking\"",
-    2,
-    0x2717,
-    CompletedVillage2StarMushroomPicking()
-)
-
-EmitVillageQuestAchievement(
-    "Forge Favor Earned",
-    "Complete the 2★ Village Quest: \"Present for the Armorer\"",
-    2,
-    0x2718,
-    CompletedVillage2StarPresentForTheArmorer()
-)
-
-EmitVillageQuestAchievement(
-    "Feast for the Village",
-    "Complete the 2★ Village Quest: \"Help for the Festival\"",
-    2,
-    0x2719,
-    CompletedVillage2StarHelpForTheFestival()
-)
-
-EmitVillageQuestAchievement(
-    "Egg Thief",
-    "Complete the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
-    5,
-    0x271A,
-    CompletedVillage2StarRaidTheWyvernsNest()
-)
-
-achievement(
-    title="Nest Protector No More",
-    description="Successfully hunt the Rathalos in the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
-    points=5,
-    trigger=
-        (
-        QuestActive() == 0x271A &&
-        TotalRathalosHunted() > prev(TotalRathalosHunted())
-        )
-)
-
-EmitVillageProgressionQuestAchievement(
-    "Pack Leader Down",
-    "Complete the Village urgent quest \"The Formidable Velocidrome!\"",
-    10,
-    0x271E,
-    CompletedVillage3StarTheFormidableVelocidrome()
-)
-
-EmitVillageQuestAchievement(
-    "Big Ears Down",
-    "Complete the 3★ Village Quest: \"Slay the Yian Kut-Ku!\"",
-    5,
-    0x271B,
-    CompletedVillage3StarSlayTheYianKutKu()
-)
-
-EmitVillageQuestAchievement(
-    "Pack Thinned",
-    "Complete the 3★ Village Quest: \"Slay the Velociprey!\"",
-    3,
-    0x271C,
-    CompletedVillage3StarSlayTheVelociprey()
-)
-
-EmitVillageQuestAchievement(
-    "A Hunter’s Taste",
-    "Complete the 3★ Village Quest: \"Liver of Legend!\"",
-    4,
-    0x271D,
-    CompletedVillage3StarLiverOfLegend()
-)
-
-EmitVillageQuestAchievement(
-    "Jungle Justice",
-    "Complete the 3★ Village Quest: \"Jungle Menace\"",
-    5,
-    0x271F,
-    CompletedVillage3StarJungleMenace()
-)
-
-EmitVillageQuestAchievement(
-    "Spores Galore",
-    "Complete the 3★ Village Quest: \"The Musroom Hunt!\"",
-    2,
-    0x2720,
-    CompletedVillage3StarTheMushroomHunt()
-)
-
-EmitVillageQuestAchievement(
-    "Handle With Eggs",
-    "Complete the 3★ Village Quest: \"Find the Wyvern Eggs!\"",
-    5,
-    0x2721,
-    CompletedVillage3StarFindTheWyvernEggs()
-)
-
-EmitVillageQuestAchievement(
-    "Trouble No More",
-    "Complete the 3★ Village Quest: \"Trouble in the Forest\"",
-    5,
-    0x2722,
-    CompletedVillage3StarTroubleInTheForest()
-)
-
-EmitVillageProgressionQuestAchievement(
-    "Sand Swimmer Slain",
-    "Complete the Village urgent quest \"The Land Shark\"",
-    10,
-    0x2726,
-    CompletedVillage4StarTheLandShark()
-)
-
-EmitVillageQuestAchievement(
-    "Caught Red Beaked",
-    "Complete the 4★ Village Quest: \"Catch a Yian Kut-Ku\"",
-    10,
-    0x2723,
-    CompletedVillage4StarCatchAYianKutKu()
-)
-
-EmitVillageQuestAchievement(
-    "Packbreaker",
-    "Complete the 4★ Village Quest: \"Slay the Velociprey Pack!\"",
-    5,
-    0x2724,
-    CompletedVillage4StarSlayTheVelocipreyPack()
-)
-
-EmitVillageQuestAchievement(
-    "King Unseated",
-    "Complete the 4★ Village Quest: \"Velocidrome Redux\"",
-    10,
-    0x2725,
-    CompletedVillage4StarVelocidromeRedux()
-)
-
-EmitVillageQuestAchievement(
-    "Egg Runner",
-    "Complete the 4★ Village Quest: \"Bring Me Eggs!\"",
-    10,
-    0x2727,
-    CompletedVillage4StarBringMeEggs()
-)
-
-EmitVillageQuestAchievement(
-    "Bug Squasher",
-    "Complete the 4★ Village Quest: \"Attack of the Giant Bugs!\"",
-    5,
-    0x2728,
-    CompletedVillage4StarAttackOfTheGiantBugs()
-)
-
-EmitVillageQuestAchievement(
-    "Paralysis Broken",
-    "Complete the 4★ Village Quest: \"Slay the Genprey!\"",
-    5,
-    0x2729,
-    CompletedVillage4StarSlayTheGenprey()
-)
-
-EmitVillageQuestAchievement(
-    "Alpha Silenced",
-    "Complete the 4★ Village Quest: \"Slay the Gendrome!\"",
-    10,
-    0x272A,
-    CompletedVillage4StarSlayTheGendrome()
-)
-
-EmitVillageQuestAchievement(
-    "Venom Drained",
-    "Complete the 4★ Village Quest: \"Ioprey Hunting!\"",
-    5,
-    0x272B,
-    CompletedVillage4StarIopreyHunting()
-)
-
-EmitVillageQuestAchievement(
-    "Flash No More",
-    "Complete the 4★ Village Quest: \"Slay the Gypceros\"",
-    10,
-    0x272C,
-    CompletedVillage4StarSlayTheGypceros()
-)
-
-EmitVillageProgressionQuestAchievement(
-    "King of the Skies",
-    "Complete the Village urgent quest \"Attack of the Rathalos\"",
-    10,
-    0x2730,
-    CompletedVillage5StarAttackOfTheRathalos()
-)
-
-EmitVillageQuestAchievement(
-    "A Gourmet’s Delight",
-    "Complete the 5★ Village Quest: \"Lady Gourmet's Dream\"",
-    10,
-    0x272D,
-    CompletedVillage5StarLadyGourmetsDream()
-)
-
-EmitVillageQuestAchievement(
-    "Feathered Frenzy Ended",
-    "Complete the 5★ Village Quest: \"The Plague of Yian Kut-Ku\"",
-    10,
-    0x272E,
-    CompletedVillage5StarThePlagueOfYianKutKu()
-)
-
-EmitVillageQuestAchievement(
-    "Venom Fang Broken",
-    "Complete the 5★ Village Quest: \"Fang of the Iodrome!\"",
-    10,
-    0x272F,
-    CompletedVillage5StarFangOfTheIodrome()
-)
-
-EmitVillageQuestAchievement(
-    "Sky King Challenged",
-    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
-    10,
-    0x2730,
-    CompletedVillage5StarAttackOfTheRathalos()
-)
-
-achievement(
-    title="Nest Protector No More",
-    description="Slay the Rathalos in Complete the 5★ Village Quest: \"Attack of the Rathalos\" using only the \"Great Bone Club\" and wearing Low Rank leather armor",
-    points=5,
-    trigger=
-        (
-        QuestActive() == 0x2730 &&
-        WeaponEquipped() == 0x64 &&
-        EquippedHeadgear() == 0x1 &&
-        EquippedTorso() == 0x1 &&
-        EquippedHands() == 0x1 &&
-        EquippedWaist() == 0x1 &&
-        EquippedLegs() == 0x1 &&
-        prev(QuestStatus() == 0x3) && 
-        QuestStatus() == 0x4
-        )
-)
-
-EmitVillageQuestAchievement(
-    "Azure King Fallen",
-    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
-    10,
-    0x2731,
-    CompletedVillage5StarAttackOfTheRathalosAzure()
-)
-
-EmitVillageQuestAchievement(
-    "King in Chains",
-    "Complete the 5★ Village Quest: \"Catch a Rathalos\"",
-    10,
-    0x2732,
-    CompletedVillage5StarCatchARathalos()
-)
-
-EmitVillageQuestAchievement(
-    "Water Wyvern Wounded",
-    "Complete the 5★ Village Quest: \"Water Wyvern in the Desert\"",
-    10,
-    0x2733,
-    CompletedVillage5StarWaterWyvernInTheDesert()
-)
-
-EmitVillageQuestAchievement(
-    "Stone Shell Shattered",
-    "Complete the 5★ Village Quest: \"Basarios: Unseen Peril\"",
-    10,
-    0x2734,
-    CompletedVillage5StarBasariosUnseenPeril()
-)
-
-EmitVillageQuestAchievement(
-    "Queen Brought Low",
-    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
-    10,
-    0x2735,
-    CompletedVillage5StarQueenOfTheDesert()
-)
-
-EmitVillageQuestAchievement(
-    "Pink Queen Fallen",
-    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
-    10,
-    0x2736,
-    CompletedVillage5StarQueenOfTheDesertPink()
-)
-
-EmitVillageQuestAchievement(
-    "Queen’s Hunt",
-    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
-    10,
-    0x2737,
-    CompletedVillage5StarSlayTheRathian()
-)
-
-EmitVillageQuestAchievement(
-    "Queen’s Encore",
-    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
-    10,
-    0x2738,
-    CompletedVillage5StarSlayTheRathianPink()
-)
-
-EmitVillageWinQuestAchievement(
-    "One Horn Falls",
-    "Complete the Village urgent quest \"Horn of the Monoblos\"",
-    25,
-    0x2739,
-    CompletedVillage6StarHornOfTheMonoblos()
-)
-
-EmitVillageQuestAchievement(
-    "White Horn Broken",
-    "Complete the Village urgent quest \"Horn of the Monoblos\"",
-    10,
-    0x273A,
-    CompletedVillage6StarHornOfTheMonoblosWhite()
-)
-
-EmitVillageQuestAchievement(
-    "Walking Fortress Fallen",
-    "Complete the Village urgent quest \"Terror of the Gravios\"",
-    10,
-    0x273B,
-    CompletedVillage6StarTerrorOfTheGravios()
-)
-
-EmitVillageQuestAchievement(
-    "Handle With Care",
-    "Complete the Village urgent quest \"Handle With Care!\"",
-    10,
-    0x273C,
-    CompletedVillage6StarHandleWithCare()
-)
-
-EmitVillageQuestAchievement(
-    "Desert Tyrant Tamed",
-    "Complete the Village urgent quest \"The Runaway Diablos\"",
-    25,
-    0x273D,
-    CompletedVillage6StarTheRunawayDiablos()
-)
-
-EmitVillageQuestAchievement(
-    "Shadow Uncovered",
-    "Complete the Village urgent quest \"The Shadow in the Cave\"",
-    10,
-    0x273E,
-    CompletedVillage6StarTheShadowInTheCave()
-)
-
-EmitVillageQuestAchievement(
-    "Two Become None",
-    "Complete the Village urgent quest \"A Troublesome Pair\"",
-    25,
-    0x273F,
-    CompletedVillage6StarATroublesomePair()
-)
-
-EmitVillageQuestAchievement(
-    "Calamity Averted",
-    "Complete the Village urgent quest \"A Giant Dragon Invades!\"",
-    25,
-    0x2740,
-    CompletedVillage6StarAGiantDragonInvades()
-)
 
 function ChiefWisdomReadTotal()
 {
@@ -5969,61 +5579,6 @@ ReadWisdomWyvernTactics1()+
 ReadWisdomWyvernTactics2_2()+
 ReadWisdomWyvernTactics3_2()
 }
-
-achievement(
-    title="Studious Hunter",
-    description="Read all Village Elder’s Wisdom",
-    points=3,
-    trigger=
-        IsInGame() &&
-        measured(ChiefWisdomReadTotal()==47)&&
-        prev(ChiefWisdomReadTotal()==46)
-)
-
-achievement(
-    title="Blade of Legends",
-    description="Retrieve the Hero’s Blade",
-    points=5,
-    trigger=
-        IsInGame() &&
-        FlagHeroSwordHasBeenPulled()>prev(FlagHeroSwordHasBeenPulled())
-)
-
-achievement(
-    title="Guild Recognized",
-    description="Receive the Hunter Citation",
-    points=5,
-    trigger=
-        IsInGame() &&
-        FlagHunterCitationReceivedFromVillageElder()>prev(FlagHunterCitationReceivedFromVillageElder())
-)
-
-achievement(
-    title="Village Relic",
-    description="Acquire the Village Chief’s Old Sword",
-    points=5,
-    trigger=
-        IsInGame() &&
-        FlagChiefsOldSwordReceived()>prev(FlagChiefsOldSwordReceived())
-)
-
-achievement(
-    title="Early Bird Reward",
-    description="Acquire the Early Bird Piercing",
-    points=10,
-    trigger=
-        IsInGame() &&
-        FlagEarlyBirdPiercingHundted20MoreOfEachWyvern()>prev(FlagEarlyBirdPiercingHundted20MoreOfEachWyvern())
-)
-
-achievement(
-    title="You’re Coming Home With Me",
-    description="Befriend a Poogie",
-    points=1,
-    trigger=
-        IsInGame() &&
-        FlagBefrienedPoogie()>prev(FlagBefrienedPoogie())
-)
 
 function ItemCombineTotal()
 {
@@ -6151,26 +5706,6 @@ BoughtBasariosInfo()+
 BoughtLaoShanLungInfo()
 }
 
-achievement(
-    title="Master of Craft",
-    description="Learn all item combinations",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(ItemCombineTotal()==88) &&
-        prev(ItemCombineTotal()==87)
-)
-
-achievement(
-    title="Hunter’s Knowledge",
-    description="Acquire all available monster data in the Village",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(VillageMonsterInfoTotal()==28) &&
-        prev(VillageMonsterInfoTotal()==27)
-)
-
 function KutKuTrainingTotal()
 {
 return
@@ -6270,126 +5805,6 @@ CompletedTrainingQuestsGraviosLance()+
 CompletedTrainingQuestsGraviosSwordAndShield()+
 CompletedTrainingQuestsGraviosBowgun()
 }
-
-achievement(
-    title="Coin Collector",
-    description="Possess 200,000 Zenny",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(Zenny()>=200000) &&
-        prev(Zenny()<200000)
-)
-
-achievement(
-    title="Overflowing Coffers",
-    description="Possess 999,999 Zenny",
-    points=25,
-    trigger=
-        IsInGame() &&
-        measured(Zenny()>=999999) &&
-        prev(Zenny()<999999)
-)
-
-achievement(
-    title="Burning Beak",
-    description="Complete all Kut-Ku Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(KutKuTrainingTotal()==5) &&
-        prev(KutKuTrainingTotal()==4)
-)
-
-achievement(
-    title="King’s Trial",
-    description="Complete all Rathalos Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(RathalosTrainingTotal()==5) &&
-        prev(RathalosTrainingTotal()==4)
-)
-
-achievement(
-    title="False Flash Trial",
-    description="Complete all Gypceros Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(GypcerosTrainingTotal()==5) &&
-        prev(GypcerosTrainingTotal()==4)
-)
-
-achievement(
-    title="Tidal Trial",
-    description="Complete all Plesioth Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(PlesiothTrainingTotal()==5) &&
-        prev(PlesiothTrainingTotal()==4)
-)
-
-achievement(
-    title="Cavern Trial",
-    description="Complete all Khezu Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(KhezuTrainingTotal()==5) &&
-        prev(KhezuTrainingTotal()==4)
-)
-
-achievement(
-    title="Queen’s Trial",
-    description="Complete all Rathian Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(RathianTrainingTotal()==5) &&
-        prev(RathianTrainingTotal()==4)
-)
-
-achievement(
-    title="Sand Ambush",
-    description="Complete all Cephadrome Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(CephadromeTrainingTotal()==5) &&
-        prev(CephadromeTrainingTotal()==4)
-)
-
-achievement(
-    title="One-Horn Trial",
-    description="Complete all Monoblos Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(MonoblosTrainingTotal()==5) &&
-        prev(MonoblosTrainingTotal()==4)
-)
-
-achievement(
-    title="Stone Shell Trial",
-    description="Complete all Basarios Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(BasariosTrainingTotal()==5) &&
-        prev(BasariosTrainingTotal()==4)
-)
-
-achievement(
-    title="Stone Endurance",
-    description="Complete all Gravios Training Quests",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(GraviosTrainingTotal()==5) &&
-        prev(GraviosTrainingTotal()==4)
-)
 
 function JungleGatheringRemaining()
 {
@@ -6618,176 +6033,6 @@ VolcanoArea7FHerbGatheringPoint_2()+
 VolcanoArea7PowerSeedGatheringPoint()
 }
 
-achievement(
-    title="Forest Circuit",
-    description="Completely gather from every gathering point in the Forest and Hills",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(ForestAndHillsGatheringRemaining()==0) &&
-        prev(ForestAndHillsGatheringRemaining()>0)
-)
-
-achievement(
-    title="Dune Circuit",
-    description="Completely gather from every gathering point in the Desert",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(DesertGatheringRemaining()==0) &&
-        prev(DesertGatheringRemaining()>0)
-)
-
-achievement(
-    title="Jungle Circuit",
-    description="Completely gather from every gathering point in the Jungle",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(JungleGatheringRemaining()==0) &&
-        prev(JungleGatheringRemaining()>0)
-)
-
-achievement(
-    title="Marsh Circuit",
-    description="Completely gather from every gathering point in the Swamp",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(SwampGatheringRemaining()==0) &&
-        prev(SwampGatheringRemaining()>0)
-)
-
-achievement(
-    title="Volcanic Circuit",
-    description="Completely gather from every gathering point in the Volcano",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(VolcanoGatheringRemaining()==0) &&
-        prev(VolcanoGatheringRemaining()>0)
-)
-
-achievement(
-    title="Truffle Trouble",
-    description="Successfully hunt 50 Mosswine",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalMosswineHunted()>=50) &&
-        prev(TotalMosswineHunted()<50)
-)
-
-achievement(
-    title="Boar Rush Broken",
-    description="Successfully hunt 50 Bullfango",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalBullfangoHunted()>=50) &&
-        prev(TotalBullfangoHunted()<50)
-)
-
-achievement(
-    title="Swift as Wind",
-    description="Successfully hunt 50 Kelbi",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalKelbiHunted()>=50) &&
-        prev(TotalKelbiHunted()<50)
-)
-
-achievement(
-    title="Herd Thinner",
-    description="Successfully hunt 50 Aptonoth",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalAptonothHunted()>=50) &&
-        prev(TotalAptonothHunted()<50)
-)
-
-achievement(
-    title="Shell Cracked",
-    description="Successfully hunt 50 Apceros",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalApcerosHunted()>=50) &&
-        prev(TotalApcerosHunted()<50)
-)
-
-achievement(
-    title="Cat Scratch Hunter",
-    description="Successfully hunt 50 Felyne",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalFelyneHunted()>=50) &&
-        prev(TotalFelyneHunted()<50)
-)
-
-achievement(
-    title="Thief No More",
-    description="Successfully hunt 50 Melynx",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalMelynxHunted()>=50) &&
-        prev(TotalMelynxHunted()<50)
-)
-
-achievement(
-    title="Stinger Silenced",
-    description="Successfully hunt 50 Vespoid",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalVespoidHunted()>=50) &&
-        prev(TotalVespoidHunted()<50)
-)
-
-achievement(
-    title="Shell Splitter",
-    description="Successfully hunt 50 Hornetaur",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalHornetaurHunted()>=50) &&
-        prev(TotalHornetaurHunted()<50)
-)
-
-achievement(
-    title="Packbreaker",
-    description="Successfully hunt 50 Velociprey",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalVelocipreyHunted()>=50) &&
-        prev(TotalVelocipreyHunted()<50)
-)
-
-achievement(
-    title="Shock Broken",
-    description="Successfully hunt 50 Genprey",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalGenpreyHunted()>=50) &&
-        prev(TotalGenpreyHunted()<50)
-)
-
-achievement(
-    title="Poison Purged",
-    description="Successfully hunt 50 Ioprey",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalIopreyHunted()>=50) &&
-        prev(TotalIopreyHunted()<50)
-)
-
 function TotalYianKutKuSpeciesHunted()
 {
 return
@@ -6861,121 +6106,1089 @@ TotalAshenLaoshunRepeled()
 }
 
 achievement(
-    title="Alpha No More",
-    description="Successfully hunt 10 Velocidrome",
+    title="Greenhorn No More",
+    id=609588,
+    badge="691557",
+    description="Complete all \"Basics\" Quests",
+    points=5,
+    trigger=
+        (
+        FlagImportedPoogieSkin() == 1 &&
+        prev(VillageBasicsTotal()==0) &&
+        VillageBasicsTotal()==5
+        ) ||
+        (
+        IsInGame() &&
+        prev(VillageBasicsTotal()==4) &&
+        VillageBasicsTotal()==5
+        )
+)
+
+EmitVillageProgressionQuestAchievement(
+    "First Hunt, First Kill",
+    "Complete the Village urgent quest \"Your First Monster Hunt!\"",
+    5,
+    0x2716,
+    CompletedVillage2StarYourFirstMonsterHunt(),
+    609589,
+    "691558"
+)
+
+EmitVillageQuestAchievement(
+    "Forest Bounty",
+    "Complete the 2★ Village Quest: \"Mushroom Picking\"",
+    2,
+    0x2717,
+    CompletedVillage2StarMushroomPicking(),
+    609590,
+    "691559"
+)
+
+EmitVillageQuestAchievement(
+    "Forge Favor Earned",
+    "Complete the 2★ Village Quest: \"Present for the Armorer\"",
+    2,
+    0x2718,
+    CompletedVillage2StarPresentForTheArmorer(),
+    609591,
+    "691560"
+)
+
+EmitVillageQuestAchievement(
+    "Feast for the Village",
+    "Complete the 2★ Village Quest: \"Help for the Festival\"",
+    2,
+    0x2719,
+    CompletedVillage2StarHelpForTheFestival(),
+    609592,
+    "691561"
+)
+
+EmitVillageQuestAchievement(
+    "Egg Thief",
+    "Complete the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
+    5,
+    0x271A,
+    CompletedVillage2StarRaidTheWyvernsNest(),
+    609593,
+    "691562"
+)
+
+achievement(
+    title="Nest Protector No More",
+    id=609594,
+    badge="691563",
+    description="Successfully hunt the Rathalos in the 2★ Village Quest: \"Raid the Wyvern's Nest\"",
+    points=5,
+    trigger=
+        (
+        QuestActive() == 0x271A &&
+        QuestStatus() == 0x4 &&
+        TotalRathalosHunted() > prev(TotalRathalosHunted())
+        )
+)
+
+EmitVillageProgressionQuestAchievement(
+    "Pack Leader Down",
+    "Complete the Village urgent quest \"The Formidable Velocidrome!\"",
+    10,
+    0x271E,
+    CompletedVillage3StarTheFormidableVelocidrome(),
+    609595,
+    "691564"
+)
+
+EmitVillageQuestAchievement(
+    "Big Ears Down",
+    "Complete the 3★ Village Quest: \"Slay the Yian Kut-Ku!\"",
+    5,
+    0x271B,
+    CompletedVillage3StarSlayTheYianKutKu(),
+    609596,
+    "691565"
+)
+
+EmitVillageQuestAchievement(
+    "Pack Thinned",
+    "Complete the 3★ Village Quest: \"Slay the Velociprey!\"",
+    3,
+    0x271C,
+    CompletedVillage3StarSlayTheVelociprey(),
+    609597,
+    "691566"
+)
+
+EmitVillageQuestAchievement(
+    "A Hunter’s Taste",
+    "Complete the 3★ Village Quest: \"Liver of Legend!\"",
+    4,
+    0x271D,
+    CompletedVillage3StarLiverOfLegend(),
+    609598,
+    "691567"
+)
+
+EmitVillageQuestAchievement(
+    "Jungle Justice",
+    "Complete the 3★ Village Quest: \"Jungle Menace\"",
+    5,
+    0x271F,
+    CompletedVillage3StarJungleMenace(),
+    609599,
+    "691568"
+)
+
+EmitVillageQuestAchievement(
+    "Spores Galore",
+    "Complete the 3★ Village Quest: \"The Musroom Hunt!\"",
+    2,
+    0x2720,
+    CompletedVillage3StarTheMushroomHunt(),
+    609600,
+    "691569"
+)
+
+EmitVillageQuestAchievement(
+    "Handle With Eggs",
+    "Complete the 3★ Village Quest: \"Find the Wyvern Eggs!\"",
+    5,
+    0x2721,
+    CompletedVillage3StarFindTheWyvernEggs(),
+    609601,
+    "691570"
+)
+
+EmitVillageQuestAchievement(
+    "Trouble No More",
+    "Complete the 3★ Village Quest: \"Trouble in the Forest\"",
+    5,
+    0x2722,
+    CompletedVillage3StarTroubleInTheForest(),
+    609602,
+    "691571"
+)
+
+EmitVillageProgressionQuestAchievement(
+    "Sand Swimmer Slain",
+    "Complete the Village urgent quest \"The Land Shark\"",
+    10,
+    0x2726,
+    CompletedVillage4StarTheLandShark(),
+    609603,
+    "691572"
+)
+
+EmitVillageQuestAchievement(
+    "Caught Red Beaked",
+    "Complete the 4★ Village Quest: \"Catch a Yian Kut-Ku\"",
+    10,
+    0x2723,
+    CompletedVillage4StarCatchAYianKutKu(),
+    609604,
+    "691573"
+)
+
+EmitVillageQuestAchievement(
+    "Packbreaker",
+    "Complete the 4★ Village Quest: \"Slay the Velociprey Pack!\"",
+    5,
+    0x2724,
+    CompletedVillage4StarSlayTheVelocipreyPack(),
+    609605,
+    "691574"
+)
+
+EmitVillageQuestAchievement(
+    "King Unseated",
+    "Complete the 4★ Village Quest: \"Velocidrome Redux\"",
+    10,
+    0x2725,
+    CompletedVillage4StarVelocidromeRedux(),
+    609606,
+    "691575"
+)
+
+EmitVillageQuestAchievement(
+    "Egg Runner",
+    "Complete the 4★ Village Quest: \"Bring Me Eggs!\"",
+    10,
+    0x2727,
+    CompletedVillage4StarBringMeEggs(),
+    609607,
+    "691576"
+)
+
+EmitVillageQuestAchievement(
+    "Bug Squasher",
+    "Complete the 4★ Village Quest: \"Attack of the Giant Bugs!\"",
+    5,
+    0x2728,
+    CompletedVillage4StarAttackOfTheGiantBugs(),
+    609608,
+    "691577"
+)
+
+EmitVillageQuestAchievement(
+    "Paralysis Broken",
+    "Complete the 4★ Village Quest: \"Slay the Genprey!\"",
+    5,
+    0x2729,
+    CompletedVillage4StarSlayTheGenprey(),
+    609609,
+    "691578"
+)
+
+EmitVillageQuestAchievement(
+    "Alpha Silenced",
+    "Complete the 4★ Village Quest: \"Slay the Gendrome!\"",
+    10,
+    0x272A,
+    CompletedVillage4StarSlayTheGendrome(),
+    609610,
+    "691579"
+)
+
+EmitVillageQuestAchievement(
+    "Venom Drained",
+    "Complete the 4★ Village Quest: \"Ioprey Hunting!\"",
+    5,
+    0x272B,
+    CompletedVillage4StarIopreyHunting(),
+    609611,
+    "691580"
+)
+
+EmitVillageQuestAchievement(
+    "Flash No More",
+    "Complete the 4★ Village Quest: \"Slay the Gypceros\"",
+    10,
+    0x272C,
+    CompletedVillage4StarSlayTheGypceros(),
+    609612,
+    "691581"
+)
+
+EmitVillageProgressionQuestAchievement(
+    "King of the Skies",
+    "Complete the Village urgent quest \"Attack of the Rathalos\"",
+    10,
+    0x2730,
+    CompletedVillage5StarAttackOfTheRathalos(),
+    609613,
+    "691582"
+)
+
+EmitVillageQuestAchievement(
+    "A Gourmet’s Delight",
+    "Complete the 5★ Village Quest: \"Lady Gourmet's Dream\"",
+    10,
+    0x272D,
+    CompletedVillage5StarLadyGourmetsDream(),
+    609614,
+    "691583"
+)
+
+EmitVillageQuestAchievement(
+    "Feathered Frenzy Ended",
+    "Complete the 5★ Village Quest: \"The Plague of Yian Kut-Ku\"",
+    10,
+    0x272E,
+    CompletedVillage5StarThePlagueOfYianKutKu(),
+    609615,
+    "691584"
+)
+
+EmitVillageQuestAchievement(
+    "Venom Fang Broken",
+    "Complete the 5★ Village Quest: \"Fang of the Iodrome!\"",
+    10,
+    0x272F,
+    CompletedVillage5StarFangOfTheIodrome(),
+    609616,
+    "691585"
+)
+
+EmitVillageQuestAchievement(
+    "Sky King Challenged",
+    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
+    10,
+    0x2730,
+    CompletedVillage5StarAttackOfTheRathalos(),
+    609617,
+    "691586"
+)
+
+achievement(
+    title="Guildmaster Challenge: Get Bonked",
+    id=609618,
+    badge="691587",
+    description="Slay the Rathalos in Complete the 5★ Village Quest: \"Attack of the Rathalos\" using only the \"Great Bone Club\" and wearing Low Rank leather armor",
+    points=5,
+    trigger=
+        (
+        QuestActive() == 0x2730 &&
+        WeaponEquipped() == 0x64 &&
+        EquippedHeadgear() == 0x1 &&
+        EquippedTorso() == 0x1 &&
+        EquippedHands() == 0x1 &&
+        EquippedWaist() == 0x1 &&
+        EquippedLegs() == 0x1 &&
+        prev(QuestStatus() == 0x3) && 
+        QuestStatus() == 0x4
+        )
+)
+
+EmitVillageQuestAchievement(
+    "Azure King Fallen",
+    "Complete the 5★ Village Quest: \"Attack of the Rathalos\"",
+    10,
+    0x2731,
+    CompletedVillage5StarAttackOfTheRathalosAzure(),
+    609619,
+    "691588"
+)
+
+EmitVillageQuestAchievement(
+    "King in Chains",
+    "Complete the 5★ Village Quest: \"Catch a Rathalos\"",
+    10,
+    0x2732,
+    CompletedVillage5StarCatchARathalos(),
+    609620,
+    "691589"
+)
+
+EmitVillageQuestAchievement(
+    "Water Wyvern Wounded",
+    "Complete the 5★ Village Quest: \"Water Wyvern in the Desert\"",
+    10,
+    0x2733,
+    CompletedVillage5StarWaterWyvernInTheDesert(),
+    609621,
+    "691590"
+)
+
+EmitVillageQuestAchievement(
+    "Stone Shell Shattered",
+    "Complete the 5★ Village Quest: \"Basarios: Unseen Peril\"",
+    10,
+    0x2734,
+    CompletedVillage5StarBasariosUnseenPeril(),
+    609622,
+    "691591"
+)
+
+EmitVillageQuestAchievement(
+    "Queen Brought Low",
+    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
+    10,
+    0x2735,
+    CompletedVillage5StarQueenOfTheDesert(),
+    609623,
+    "691592"
+)
+
+EmitVillageQuestAchievement(
+    "Pink Queen Fallen",
+    "Complete the 5★ Village Quest: \"Queen of the Desert\"",
+    10,
+    0x2736,
+    CompletedVillage5StarQueenOfTheDesertPink(),
+    609624,
+    "691593"
+)
+
+EmitVillageQuestAchievement(
+    "Queen’s Hunt",
+    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
+    10,
+    0x2737,
+    CompletedVillage5StarSlayTheRathian(),
+    609625,
+    "691594"
+)
+
+EmitVillageQuestAchievement(
+    "Queen’s Encore",
+    "Complete the 5★ Village Quest: \"Slay the Rathian!\"",
+    10,
+    0x2738,
+    CompletedVillage5StarSlayTheRathianPink(),
+    609626,
+    "691595"
+)
+
+EmitVillageWinQuestAchievement(
+    "One Horn Falls",
+    "Complete the Village urgent quest \"Horn of the Monoblos\"",
+    25,
+    0x2739,
+    CompletedVillage6StarHornOfTheMonoblos(),
+    609627,
+    "691596"
+)
+
+EmitVillageQuestAchievement(
+    "White Horn Broken",
+    "Complete the Village urgent quest \"Horn of the Monoblos\"",
+    10,
+    0x273A,
+    CompletedVillage6StarHornOfTheMonoblosWhite(),
+    609628,
+    "691597"
+)
+
+EmitVillageQuestAchievement(
+    "Walking Fortress Fallen",
+    "Complete the Village urgent quest \"Terror of the Gravios\"",
+    10,
+    0x273B,
+    CompletedVillage6StarTerrorOfTheGravios(),
+    609629,
+    "691598"
+)
+
+EmitVillageQuestAchievement(
+    "Handle With Care",
+    "Complete the Village urgent quest \"Handle With Care!\"",
+    10,
+    0x273C,
+    CompletedVillage6StarHandleWithCare(),
+    609630,
+    "691599"
+)
+
+EmitVillageQuestAchievement(
+    "Desert Tyrant Tamed",
+    "Complete the Village urgent quest \"The Runaway Diablos\"",
+    25,
+    0x273D,
+    CompletedVillage6StarTheRunawayDiablos(),
+    609631,
+    "691600"
+)
+
+EmitVillageQuestAchievement(
+    "Shadow Uncovered",
+    "Complete the Village urgent quest \"The Shadow in the Cave\"",
+    10,
+    0x273E,
+    CompletedVillage6StarTheShadowInTheCave(),
+    609632,
+    "691601"
+)
+
+EmitVillageQuestAchievement(
+    "Two Become None",
+    "Complete the Village urgent quest \"A Troublesome Pair\"",
+    25,
+    0x273F,
+    CompletedVillage6StarATroublesomePair(),
+    609633,
+    "691602"
+)
+
+EmitVillageQuestAchievement(
+    "Calamity Averted",
+    "Complete the Village urgent quest \"A Giant Dragon Invades!\"",
+    25,
+    0x2740,
+    CompletedVillage6StarAGiantDragonInvades(),
+    609678,
+    "691690"
+)
+
+achievement(
+    title="Studious Hunter",
+    id=609634,
+    badge="691604",
+    description="Read all Village Elder’s Wisdom",
+    points=3,
+    trigger=
+        IsInGame() &&
+        measured(ChiefWisdomReadTotal()==47)&&
+        prev(ChiefWisdomReadTotal()==46)
+)
+
+achievement(
+    title="Blade of Legends",
+    id=609679,
+    badge="691691",
+    description="Retrieve the Hero’s Blade",
     points=5,
     trigger=
         IsInGame() &&
+        FlagHeroSwordHasBeenPulled()>prev(FlagHeroSwordHasBeenPulled())
+)
+
+achievement(
+    title="Hero of Kokoto",
+    id=609635,
+    badge="691606",
+    description="Receive the Hunter Citation",
+    points=5,
+    trigger=
+        IsInGame() &&
+        FlagHunterCitationReceivedFromVillageElder()>prev(FlagHunterCitationReceivedFromVillageElder())
+)
+
+achievement(
+    title="Village Relic",
+    id=609680,
+    badge="691692",
+    description="Acquire the Village Chief’s Old Sword",
+    points=5,
+    trigger=
+        IsInGame() &&
+        FlagChiefsOldSwordReceived()>prev(FlagChiefsOldSwordReceived())
+)
+
+achievement(
+    title="Early Bird Reward",
+    id=609636,
+    badge="691608",
+    description="Acquire the Early Bird Piercing",
+    points=10,
+    trigger=
+        IsInGame() &&
+        FlagEarlyBirdPiercingHundted20MoreOfEachWyvern()>prev(FlagEarlyBirdPiercingHundted20MoreOfEachWyvern())
+)
+
+achievement(
+    title="You’re Coming Home with Me",
+    id=609681,
+    badge="691693",
+    description="Befriend a Poogie",
+    points=1,
+    trigger=
+        IsInGame() &&
+        FlagBefrienedPoogie()>prev(FlagBefrienedPoogie())
+)
+
+achievement(
+    title="Master of Craft",
+    id=609637,
+    badge="691610",
+    description="Learn all item combinations",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(ItemCombineTotal()==88) &&
+        prev(ItemCombineTotal()==87)
+)
+
+achievement(
+    title="Hunter’s Knowledge",
+    id=609682,
+    badge="691694",
+    description="Acquire all available monster data in the Village",
+    points=5,
+    trigger=
+        IsInGame() &&
+        measured(VillageMonsterInfoTotal()==28) &&
+        prev(VillageMonsterInfoTotal()==27)
+)
+
+achievement(
+    title="Coin Collector",
+    id=609638,
+    badge="691612",
+    description="Possess 200,000 Zenny",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(Zenny()>=200000) &&
+        prev(Zenny()<200000)
+)
+
+achievement(
+    title="Overflowing Coffers",
+    id=609683,
+    badge="691695",
+    description="Possess 999,999 Zenny",
+    points=25,
+    trigger=
+        IsInGame() &&
+        measured(Zenny()>=999999) &&
+        prev(Zenny()<999999)
+)
+
+achievement(
+    title="Burning Beak",
+    id=609639,
+    badge="691614",
+    description="Complete all Kut-Ku Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(KutKuTrainingTotal()==5) &&
+        prev(KutKuTrainingTotal()==4)
+)
+
+achievement(
+    title="Sand Ambush",
+    id=609684,
+    badge="691696",
+    description="Complete all Cephadrome Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(CephadromeTrainingTotal()==5) &&
+        prev(CephadromeTrainingTotal()==4)
+)
+
+achievement(
+    title="False Flash Trial",
+    id=609640,
+    badge="691616",
+    description="Complete all Gypceros Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(GypcerosTrainingTotal()==5) &&
+        prev(GypcerosTrainingTotal()==4)
+)
+
+achievement(
+    title="King’s Trial",
+    id=609685,
+    badge="691697",
+    description="Complete all Rathalos Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(RathalosTrainingTotal()==5) &&
+        prev(RathalosTrainingTotal()==4)
+)
+
+achievement(
+    title="Stone Shell Trial",
+    id=609641,
+    badge="691618",
+    description="Complete all Basarios Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(BasariosTrainingTotal()==5) &&
+        prev(BasariosTrainingTotal()==4)
+)
+
+achievement(
+    title="Queen’s Trial",
+    id=609686,
+    badge="691698",
+    description="Complete all Rathian Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(RathianTrainingTotal()==5) &&
+        prev(RathianTrainingTotal()==4)
+)
+
+achievement(
+    title="Tidal Trial",
+    id=609642,
+    badge="691620",
+    description="Complete all Plesioth Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(PlesiothTrainingTotal()==5) &&
+        prev(PlesiothTrainingTotal()==4)
+)
+
+achievement(
+    title="One-Horn Trial",
+    id=609687,
+    badge="691699",
+    description="Complete all Monoblos Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(MonoblosTrainingTotal()==5) &&
+        prev(MonoblosTrainingTotal()==4)
+)
+
+achievement(
+    title="Cavern Trial",
+    id=609675,
+    badge="691687",
+    description="Complete all Khezu Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(KhezuTrainingTotal()==5) &&
+        prev(KhezuTrainingTotal()==4)
+)
+
+achievement(
+    title="Stone Endurance",
+    id=609643,
+    badge="691623",
+    description="Complete all Gravios Training Quests",
+    points=10,
+    trigger=
+        IsInGame() &&
+        measured(GraviosTrainingTotal()==5) &&
+        prev(GraviosTrainingTotal()==4)
+)
+
+achievement(
+    title="Forest Circuit",
+    id=609688,
+    badge="691700",
+    description="Completely gather from every gathering point in the Forest and Hills",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(ForestAndHillsGatheringRemaining()==0) &&
+        prev(ForestAndHillsGatheringRemaining()>0)
+)
+
+achievement(
+    title="Dune Circuit",
+    id=609644,
+    badge="691625",
+    description="Completely gather from every gathering point in the Desert",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(DesertGatheringRemaining()==0) &&
+        prev(DesertGatheringRemaining()>0)
+)
+
+achievement(
+    title="Jungle Circuit",
+    id=609689,
+    badge="691701",
+    description="Completely gather from every gathering point in the Jungle",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(JungleGatheringRemaining()==0) &&
+        prev(JungleGatheringRemaining()>0)
+)
+
+achievement(
+    title="Marsh Circuit",
+    id=609645,
+    badge="691627",
+    description="Completely gather from every gathering point in the Swamp",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(SwampGatheringRemaining()==0) &&
+        prev(SwampGatheringRemaining()>0)
+)
+
+achievement(
+    title="Volcanic Circuit",
+    id=609587,
+    badge="691730",
+    description="Completely gather from every gathering point in the Volcano",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(VolcanoGatheringRemaining()==0) &&
+        prev(VolcanoGatheringRemaining()>0)
+)
+
+achievement(
+    title="Truffle Trouble",
+    id=609690,
+    badge="691702",
+    description="Successfully hunt 50 Mosswine",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalMosswineHunted()>=50) &&
+        prev(TotalMosswineHunted()<50)
+)
+
+achievement(
+    title="Boar Rush Broken",
+    id=609646,
+    badge="691629",
+    description="Successfully hunt 50 Bullfango",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBullfangoHunted()>=50) &&
+        prev(TotalBullfangoHunted()<50)
+)
+
+achievement(
+    title="Swift as Wind",
+    id=609691,
+    badge="691703",
+    description="Successfully hunt 50 Kelbi",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalKelbiHunted()>=50) &&
+        prev(TotalKelbiHunted()<50)
+)
+
+achievement(
+    title="Herd Thinner",
+    id=609647,
+    badge="691631",
+    description="Successfully hunt 50 Aptonoth",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalAptonothHunted()>=50) &&
+        prev(TotalAptonothHunted()<50)
+)
+
+achievement(
+    title="Shell Cracked",
+    id=609692,
+    badge="691704",
+    description="Successfully hunt 50 Apceros",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalApcerosHunted()>=50) &&
+        prev(TotalApcerosHunted()<50)
+)
+
+achievement(
+    title="Cat Scratch Hunter",
+    id=609648,
+    badge="691633",
+    description="Successfully hunt 50 Felyne",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalFelyneHunted()>=50) &&
+        prev(TotalFelyneHunted()<50)
+)
+
+achievement(
+    title="Thief No More",
+    id=609693,
+    badge="691705",
+    description="Successfully hunt 50 Melynx",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalMelynxHunted()>=50) &&
+        prev(TotalMelynxHunted()<50)
+)
+
+achievement(
+    title="Stinger Silenced",
+    id=609649,
+    badge="691635",
+    description="Successfully hunt 50 Vespoid",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalVespoidHunted()>=50) &&
+        prev(TotalVespoidHunted()<50)
+)
+
+achievement(
+    title="Shell Splitter",
+    id=609694,
+    badge="691706",
+    description="Successfully hunt 50 Hornetaur",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalHornetaurHunted()>=50) &&
+        prev(TotalHornetaurHunted()<50)
+)
+
+achievement(
+    title="Cephalos Cull",
+    id=609650,
+    badge="691637",
+    description="Successfully hunt 50 Cephalos",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalCephalosHunted()>=50) &&
+        prev(TotalCephalosHunted()<50)
+)
+
+achievement(
+    title="Pack Annihilation",
+    id=609695,
+    badge="691707",
+    description="Successfully hunt 50 Velociprey",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalVelocipreyHunted()>=50) &&
+        prev(TotalVelocipreyHunted()<50)
+)
+
+achievement(
+    title="Shock Broken",
+    id=609651,
+    badge="691639",
+    description="Successfully hunt 50 Genprey",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGenpreyHunted()>=50) &&
+        prev(TotalGenpreyHunted()<50)
+)
+
+achievement(
+    title="Poison Purged",
+    id=609696,
+    badge="691708",
+    description="Successfully hunt 50 Ioprey",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalIopreyHunted()>=50) &&
+        prev(TotalIopreyHunted()<50)
+)
+
+achievement(
+    title="Alpha No More",
+    id=609652,
+    badge="691641",
+    description="Successfully hunt 10 Velocidrome",
+    points=5,
+    trigger=
+        IsOnQuest() &&
         measured(TotalVelocidromeHunted()>=10) &&
         prev(TotalVelocidromeHunted()<10)
 )
 
 achievement(
     title="Pack Extinguished",
+    id=609697,
+    badge="691709",
     description="Successfully hunt 20 Velocidrome",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalVelocidromeHunted()>=20) &&
         prev(TotalVelocidromeHunted()<20)
 )
 
 achievement(
     title="Alpha in the Making",
+    id=609653,
+    badge="691643",
     description="Obtain a Silver Crown or larger for Velocidrome",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         LargestVelocidromeLengthHunted()>=0x77 &&
         prev(LargestVelocidromeLengthHunted()<0x77)
 )
 
 achievement(
     title="Fangs of Paralysis Falter",
+    id=609698,
+    badge="691710",
     description="Successfully hunt 10 Gendrome",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalGendromeHunted()>=10) &&
         prev(TotalGendromeHunted()<10)
 )
 
 achievement(
     title="Shock Threats Extinguished",
+    id=609654,
+    badge="691645",
     description="Successfully hunt 20 Gendrome",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalGendromeHunted()>=20) &&
         prev(TotalGendromeHunted()<20)
 )
 
 achievement(
     title="Shocking King in Training",
+    id=609699,
+    badge="691711",
     description="Obtain a Silver Crown or larger for Gendrome",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         LargestGendromeLengthHunted()>=0x77 &&
         prev(LargestGendromeLengthHunted()<0x77)
 )
 
 achievement(
     title="Toxic Pack Driven Off",
+    id=609655,
+    badge="691647",
     description="Successfully hunt 10 Iodrome",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalIodromeHunted()>=10) &&
         prev(TotalIodromeHunted()<10)
 )
 
 achievement(
     title="Poisonous Threats Neutralized",
+    id=609700,
+    badge="691712",
     description="Successfully hunt 20 Iodrome",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalIodromeHunted()>=20) &&
         prev(TotalIodromeHunted()<20)
 )
 
 achievement(
     title="The Spitting Tyrant",
+    id=609656,
+    badge="691649",
     description="Obtain a Silver Crown or larger for Iodrome",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         LargestIodromeLengthHunted()>=0x7c &&
         prev(LargestIodromeLengthHunted()<0x7c)
 )
 
 achievement(
     title="Earplugs Recommended",
+    id=609701,
+    badge="691713",
     description="Successfully hunt 10 Yian Kut-Ku",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalYianKutKuSpeciesHunted()>=10) &&
         prev(TotalYianKutKuSpeciesHunted()<10)
 )
 
 achievement(
     title="Feathers Scattered",
+    id=609657,
+    badge="691651",
     description="Successfully hunt 20 Yian Kut-Ku",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalYianKutKuSpeciesHunted()>=20) &&
         prev(TotalYianKutKuSpeciesHunted()<20)
 )
 
 achievement(
     title="Loud, Proud, and Growing",
+    id=609702,
+    badge="691714",
     description="Obtain a Silver Crown or larger for Yian Kut-Ku",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestYianKutKuLengthHunted()>=0x72 &&
@@ -6989,99 +7202,37 @@ achievement(
 )
 
 achievement(
-    title="Flash Out",
-    description="Successfully hunt 10 Gypceros",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalGypcerosSpeciesHunted()>=10) &&
-        prev(TotalGypcerosSpeciesHunted()<10)
-)
-
-achievement(
-    title="No More Tricks",
-    description="Successfully hunt 20 Gypceros",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(TotalGypcerosSpeciesHunted()>=20) &&
-        prev(TotalGypcerosSpeciesHunted()<20)
-)
-
-achievement(
-    title="Flashy and Full of It",
-    description="Obtain a Silver Crown or larger for Gypceros",
-    points=5,
-    trigger=
-        IsInGame() &&
-        (
-            (
-                LargestGypcerosLengthHunted()>=0x76 &&
-                prev(LargestGypcerosLengthHunted()<0x76)
-            ) ||
-            (
-                LargestPurpleGypcerosLengthHunted()>=0x76 &&
-                prev(LargestPurpleGypcerosLengthHunted()<0x76)
-            )
-        )
-)
-
-achievement(
-    title="Under the Sand",
-    description="Successfully hunt 10 Cephadrome",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalCephadromeHunted()>=10) &&
-        prev(TotalCephadromeHunted()<10)
-)
-
-achievement(
-    title="Sandstorm Stilled",
-    description="Successfully hunt 20 Cephadrome",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(TotalCephadromeHunted()>=20) &&
-        prev(TotalCephadromeHunted()<20)
-)
-
-achievement(
-    title="Not Just a Ripple Anymore",
-    description="Obtain a Silver Crown or larger for Cephadrome",
-    points=5,
-    trigger=
-        IsInGame() &&
-        LargestCephadromeLengthHunted()>=0x76 &&
-        prev(LargestCephadromeLengthHunted()<0x76)
-)
-
-achievement(
     title="Queen’s Temper",
+    id=609658,
+    badge="691653",
     description="Successfully hunt 10 Rathian",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRathianSpeciesHunted()>=10) &&
         prev(TotalRathianSpeciesHunted()<10)
 )
 
 achievement(
     title="Queen’s Fall",
+    id=609703,
+    badge="691715",
     description="Successfully hunt 20 Rathian",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRathianSpeciesHunted()>=20) &&
         prev(TotalRathianSpeciesHunted()<20)
 )
 
 achievement(
-    title="Queen With Something to Prove",
+    title="Queen with Something to Prove",
+    id=609659,
+    badge="691655",
     description="Obtain a Silver Crown or larger for Rathian",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestRathianLengthHunted()>=0x79 &&
@@ -7100,30 +7251,36 @@ achievement(
 
 achievement(
     title="Skyfall Trial",
+    id=609704,
+    badge="691716",
     description="Successfully hunt 10 Rathalos",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRathalosSpeciesHunted()>=10) &&
         prev(TotalRathalosSpeciesHunted()<10)
 )
 
 achievement(
     title="King Grounded",
+    id=609660,
+    badge="691657",
     description="Successfully hunt 20 Rathalos",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRathalosSpeciesHunted()>=20) &&
         prev(TotalRathalosSpeciesHunted()<20)
 )
 
 achievement(
     title="King in the Making",
+    id=609705,
+    badge="691717",
     description="Obtain a Silver Crown or larger for Rathalos",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestRathalosLengthHunted()>=0x72 &&
@@ -7142,30 +7299,36 @@ achievement(
 
 achievement(
     title="Silence in the Dark",
+    id=609661,
+    badge="691659",
     description="Successfully hunt 10 Khezu",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalKhezuSpeciesHunted()>=10) &&
         prev(TotalKhezuSpeciesHunted()<10)
 )
 
 achievement(
     title="Darkness Conquered",
+    id=609706,
+    badge="691718",
     description="Successfully hunt 20 Khezu",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalKhezuSpeciesHunted()>=20) &&
         prev(TotalKhezuSpeciesHunted()<20)
 )
 
 achievement(
     title="Pale Terror Growing",
+    id=609662,
+    badge="691661",
     description="Obtain a Silver Crown or larger for Khezu",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestKhezuLengthHunted()>=0x76 &&
@@ -7179,31 +7342,81 @@ achievement(
 )
 
 achievement(
+    title="Flash Out",
+    id=609707,
+    badge="691719",
+    description="Successfully hunt 10 Gypceros",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGypcerosSpeciesHunted()>=10) &&
+        prev(TotalGypcerosSpeciesHunted()<10)
+)
+
+achievement(
+    title="No More Tricks",
+    id=609663,
+    badge="691663",
+    description="Successfully hunt 20 Gypceros",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGypcerosSpeciesHunted()>=20) &&
+        prev(TotalGypcerosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Flashy and Full of It",
+    id=609708,
+    badge="691720",
+    description="Obtain a Silver Crown or larger for Gypceros",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        (
+            (
+                LargestGypcerosLengthHunted()>=0x76 &&
+                prev(LargestGypcerosLengthHunted()<0x76)
+            ) ||
+            (
+                LargestPurpleGypcerosLengthHunted()>=0x76 &&
+                prev(LargestPurpleGypcerosLengthHunted()<0x76)
+            )
+        )
+)
+
+achievement(
     title="Shoreline Chaos",
+    id=609664,
+    badge="691665",
     description="Successfully hunt 10 Plesioth",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalPlesiothSpeciesHunted()>=10) &&
         prev(TotalPlesiothSpeciesHunted()<10)
 )
 
 achievement(
     title="Flood Receded",
+    id=609709,
+    badge="691721",
     description="Successfully hunt 20 Plesioth",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalPlesiothSpeciesHunted()>=20) &&
         prev(TotalPlesiothSpeciesHunted()<20)
 )
 
 achievement(
     title="Rising Tide Threat",
+    id=609665,
+    badge="691667",
     description="Obtain a Silver Crown or larger for Plesioth",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestPlesiothLengthHunted()>=0x7b &&
@@ -7217,145 +7430,73 @@ achievement(
 )
 
 achievement(
-    title="Hidden No Longer",
-    description="Successfully hunt 10 Basarios",
+    title="Under the Sand",
+    id=609710,
+    badge="691722",
+    description="Successfully hunt 10 Cephadrome",
     points=5,
     trigger=
-        IsInGame() &&
-        measured(TotalBasariosHunted()>=10) &&
-        prev(TotalBasariosHunted()<10)
+        IsOnQuest() &&
+        measured(TotalCephadromeHunted()>=10) &&
+        prev(TotalCephadromeHunted()<10)
 )
 
 achievement(
-    title="Stone Unraveled",
-    description="Successfully hunt 20 Basarios",
+    title="Sandstorm Stilled",
+    id=609666,
+    badge="691669",
+    description="Successfully hunt 20 Cephadrome",
     points=10,
     trigger=
-        IsInGame() &&
-        measured(TotalBasariosHunted()>=20) &&
-        prev(TotalBasariosHunted()<20)
+        IsOnQuest() &&
+        measured(TotalCephadromeHunted()>=20) &&
+        prev(TotalCephadromeHunted()<20)
 )
 
 achievement(
-    title="Buried Watcher Stirring",
-    description="Obtain a Silver Crown or larger for Basarios",
+    title="Not Just a Ripple Anymore",
+    id=609711,
+    badge="691723",
+    description="Obtain a Silver Crown or larger for Cephadrome",
     points=5,
     trigger=
-        IsInGame() &&
-        (
-            (
-                LargestBasariosLengthHunted()>=0x76 &&
-                prev(LargestBasariosLengthHunted()<0x76)
-            ) ||
-            (
-                LargestBasariosLengthHunted_2()>=0x76 &&
-                prev(LargestBasariosLengthHunted_2()<0x76)
-            )
-        )
-)
-
-achievement(
-    title="Armor Tested",
-    description="Successfully hunt 10 Gravios",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalGraviosSpeciesHunted()>=10) &&
-        prev(TotalGraviosSpeciesHunted()<10)
-)
-
-achievement(
-    title="Fortress Toppled",
-    description="Successfully hunt 20 Gravios",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(TotalGraviosSpeciesHunted()>=20) &&
-        prev(TotalGraviosSpeciesHunted()<20)
-)
-
-achievement(
-    title="Fortress in the Making",
-    description="Obtain a Silver Crown or larger for Gravios",
-    points=5,
-    trigger=
-        IsInGame() &&
-        (
-            (
-                LargestGraviosLengthHunted()>=0x7b &&
-                prev(LargestGraviosLengthHunted()<0x7b)
-            ) ||
-            (
-                LargestBlackGraviosLengthHunted()>=0x87 &&
-                prev(LargestBlackGraviosLengthHunted()<0x87)
-            )
-        )
-)
-
-achievement(
-    title="Charge Denied",
-    description="Successfully hunt 10 Diablos",
-    points=5,
-    trigger=
-        IsInGame() &&
-        measured(TotalDiablosSpeciesHunted()>=10) &&
-        prev(TotalDiablosSpeciesHunted()<10)
-)
-
-achievement(
-    title="Horned Menace Ended",
-    description="Successfully hunt 20 Diablos",
-    points=10,
-    trigger=
-        IsInGame() &&
-        measured(TotalDiablosSpeciesHunted()>=20) &&
-        prev(TotalDiablosSpeciesHunted()<20)
-)
-
-achievement(
-    title="Desert King in Waiting",
-    description="Obtain a Silver Crown or larger for Diablos",
-    points=5,
-    trigger=
-        IsInGame() &&
-        (
-            (
-                LargestDiablosLengthHunted()>=0x7b &&
-                prev(LargestDiablosLengthHunted()<0x7b)
-            ) ||
-            (
-                LargestBlackDiablosLengthHunted()>=0x7b &&
-                prev(LargestBlackDiablosLengthHunted()<0x7b)
-            )
-        )
+        IsOnQuest() &&
+        LargestCephadromeLengthHunted()>=0x76 &&
+        prev(LargestCephadromeLengthHunted()<0x76)
 )
 
 achievement(
     title="Lone Fury Faced",
+    id=609667,
+    badge="691671",
     description="Successfully hunt 10 Monoblos",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalMonoblosSpeciesHunted()>=10) &&
         prev(TotalMonoblosSpeciesHunted()<10)
 )
 
 achievement(
     title="One Horn Broken",
+    id=609712,
+    badge="691724",
     description="Successfully hunt 20 Monoblos",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalMonoblosSpeciesHunted()>=20) &&
         prev(TotalMonoblosSpeciesHunted()<20)
 )
 
 achievement(
     title="Wandering Tyrant",
+    id=609676,
+    badge="691688",
     description="Obtain a Silver Crown or larger for Monoblos",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         (
             (
                 LargestMonoblosLengthHunted()>=0x74 &&
@@ -7369,21 +7510,181 @@ achievement(
 )
 
 achievement(
+    title="Pale Horn Hunter",
+    id=609668,
+    badge="691674",
+    description="Successfully hunt 10 White Monoblos",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalWhiteMonobolosHunted()>=10) &&
+        prev(TotalWhiteMonobolosHunted()<10)
+)
+
+achievement(
+    title="Legend of the White Horn",
+    id=609713,
+    badge="691725",
+    description="Successfully hunt 20 White Monoblos",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalWhiteMonobolosHunted()>=20) &&
+        prev(TotalWhiteMonobolosHunted()<20)
+)
+
+achievement(
+    title="Charge Denied",
+    id=609669,
+    badge="691676",
+    description="Successfully hunt 10 Diablos",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalDiablosSpeciesHunted()>=10) &&
+        prev(TotalDiablosSpeciesHunted()<10)
+)
+
+achievement(
+    title="Horned Menace Ended",
+    id=609670,
+    badge="691677",
+    description="Successfully hunt 20 Diablos",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalDiablosSpeciesHunted()>=20) &&
+        prev(TotalDiablosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Desert King in Waiting",
+    id=609714,
+    badge="691726",
+    description="Obtain a Silver Crown or larger for Diablos",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        (
+            (
+                LargestDiablosLengthHunted()>=0x7b &&
+                prev(LargestDiablosLengthHunted()<0x7b)
+            ) ||
+            (
+                LargestBlackDiablosLengthHunted()>=0x7b &&
+                prev(LargestBlackDiablosLengthHunted()<0x7b)
+            )
+        )
+)
+
+achievement(
+    title="Armor Tested",
+    id=609671,
+    badge="691679",
+    description="Successfully hunt 10 Gravios",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGraviosSpeciesHunted()>=10) &&
+        prev(TotalGraviosSpeciesHunted()<10)
+)
+
+achievement(
+    title="Fortress Toppled",
+    id=609715,
+    badge="691727",
+    description="Successfully hunt 20 Gravios",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGraviosSpeciesHunted()>=20) &&
+        prev(TotalGraviosSpeciesHunted()<20)
+)
+
+achievement(
+    title="Fortress in the Making",
+    id=609677,
+    badge="691689",
+    description="Obtain a Silver Crown or larger for Gravios",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        (
+            (
+                LargestGraviosLengthHunted()>=0x7b &&
+                prev(LargestGraviosLengthHunted()<0x7b)
+            ) ||
+            (
+                LargestBlackGraviosLengthHunted()>=0x87 &&
+                prev(LargestBlackGraviosLengthHunted()<0x87)
+            )
+        )
+)
+
+achievement(
+    title="Hidden No Longer",
+    id=609672,
+    badge="691682",
+    description="Successfully hunt 10 Basarios",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBasariosHunted()>=10) &&
+        prev(TotalBasariosHunted()<10)
+)
+
+achievement(
+    title="Stone Unraveled",
+    id=609716,
+    badge="691728",
+    description="Successfully hunt 20 Basarios",
+    points=10,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBasariosHunted()>=20) &&
+        prev(TotalBasariosHunted()<20)
+)
+
+achievement(
+    title="Buried Watcher Stirring",
+    id=609673,
+    badge="691684",
+    description="Obtain a Silver Crown or larger for Basarios",
+    points=5,
+    trigger=
+        IsOnQuest() &&
+        (
+            (
+                LargestBasariosLengthHunted()>=0x76 &&
+                prev(LargestBasariosLengthHunted()<0x76)
+            ) ||
+            (
+                LargestBasariosLengthHunted_2()>=0x76 &&
+                prev(LargestBasariosLengthHunted_2()<0x76)
+            )
+        )
+)
+
+achievement(
     title="Wall Unbroken",
+    id=609674,
+    badge="691685",
     description="Successfully repel Lao-Shan Lung 10 times",
     points=5,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalLaoShanLungRepelled()>=10) &&
         prev(TotalLaoShanLungRepelled()<10)
 )
 
 achievement(
     title="Fortress Stands",
+    id=609717,
+    badge="691729",
     description="Successfully repel Lao-Shan Lung 20 times",
     points=10,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalLaoShanLungRepelled()>=20) &&
         prev(TotalLaoShanLungRepelled()<20)
 )
@@ -7447,6 +7748,22 @@ EmitMonsterSizeLeaderboard("Diablos Size","Largest Diablos hunted",LargestDiablo
 EmitMonsterSizeLeaderboard("Monoblos Size","Largest Monoblos hunted",LargestMonoblosLengthHunted,20.04227642276423)
 EmitMonsterSizeLeaderboard("White Monoblos Size","Largest White Monoblos hunted",LargestWhiteMonoblosLengthHunted,20.04227642276423)
 
+leaderboard(
+    title="Main Quest Line Time",
+    description="Fastest time to complete the main Village quest line",
+    start=
+        IsInGame() &&
+        CompletedVillage6StarHornOfTheMonoblos() == 0,
+    cancel=always_false(),
+    submit=
+        VillageQuestCompleteTrigger(
+            0x2739,
+            CompletedVillage6StarHornOfTheMonoblos()
+        ),
+    value=measured(IngameClock()),
+    format="TIMESECS",
+    lower_is_better=true
+)
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -7457,14 +7774,40 @@ function TownQuestCompleteTrigger(questId,completedQuest) =>
     QuestActive()==questId &&
     completedQuest>prev(completedQuest)
 
-function EmitTownQuestAchievement(title,description,points,questId,completedQuest)
+function TownQuest1To3CompleteTrigger(questId,completedQuest) =>
+    QuestActive()==questId &&
+    (
+        completedQuest>prev(completedQuest) ||
+        (
+            FlagImportedPoogieSkin() == 1 &&
+            prev(QuestStatus() == 0x3) &&
+            QuestStatus() == 0x4
+        )
+    )
+
+function EmitTownQuestAchievement(id,badge,title,description,points,questId,completedQuest)
 {
     achievement(
+        id=id,
+        badge=badge,
         title=title,
         description=description,
         points=points,
         set=AchievementSetOnline,
         trigger=TownQuestCompleteTrigger(questId,completedQuest)
+    )
+}
+
+function EmitTownQuest1To3Achievement(id,badge,title,description,points,questId,completedQuest)
+{
+    achievement(
+        id=id,
+        badge=badge,
+        title=title,
+        description=description,
+        points=points,
+        set=AchievementSetOnline,
+        trigger=TownQuest1To3CompleteTrigger(questId,completedQuest)
     )
 }
 
@@ -7474,9 +7817,11 @@ function FatalisTownQuestCompleteTrigger()=>
     TownQuestCompleteTrigger(0xBBE,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon3())||
     TownQuestCompleteTrigger(0xBBF,CompletedTown8StarGRankSpecialQuestTheLegendaryBlackDragon4())
 
-function EmitFatalisTownQuestAchievement(title,description,points)
+function EmitFatalisTownQuestAchievement(id,badge,title,description,points)
 {
     achievement(
+        id=id,
+        badge=badge,
         title=title,
         description=description,
         points=points,
@@ -7484,8 +7829,27 @@ function EmitFatalisTownQuestAchievement(title,description,points)
         trigger=FatalisTownQuestCompleteTrigger()
     )
 }
+function EventQuestCompleteTrigger(eventQuestId) =>
+    QuestActive()==eventQuestId &&
+    prev(QuestStatus()==0x3) &&
+    QuestStatus()==0x4
 
-EmitTownQuestAchievement(
+function EmitEventQuestAchievement(id,badge,title,description,points,eventQuestId)
+{
+    achievement(
+        id=id,
+        badge=badge,
+        title=title,
+        description=description,
+        points=points,
+        set=AchievementSetOnline,
+        trigger=EventQuestCompleteTrigger(eventQuestId)
+    )
+}
+
+EmitTownQuest1To3Achievement(
+    609988,
+    "692153",
     "We Need More Mushrooms",
     "Complete the 1★ Town Quest: \"Mushroom Picking\"",
     1,
@@ -7493,7 +7857,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarMushroomPicking()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609989,
+    "692154",
     "Sculptor Needs A Favor",
     "Complete the 1★ Town Quest: \"The Sculptor's Errand\"",
     1,
@@ -7501,7 +7867,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarTheSculptorsErrand()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609990,
+    "692155",
     "Time For A Feast",
     "Complete the 1★ Town Quest: \"It's Party Time!\"",
     1,
@@ -7509,7 +7877,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarItsPartyTime()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609991,
+    "692156",
     "Kut-Ku Is Acting Up",
     "Complete the 1★ Town Quest: \"Attack of the Yian Kut-Ku\"",
     3,
@@ -7517,7 +7887,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarAttackOfTheYianKutKu()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609992,
+    "692157",
     "Velociprey Are Everywhere Today",
     "Complete the 1★ Town Quest: \"Velociprey Hunt\"",
     3,
@@ -7525,7 +7897,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarVelocipreyHunt()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609993,
+    "692158",
     "Pack Leaders Need Handling",
     "Complete the 1★ Town Quest: \"The Velociprey Lords\"",
     5,
@@ -7533,7 +7907,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarTheVelocipreyLords()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609994,
+    "692159",
     "This Better Taste Amazing",
     "Complete the 1★ Town Quest: \"Illusory Delicacy!\"",
     4,
@@ -7541,7 +7917,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarIllusoryDelicacy()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609995,
+    "692160",
     "Crystals For The Guild",
     "Complete the 1★ Town Quest: \"Crystal Hunting!\"",
     5,
@@ -7549,7 +7927,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarCrystalHunting()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609996,
+    "692161",
     "Goldfish Worth The Trouble",
     "Complete the 1★ Town Quest: \"Panning for Goldenfish\"",
     3,
@@ -7557,7 +7937,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarPanningForGoldenfish()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609997,
+    "692162",
     "Bugs Are Getting Bold",
     "Complete the 1★ Town Quest: \"Attack of the Giant Bugs\"",
     5,
@@ -7565,7 +7947,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarAttackOfTheGiantBugs()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609998,
+    "692163",
     "Jungle Sounds Too Loud",
     "Complete the 1★ Town Quest: \"Jungle Menace\"",
     5,
@@ -7573,7 +7957,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarJungleMenace()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    609999,
+    "692164",
     "More Mushrooms, Naturally",
     "Complete the 1★ Town Quest: \"The Mushroom Hunt!\"",
     5,
@@ -7581,7 +7967,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarTheMushroomHunt()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610000,
+    "692165",
     "Show Us Your Cooking",
     "Complete the 1★ Town Quest: \"Show me your Cooking Skills!\"",
     5,
@@ -7589,7 +7977,9 @@ EmitTownQuestAchievement(
     CompletedTown1StarShowMeYourCookingSkills()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610001,
+    "692166",
     "Gypceros Won't Fool Us Again",
     "Complete the Urgent Town Quest: \"Slay the Gypceros!\"",
     10,
@@ -7597,7 +7987,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarSlayTheGypceros()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610002,
+    "692167",
     "Venom Bird Causes Trouble",
     "Complete the 2★ Town Quest: \"Gypceros: Venomous Terror\"",
     5,
@@ -7605,7 +7997,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarGypcerosVenomousTerror()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610003,
+    "692168",
     "Stay Out Of Nests",
     "Complete the 2★ Town Quest: \"Raid the Wyvern's Nest\"",
     5,
@@ -7613,7 +8007,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarRaidTheWyvernsNest()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610004,
+    "692169",
     "Rathian Is Really Angry",
     "Complete the 2★ Town Quest: \"Attack of the Rathian!\"",
     5,
@@ -7621,7 +8017,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarAttackOfTheRathian()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610005,
+    "692170",
     "Desert Queen Wants Attention",
     "Complete the 2★ Town Quest: \"Queen of the Desert\"",
     5,
@@ -7629,7 +8027,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarQueenOfTheDesert()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610006,
+    "692171",
     "Something Swims Under Sand",
     "Complete the 2★ Town Quest: \"The Land Shark\"",
     5,
@@ -7637,7 +8037,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarTheLandShark()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610007,
+    "692172",
     "Genprey Need Thinning Out",
     "Complete the 2★ Town Quest: \"Slay the Genprey\"",
     5,
@@ -7645,7 +8047,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarSlayTheGenprey()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610008,
+    "692173",
     "Gendrome Brought Friends",
     "Complete the 2★ Town Quest: \"Leaders of the Genprey\"",
     5,
@@ -7653,7 +8057,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarLeadersOfTheGenprey()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610009,
+    "692174",
     "Don't Drop The Egg",
     "Complete the 2★ Town Quest: \"Apceros Egg Hunt\"",
     5,
@@ -7661,7 +8067,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarApcerosEggHunt()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610010,
+    "692175",
     "Boars Own The Swamp",
     "Complete the 2★ Town Quest: \"Trouble in the Swamp\"",
     5,
@@ -7669,7 +8077,19 @@ EmitTownQuestAchievement(
     CompletedTown2StarTroubleInTheSwampBullfango()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610011,
+    "692176",
+    "Gypceros Trouble in the Swamp",
+    "Complete the 2★ Town Quest: \"Trouble in the Swamp\"",
+    5,
+    0x16,
+    CompletedTown2StarTroubleInTheSwampGypceros()
+)
+
+EmitTownQuest1To3Achievement(
+    610012,
+    "692177",
     "Bring Back Sootstone Ore",
     "Complete the 2★ Town Quest: \"Get me Sootstone Ore!\"",
     5,
@@ -7677,7 +8097,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarGetMeSootstoneOre()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610013,
+    "692178",
     "Gendrome Again, Naturally",
     "Complete the 2★ Town Quest: \"Slay the Gendrome!\"",
     5,
@@ -7685,7 +8107,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarSlayTheGendrome()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610014,
+    "692179",
     "Keep The Dragonator Fed",
     "Complete the 2★ Town Quest: \"Re-Supply the Dragonator\"",
     5,
@@ -7693,7 +8117,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarReSupplyTheDragonator()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610015,
+    "692180",
     "That Rock Is Alive",
     "Complete the 2★ Town Quest: \"Basarios: Unseen Peril!\"",
     5,
@@ -7701,7 +8127,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarBasariosUnseenPeril()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610016,
+    "692181",
     "More Coal, Less Complaining",
     "Complete the 2★ Town Quest: \"More Coal Please\"",
     5,
@@ -7709,7 +8137,9 @@ EmitTownQuestAchievement(
     CompletedTown2StarMoreCoalPlease()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610017,
+    "692182",
     "Catch The Beaked Troublemaker",
     "Complete the 2★ Town Quest: \"Catch a Yian Kut-Ku\"",
     5,
@@ -7717,23 +8147,19 @@ EmitTownQuestAchievement(
     CompletedTown2StarCatchAYianKutKu()
 )
 
-EmitTownQuestAchievement(
-    "Khezu Hates The Dark?",
-    "Complete the 2★ Town Quest: \"Wyvern in the Darkness\"",
-    5,
-    0x29,
-    CompletedTown3StarWyvernInTheDarkness()
-)
-
-EmitTownQuestAchievement(
-    "Rathalos Takes The Stage",
+EmitTownQuest1To3Achievement(
+    610018,
+    "692183",
+    "Rathalos Takes the Stage",
     "Complete the Urgent Town Quest: \"Slay the Rathalos!\"",
     10,
     0x9,
     CompletedTown3StarSlayTheRathalos()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610019,
+    "692184",
     "Diablos Is Out Again",
     "Complete the 3★ Town Quest: \"The Runaway Diablos\"",
     5,
@@ -7741,7 +8167,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarTheRunawayDiablos()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610020,
+    "692185",
     "Khezu Lurks Down There",
     "Complete the 3★ Town Quest: \"The Shadow in the Cave\"",
     5,
@@ -7749,7 +8177,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarTheShadowInTheCave()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610021,
+    "692186",
     "Gravios Blocks The Way",
     "Complete the 3★ Town Quest: \"The Fearsome Gravios\"",
     5,
@@ -7757,7 +8187,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarTheFearsomeGravios()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610022,
+    "692187",
     "Rathian Needs A Lesson",
     "Complete the 3★ Town Quest: \"Slay the Rathian!\"",
     5,
@@ -7765,7 +8197,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarSlayTheRathian()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610024,
+    "692188",
     "Volcano Job Sounds Dangerous",
     "Complete the 3★ Town Quest: \"Volcanic Valor\"",
     5,
@@ -7773,7 +8207,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarVolcanicValor()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610025,
+    "692189",
     "Ioprey Need Clearing Out",
     "Complete the 3★ Town Quest: \"Ioprey Hunting\"",
     5,
@@ -7781,7 +8217,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarIopreyHunting()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610026,
+    "692190",
     "Iodrome Brought Backup Today",
     "Complete the 3★ Town Quest: \"Leaders of the Ioprey\"",
     5,
@@ -7789,7 +8227,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarLeadersOfTheIoprey()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610027,
+    "692191",
     "Powderstone Runs Feel Terrible",
     "Complete the 3★ Town Quest: \"Bring us Powderstone!\"",
     5,
@@ -7797,7 +8237,19 @@ EmitTownQuestAchievement(
     CompletedTown3StarBringUsPowderstone()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610028,
+    "692192",
+    "Khezu Hates The Dark?",
+    "Complete the 3★ Town Quest: \"Wyvern in the Darkness\"",
+    5,
+    0x29,
+    CompletedTown3StarWyvernInTheDarkness()
+)
+
+EmitTownQuest1To3Achievement(
+    610029,
+    "692193",
     "Iodrome Won't Behave Today",
     "Complete the 3★ Town Quest: \"Slay the Iodrome!\"",
     5,
@@ -7805,7 +8257,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarSlayTheIodrome()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610030,
+    "692194",
     "Plesioth Owns The River",
     "Complete the 3★ Town Quest: \"Water Wyvern in the Jungle\"",
     5,
@@ -7813,7 +8267,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarWaterWyvernInTheJungle()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610031,
+    "692195",
     "Eggs Make Everything Worse",
     "Complete the 3★ Town Quest: \"Wyvern Egg Hunt\"",
     5,
@@ -7821,7 +8277,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarWyvernEggHunt()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610023,
+    "692187",
     "Rathian Likes The Jungle",
     "Complete the 3★ Town Quest: \"Queen of the Jungle\"",
     5,
@@ -7829,7 +8287,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarQueenOfTheJungle()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610032,
+    "692196",
     "Catching Rathalos Sounds Easy?",
     "Complete the 3★ Town Quest: \"Catch a Rathalos\"",
     5,
@@ -7837,7 +8297,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarCatchARathalos()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610033,
+    "692197",
     "Please Keep Gypceros Contained",
     "Complete the 3★ Town Quest: \"Catch a Gypceros\"",
     5,
@@ -7845,7 +8307,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarCatchAGypceros()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610034,
+    "692198",
     "Bring Khezu Back Breathing",
     "Complete the 3★ Town Quest: \"Get me a Live Khezu!\"",
     5,
@@ -7853,7 +8317,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarGetMeALiveKhezu()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610035,
+    "692199",
     "Plesioth Delivery Sounds Ridiculous",
     "Complete the 3★ Town Quest: \"Bring me a Plesioth!\"",
     5,
@@ -7861,7 +8327,9 @@ EmitTownQuestAchievement(
     CompletedTown3StarBringMeAPlesioth()
 )
 
-EmitTownQuestAchievement(
+EmitTownQuest1To3Achievement(
+    610036,
+    "692200",
     "Lao Is Getting Close",
     "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
     10,
@@ -7870,6 +8338,18 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610036,
+    "692200",
+    "Lao Is Getting Close",
+    "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
+    10,
+    0xBB9,
+    CompletedTown3StarAGiantDragonInvades()
+)
+
+EmitTownQuestAchievement(
+    610037,
+    "692201",
     "Kut-Ku Still Wants Trouble",
     "Complete the 4★ Town Quest: \"Attack of the Yian Kut-Ku\"",
     5,
@@ -7878,6 +8358,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610038,
+    "692202",
     "Another Egg, Another Problem",
     "Complete the 4★ Town Quest: \"Wyvern Egg Hunt\"",
     5,
@@ -7886,6 +8368,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610039,
+    "692203",
     "Velocidromes Return With Friends",
     "Complete the 4★ Town Quest: \"The Velociprey Lords\"",
     5,
@@ -7894,6 +8378,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610040,
+    "692204",
     "Nest Raids Never End",
     "Complete the 4★ Town Quest: \"Raid the Wyvern's Nest\"",
     5,
@@ -7902,6 +8388,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610041,
+    "692205",
     "Rathian Brought More Fire",
     "Complete the 4★ Town Quest: \"Attack of the Rathian\"",
     5,
@@ -7910,6 +8398,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610042,
+    "692206",
     "Gourmet Has Dangerous Taste",
     "Complete the 4★ Town Quest: \"The Lady Gourmet\"",
     5,
@@ -7918,6 +8408,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610043,
+    "692207",
     "Desert Queen Returns Angry",
     "Complete the 4★ Town Quest: \"Queen of the Desert\"",
     5,
@@ -7926,6 +8418,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610044,
+    "692208",
     "Cephadrome Makes Desert Waves",
     "Complete the 4★ Town Quest: \"Swimming in the Desert\"",
     5,
@@ -7934,6 +8428,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610045,
+    "692209",
     "Apceros Eggs Weigh Plenty",
     "Complete the 4★ Town Quest: \"Apceros Egg Hunt\"",
     5,
@@ -7942,6 +8438,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610046,
+    "692210",
     "Goldfish Again? Fine, Whatever",
     "Complete the 4★ Town Quest: \"Panning for Goldenfish\"",
     5,
@@ -7950,6 +8448,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610047,
+    "692211",
     "Gypceros Found The Swamp",
     "Complete the 4★ Town Quest: \"Trouble in the Swamp\"",
     5,
@@ -7958,6 +8458,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610048,
+    "692212",
     "Quartz Does Not Gather Itself",
     "Complete the 4★ Town Quest: \"Quartz Ore Request\"",
     5,
@@ -7966,6 +8468,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610049,
+    "692213",
     "Gendrome Brought The Crew",
     "Complete the 4★ Town Quest: \"Slay the Gendrome!\"",
     5,
@@ -7974,6 +8478,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610050,
+    "692214",
     "Rathian Wants Round Two",
     "Complete the 4★ Town Quest: \"Slay the Rathian!\"",
     5,
@@ -7982,6 +8488,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610051,
+    "692215",
     "Bugs Still Won't Quit",
     "Complete the 4★ Town Quest: \"Attack of the Giant Bugs!\"",
     5,
@@ -7990,6 +8498,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610052,
+    "692216",
     "Kut-Ku Jungle Patrol",
     "Complete the 4★ Town Quest: \"Jungle Menace\"",
     5,
@@ -7998,6 +8508,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610053,
+    "692217",
     "Gypceros Needs A Timeout",
     "Complete the 4★ Town Quest: \"Slay the Gypceros!\"",
     5,
@@ -8006,6 +8518,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610054,
+    "692218",
     "Capture Kut-Ku, Somehow",
     "Complete the 4★ Town Quest: \"Catch a Yian Kut-Ku\"",
     5,
@@ -8014,6 +8528,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610055,
+    "692219",
     "Bring Plesioth In Dripping",
     "Complete the 4★ Town Quest: \"Bring me a Plesioth!\"",
     5,
@@ -8022,14 +8538,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
-    "Lao Came Back Early",
-    "Complete the 4★ Town Quest: \"A Giant Dragon Invades!\"",
-    5,
-    0xBBA,
-    CompletedTown4StarAGiantDragonInvades()
-)
-
-EmitTownQuestAchievement(
+    610056,
+    "692220",
     "Four Horns, No Thanks",
     "Complete the Urgent Town Quest: \"Four Horns\"",
     10,
@@ -8038,6 +8548,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610057,
+    "692221",
     "Rathalos Still Owns Skies",
     "Complete the 5★ Town Quest: \"Slay the Rathalos!\"",
     10,
@@ -8046,6 +8558,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610058,
+    "692222",
     "Azure Rathalos Looks Annoyed",
     "Complete the 5★ Town Quest: \"Slay the Rathalos!\"",
     10,
@@ -8054,6 +8568,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610059,
+    "692223",
     "Diablos Is Running Wild",
     "Complete the 5★ Town Quest: \"The Runaway Diablos\"",
     10,
@@ -8062,6 +8578,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610060,
+    "692224",
     "Crystals Under Heavy Guard",
     "Complete the 5★ Town Quest: \"Crystal Hunting!\"",
     10,
@@ -8070,6 +8588,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610061,
+    "692225",
     "Gravios Won't Move Aside",
     "Complete the 5★ Town Quest: \"The Fearsome Gravios\"",
     10,
@@ -8078,6 +8598,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610062,
+    "692226",
     "Basarios Forgot To Hide",
     "Complete the 5★ Town Quest: \"Basarios: Unseen Peril\"",
     10,
@@ -8086,6 +8608,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610063,
+    "692227",
     "Gravios Likes Hot Places",
     "Complete the 5★ Town Quest: \"Volcanic Valor\"",
     10,
@@ -8094,6 +8618,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610064,
+    "692228",
     "Iodrome Leaders Need Sorting",
     "Complete the 5★ Town Quest: \"Leaders of the Ioprey\"",
     10,
@@ -8102,6 +8628,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610065,
+    "692229",
     "Powderstone Again? Seriously?",
     "Complete the 5★ Town Quest: \"Bring us some Powderstone!\"",
     10,
@@ -8110,6 +8638,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610066,
+    "692230",
     "Khezu Waits In Darkness",
     "Complete the 5★ Town Quest: \"Wyvern in the Darkness\"",
     10,
@@ -8118,6 +8648,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610067,
+    "692231",
     "Plesioth Floods The Jungle",
     "Complete the 5★ Town Quest: \"Water Wyvern in the Jungle\"",
     10,
@@ -8126,6 +8658,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610068,
+    "692232",
     "More Powderstone, More Panic",
     "Complete the 5★ Town Quest: \"Get me some Powderstone!\"",
     10,
@@ -8134,6 +8668,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610069,
+    "692233",
     "Jungle Rathian Means Business",
     "Complete the 5★ Town Quest: \"Queen of the Jungle\"",
     10,
@@ -8142,6 +8678,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610070,
+    "692234",
     "Pink Rathian Joins In",
     "Complete the 5★ Town Quest: \"Queen of the Jungle\"",
     10,
@@ -8150,6 +8688,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610071,
+    "692235",
     "Rathian And Rathalos Together",
     "Complete the 5★ Town Quest: \"A Troublesome Pair\"",
     10,
@@ -8158,6 +8698,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610072,
+    "692236",
     "Two Basarios, Double Trouble",
     "Complete the 5★ Town Quest: \"Two Rock Wyverns\"",
     10,
@@ -8166,6 +8708,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610073,
+    "692237",
     "Land And Sky Problems",
     "Complete the 5★ Town Quest: \"Wyverns of Land and Sky\"",
     10,
@@ -8174,6 +8718,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610074,
+    "692238",
     "Catch The Sky King",
     "Complete the 5★ Town Quest: \"Catch a Rathalos\"",
     10,
@@ -8182,6 +8728,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610075,
+    "692239",
     "Live Khezu Delivery Requested",
     "Complete the 5★ Town Quest: \"Get me a Live Khezu!\"",
     10,
@@ -8190,6 +8738,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610076,
+    "692240",
     "Lao Wants Another Visit",
     "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
     10,
@@ -8198,6 +8748,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610077,
+    "692241",
     "Kut-Ku Graduates To G",
     "Complete the 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
     10,
@@ -8206,6 +8758,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610078,
+    "692242",
     "Blue Kut-Ku Joins In",
     "Complete the 6★ Town Quest: \"Attack of the Yian Kut-Ku\"",
     10,
@@ -8214,6 +8768,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610079,
+    "692243",
     "Jungle Kut-Ku Gets Meaner",
     "Complete the 6★ Town Quest: \"Jungle Menace\"",
     10,
@@ -8222,6 +8778,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610080,
+    "692244",
     "Blue Kut-Ku Loves Jungles",
     "Complete the 6★ Town Quest: \"Jungle Menace\"",
     10,
@@ -8230,6 +8788,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610081,
+    "692245",
     "Gypceros Still Spreads Venom",
     "Complete the 6★ Town Quest: \"Gypceros: Venomous Terror\"",
     10,
@@ -8238,6 +8798,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610082,
+    "692246",
     "Purple Gypceros Looks Worse",
     "Complete the 6★ Town Quest: \"Gypceros: Venomous Terror\"",
     10,
@@ -8246,6 +8808,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610083,
+    "692247",
     "Swamp Gypceros Acts Up",
     "Complete the 6★ Town Quest: \"Trouble in the Swamp\"",
     10,
@@ -8254,6 +8818,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610084,
+    "692248",
     "Purple Swamp Looks Toxic",
     "Complete the 6★ Town Quest: \"Trouble in the Swamp\"",
     10,
@@ -8262,6 +8828,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610085,
+    "692249",
     "Gypceros Finally Gets Serious",
     "Complete the 6★ Town Quest: \"Slay the Gypceros!\"",
     10,
@@ -8270,6 +8838,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610086,
+    "692250",
     "Purple Gypceros Still Tricks",
     "Complete the 6★ Town Quest: \"Slay the Gypceros!\"",
     10,
@@ -8278,6 +8848,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610087,
+    "692251",
     "Too Many Kut-Ku",
     "Complete the 6★ Town Quest: \"The Plague of Yian Kut-Ku\"",
     10,
@@ -8286,6 +8858,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610088,
+    "692252",
     "Cephadrome Keeps Digging",
     "Complete the 6★ Town Quest: \"The Burrowing Monster\"",
     10,
@@ -8294,6 +8868,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610089,
+    "692253",
     "Blue Kut-Ku Ambush Duty",
     "Complete the 6★ Town Quest: \"Trapped by Yian Kut-Ku\"",
     10,
@@ -8302,6 +8878,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610090,
+    "692254",
     "Purple Poison Party",
     "Complete the 6★ Town Quest: \"Deadly Poisonous Siege\"",
     10,
@@ -8310,6 +8888,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610091,
+    "692255",
     "Two Shadows, One Desert",
     "Complete the 6★ Town Quest: \"The Two Sand Shadows\"",
     10,
@@ -8318,6 +8898,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610092,
+    "692256",
     "Thunder Duo Needs Separating",
     "Complete the Urgent Town Quest: \"The Thunderous Duo\"",
     25,
@@ -8326,6 +8908,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610093,
+    "692257",
     "Rathian Returns To Fight",
     "Complete the 7★ Town Quest: \"Attack of the Rathian\"",
     10,
@@ -8334,6 +8918,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610094,
+    "692258",
     "Pink Rathian Wants Trouble",
     "Complete the 7★ Town Quest: \"Attack of the Rathian\"",
     10,
@@ -8342,6 +8928,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610095,
+    "692259",
     "Desert Rathian Rules Again",
     "Complete the 7★ Town Quest: \"Queen of the Desert\"",
     10,
@@ -8350,6 +8938,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610096,
+    "692260",
     "Pink Desert Queen Arrives",
     "Complete the 7★ Town Quest: \"Queen of the Desert\"",
     10,
@@ -8358,6 +8948,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610097,
+    "692261",
     "Rathian Falls Again Today",
     "Complete the 7★ Town Quest: \"Slay the Rathian!\"",
     10,
@@ -8366,6 +8958,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610098,
+    "692262",
     "Pink Rathian Falls Too",
     "Complete the 7★ Town Quest: \"Slay the Rathian!\"",
     10,
@@ -8374,6 +8968,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610099,
+    "692263",
     "Khezu Owns This Cave",
     "Complete the 7★ Town Quest: \"The Shadow in the Cave\"",
     10,
@@ -8382,6 +8978,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610100,
+    "692264",
     "Red Khezu Screams Louder",
     "Complete the 7★ Town Quest: \"The Shadow in the Cave\"",
     10,
@@ -8390,6 +8988,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610101,
+    "692265",
     "Khezu Likes Total Darkness",
     "Complete the 7★ Town Quest: \"Wyvern in the Darkness\"",
     10,
@@ -8398,6 +8998,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610102,
+    "692266",
     "Red Khezu In Darkness",
     "Complete the 7★ Town Quest: \"Wyvern in the Darkness\"",
     10,
@@ -8406,6 +9008,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610103,
+    "692267",
     "Basarios Hides Too Well",
     "Complete the 7★ Town Quest: \"Basarios: Invisible Terror\"",
     10,
@@ -8414,6 +9018,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610104,
+    "692268",
     "Two Rock Wyverns Roll",
     "Complete the 7★ Town Quest: \"Two Rock Wyverns\"",
     10,
@@ -8422,14 +9028,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
-    "Two Khezu, Too Loud",
-    "Complete the 7★ Town Quest: \"The Thunderous Duo\"",
-    10,
-    0x7EC,
-    CompletedTown7StarGRankTheThunderousDuo()
-)
-
-EmitTownQuestAchievement(
+    610105,
+    "692269",
     "Red Thunder Feels Worse",
     "Complete the 7★ Town Quest: \"The Thunderous Duo\"",
     25,
@@ -8438,6 +9038,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610106,
+    "692270",
     "Rathian, Rathalos, Repeat",
     "Complete the 7★ Town Quest: \"Wyverns of Land and Sky\"",
     25,
@@ -8446,7 +9048,9 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
-    "Pink And Azure Arrive",
+    610107,
+    "692271",
+    "Pink and Azure Arrive",
     "Complete the Urgent Town Quest: \"Pink and Azure\"",
     25,
     0x802,
@@ -8454,6 +9058,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610108,
+    "692272",
     "Jungle Rathian Still Reigns",
     "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
     10,
@@ -8462,6 +9068,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610109,
+    "692273",
     "Pink Jungle Queen Returns",
     "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
     10,
@@ -8470,6 +9078,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610110,
+    "692274",
     "Gold Rathian Shows Off",
     "Complete the 8★ Town Quest: \"Queen of the Jungle\"",
     25,
@@ -8478,6 +9088,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610111,
+    "692275",
     "Rathalos Refuses To Land",
     "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
     10,
@@ -8486,6 +9098,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610112,
+    "692276",
     "Azure Rathalos Still Burning",
     "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
     10,
@@ -8494,6 +9108,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610113,
+    "692277",
     "Silver Rathalos Means Trouble",
     "Complete the 8★ Town Quest: \"Slay the Rathalos!\"",
     25,
@@ -8502,6 +9118,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610114,
+    "692278",
     "Smoke-Clad King Starts Trouble",
     "Complete the 8★ Town Quest: \"The Smoke Clad King\"",
     10,
@@ -8510,6 +9128,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610115,
+    "692279",
     "Azure Smoke Means Rathalos",
     "Complete the 8★ Town Quest: \"The Smoke Clad King\"",
     25,
@@ -8518,6 +9138,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610116,
+    "692280",
     "Plesioth Floods Everything Again",
     "Complete the 8★ Town Quest: \"Water Wyvern in the Jungle\"",
     10,
@@ -8526,6 +9148,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610117,
+    "692281",
     "Green Plesioth Joins Splashing",
     "Complete the 8★ Town Quest: \"Water Wyvern in the Jungle\"",
     25,
@@ -8534,6 +9158,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610118,
+    "692282",
     "Diablos Breaks Loose Again",
     "Complete the 8★ Town Quest: \"The Runaway Diablos\"",
     10,
@@ -8542,6 +9168,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610119,
+    "692283",
     "Black Diablos Is Furious",
     "Complete the 8★ Town Quest: \"The Runaway Diablos\"",
     25,
@@ -8550,6 +9178,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610120,
+    "692284",
     "Gravios Loves The Volcano",
     "Complete the 8★ Town Quest: \"Volcanic Valor\"",
     10,
@@ -8558,6 +9188,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610121,
+    "692285",
     "Black Gravios Burns Hotter",
     "Complete the 8★ Town Quest: \"Volcanic Valor\"",
     25,
@@ -8566,6 +9198,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610122,
+    "692286",
     "Four Black Horns Charging",
     "Complete the 8★ Town Quest: \"Four Horns\"",
     25,
@@ -8574,6 +9208,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610123,
+    "692287",
     "Two Black Gravios Glowing",
     "Complete the 8★ Town Quest: \"Blazing Jewels\"",
     25,
@@ -8582,6 +9218,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610124,
+    "692288",
     "Two Green Plesioth Splashing",
     "Complete the 8★ Town Quest: \"Dual Plesioth\"",
     25,
@@ -8590,6 +9228,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610125,
+    "692289",
     "Royal Wyverns Team Up",
     "Complete the 8★ Town Quest: \"Wyverns of Land and Sky\"",
     25,
@@ -8598,6 +9238,8 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
+    610126,
+    "692290",
     "Gold And Silver Together",
     "Complete the 8★ Town Quest: \"Wyverns of Land and Sky\"",
     25,
@@ -8606,7 +9248,9 @@ EmitTownQuestAchievement(
 )
 
 EmitTownQuestAchievement(
-    "Ashen Lao Approaches Fortress",
+    610127,
+    "692291",
+    "Approach of the Ashen Giant",
     "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
     25,
     0xBBB,
@@ -8614,9 +9258,128 @@ EmitTownQuestAchievement(
 )
 
 EmitFatalisTownQuestAchievement(
-    "Fatalis Is Everyone's Problem",
+    610128,
+    "692292",
+    "The Fatalis Problem",
     "Complete any of the Urgent Town Quest: \"The Legendary Black Dragon\"",
     25
+)
+
+EmitEventQuestAchievement(
+    610129,
+    "692293",
+    "The Great Barbecue Incident",
+    "Complete the Event Quest: \"Revenge of the BBQ!\"",
+    5,
+    0xEA67
+)
+
+EmitEventQuestAchievement(
+    610130,
+    "692294",
+    "Arena of Endless Furballs",
+    "Complete the Event Quest: \"The Furball Arena\"",
+    5,
+    0xEA65
+)
+
+EmitEventQuestAchievement(
+    610131,
+    "692295",
+    "Bonk the Blue Wyvern",
+    "Complete the Event Quest: \"Famitsu: The Blue Wyverns\"",
+    10,
+    0xEA6D
+)
+
+EmitEventQuestAchievement(
+    610132,
+    "692296",
+    "Festival of Strange Affairs",
+    "Complete the Event Quest: \"Dengeki Festival Returns!\"",
+    10,
+    0xEA6C
+)
+
+EmitEventQuestAchievement(
+    610133,
+    "692297",
+    "Following the Hidden Beast",
+    "Complete the Event Quest: \"On the Trail of the Beast!\"",
+    10,
+    0xEA62 // PLACEHOLDER quest address - On the Trail of the Beast!
+)
+
+EmitEventQuestAchievement(
+    610134,
+    "692298",
+    "Return of the Ashen Giant",
+    "Complete the Event Quest: \"A Giant Dragon Invades!\"",
+    10,
+    0xEA61
+)
+
+EmitEventQuestAchievement(
+    610135,
+    "692299",
+    "Storm over the Swamp",
+    "Complete the Event Quest: \"The Swamp Lightning\"",
+    10,
+    0xEA63
+)
+
+EmitEventQuestAchievement(
+    610136,
+    "692300",
+    "Black Dragon Unleashed",
+    "Complete the Event Quest: \"Legendary Black Dragon\"",
+    25,
+    0xEA69
+)
+
+EmitEventQuestAchievement(
+    610137,
+    "692301",
+    "Rathalos Guarded Riches",
+    "Complete the Event Quest: \"Treasure Hunting!\"",
+    25,
+    0xEA6B
+)
+
+EmitEventQuestAchievement(
+    610138,
+    "692302",
+    "Heavens Split by Thunder",
+    "Complete the Event Quest: \"Thunder and Lightning\"",
+    25,
+    0xEA6A
+)
+
+EmitEventQuestAchievement(
+    610139,
+    "692303",
+    "The Giant Marches Again",
+    "Complete the Event Quest: \"A Giant Dragon Invades!\"",
+    25,
+    0xEA64 // PLACEHOLDER quest address - A Giant Dragon Invades! Lao-Shan Lung
+)
+
+EmitEventQuestAchievement(
+    610140,
+    "692304",
+    "The Coming of Destruction",
+    "Complete the Event Quest: \"Advent of Calamity\"",
+    25,
+    0xEA7D
+)
+
+EmitEventQuestAchievement(
+    610141,
+    "692305",
+    "Calamity without End",
+    "Complete the Event Quest: \"Wrath of Calamity\"",
+    25,
+    0xEA66
 )
 
 function TownMonsterInfoTotal()
@@ -8652,6 +9415,8 @@ HasAlchemyRareSteakCombine()
 }
 
 achievement(
+    id=610142,
+    badge="692306",
     title="Master Alchemist",
     description="Learn all Alchemy item combinations",
     points=5,
@@ -8663,8 +9428,10 @@ achievement(
 )
 
 achievement(
+    id=610143,
+    badge="692307",
     title="Secrets of the Ancients",
-    description="Acquire the special Monster Data in Minegarde",
+    description="Acquire the Kirin and Fatalis Monster Data in Minegarde",
     points=1,
     set=AchievementSetOnline,
     trigger=
@@ -8674,6 +9441,8 @@ achievement(
 )
 
 achievement(
+    id=610144,
+    badge="692308",
     title="First Steps Toward Greatness",
     description="Attain the rank of Rookie Hunter",
     points=5,
@@ -8686,13 +9455,14 @@ achievement(
         ) ||
         (
         FlagImportedPoogieSkin() == 1 &&
-        measured(OnlineCurrentHunterRank() == 0x04) &&
-        prev(OnlineCurrentHunterRank() != 0x04)
+        measured(OnlineCurrentHunterRank() >= 0x04) &&
+        prev(OnlineCurrentHunterRank() < 0x04)
         )
 )
 
-
 achievement(
+    id=610145,
+    badge="692309",
     title="Trusted Hand for Hire",
     description="Attain the rank of Mercenary",
     points=10,
@@ -8711,6 +9481,8 @@ achievement(
 )
 
 achievement(
+    id=610146,
+    badge="692310",
     title="A Cut Above the Rest",
     description="Attain the rank of Weapons Master",
     points=10,
@@ -8722,6 +9494,8 @@ achievement(
 )
 
 achievement(
+    id=610147,
+    badge="692311",
     title="Among the Guild’s Finest",
     description="Attain the rank of Monster Hunter G",
     points=25,
@@ -8733,64 +9507,28 @@ achievement(
 )
 
 achievement(
-    title="A Room You Can Rely On",
-    description="Use the Rook Room",
-    points=2,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        OnlineRookGuestHouseTimesEntered()>prev(OnlineRookGuestHouseTimesEntered())
-)
-
-achievement(
-    title="A Noticeable Step Up",
-    description="Use the Bishop Room",
-    points=2,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        OnlineBishopGuestHouseTimesEntered()>prev(OnlineBishopGuestHouseTimesEntered())
-)
-
-achievement(
-    title="A Stay Worth the Zenny",
-    description="Use the Queen Room",
-    points=2,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        OnlineQueenGuestHouseTimesEntered()>prev(OnlineQueenGuestHouseTimesEntered())
-)
-
-achievement(
-    title="Luxury Fit for a Veteran Hunter",
-    description="Use the King Room",
-    points=2,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        OnlineKingGuestHouseTimesEntered()>prev(OnlineKingGuestHouseTimesEntered())
-)
-
-achievement(
+    id=610148,
+    badge="692312",
     title="You Can Fit a Lot of Dung in There",
     description="Fully upgrade your Chest storage",
     points=2,
     set=AchievementSetOnline,
     trigger=
         IsInGame() &&
-        measured(ChestUpgrade() == 0x03) &&
+        ChestUpgrade() == 0x03 &&
         prev(ChestUpgrade() == 0x02)
 )
 
 achievement(
-    title="Joined the Circuis",
-    description="Equipped the Community \"Clown Suit\"",
+    id=610149,
+    badge="692313",
+    title="Joined the Circus",
+    description="Equipped the Community \"Clown Suit\" (Skull Mask S, Kut-Ku Mail U, Monoblos Vambraces S, Gravios Tasst +, Cephalos Greaves U)",
     points=2,
     set=AchievementSetOnline,
     trigger=
         IsInGame() &&
-        prev(EquippedHeadgear() != 0xb1) && EquippedHeadgear() == 0xb1 &&
+        prev(EquippedHeadgear() != 0xc9) && EquippedHeadgear() == 0xc9 &&
         prev(EquippedTorso() != 0x96) && EquippedTorso() == 0x96 &&
         prev(EquippedHands() != 0x88) && EquippedHands() == 0x88 &&
         prev(EquippedWaist() != 0x19) && EquippedWaist() == 0x19 &&
@@ -8959,458 +9697,546 @@ TotalCrimsonFatalisHunted()
 }
 
 achievement(
-    title="Alpha of Alphas",
-    description="Obtain a Gold Crown for Velocidrome",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownVelocidrome()
-)
-
-achievement(
-    title="Paralysis Tyrant of the Pack",
-    description="Obtain a Gold Crown for Gendrome",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownGendrome()
-)
-
-achievement(
-    title="Toxic Alpha of the Lands",
-    description="Obtain a Gold Crown for Iodrome",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownIodrome()
-)
-
-achievement(
-    title="Scarlet Menace of the Jungle",
-    description="Obtain a Gold Crown for Yian Kut-Ku",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownYianKutKuFamily()
-)
-
-achievement(
-    title="Master Deceiver of the Wilds",
-    description="Obtain a Gold Crown for Gypceros",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownGypcerosFamily()
-)
-
-achievement(
-    title="Dune Phantom Beneath the Sands",
-    description="Obtain a Gold Crown for Cephadrome",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownCephadrome()
-)
-
-achievement(
-    title="Empress of Flame and Fury",
-    description="Obtain a Gold Crown for Rathian",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownRathianFamily()
-)
-
-achievement(
-    title="Lord of the Open Skies",
-    description="Obtain a Gold Crown for Rathalos",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownRathalosFamily()
-)
-
-achievement(
-    title="Nightmare Lurking in the Cave",
-    description="Obtain a Gold Crown for Khezu",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownKhezuFamily()
-)
-
-achievement(
-    title="Tidal Terror of the Waters",
-    description="Obtain a Gold Crown for Plesioth",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownPlesiothFamily()
-)
-
-achievement(
-    title="Stone Sentinel Hidden in Plain Sight",
-    description="Obtain a Gold Crown for Basarios",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownBasarios()
-)
-
-achievement(
-    title="Living Fortress of the Volcanic Lands",
-    description="Obtain a Gold Crown for Gravios",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownGraviosFamily()
-)
-
-achievement(
-    title="Desert Tyrant of Shifting Sands",
-    description="Obtain a Gold Crown for Diablos",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        GoldCrownDiablosFamily()
-)
-
-achievement(
+    id=610150,
+    badge="692314",
     title="Snowpack Slain",
     description="Successfully hunt 50 White Velociprey",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalWhiteVelocipreyHunted()>=50) &&
         prev(TotalWhiteVelocipreyHunted()<50)
 )
 
 achievement(
+    id=610151,
+    badge="692315",
+    title="Alpha of Alphas",
+    description="Obtain a Gold Crown for Velocidrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownVelocidrome()
+)
+
+achievement(
+    id=610152,
+    badge="692316",
+    title="Paralysis Tyrant of the Pack",
+    description="Obtain a Gold Crown for Gendrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownGendrome()
+)
+
+achievement(
+    id=610153,
+    badge="692317",
+    title="Toxic Alpha of the Lands",
+    description="Obtain a Gold Crown for Iodrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownIodrome()
+)
+
+achievement(
+    id=610154,
+    badge="692318",
+    title="Scarlet Menace of the Jungle",
+    description="Obtain a Gold Crown for Yian Kut-Ku",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownYianKutKuFamily()
+)
+
+achievement(
+    id=610155,
+    badge="692319",
+    title="Empress of Flame and Fury",
+    description="Obtain a Gold Crown for Rathian",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownRathianFamily()
+)
+
+achievement(
+    id=610156,
+    badge="692320",
+    title="Lord of the Open Skies",
+    description="Obtain a Gold Crown for Rathalos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownRathalosFamily()
+)
+
+achievement(
+    id=610157,
+    badge="692321",
+    title="Nightmare Lurking in the Cave",
+    description="Obtain a Gold Crown for Khezu",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownKhezuFamily()
+)
+
+achievement(
+    id=610158,
+    badge="692322",
+    title="Master Deceiver of the Wilds",
+    description="Obtain a Gold Crown for Gypceros",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownGypcerosFamily()
+)
+
+achievement(
+    id=610159,
+    badge="692323",
+    title="Tidal Terror of the Waters",
+    description="Obtain a Gold Crown for Plesioth",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownPlesiothFamily()
+)
+
+achievement(
+    id=610160,
+    badge="692324",
+    title="Dune Phantom Beneath the Sands",
+    description="Obtain a Gold Crown for Cephadrome",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownCephadrome()
+)
+
+achievement(
+    id=610161,
+    badge="692325",
+    title="Desert Tyrant of Shifting Sands",
+    description="Obtain a Gold Crown for Diablos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownDiablosFamily()
+)
+
+achievement(
+    id=610162,
+    badge="692326",
+    title="Living Fortress of the Volcanic Lands",
+    description="Obtain a Gold Crown for Gravios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownGraviosFamily()
+)
+
+achievement(
+    id=610163,
+    badge="692327",
+    title="Stone Sentinel Hidden in Plain Sight",
+    description="Obtain a Gold Crown for Basarios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        GoldCrownBasarios()
+)
+
+achievement(
+    id=610164,
+    badge="692328",
     title="Blue Kut-Ku Count Begins",
     description="Successfully hunt 10 Blue Yian Kut-Ku",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalBlueYianKutKuHunted()>=10) &&
         prev(TotalBlueYianKutKuHunted()<10)
 )
 
 achievement(
+    id=610165,
+    badge="692329",
     title="Blue Kut-Ku Keeps Falling",
     description="Successfully hunt 20 Blue Yian Kut-Ku",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalBlueYianKutKuHunted()>=20) &&
         prev(TotalBlueYianKutKuHunted()<20)
 )
 
 achievement(
-    title="Purple Gypceros Starts Lying",
-    description="Successfully hunt 10 Purple Gypceros",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalPurpleGypcerosHunted()>=10) &&
-        prev(TotalPurpleGypcerosHunted()<10)
-)
-
-achievement(
-    title="Purple Gypceros Finally Stops",
-    description="Successfully hunt 20 Purple Gypceros",
-    points=25,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalPurpleGypcerosHunted()>=20) &&
-        prev(TotalPurpleGypcerosHunted()<20)
-)
-
-achievement(
+    id=610166,
+    badge="692330",
     title="Pink Rathian Count Begins",
     description="Successfully hunt 10 Pink Rathian",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalPinkRathianHunted()>=10) &&
         prev(TotalPinkRathianHunted()<10)
 )
 
 achievement(
+    id=610167,
+    badge="692331",
     title="Pink Rathian Keeps Falling",
     description="Successfully hunt 20 Pink Rathian",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalPinkRathianHunted()>=20) &&
         prev(TotalPinkRathianHunted()<20)
 )
 
 achievement(
-    title="Azure Rathalos Stays Angry",
-    description="Successfully hunt 10 Azure Rathalos",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalAzureRathalosHunted()>=10) &&
-        prev(TotalAzureRathalosHunted()<10)
-)
-
-achievement(
-    title="Azure Rathalos Finally Drops",
-    description="Successfully hunt 20 Azure Rathalos",
-    points=25,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalAzureRathalosHunted()>=20) &&
-        prev(TotalAzureRathalosHunted()<20)
-)
-
-achievement(
-    title="Silver Rathalos Shines Trouble",
-    description="Successfully hunt 10 Silver Rathalos",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalSilverRathalosHunted()>=10) &&
-        prev(TotalSilverRathalosHunted()<10)
-)
-
-achievement(
-    title="Silver Rathalos Drops Hard",
-    description="Successfully hunt 20 Silver Rathalos",
-    points=25,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalSilverRathalosHunted()>=20) &&
-        prev(TotalSilverRathalosHunted()<20)
-)
-
-achievement(
+    id=610168,
+    badge="692332",
     title="Gold Rathian Starts Showing",
     description="Successfully hunt 10 Gold Rathian",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalGoldRathianHunted()>=10) &&
         prev(TotalGoldRathianHunted()<10)
 )
 
 achievement(
+    id=610169,
+    badge="692333",
     title="Gold Rathian Loses Crown",
     description="Successfully hunt 20 Gold Rathian",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalGoldRathianHunted()>=20) &&
         prev(TotalGoldRathianHunted()<20)
 )
 
 achievement(
-    title="Black Diablos Digs Trouble",
-    description="Successfully hunt 10 Black Diablos",
+    id=610170,
+    badge="692334",
+    title="Azure Rathalos Stays Angry",
+    description="Successfully hunt 10 Azure Rathalos",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
-        measured(TotalBlackDiablosHunted()>=10) &&
-        prev(TotalBlackDiablosHunted()<10)
+        IsOnQuest() &&
+        measured(TotalAzureRathalosHunted()>=10) &&
+        prev(TotalAzureRathalosHunted()<10)
 )
 
 achievement(
-    title="Black Diablos Stops Charging",
-    description="Successfully hunt 20 Black Diablos",
+    id=610171,
+    badge="692335",
+    title="Azure Rathalos Finally Drops",
+    description="Successfully hunt 20 Azure Rathalos",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
-        measured(TotalBlackDiablosHunted()>=20) &&
-        prev(TotalBlackDiablosHunted()<20)
+        IsOnQuest() &&
+        measured(TotalAzureRathalosHunted()>=20) &&
+        prev(TotalAzureRathalosHunted()<20)
 )
 
 achievement(
-    title="Black Gravios Stands Firm",
-    description="Successfully hunt 10 Black Gravios",
+    id=610172,
+    badge="692336",
+    title="Silver Rathalos Shines Trouble",
+    description="Successfully hunt 10 Silver Rathalos",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
-        measured(TotalBlackGraviosHunted()>=10) &&
-        prev(TotalBlackGraviosHunted()<10)
+        IsOnQuest() &&
+        measured(TotalSilverRathalosHunted()>=10) &&
+        prev(TotalSilverRathalosHunted()<10)
 )
 
 achievement(
-    title="Black Gravios Finally Crumbles",
-    description="Successfully hunt 20 Black Gravios",
+    id=610173,
+    badge="692337",
+    title="Silver Rathalos Drops Hard",
+    description="Successfully hunt 20 Silver Rathalos",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
-        measured(TotalBlackGraviosHunted()>=20) &&
-        prev(TotalBlackGraviosHunted()<20)
+        IsOnQuest() &&
+        measured(TotalSilverRathalosHunted()>=20) &&
+        prev(TotalSilverRathalosHunted()<20)
 )
 
 achievement(
-    title="Green Plesioth Makes Waves",
-    description="Successfully hunt 10 Green Plesioth",
-    points=10,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalGreenPlesiothHunted()>=10) &&
-        prev(TotalGreenPlesiothHunted()<10)
-)
-
-achievement(
-    title="Green Plesioth Comes Ashore",
-    description="Successfully hunt 20 Green Plesioth",
-    points=25,
-    set=AchievementSetOnline,
-    trigger=
-        IsInGame() &&
-        measured(TotalGreenPlesiothHunted()>=20) &&
-        prev(TotalGreenPlesiothHunted()<20)
-)
-
-achievement(
+    id=610174,
+    badge="692338",
     title="Red Khezu Starts Screaming",
     description="Successfully hunt 10 Red Khezu",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRedKhezuHunted()>=10) &&
         prev(TotalRedKhezuHunted()<10)
 )
 
 achievement(
-    title="Red Khezu Quiet At Last",
+    id=610175,
+    badge="692339",
+    title="Red Khezu Quiet at Last",
     description="Successfully hunt 20 Red Khezu",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalRedKhezuHunted()>=20) &&
         prev(TotalRedKhezuHunted()<20)
 )
 
 achievement(
+    id=610176,
+    badge="692340",
+    title="Purple Gypceros Starts Lying",
+    description="Successfully hunt 10 Purple Gypceros",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalPurpleGypcerosHunted()>=10) &&
+        prev(TotalPurpleGypcerosHunted()<10)
+)
+
+achievement(
+    id=610177,
+    badge="692341",
+    title="Purple Gypceros Finally Stops",
+    description="Successfully hunt 20 Purple Gypceros",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalPurpleGypcerosHunted()>=20) &&
+        prev(TotalPurpleGypcerosHunted()<20)
+)
+
+achievement(
+    id=610178,
+    badge="692342",
+    title="Green Plesioth Makes Waves",
+    description="Successfully hunt 10 Green Plesioth",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGreenPlesiothHunted()>=10) &&
+        prev(TotalGreenPlesiothHunted()<10)
+)
+
+achievement(
+    id=610179,
+    badge="692343",
+    title="Green Plesioth Comes Ashore",
+    description="Successfully hunt 20 Green Plesioth",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalGreenPlesiothHunted()>=20) &&
+        prev(TotalGreenPlesiothHunted()<20)
+)
+
+achievement(
+    id=610180,
+    badge="692344",
+    title="Black Diablos Digs Trouble",
+    description="Successfully hunt 10 Black Diablos",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBlackDiablosHunted()>=10) &&
+        prev(TotalBlackDiablosHunted()<10)
+)
+
+achievement(
+    id=610181,
+    badge="692345",
+    title="Black Diablos Stops Charging",
+    description="Successfully hunt 20 Black Diablos",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBlackDiablosHunted()>=20) &&
+        prev(TotalBlackDiablosHunted()<20)
+)
+
+achievement(
+    id=610182,
+    badge="692346",
+    title="Black Gravios Stands Firm",
+    description="Successfully hunt 10 Black Gravios",
+    points=10,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBlackGraviosHunted()>=10) &&
+        prev(TotalBlackGraviosHunted()<10)
+)
+
+achievement(
+    id=610183,
+    badge="692347",
+    title="Black Gravios Finally Crumbles",
+    description="Successfully hunt 20 Black Gravios",
+    points=25,
+    set=AchievementSetOnline,
+    trigger=
+        IsOnQuest() &&
+        measured(TotalBlackGraviosHunted()>=20) &&
+        prev(TotalBlackGraviosHunted()<20)
+)
+
+achievement(
+    id=610184,
+    badge="692348",
     title="Ashen Lao Siege Endured",
     description="Successfully repel 10 Ashen Lao-Shan Lung",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalAshenLaoshunRepeled()>=10) &&
         prev(TotalAshenLaoshunRepeled()<10)
 )
 
 achievement(
+    id=610185,
+    badge="692349",
     title="Ashen Lao Finally Turns Back",
     description="Successfully repel 20 Ashen Lao-Shan Lung",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalAshenLaoshunRepeled()>=20) &&
         prev(TotalAshenLaoshunRepeled()<20)
 )
 
 achievement(
+    id=610186,
+    badge="692350",
     title="Kirin Hunt Begins Brightly",
     description="Successfully hunt 10 Kirin",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalKirinHunted()>=10) &&
         prev(TotalKirinHunted()<10)
 )
 
 achievement(
+    id=610187,
+    badge="692351",
     title="Kirin Keeps Striking Back",
     description="Successfully hunt 20 Kirin",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalKirinHunted()>=20) &&
         prev(TotalKirinHunted()<20)
 )
 
 achievement(
+    id=610188,
+    badge="692352",
     title="Kirin Crown Fits Nicely",
     description="Obtain a Gold Crown for Kirin",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         GoldCrownKirin()
 )
 
 achievement(
+    id=610189,
+    badge="692353",
     title="Fatalis Hunt Begins Badly",
     description="Successfully hunt 10 Fatalis",
     points=10,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalFatalisSpeciesHunted()>=10) &&
         prev(TotalFatalisSpeciesHunted()<10)
 )
 
 achievement(
+    id=610192,
+    badge="692359",
     title="Fatalis Somehow Returns Again",
     description="Successfully hunt 20 Fatalis",
     points=25,
     set=AchievementSetOnline,
     trigger=
-        IsInGame() &&
+        IsOnQuest() &&
         measured(TotalFatalisSpeciesHunted()>=20) &&
         prev(TotalFatalisSpeciesHunted()<20)
 )
 
 achievement(
+    id=610190,
+    badge="692355",
     title="Guildmaster Challenge: Polytan Parade",
     description="Slay 20 Khezu in the 3★ Event Quest \"Dengeki Festival Returns!\"",
     points=25,
     set=AchievementSetOnline,
     trigger=
+        IsInGame() &&
         QuestActive() == 0xea6c &&
         TotalKhezuHunted() == prev(TotalKhezuHunted() + 20)
 )
 
 achievement(
+    id=610193,
+    badge="692360",
     title="Guildmaster Challenge: Legend",
     description="(4-Player) Slay Fatalis in the 5★ Event Quest \"Legendary Black Dragon\" while all players are not wearing armour",
     points=25,
     set=AchievementSetOnline,
     trigger=
+        IsInGame() &&
         OnQuestPlayerCount() == 0x3 &&
         OnlineInQuestHostPlayerDataEquippedHead() == 0x0 &&
         OnlineInQuestHostPlayerDataEquippedBody() == 0x0 &&
@@ -9438,21 +10264,27 @@ achievement(
 )
 
 achievement(
+    id=610191,
+    badge="692357",
     title="Guildmaster Challenge: Sensei's Challenge",
     description="Slay 20 Yian Kut-Ku in the Town 6★ Quest \"The Plague of Yian Kut-Ku\"",
     points=50,
     set=AchievementSetOnline,
     trigger=
+        IsInGame() &&
         QuestActive() == 0x7db &&
         TotalYianKutKuHunted() == prev(TotalYianKutKuHunted() + 20)
 )
 
 achievement(
+    id=610194,
+    badge="692361",
     title="Guildmaster Challenge: Famitsu Fan",
     description="(4-Player) Slay Diablos in the Town 8★ Quest \"The Runaway Diablos\" (Black) while all players are using the Gabas Dual Blades",
     points=25,
     set=AchievementSetOnline,
     trigger=
+        IsInGame() &&
         OnQuestPlayerCount() == 0x3 &&
         OnlineInQuestHostPlayerDataEquippedWeapon() == 0x109 &&
         OnlineInQuestPlayer2DataEquippedWeapon() == 0x109 &&
@@ -9462,6 +10294,7 @@ achievement(
         QuestStatus() == 0x4 &&
         prev(QuestStatus() == 0x3)
 )
+
 
 /////////////////////////////////////Leaderboard to Follow////////////////////////////
 function EmitMonsterSizeLeaderboard(title,description,sizeAccessor,multiplier)
