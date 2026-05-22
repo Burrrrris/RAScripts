@@ -6685,8 +6685,11 @@ achievement(
     points=5,
     trigger=
         IsInGame() &&
-        measured(VillageMonsterInfoTotal()==28) &&
-        prev(VillageMonsterInfoTotal()==27)
+        (measured(VillageMonsterInfoTotal()==28) &&
+        prev(VillageMonsterInfoTotal()==27)) ||
+        (FlagImportedPoogieSkin() == 1 &&
+        measured(VillageMonsterInfoTotal() >= 28) &&
+        prev(VillageMonsterInfoTotal() < 28))
 )
 
 achievement(
@@ -9436,8 +9439,11 @@ achievement(
     set=AchievementSetOnline,
     trigger=
         IsInGame() &&
-        measured(TownMonsterInfoTotal()==2) &&
-        prev(TownMonsterInfoTotal()==1)
+        (measured(TownMonsterInfoTotal()==2) &&
+        prev(TownMonsterInfoTotal()==1)) ||
+        (FlagImportedPoogieSkin() == 1 &&
+        measured(TownMonsterInfoTotal() ==2) &&
+        prev(TownMonsterInfoTotal() < 2 ))
 )
 
 achievement(
