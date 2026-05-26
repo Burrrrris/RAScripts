@@ -7239,15 +7239,15 @@ achievement(
         (
             (
                 LargestRathianLengthHunted()>=0x79 &&
-                prev(LargestRathianLengthHunted()<0x79)
+                prev(LargestRathianLengthHunted()<0x76)
             ) ||
             (
                 LargestPinkRathianLengthHunted()>=0x79 &&
-                prev(LargestPinkRathianLengthHunted()<0x79)
+                prev(LargestPinkRathianLengthHunted()<0x76)
             ) ||
             (
                 LargestGoldRathianLengthHunted()>=0x79 &&
-                prev(LargestGoldRathianLengthHunted()<0x79)
+                prev(LargestGoldRathianLengthHunted()<0x76)
             )
         )
 )
@@ -8340,15 +8340,6 @@ EmitTownQuest1To3Achievement(
     CompletedTown3StarAGiantDragonInvades()
 )
 
-EmitTownQuestAchievement(
-    610036,
-    "692200",
-    "Lao Is Getting Close",
-    "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
-    10,
-    0xBB9,
-    CompletedTown3StarAGiantDragonInvades()
-)
 
 EmitTownQuestAchievement(
     610037,
