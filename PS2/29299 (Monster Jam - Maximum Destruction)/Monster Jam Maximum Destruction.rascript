@@ -328,6 +328,14 @@ function SeasonWheelsFicksonEliminators() => dword(0x1F3A98)
 //          0x64 - Max
 function SeasonWheelsFicksonEliminatorsHealth() => dword(0x1F3A9C)
 
+// $1F3AA8: [32-Bit] Season - Wheels - Fickson Eliminators - Sponsored
+//          0x1 - Installed
+function SeasonWheelsFicksonEliminatorsSponsored() => dword(0x1F3AA8)
+
+// $1F3AAC: [32-Bit] Season - Wheels - Fickson Eliminators Sponsored - Health
+//          0x64 - Max
+function SeasonWheelsFicksonEliminatorsSponsoredHealth() => dword(0x1F3AAC)
+
 // $1F3AB8: [32-Bit] Season - Shocks - Scorpion Creepers
 //          0x1 - Installed
 function SeasonShocksScorpionCreepers() => dword(0x1F3AB8)
@@ -359,6 +367,14 @@ function SeasonShocksTugzRockets() => dword(0x1F3AE8)
 // $1F3AEC: [32-Bit] Season - Shocks - Tugz Rockets - Health
 //          0x64 - Max
 function SeasonShocksTugzRocketsHealth() => dword(0x1F3AEC)
+
+// $1F3AF8: [32-Bit] Season - Shocks - Tugz Rockets - Sponsored
+//          0x1 - Installed
+function SeasonShocksTugzRocketsSponsored() => dword(0x1F3AF8)
+
+// $1F3AFC: [32-Bit] Season - Shocks - Tugz Rockets -  Sponsored - Health
+//          0x64 - Max
+function SeasonShocksTugzRocketsSponsoredHealth() => dword(0x1F3AFC)
 
 // $1F3B08: [32-Bit] Season - Engines - Lemont Hemi 2000
 //          0x1 - Installed
@@ -392,6 +408,14 @@ function SeasonEnginesMackey1800z() => dword(0x1F3B38)
 //          0x64 - Max
 function SeasonEnginesMackey1800zHealth() => dword(0x1F3B3C)
 
+// $1F3B48: [32-Bit] Season - Engines - Mackey 1800Z - Sponsored
+//          0x1 - Installed
+function SeasonEnginesMackey1800zSponsored() => dword(0x1F3B48)
+
+// $1F3B4C: [32-Bit] Season - Engines - Mackey 1800Z - Sponsored - Health
+//          0x64 - Max
+function SeasonEnginesMackey1800zSponsoredHealth() => dword(0x1F3B4C)
+
 // $1F3B58: [32-Bit] Season - Transmissions - TX Turbo 350
 //          0x1 - Installed
 function SeasonTransmissionsTxTurbo350() => dword(0x1F3B58)
@@ -423,6 +447,14 @@ function SeasonTransmissionsJubyDynamo() => dword(0x1F3B88)
 // $1F3B8C: [32-Bit] Season - Transmissions - Juby Dynamo - Health
 //          0x64 - Max
 function SeasonTransmissionsJubyDynamoHealth() => dword(0x1F3B8C)
+
+// $1F3B98: [32-Bit] Season - Transmissions - Juby Dynamo - Sponsored
+//          0x1 - Installed
+function SeasonTransmissionsJubyDynamoSponsored() => dword(0x1F3B98)
+
+// $1F3B9C: [32-Bit] Season - Transmissions - Juby Dynamo - Sponsored - Health
+//          0x64 - Max
+function SeasonTransmissionsJubyDynamoSponsoredHealth() => dword(0x1F3B9C)
 
 // $1F3BA8: [32-Bit] Season - Drive Shafts - QXTeam DX4
 //          0x1 - Installed
@@ -456,6 +488,14 @@ function SeasonDriveShaftsYoriProHelix() => dword(0x1F3BD8)
 //          0x64 - Max
 function SeasonDriveShaftsYoriProHelixHealth() => dword(0x1F3BDC)
 
+// $1F3BE8: [32-Bit] Season - Drive Shafts - Yori Pro Helix - Sponsored
+//          0x1 - Installed
+function SeasonDriveShaftsYoriProHelixSponsored() => dword(0x1F3BE8)
+
+// $1F3BEC: [32-Bit] Season - Drive Shafts - Yori Pro Helix - Sponsored - Health
+//          0x64 - Max
+function SeasonDriveShaftsYoriProHelixSponsoredHealth() => dword(0x1F3BEC)
+
 // $1F3BF8: [32-Bit] Season - Superchargers - Wallace Parts X11
 //          0x1 - Installed
 function SeasonSuperchargersWallacePartsX11() => dword(0x1F3BF8)
@@ -487,6 +527,24 @@ function SeasonSuperchargersFusionC700() => dword(0x1F3C28)
 // $1F3C2C: [32-Bit] Season - Superchargers - Fusion C700 - Health
 //          0x64 - Max
 function SeasonSuperchargersFusionC700Health() => dword(0x1F3C2C)
+
+// $1F3C38: [32-Bit] Season - Superchargers - Fusion C700 Sponsored
+//          0x1 - Installed
+function SeasonSuperchargersFusionC700Sponsored() => dword(0x1F3C38)
+
+// $1F3C3C: [32-Bit] Season - Superchargers - Fusion C700 - Sponsored - Health
+//          0x64 - Max
+function SeasonSuperchargersFusionC700SponsoredHealth() => dword(0x1F3C3C)
+
+// Count all sponsored parts unlocked in Season
+function CountSponsoredParts() => (
+    SeasonWheelsFicksonEliminatorsSponsored() +
+    SeasonShocksTugzRocketsSponsored() +
+    SeasonEnginesMackey1800zSponsored() +
+    SeasonTransmissionsJubyDynamoSponsored() +
+    SeasonDriveShaftsYoriProHelixSponsored() +
+    SeasonSuperchargersFusionC700Sponsored()
+)
 
 // $1F5CC8: [32-Bit] Exhibition - Current World
 //          **See 0x001eed00 for list of Worlds
@@ -544,15 +602,20 @@ function MainMenuGamemodeSeclection() => byte(0x1F6F28)
 function Difficulty() => byte(0x1F6F54)
 
 // $216BFC: [Pointer]
+//          +0x0c: [32-bit] End State
+//          0x2 - End Message
+//          0x3 - Finished
+//          +0x1E: [16-bit] Cash Grab Pickup Target
+//          +0x20: [32-bit] Target Score
+//          +0x28: [16-bit] Player 1 Win Flag
 //          +0x2C: [8-bit] Truck Destroys Left
-//          +0x34: [32-bit pointer]
-//          ++0x08: [32-bit pointer]
-//          +++0x314: [Float] Ingame - Health
-//          +++0x318: [Float]
+//          +0x34: [Pointer] Player 1
+//          ++0x08: [Pointer] Point to Deathmatch/Points
 //          +++0x38C: [Float] Ingame - In Mayhem
 //          +++0x3B0: [Float] Ingame - Points/Cash
 //          +++0x5E0: [32-bit] Ingame - Current Weapon
 //          ---0xffffffff - No Weapon
+//          ---0x0 - Missile Launcher
 //          ---0x1 - Ultra-Missile
 //          ---0x2 - Flamer
 //          ---0x3 - Machine Gun
@@ -561,15 +624,18 @@ function Difficulty() => byte(0x1F6F54)
 //          ---0x6 - Shotgun
 //          ---0x7 - Rail Gun
 //          ---0x8 - Boost
-//          +++0x83C: [8-bit] Cash Grab - Cash Power Up
-//          +++0x854: [32-bit] Total Mayhems
-//          +0x75C: [32-bit pointer]
+//          +++0x790: [Float] Mayhem Logo/Timer Active
+//          +++0x83C: [16-bit] Cash Grab - Cash Power Up
+//          +++0x850: [32-bit] Objects Destroyed
+//          +++0x854: [16-bit] Total Mayhems
+//          +0x75C: [Pointer] Points to Race
 //          ++0x1EA4: [32-bit] Race - Current Lap
 //          **Starts at 0x0
 //          0x0 - Lap 1
 //          0x1 - Lap 2
 //          etc.
-//          ++0x1EB0: [Float] Race - Lap 1 Time
+//          ++0x1ea8: [32-bit] Finish Rank / Race Complete Marker
+//          ++0x1EB0: [Float] Race - Lap 1 / Current Lap Time
 //          **This is the only timer in the Canyon Race
 //          ++0x1EB4: [Float] Race - Lap 2 Time
 //          ++0x1EB8: [Float] Race - Lap 3 Time
@@ -577,8 +643,16 @@ function Difficulty() => byte(0x1F6F54)
 //          ++0x1EC0: [Float] Race - Lap 5 Time
 //          ++0x1ED0: [32-bit] Race - Current Position
 //          ++0x1ED4: [Float] Race - Best Lap Time
+//          +0x760: Freestyle Exists
+//          0x0 - Doesn't Exist
+//          +0x3F90: [32-bit] In Game Player Count
 //          +0x3F94: [Float] In Game Timer - Counts Down
 function Pointer() => dword(0x216BFC)
+function PlayerObjectPtr() => dword(Pointer() + 0x34)
+function PlayerStatsPtr() => dword(PlayerObjectPtr() + 0x08)
+function DestroyedObjectCount() => dword(PlayerStatsPtr() + 0x850)
+function TotalMayhems() => word(PlayerStatsPtr() + 0x854)
+
 
 // $217248: [32-Bit] Ingame Indicator
 //          0x0 - Not In Game
@@ -587,8 +661,7 @@ function IngameIndicator() => dword(0x217248)
 
 // $217E88: [32-Bit] Ingame - Win Indicator
 //          0x0 - In game/Lose
-//          0x1 - Win
-function IngameWinIndicator() => dword(0x217E88)
+//          0x1 - Wi
 
 // $218C38: [32-Bit] Total Score
 //          **Only displays after completing (Win/Lose) a match
@@ -628,13 +701,6 @@ function MinigameGamestyle() => dword(0x1F5EBC)  // 0-5
 function SeasonWorld() => dword(0x1EED00)
 function ExhibitionWorld() => dword(0x1F5CC8)
 
-function PlayerTruck() => dword(0x1EED28)
-function SeasonTruckSelection() => dword(0x1F5EF8)
-function ExhibitionTruckSelection() => dword(0x1F6058)
-function MinigameTruckSelection() => dword(0x1F62D8)
-
-function Pointer() => dword(0x216BFC)
-
 // ---------- Pointer Helpers ----------
 function TruckDestroysLeft() => byte(Pointer() + 0x2C)
 
@@ -646,6 +712,17 @@ function CurrentCashPowerups() => byte(PlayerStatsPtr() + 0x83C)
 
 function RaceStatePtr() => dword(Pointer() + 0x75C)
 function RaceCurrentPosition() => dword(RaceStatePtr() + 0x1ED0)
+function CurrentWeapon() => dword(PlayerStatsPtr() + 0x5E0)  // 0xffffffff=None, 0x0-0x7=Weapons, 0x8=Boost
+
+// --- Race time helpers ---
+function RaceLap1Time() => float(RaceStatePtr() + 0x1EB0)
+function RaceLap2Time() => float(RaceStatePtr() + 0x1EB4)
+function RaceLap3Time() => float(RaceStatePtr() + 0x1EB8)
+function RaceLap4Time() => float(RaceStatePtr() + 0x1EBC)
+function RaceLap5Time() => float(RaceStatePtr() + 0x1EC0)
+function RaceTotalTime() => RaceLap1Time() + RaceLap2Time() + RaceLap3Time() + RaceLap4Time() + RaceLap5Time()
+function RaceFinishRank() => dword(RaceStatePtr() + 0x1EA8)
+
 // ---------- Lookups ----------
 CurrentTruckLookup = {
     0x00000000: "Airbourne Ranger",
@@ -724,17 +801,6 @@ CurrentWorldLookup = {
     0x00000007: "Vegas Strip"
 }
 
-SeasonRoundLookup = {
-    0x00000000: "Round 1",
-    0x00000001: "Round 2",
-    0x00000002: "Round 3",
-    0x00000003: "Round 4",
-    0x00000004: "Round 5",
-    0x00000005: "Round 6",
-    0x00000006: "Round 7",
-    0x00000007: "Round 8"
-}
-
 SeasonGamestyleLookup = {
     0x00: "Death Match",
     0x01: "Cash Grab",
@@ -774,52 +840,6 @@ DifficultyLookup = {
     0x03: "Extreme"
 }
 
-// ---------- Season Number Lookup ----------
-SeasonNumberLookup = {
-    0x00000000: "1",
-    0x00000001: "2",
-    0x00000002: "3",
-    0x00000003: "4",
-    0x00000004: "5",
-    0x00000005: "6",
-    0x00000006: "7",
-    0x00000007: "8"
-}
-
-// ---------- Season RP ----------
-SeasonNumberLookup = {
-    0x00000000: "1",
-    0x00000001: "2",
-    0x00000002: "3",
-    0x00000003: "4",
-    0x00000004: "5",
-    0x00000005: "6",
-    0x00000006: "7",
-    0x00000007: "8"
-}
-
-SeasonRoundLookup = {
-    0x00000000: "1",
-    0x00000001: "2",
-    0x00000002: "3",
-    0x00000003: "4",
-    0x00000004: "5",
-    0x00000005: "6",
-    0x00000006: "7",
-    0x00000007: "8"
-}
-
-SeasonNumberLookup = {
-    0x00000000: "1",
-    0x00000001: "2",
-    0x00000002: "3",
-    0x00000003: "4",
-    0x00000004: "5",
-    0x00000005: "6",
-    0x00000006: "7",
-    0x00000007: "8"
-}
-
 SeasonRoundLookup = {
     0x00000000: "1",
     0x00000001: "2",
@@ -844,7 +864,7 @@ function ExhibitionRichPresenceForDifficulty(difficulty)
         rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
         rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
         rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
-        rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+        rich_presence_value("TrucksLeft", TruckDestroysLeft(), format="VALUE")
     )
 
     // Cash Grab
@@ -859,7 +879,7 @@ function ExhibitionRichPresenceForDifficulty(difficulty)
             rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
-            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("CashGrabs", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -874,7 +894,7 @@ function ExhibitionRichPresenceForDifficulty(difficulty)
             rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
-            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("CashGrabs", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -889,7 +909,7 @@ function ExhibitionRichPresenceForDifficulty(difficulty)
             rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
-            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("CashGrabs", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -904,7 +924,7 @@ function ExhibitionRichPresenceForDifficulty(difficulty)
             rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", ExhibitionWorld(), CurrentWorldLookup),
-            rich_presence_value("Cash Grabs", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("CashGrabs", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -986,7 +1006,7 @@ if difficulty == 0x0
         rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
         rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
         rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
-        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+        rich_presence_value("DestroysLeft", TruckDestroysLeft(), format="VALUE")
     )
 }
 
@@ -1002,7 +1022,7 @@ if difficulty == 0x1
         rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
         rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
         rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
-        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+        rich_presence_value("DestroysLeft", TruckDestroysLeft(), format="VALUE")
     )
 }
 
@@ -1018,7 +1038,7 @@ if difficulty == 0x2
         rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
         rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
         rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
-        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+        rich_presence_value("DestroysLeft", TruckDestroysLeft(), format="VALUE")
     )
 }
 
@@ -1034,7 +1054,7 @@ if difficulty == 0x3
         rich_presence_lookup("Round", SeasonWorld(), SeasonRoundLookup),
         rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
         rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
-        rich_presence_value("Destroys Left", TruckDestroysLeft(), format="VALUE")
+        rich_presence_value("DestroysLeft", TruckDestroysLeft(), format="VALUE")
     )
 }
 
@@ -1052,7 +1072,7 @@ if difficulty == 0x3
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
             rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
-            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("PowerUps", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -1069,7 +1089,7 @@ if difficulty == 0x3
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
             rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
-            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("PowerUps", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -1086,7 +1106,7 @@ if difficulty == 0x3
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
             rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
-            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("PowerUps", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -1103,7 +1123,7 @@ if difficulty == 0x3
             rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
             rich_presence_lookup("Map", SeasonWorld(), CurrentWorldLookup),
             rich_presence_value("Cash", CurrentPointsOrCash(), format="VALUE"),
-            rich_presence_value("Power Ups", CurrentCashPowerups(), format="VALUE")
+            rich_presence_value("PowerUps", CurrentCashPowerups(), format="VALUE")
         )
     }
 
@@ -1203,7 +1223,7 @@ rich_presence_conditional_display(
     "Lava Island | {0} | {1} | Trucks Left:{2}",
     rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
     rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
-    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+    rich_presence_value("TrucksLeft", TruckDestroysLeft(), format="VALUE")
 )
 
 // Canyon Race (Position)
@@ -1225,7 +1245,7 @@ rich_presence_conditional_display(
     "Stadium Challenge | {0} | {1} | Trucks Left:{2}",
     rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
     rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
-    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+    rich_presence_value("TrucksLeft", TruckDestroysLeft(), format="VALUE")
 )
 
 // Arena Challenge (Trucks Left)
@@ -1236,7 +1256,7 @@ rich_presence_conditional_display(
     "Arena Challenge | {0} | {1} | Trucks Left:{2}",
     rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
     rich_presence_lookup("Truck", PlayerTruck(), CurrentTruckLookup),
-    rich_presence_value("Trucks Left", TruckDestroysLeft(), format="VALUE")
+    rich_presence_value("TrucksLeft", TruckDestroysLeft(), format="VALUE")
 )
 
 for difficulty in range(0x0, 0x3)
@@ -1251,7 +1271,8 @@ rich_presence_display("Monster Jam: Maximum Destruction")
 ///////////////////////////////Achievements to Follow//////////////////////////////////////////////
 
 function SeasonCurrentWorld() => dword(0x1EED00)
-function IngameWinIndicator() => dword(0x217E88)
+function WinIndicator() => word(Pointer() + 0x28)
+function EndState() => dword(Pointer() + 0x0C)
 
 function EmitSeasonRoundProgression(title, description, round)
 {
@@ -1263,8 +1284,9 @@ function EmitSeasonRoundProgression(title, description, round)
         type = "progression",
         trigger =
             Difficulty() >= 0x01 &&
-            prev(IngameWinIndicator() == 0x00) &&
-            IngameWinIndicator() == 0x01 &&
+            WinIndicator() == 0x01 &&
+            prev(EndState() == 0x2) &&
+            EndState() == 0x3 &&
             SeasonCurrentWorld() == round
     )
 }
@@ -1280,8 +1302,8 @@ function EmitSeasonFinalWin(title, description, difficulty)
         trigger =
             Difficulty() >= difficulty &&
             SeasonCurrentWorld() == 0x07 &&
-            prev(IngameWinIndicator() == 0x00) &&
-            IngameWinIndicator() == 0x01
+            prev(WinIndicator() == 0x00) &&
+            WinIndicator() == 0x01
     )
 }
 
@@ -1335,13 +1357,272 @@ EmitSeasonFinalWin(
     0x1
 )
 EmitSeasonFinalWin(
-    "Hard Season, Harder Hits",
+    "Hard Season Calls for Harder Hits",
     "Complete a Season on Hard difficulty or higher.",
     0x02
 )
 EmitSeasonFinalWin(
     "Extreme Measures",
     "Complete a Season on Extreme difficulty.",
+    0x03
+)
+
+achievement(
+    title = "Sponsored Rookie",
+    description = "Unlock your first sponsored part in Season.",
+    points = 5,
+    trigger = prev(CountSponsoredParts() < 1) && CountSponsoredParts() >= 1
+)
+
+achievement(
+    title = "Sponsored Pro",
+    description = "Unlock three sponsored parts in Season.",
+    points = 10,
+    trigger = prev(CountSponsoredParts() < 3) && CountSponsoredParts() >= 3
+)
+
+// Challenge: Finish first in a Stadium Race without using the Boost weapon
+achievement(
+    title = "Clean Winner",
+    description = "Finish first in a Stadium Race without using the Boost weapon.",
+    points = 10,
+    trigger =
+    MainMode() == 0x2 &&
+    MinigameGamestyle() == 0x1 &&
+    disable_when(CurrentWeapon() == 0x8, until=IngameIndicator() == 0x0) &&
+    prev(RaceFinishRank() != 1) &&
+    RaceFinishRank() == 1
+)
+
+function EmitExhibitionModeWinAchievement(title, description, gamestyle, minDifficulty)
+{
+    points = 2
+    if minDifficulty == 0x02
+    {
+        points = 5
+    }
+    else if minDifficulty == 0x03
+    {
+        points = 10
+    }
+
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = points,
+        trigger =
+            MainMode() == 0x0 &&
+            ExhibitionGamestyle() == gamestyle &&
+            Difficulty() >= minDifficulty &&
+            prev(WinIndicator() == 0x00) &&
+            WinIndicator() == 0x01
+    )
+}
+
+// --- Exhibition Death Match ---
+EmitExhibitionModeWinAchievement(
+    "Debut Demolition",
+    "Complete an Exhibition Deathmatch on Normal difficulty or higher.",
+    0x00,
+    0x01
+)
+EmitExhibitionModeWinAchievement(
+    "Mayhem Master",
+    "Complete an Exhibition Deathmatch on Hard difficulty or higher.",
+    0x00,
+    0x02
+)
+EmitExhibitionModeWinAchievement(
+    "Destruction Dynamo",
+    "Complete an Exhibition Deathmatch on Extreme difficulty.",
+    0x00,
+    0x03
+)
+
+// --- Exhibition Cash Grab ---
+EmitExhibitionModeWinAchievement(
+    "Quick Cash",
+    "Complete an Exhibition Cash Grab on Normal difficulty or higher.",
+    0x01,
+    0x01
+)
+EmitExhibitionModeWinAchievement(
+    "Fortune Seeker",
+    "Complete an Exhibition Cash Grab on Hard difficulty or higher.",
+    0x01,
+    0x02
+)
+EmitExhibitionModeWinAchievement(
+    "Treasure King",
+    "Complete an Exhibition Cash Grab on Extreme difficulty.",
+    0x01,
+    0x03
+)
+
+// --- Exhibition Points ---
+EmitExhibitionModeWinAchievement(
+    "Scoring Streak",
+    "Complete an Exhibition Points match on Normal difficulty or higher.",
+    0x02,
+    0x01
+)
+EmitExhibitionModeWinAchievement(
+    "Point Pusher",
+    "Complete an Exhibition Points match on Hard difficulty or higher.",
+    0x02,
+    0x02
+)
+EmitExhibitionModeWinAchievement(
+    "Perfect Exhibition",
+    "Complete an Exhibition Points match on Extreme difficulty.",
+    0x02,
+    0x03
+)
+
+// --- Exhibition Challenge: Weapon-Free Victory ---
+achievement(
+    // id = ,
+    title = "Bare Knuckle Brawler",
+    description = "Complete an Exhibition match on Normal difficulty or higher without picking up any weapons. Boost is allowed.",
+    points = 10,
+    trigger =
+        MainMode() == 0x0 &&
+        Difficulty() >= 0x01 &&
+        disable_when(CurrentWeapon() >= 0x0 && CurrentWeapon() <= 0x7, until=IngameIndicator() == 0x0) &&
+        prev(WinIndicator() == 0x00) &&
+        WinIndicator() == 0x01
+)
+
+function EmitMinigameWinAchievement(title, description, gamestyle, minDifficulty)
+{
+    points = 2
+    if gamestyle == 0x00
+    {
+        points = 10
+    }
+    else if minDifficulty == 0x02
+    {
+        points = 5
+    }
+    else if minDifficulty == 0x03
+    {
+        points = 10
+    }
+
+    achievement(
+        // id = ,
+        title = title,
+        description = description,
+        points = points,
+        trigger =
+            MainMode() == 0x2 &&
+            MinigameGamestyle() == gamestyle &&
+            Difficulty() >= minDifficulty &&
+            prev(WinIndicator() == 0x00) &&
+            WinIndicator() == 0x01
+    )
+}
+
+EmitMinigameWinAchievement(
+    "Freestyle Dominator",
+    "Complete a Freestyle match on Normal difficulty or higher.",
+    0x00,
+    0x01
+)
+
+EmitMinigameWinAchievement(
+    "Track Tamer",
+    "Complete Stadium Race on Normal difficulty or higher.",
+    0x01,
+    0x01
+)
+EmitMinigameWinAchievement(
+    "Pace Setter",
+    "Complete Stadium Race on Hard difficulty or higher.",
+    0x01,
+    0x02
+)
+EmitMinigameWinAchievement(
+    "Finish Line Fury",
+    "Complete Stadium Race on Extreme difficulty.",
+    0x01,
+    0x03
+)
+
+EmitMinigameWinAchievement(
+    "Magma Runner",
+    "Complete Lava Island on Normal difficulty or higher.",
+    0x02,
+    0x01
+)
+EmitMinigameWinAchievement(
+    "Volcanic Victor",
+    "Complete Lava Island on Hard difficulty or higher.",
+    0x02,
+    0x02
+)
+EmitMinigameWinAchievement(
+    "Lava Legend",
+    "Complete Lava Island on Extreme difficulty.",
+    0x02,
+    0x03
+)
+
+EmitMinigameWinAchievement(
+    "Canyon Cruiser",
+    "Complete Canyon Race on Normal difficulty or higher.",
+    0x03,
+    0x01
+)
+EmitMinigameWinAchievement(
+    "Ravine Racer",
+    "Complete Canyon Race on Hard difficulty or higher.",
+    0x03,
+    0x02
+)
+EmitMinigameWinAchievement(
+    "Gorge Grinder",
+    "Complete Canyon Race on Extreme difficulty.",
+    0x03,
+    0x03
+)
+
+EmitMinigameWinAchievement(
+    "Rumble Rookie",
+    "Complete Stadium Challenge on Normal difficulty or higher.",
+    0x04,
+    0x01
+)
+EmitMinigameWinAchievement(
+    "Stadium Smasher",
+    "Complete Stadium Challenge on Hard difficulty or higher.",
+    0x04,
+    0x02
+)
+EmitMinigameWinAchievement(
+    "Coliseum Conqueror",
+    "Complete Stadium Challenge on Extreme difficulty.",
+    0x04,
+    0x03
+)
+
+EmitMinigameWinAchievement(
+    "Mat Rookie",
+    "Complete Arena Challenge on Normal difficulty or higher.",
+    0x05,
+    0x01
+)
+EmitMinigameWinAchievement(
+    "Mat Marauder",
+    "Complete Arena Challenge on Hard difficulty or higher.",
+    0x05,
+    0x02
+)
+EmitMinigameWinAchievement(
+    "Ring Ruler",
+    "Complete Arena Challenge on Extreme difficulty.",
+    0x05,
     0x03
 )
 
@@ -1364,157 +1645,157 @@ function EmitCrownedChampionAchievement(title, description, champUnlockFlag)
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Airbourne Ranger",
-    "Unlock the Champion version of Airbourne Ranger.",
+    "Unlock the Champion version of \"Airbourne Ranger\".",
     MonsterTruckAirbourneRangerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: American Guardian",
-    "Unlock the Champion version of American Guardian.",
+    "Unlock the Champion version of \"American Guardian\".",
     MonsterTruckAmericanGuardianChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Avenger",
-    "Unlock the Champion version of Avenger.",
+    "Unlock the Champion version of \"Avenger\".",
     MonsterTruckAvengerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Blacksmith",
-    "Unlock the Champion version of Blacksmith.",
+    "Unlock the Champion version of \"Blacksmith\".",
     MonsterTruckBlacksmithChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Bulldozer",
-    "Unlock the Champion version of Bulldozer.",
+    "Unlock the Champion version of \"Bulldozer\".",
     MonsterTruckBulldozerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Bustin' Loose",
-    "Unlock the Champion version of Bustin' Loose.",
+    "Unlock the Champion version of \"Bustin' Loose\".",
     MonsterTruckBustinLooseChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Destroyer",
-    "Unlock the Champion version of Destroyer.",
+    "Unlock the Champion version of \"Destroyer\".",
     MonsterTruckDestroyerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: El Toro Loco",
-    "Unlock the Champion version of El Toro Loco.",
+    "Unlock the Champion version of \"El Toro Loco\".",
     MonsterTruckElToroLocoChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Eradicator",
-    "Unlock the Champion version of Eradicator.",
+    "Unlock the Champion version of \"Eradicator\".",
     MonsterTruckEradicatorChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Goldberg",
-    "Unlock the Champion version of Goldberg.",
+    "Unlock the Champion version of \"Goldberg\".",
     MonsterTruckGoldbergChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Grave Digger",
-    "Unlock the Champion version of Grave Digger.",
+    "Unlock the Champion version of \"Grave Digger\".",
     MonsterTruckGraveDiggerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Gun Slinger",
-    "Unlock the Champion version of Gun Slinger.",
+    "Unlock the Champion version of \"Gun Slinger\".",
     MonsterTruckGunSlingerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: King Krunch",
-    "Unlock the Champion version of King Krunch.",
+    "Unlock the Champion version of \"King Krunch\".",
     MonsterTruckKingKrunchChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Madusa",
-    "Unlock the Champion version of Madusa.",
+    "Unlock the Champion version of \"Madusa\".",
     MonsterTruckMadusaChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Mountaineer",
-    "Unlock the Champion version of Mountaineer.",
+    "Unlock the Champion version of \"Mountaineer\".",
     MonsterTruckMountaineerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Predator",
-    "Unlock the Champion version of Predator.",
+    "Unlock the Champion version of \"Predator\".",
     MonsterTruckPredatorChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Prowler",
-    "Unlock the Champion version of Prowler.",
+    "Unlock the Champion version of \"Prowler\".",
     MonsterTruckProwlerChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Reptoid",
-    "Unlock the Champion version of Reptoid.",
+    "Unlock the Champion version of \"Reptoid\".",
     MonsterTruckReptoidChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Spider-Man",
-    "Unlock the Champion version of Spider-Man.",
+    "Unlock the Champion version of \"Spider-Man\".",
     MonsterTruckSpidermanChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Blue Thunder",
-    "Unlock the Champion version of Blue Thunder.",
+    "Unlock the Champion version of \"Blue Thunder\".",
     MonsterTruckBlueThunderChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Sting",
-    "Unlock the Champion version of Sting.",
+    "Unlock the Champion version of \"Sting\".",
     MonsterTruckStingChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Sudden Impact",
-    "Unlock the Champion version of Sudden Impact.",
+    "Unlock the Champion version of \"Sudden Impact\".",
     MonsterTruckSuddenImpactChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Survivor",
-    "Unlock the Champion version of Survivor.",
+    "Unlock the Champion version of \"Survivor\".",
     MonsterTruckSurvivorChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Thrasher",
-    "Unlock the Champion version of Thrasher.",
+    "Unlock the Champion version of \"Thrasher\".",
     MonsterTruckThrasherChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Wild Thang",
-    "Unlock the Champion version of Wild Thang.",
+    "Unlock the Champion version of \"Wild Thang\".",
     MonsterTruckWildThangChampTruck()
 )
 
 EmitCrownedChampionAchievement(
     "Crowned Champion: Wolverine",
-    "Unlock the Champion version of Wolverine.",
+    "Unlock the Champion version of \"Wolverine\".",
     MonsterTruckWolverineChampTruck()
 )
 
@@ -1526,9 +1807,7 @@ function EmitTruckUnlockAchievement(title, description, points, unlockFlag, unlo
         description = description,
         points = points,
         trigger =
-            SeasonCurrentWorld() == 0x07 &&
-            prev(IngameWinIndicator() == 0x00) &&
-            IngameWinIndicator() == 0x01 &&
+            WinIndicator() == 0x01 &&
             prev(unlockFlag != unlockValue) &&
             unlockFlag == unlockValue
     )
@@ -1537,7 +1816,7 @@ function EmitTruckUnlockAchievement(title, description, points, unlockFlag, unlo
 // --- Season 1 Unlocks ---
 EmitTruckUnlockAchievement(
     "Grave Beginnings",
-    "Unlock the 1983 Grave Digger truck by completing Season 1 of Cash Grab on Normal difficulty.",
+    "Unlock the \"1983 Grave Digger\" truck by completing Season 1 of Cash Grab on Normal difficulty.",
     2,
     MonsterTruck1983GraveDiggerTruck(),
     0x01
@@ -1545,7 +1824,7 @@ EmitTruckUnlockAchievement(
 
 EmitTruckUnlockAchievement(
     "Heavy Hauler",
-    "Unlock the iP/Inland truck completing Season 1 on Hard difficulty with any Champ Truck.",
+    "Unlock the \"iP/Inland\" truck by completing Season 1 on Hard difficulty with any Champ Truck.",
     10,
     MonsterTruckIpInland(),
     0x02
@@ -1553,7 +1832,7 @@ EmitTruckUnlockAchievement(
 
 EmitTruckUnlockAchievement(
     "Let the Dogs Out",
-    "Unlock The Dog Pound truck by completing Season 1 of any event type on Extreme difficulty.",
+    "Unlock the \"The Dog Pound\" truck by completing Season 1 of any event type on Extreme difficulty.",
     10,
     MonsterTruckFogPoundTruck(),
     0x01
@@ -1562,7 +1841,7 @@ EmitTruckUnlockAchievement(
 // --- Season 2 Unlocks ---
 EmitTruckUnlockAchievement(
     "Anniversary Edition",
-    "Unlock the 20th Anniversary Grave Digger truck by completing Season 2 of Cash Grab on Normal difficulty.",
+    "Unlock the \"20th Anniversary Grave Digger\" truck by completing Season 2 of Cash Grab on Normal difficulty.",
     2,
     MonsterTruck20thAnniversaryGraveDiggerTruck(),
     0x02
@@ -1570,7 +1849,7 @@ EmitTruckUnlockAchievement(
 
 EmitTruckUnlockAchievement(
     "Back in the Big Yellow",
-    "Unlock the Big Yellow truck by completing any Season 2 event type on Hard difficulty.",
+    "Unlock the \"Big Yellow\" truck by completing any Season 2 event type on Hard difficulty.",
     10,
     MonsterTruckBigYellowTruck(),
     0x01
@@ -1579,7 +1858,7 @@ EmitTruckUnlockAchievement(
 // --- Season 3 Unlocks ---
 EmitTruckUnlockAchievement(
     "Jeep Thrills",
-    "Unlock the Hooch Wagon truck by completing any Season 3 event type on Hard difficulty.",
+    "Unlock the \"Hooch Wagon\" truck by completing any Season 3 event type on Hard difficulty.",
     10,
     MonsterTruckHoochWagonTruck(),
     0x02
@@ -1587,8 +1866,156 @@ EmitTruckUnlockAchievement(
 
 EmitTruckUnlockAchievement(
     "Gamma Grab",
-    "Unlock The Incredible Hulk truck by completing Season 3 of Cash Grab on Normal difficulty.",
+    "Unlock the \"The Incredible Hulk\" truck by completing Season 3 of Cash Grab on Normal difficulty.",
     2,
     MonsterTruckTheIncredibleHulkTruck(),
     0x01
+)
+
+function MatchFinished() =>
+    prev(EndState() == 0x2) &&
+    EndState() == 0x3
+
+function MatchWon() =>
+    WinIndicator() == 0x1
+
+function ScoreMapActive(map) =>
+    (
+        MainMode() == 0x0 &&
+        ExhibitionWorld() == map
+    ) ||
+    (
+        MainMode() == 0x1 &&
+        SeasonCurrentWorld() == map
+    )
+
+function RaceCompletedInFirst() =>
+    MatchFinished() &&
+    MatchWon() &&
+    RaceFinishRank() == 0x1
+
+function StadiumRaceTotalTime() =>
+    (RaceLap1Time() +
+    RaceLap2Time() +
+    RaceLap3Time() +
+    RaceLap4Time() +
+    RaceLap5Time()) * 100
+
+function CanyonRaceTotalTime() =>
+    RaceLap1Time() * 100
+
+function LiveProjectedScoreP1() =>
+    CurrentPointsOrCash() +
+    (DestroyedObjectCount() * 202.5) +
+    (TotalMayhems() * 2000)
+
+function EmitMapScoreLeaderboard(id, title, description, map)
+{
+    leaderboard(
+        id = id,
+        title = title,
+        description = description,
+        start = ScoreMapActive(map) && prev(InGame() == 0) && InGame() == 1,
+        cancel = InGame() == 0,
+        submit =
+            ScoreMapActive(map) &&
+            MatchFinished(),
+        value = LiveProjectedScoreP1(),
+        format = "POINTS"
+    )
+}
+
+function EmitRaceTimeLeaderboard(id, title, description, gameStyle, value)
+{
+    leaderboard(
+        id = id,
+        title = title,
+        description = description,
+        start =
+            MainMode() == 0x2 &&
+            MinigameGamestyle() == gameStyle &&
+            prev(InGame() == 0) && InGame() == 1,
+        cancel = InGame() == 0,
+        submit =
+            MainMode() == 0x2 &&
+            MinigameGamestyle() == gameStyle &&
+            RaceCompletedInFirst(),
+        value = value,
+        format = "MILLISECS",
+        lower_is_better = true
+    )
+}
+
+// ---------- Score Per Map ----------
+EmitMapScoreLeaderboard(
+    163732,
+    "Jungle Temple Score",
+    "Highest score on Jungle Temple.",
+    0x00
+)
+
+EmitMapScoreLeaderboard(
+    163733,
+    "Rome Score",
+    "Highest score on Rome.",
+    0x01
+)
+
+EmitMapScoreLeaderboard(
+    163734,
+    "Hollywood Score",
+    "Highest score on Hollywood.",
+    0x02
+)
+
+EmitMapScoreLeaderboard(
+    163735,
+    "The Junkyard Score",
+    "Highest score on The Junkyard.",
+    0x03
+)
+
+EmitMapScoreLeaderboard(
+    163736,
+    "Big Apple Score",
+    "Highest score on Big Apple.",
+    0x04
+)
+
+EmitMapScoreLeaderboard(
+    163737,
+    "Snow Village Score",
+    "Highest score on Snow Village.",
+    0x05
+)
+
+EmitMapScoreLeaderboard(
+    163738,
+    "Military Base Score",
+    "Highest score on Military Base.",
+    0x06
+)
+
+EmitMapScoreLeaderboard(
+    163739,
+    "Vegas Strip Score",
+    "Highest score on Vegas Strip.",
+    0x07
+)
+
+// ---------- Race Best Times ----------
+EmitRaceTimeLeaderboard(
+    163740,
+    "Stadium Race Best Time",
+    "Fastest winning Stadium Race time.",
+    0x01,
+    StadiumRaceTotalTime()
+)
+
+EmitRaceTimeLeaderboard(
+    163741,
+    "Canyon Race Best Time",
+    "Fastest winning Canyon Race time.",
+    0x03,
+    CanyonRaceTotalTime()
 )

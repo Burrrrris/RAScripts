@@ -7238,15 +7238,15 @@ achievement(
         IsOnQuest() &&
         (
             (
-                LargestRathianLengthHunted()>=0x79 &&
+                LargestRathianLengthHunted()>=0x76 &&
                 prev(LargestRathianLengthHunted()<0x76)
             ) ||
             (
-                LargestPinkRathianLengthHunted()>=0x79 &&
+                LargestPinkRathianLengthHunted()>=0x76 &&
                 prev(LargestPinkRathianLengthHunted()<0x76)
             ) ||
             (
-                LargestGoldRathianLengthHunted()>=0x79 &&
+                LargestGoldRathianLengthHunted()>=0x76 &&
                 prev(LargestGoldRathianLengthHunted()<0x76)
             )
         )
@@ -7504,10 +7504,6 @@ achievement(
             (
                 LargestMonoblosLengthHunted()>=0x74 &&
                 prev(LargestMonoblosLengthHunted()<0x74)
-            ) ||
-            (
-                LargestWhiteMonoblosLengthHunted()>=0x74 &&
-                prev(LargestWhiteMonoblosLengthHunted()<0x74)
             )
         )
 )
@@ -7527,13 +7523,13 @@ achievement(
 achievement(
     title="Legend of the White Horn",
     id=609713,
-    badge="691725",
-    description="Successfully hunt 20 White Monoblos",
+    //badge="",
+    description="Obtain a Gold Crown for Monoblos",
     points=10,
     trigger=
         IsOnQuest() &&
-        measured(TotalWhiteMonobolosHunted()>=20) &&
-        prev(TotalWhiteMonobolosHunted()<20)
+        LargestWhiteMonoblosLengthHunted()>=0x7f &&
+        prev(LargestWhiteMonoblosLengthHunted()<0x7f)
 )
 
 achievement(
@@ -8737,8 +8733,8 @@ EmitTownQuestAchievement(
     "Lao Wants Another Visit",
     "Complete the Urgent Town Quest: \"A Giant Dragon Invades!\"",
     10,
-    0xBBB,
-    CompletedTown8StarAGiantDragonInvades()
+    0xBBa,
+    CompletedTown4StarAGiantDragonInvades()
 )
 
 EmitTownQuestAchievement(
@@ -9682,8 +9678,8 @@ return
 function GoldCrownKirin()
 {
 return
-LargestKirinLengthHunted()>=0x01 &&
-prev(LargestKirinLengthHunted()<0x01)
+LargestKirinLengthHunted()>=0xb1 &&
+prev(LargestKirinLengthHunted()<0xb1)
 }
 
 function TotalFatalisSpeciesHunted()
@@ -9804,7 +9800,7 @@ achievement(
 
 achievement(
     id=610159,
-    badge="692323",
+    badge="692324",
     title="Tidal Terror of the Waters",
     description="Obtain a Gold Crown for Plesioth",
     points=10,
@@ -9816,7 +9812,7 @@ achievement(
 
 achievement(
     id=610160,
-    badge="692324",
+    badge="692323",
     title="Dune Phantom Beneath the Sands",
     description="Obtain a Gold Crown for Cephadrome",
     points=10,
